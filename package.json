@@ -1,0 +1,28 @@
+{
+  "name": "red-bull-vodka",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "pubnub": "^3.7.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+
+  "engines": {
+    "node": "0.10.x"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Hendrixer/red-bull-vodka.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Hendrixer/red-bull-vodka/issues"
+  },
+  "homepage": "https://github.com/Hendrixer/red-bull-vodka"
+}
