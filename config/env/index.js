@@ -13,8 +13,8 @@ var all = {
   // any and all secrets
   secrets: {
     pb: {
-      pubKey: process.env.PUBNUB_PUBLISH_KEY || 'demo',
-      subKey: process.env.PUBNUB_SUBSCRIBE_KEY ||'demo'
+      publish_key: process.env.PUBNUB_PUBLISH_KEY || 'demo',
+      subscribe_key: process.env.PUBNUB_SUBSCRIBE_KEY ||'demo'
     }
   },
   mongo: {
@@ -26,4 +26,4 @@ var all = {
   }
 };
 // merge config file with default config based off env
-module.exports = _.merge(all, require('./' + all.env) || {} );
+module.exports = _.merge(all, require('./' + process.env.NODE_ENV) || {} );
