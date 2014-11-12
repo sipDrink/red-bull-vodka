@@ -2,7 +2,6 @@ var http = require('http');
 var pubKey = process.env.PUBNUB_PUBLISH_KEY || 'demo';
 var sbKey = process.env.PUBNUB_SUBSCRIBE_KEY || 'demo';
 
-console.log(pubKey, sbKey);
 
 var pb = require('pubnub').init({
   publish_key: pubKey,
