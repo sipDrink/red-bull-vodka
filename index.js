@@ -1,17 +1,18 @@
 'use strict';
 
+process.env.NODE_ENV = process.env.NODE_ENV || 'development';
+
 var config = require('./config/env');
 var mongoose = require('mongoose');
 var http = require('http');
 
-process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
 mongoose.connect(config.mongo.uri, config.mongo.options);
 
 if (config.seedDB) { require('./config/seed'); }
 
 /* Init pubnub and register channels */
-require('./api/events')(require('./pb/pbinit'));
+require('./api/events')(require('./config/pb/pbinit'));
 
 
 // var pb = require('pubnub').init({

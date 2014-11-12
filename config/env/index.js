@@ -26,4 +26,4 @@ var all = {
   }
 };
 // merge config file with default config based off env
-module.exports = _.merge(all, require('./' + all.env) || {} );
+module.exports = _.merge(all, require('./' + process.env.NODE_ENV) || {} );
