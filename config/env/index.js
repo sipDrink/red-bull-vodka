@@ -13,8 +13,8 @@ var all = {
   // any and all secrets
   secrets: {
     pb: {
-      pubKey: process.env.PUBNUB_PUBLISH_KEY || 'demo',
-      subKey: process.env.PUBNUB_SUBSCRIBE_KEY ||'demo'
+      publish_key: process.env.PUBNUB_PUBLISH_KEY || 'demo',
+      subscribe_key: process.env.PUBNUB_SUBSCRIBE_KEY ||'demo'
     }
   },
   mongo: {
