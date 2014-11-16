@@ -7,7 +7,8 @@ module.exports = {
   port: process.env.PORT || 8080,
 
   mongo: {
-    uri: process.env.MONGOLAB_URI ||
+    uri: process.env.MONGO_URL ||
+         process.env.MONGOLAB_URI ||
          process.env.MONGOHQ_URL ||
          'mongodb://localhost/sip'
   }

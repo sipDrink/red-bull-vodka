@@ -1,6 +1,8 @@
 'use strict';
 
+
 module.exports = function(pb) {
+
   setInterval(function() {
     pb.publish({
       channel: 'sip',
@@ -9,4 +11,5 @@ module.exports = function(pb) {
       error: function(e){console.log(e)}
     });
   }, 5000);
+
 };
