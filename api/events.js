@@ -1,10 +1,10 @@
 'use strict';
 
-var orders = require('./orders');
+// var orders = require('./orders');
 var users = require('./users');
 
 module.exports = function(pb) {
-  var Order = orders(pb);
+  // var Order = orders(pb);
   var User = users(pb);
 
   /*
