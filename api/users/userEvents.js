@@ -1,6 +1,6 @@
 'use strict';
 
-var User = require('mongoose').model('user');
+var User = require('./userModel');
 var _ = require('lodash');
 
 module.exports = {
