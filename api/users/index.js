@@ -1,33 +1,54 @@
 'use strict';
 
-// var express = require('express');
-// var controller = require('./userController');
-// // var config = require('../../config/env');
-// var auth = require('../../auth/auth');
+var userEvents = require('./userEvents');
+var _ = require('lodash');
+var config = require('../../config/env');
 
-// var router = express.Router();
-// router.get('/me', auth.isAuth(), controller.me);
+module.exports = function(pb) {
+  return {
+    pub: function(details) {
+      details.message.from = config.alias;
+      details.callback = function() {
+        console.log('pubbed to ', config.channel);
+      };
+      pb.publish(details);
+    },
 
-// var userEvents = require('./userEvents');
-// var _ = require('lodash');
+    sub: function(details) {
+      pb.sub(details);
+    },
 
-// module.exports = function(PN, user){
+    newPrivateChannel: function(userChannel) {
+      var details = {
+        channel: userChannel,
+        message: function(message) {
+          if (message.to === config.alias) {
+            _.forEach(message.actions, function(args, action) {
+              userEvents[action](pb, args);
+            });
+          }
+        }
+      };
 
-//   PN.subscribe({
-//     channel: channel,
-//     message: function(actions){
-//       _.forEach(actions, function(args, action) {
-//         console.log(action);
-//         userEvents[action](args, PN);
-//       });
-//     },
-//     error: function(e){
-//       console.error(e);
-//     }
-//   });
+      pb.sub(details);
+    }
+  };
+};
 
-//   // PN.publish({
-//   //   channel: channel,
-//   //   message: { updated: 'yess sir' }
-//   // });
-// };
+// PN.subscribe({
+  //   channel: channel,
+  //   message: function(actions){
+  //     _.forEach(actions, function(args, action) {
+  //       console.log(action);
+  //       userEvents[action](args, PN);
+  //     });
+  //   },
+  //   error: function(e){
+  //     console.error(e);
+  //   }
+  // });
+
+  // PN.publish({
+  //   channel: channel,
+  //   message: { updated: 'yess sir' }
+  // });

@@ -4,7 +4,8 @@ var User = require('mongoose').model('user');
 var _ = require('lodash');
 
 module.exports = {
-  'update': function(values, PN){
+  'update': function(PN, values){
+    console.log('updating', values._id);
     var id = values._id;
     delete values._id;
 
@@ -14,12 +15,19 @@ module.exports = {
       }
 
       if (user) {
+
         PN.publish({
           channel: 'private-'+id,
-          message: { 'updated': user }
+          message: {
+            to: 'mobile',
+            actions: {
+              updated: {
+                'user': user
+              }
+            }
+          }
         });
       }
-
     });
   }
 };
