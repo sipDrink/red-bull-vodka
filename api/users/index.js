@@ -5,7 +5,7 @@ var _ = require('lodash');
 var config = require('../../config/env');
 
 module.exports = function(pb) {
-  return {
+  var userStream = {
     pub: function(details) {
       details.message.from = config.alias;
       details.callback = function() {
@@ -30,10 +30,13 @@ module.exports = function(pb) {
         }
       };
 
-      pb.subscribe(details);
+      userStream.sub(details);
     }
   };
+
+  return userStream;
 };
+
 
 // PN.subscribe({
   //   channel: channel,

@@ -15,17 +15,23 @@ module.exports = {
       }
 
       if (user) {
-
+        console.log(user.name);
         PN.publish({
-          channel: 'private-'+id,
+          channel: 'private-'+user._id,
           message: {
             to: 'mobile',
+            from: 'API',
             actions: {
               updated: {
                 'user': user
               }
             }
+          },
+
+          callback: function() {
+            console.log('published update to ' + user.name )
           }
+
         });
       }
     });
