@@ -15,7 +15,7 @@ module.exports = function(pb) {
     },
 
     sub: function(details) {
-      pb.sub(details);
+      pb.subscribe(details);
     },
 
     newPrivateChannel: function(userChannel) {
@@ -30,7 +30,7 @@ module.exports = function(pb) {
         }
       };
 
-      pb.sub(details);
+      pb.subscribe(details);
     }
   };
 };
