@@ -6,6 +6,7 @@ var _ = require('lodash');
 
 var all = {
   env: process.env.NODE_ENV,
+  alias: 'API',
 
   port: process.env.PORT || 9000,
   // populate db with some data
