@@ -7,7 +7,8 @@
     "gulp": "^3.8.10",
     "lodash": "^2.4.1",
     "mongoose": "^3.8.19",
-    "pubnub": "^3.7.0"
+    "pubnub": "^3.7.0",
+    "q": "^1.1.1"
   },
   "devDependencies": {},
   "scripts": {
