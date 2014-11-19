@@ -6,7 +6,14 @@ var _ = require('lodash');
 module.exports = {
   'get': function(PN, values) {
     console.log('getting', values);
-
+    PN.pub({
+      message: {
+        to: 'mobile',
+        actions: {
+          'updateMe': {name: 'it\'s me!!'}
+        }
+      }
+    });
   },
   'update': function(PN, values){
     console.log('updating', values._id);
