@@ -16,7 +16,7 @@ module.exports = function(pb) {
       details.message.from = config.alias;
       details.channel = details.channel || getMainChannel();
       details.callback = function() {
-        console.log('pubbed to ', config.channel);
+        console.log('pubbed to ', details.channel);
       };
       pb.publish(details);
     },
