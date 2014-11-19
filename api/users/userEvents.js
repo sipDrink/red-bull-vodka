@@ -4,6 +4,10 @@ var User = require('./userModel');
 var _ = require('lodash');
 
 module.exports = {
+  'get': function(PN, values) {
+    console.log('getting', values);
+
+  },
   'update': function(PN, values){
     console.log('updating', values._id);
     var id = values._id;
@@ -29,7 +33,7 @@ module.exports = {
           },
 
           callback: function() {
-            console.log('published update to ' + user.name )
+            console.log('published update to ' + user.name );
           }
 
         });

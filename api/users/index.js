@@ -5,9 +5,16 @@ var _ = require('lodash');
 var config = require('../../config/env');
 
 module.exports = function(pb) {
-  var userStream = {
+  var _mainChannel;
+
+  function getMainChannel() {
+    return _mainChannel;
+  }
+
+  var PN = {
     pub: function(details) {
       details.message.from = config.alias;
+      details.channel = details.channel || getMainChannel();
       details.callback = function() {
         console.log('pubbed to ', config.channel);
       };
@@ -16,21 +23,23 @@ module.exports = function(pb) {
 
     sub: function(details) {
       pb.subscribe(details);
-    },
+    }
+  };
 
+  var userStream = {
     newPrivateChannel: function(userChannel) {
+      _mainChannel = userChannel;
       var details = {
         channel: userChannel,
         message: function(message) {
           if (message.to === config.alias) {
             _.forEach(message.actions, function(args, action) {
-              userEvents[action](pb, args);
+              userEvents[action](PN, args);
             });
           }
         }
       };
-
-      userStream.sub(details);
+      PN.sub(details);
     }
   };
 
