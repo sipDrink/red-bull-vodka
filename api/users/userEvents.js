@@ -36,11 +36,9 @@ module.exports = {
     findByIdAndUpdate(id, values).then(function(user) {
       if (user) {
         console.log(user.name);
-        PN.publish({
-          channel: 'private-'+user._id,
+        PN.pub({
           message: {
             to: 'mobile',
-            from: 'API',
             actions: {
               updateMe: user
             }
