@@ -45,22 +45,3 @@ module.exports = function(pb) {
 
   return userStream;
 };
-
-
-// PN.subscribe({
-  //   channel: channel,
-  //   message: function(actions){
-  //     _.forEach(actions, function(args, action) {
-  //       console.log(action);
-  //       userEvents[action](args, PN);
-  //     });
-  //   },
-  //   error: function(e){
-  //     console.error(e);
-  //   }
-  // });
-
-  // PN.publish({
-  //   channel: channel,
-  //   message: { updated: 'yess sir' }
-  // });

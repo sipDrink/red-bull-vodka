@@ -2,29 +2,38 @@
 
 var User = require('./userModel');
 var _ = require('lodash');
+var Q = require('q');
 
 module.exports = {
   'get': function(PN, values) {
     console.log('getting', values);
-    PN.pub({
-      message: {
-        to: 'mobile',
-        actions: {
-          'updateMe': {name: 'it\'s me!!'}
-        }
+    var findById = Q.nbind(User.findById, User);
+
+    findById(values._id).then(function(user) {
+      if (user) {
+        PN.pub({
+          message: {
+            to: 'mobile',
+            actions: {
+              'updateMe': user
+            }
+          }
+        });
       }
+    })
+    .fail(function(err) {
+      console.error(err);
     });
   },
+
   'update': function(PN, values){
     console.log('updating', values._id);
     var id = values._id;
     delete values._id;
 
-    User.findByIdAndUpdate(id, values, function(err, user) {
-      if (err) {
-        console.error(err);
-      }
+    var findByIdAndUpdate = Q.nbind(User.findByIdAndUpdate, User);
 
+    findByIdAndUpdate(id, values).then(function(user) {
       if (user) {
         console.log(user.name);
         PN.publish({
@@ -33,9 +42,7 @@ module.exports = {
             to: 'mobile',
             from: 'API',
             actions: {
-              updated: {
-                'user': user
-              }
+              updateMe: user
             }
           },
 

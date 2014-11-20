@@ -24,4 +24,11 @@ module.exports = function(pb) {
     }
   });
 
+  pb.subscribe({
+    channel: 'bar-auth',
+    message: function(newBar) {
+
+    }
+  });
+
 };
