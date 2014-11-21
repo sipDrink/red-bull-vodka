@@ -20,6 +20,7 @@ module.exports = function(pb) {
   pb.subscribe({
     channel: 'user-auth',
     message: function(newUser){
+      console.log(newUser);
       User.newPrivateChannel(newUser.channel);
     }
   });
