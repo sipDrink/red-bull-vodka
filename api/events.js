@@ -22,6 +22,9 @@ module.exports = function(pb) {
     message: function(newUser){
       console.log(newUser);
       User.newPrivateChannel(newUser.channel);
+    },
+    error: function(error) {
+      console.log('user-auth-error', error);
     }
   });
 
