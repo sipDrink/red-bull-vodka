@@ -7,7 +7,7 @@ var bars = require('./bars');
 module.exports = function(pb) {
   // var Order = orders(pb);
   var $User = users(pb);
-  var $Bar = bars(pb);
+  // var $Bar = bars(pb);
   /*
     After a user signs up/in and is granted,
     an event from the auth server is
