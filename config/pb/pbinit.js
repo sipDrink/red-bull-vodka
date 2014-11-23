@@ -18,10 +18,12 @@ var dispatcher = {
   },
 
   sub: function(channel, cb) {
-    var future = q.defer();
     pb.subscribe({
       channel: channel,
-      callback: cb,
+      callback: function(message){
+        console.log('in pbinit cb');
+        cb(message)
+      },
       error: function(e) {
         console.log(e);
       }
