@@ -7,6 +7,8 @@ var q = require('q');
 var dispatcher = {
   pub: function(message, setup) {
     message.from = config.alias;
+    message.to = 'mobile';
+
     console.log('about to publish');
     pb.publish({
       channel: setup.channel,
