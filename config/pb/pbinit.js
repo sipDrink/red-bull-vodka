@@ -22,10 +22,14 @@ var dispatcher = {
       channel: channel,
       callback: function(message){
         console.log('in pbinit cb', cb.name);
-        cb(message)
+        cb(message);
+      },
+
+      message: function() {
+        console.log('in message cb sub');
       },
       error: function(e) {
-        console.log(e);
+        console.log('error in pbninit', e);
       }
     });
   },
