@@ -4,7 +4,7 @@
 var $User = require('./users');
 var bars = require('./bars');
 
-module.exports = function(pb) {
+module.exports = function() {
   // var Order = orders(pb);
 
   // var $Bar = bars(pb);
@@ -18,12 +18,12 @@ module.exports = function(pb) {
     CRUD
   */
 
-  pb.sub('user-auth').then(function(newUser) {
+  $dispatcher.sub('user-auth', function(newUser) {
     console.log('got auth');
-    $User.newPrivateChannel(pb, newUser);
+    $User.newPrivateChannel(newUser);
   });
 
-  pb.sub('bar-auth').then().fail();
+  // $dispatcher.sub('bar-auth').then().fail();
 
 
 };

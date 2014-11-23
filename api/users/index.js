@@ -13,7 +13,7 @@ module.exports = function() {
 
 
   var userStream = {
-    newPrivateChannel: function(PN, user) {
+    newPrivateChannel: function(user) {
 
       var grant = {
         channel: user.channel,
@@ -23,13 +23,13 @@ module.exports = function() {
         ttl: 0
       };
 
-      PN.grant(grant);
+      $dispatcher.grant(grant);
       _mainChannel = user.channel;
 
-      PN.sub(_mainChannel).then(function(message) {
+      $dispatcher.sub(_mainChannel).then(function(message) {
         if (message.to === config.alias) {
           _.forEach(message.actions, function(args, action) {
-            userEvents[action](PN, args, getMainChannel());
+            userEvents[action](args, getMainChannel());
           });
         }
       })

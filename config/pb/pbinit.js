@@ -17,21 +17,15 @@ var dispatcher = {
     });
   },
 
-  sub: function(channel) {
+  sub: function(channel, cb) {
     console.log('about to sub');
-    var future = q.defer();
     pb.subscribe({
       channel: channel,
-      callback: function(message){
-        console.log(message);
-        future.resolve(message);
-      },
+      callback: cb,
       error: function(e) {
-        future.reject(e);
+        console.error(e);
       }
     });
-
-    return future.promise;
   },
 
   grant: function(configs) {
@@ -39,4 +33,4 @@ var dispatcher = {
   }
 };
 
-module.exports = dispatcher;
+global.$dispatcher = dispatcher;

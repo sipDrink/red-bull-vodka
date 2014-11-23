@@ -6,14 +6,15 @@ var _ = require('lodash');
 var Q = require('q');
 
 module.exports = {
-  'get': function(PN, values) {
+  'get': function(values, channel) {
     console.log('getting');
 
     var findById = Q.nbind(User.findById, User);
 
     findById(values._id).then(function(user) {
       if (user) {
-        PN.pub({
+        $dispatcher.pub({
+          channel: channel,
           message: {
             to: 'mobile',
             actions: {
@@ -28,7 +29,7 @@ module.exports = {
     });
   },
 
-  'getBars': function(PN, values, channel) {
+  'getBars': function(values, channel) {
     /*
       values:
       {
@@ -40,10 +41,8 @@ module.exports = {
     */
 
     console.log('get bars', values, channel);
-    var lon = values.longitude;
-    var lat = values.lat;
 
-    var coords = [lon, lat];
+    var coords = values.coords;
     var maxDistance = values.distance || 20; // miles
 
     var queryParams = {
@@ -61,7 +60,7 @@ module.exports = {
         return;
       }
 
-      PN.pub({
+      $dispatcher.pub({
         actions: {
           'updateBars': bars
         }
@@ -73,7 +72,7 @@ module.exports = {
 
   },
 
-  'update': function(PN, values){
+  'update': function(values){
     console.log('updating', values._id);
     var id = values._id;
     delete values._id;
@@ -83,7 +82,7 @@ module.exports = {
     findByIdAndUpdate(id, values).then(function(user) {
       if (user) {
         console.log(user.name);
-        PN.pub({
+        $dispatcher.pub({
           message: {
             to: 'mobile',
             actions: {
