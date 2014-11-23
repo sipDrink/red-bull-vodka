@@ -19,6 +19,7 @@ module.exports = function(pb) {
   */
 
   pb.sub('user-auth').then(function(newUser) {
+    console.log('got auth');
     $User.newPrivateChannel(newUser);
   });
 

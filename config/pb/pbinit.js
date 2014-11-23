@@ -22,7 +22,10 @@ var dispatcher = {
     var future = q.defer();
     pb.subscribe({
       channel: channel,
-      callback: future.resolve,
+      callback: function(message){
+        console.log(message);
+        future.resolve(message);
+      },
       error: function(e) {
         future.reject(e);
       }
