@@ -18,15 +18,8 @@ module.exports = function(pb) {
     CRUD
   */
 
-  pb.sub({
-    channel: 'user-auth',
-    message: function(newUser){
-      console.log('newUser');
-      $User.newPrivateChannel(newUser);
-    },
-    error: function(error) {
-      console.log('user-auth-error', error);
-    }
+  pb.sub('user-auth').then(function(newUser) {
+    $User.newPrivateChannel(newUser);
   });
 
   pb.sub('bar-auth').then().fail();
