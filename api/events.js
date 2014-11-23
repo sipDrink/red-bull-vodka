@@ -2,11 +2,12 @@
 
 // var orders = require('./orders');
 var users = require('./users');
+var bars = require('./bars');
 
 module.exports = function(pb) {
   // var Order = orders(pb);
-  var User = users(pb);
-
+  var $User = users(pb);
+  var $Bar = bars(pb);
   /*
     After a user signs up/in and is granted,
     an event from the auth server is
@@ -17,22 +18,18 @@ module.exports = function(pb) {
     CRUD
   */
 
-  pb.subscribe({
+  pb.sub({
     channel: 'user-auth',
     message: function(newUser){
-      console.log(newUser);
-      User.newPrivateChannel(newUser.channel);
+      console.log('newUser');
+      $User.newPrivateChannel(newUser);
     },
     error: function(error) {
       console.log('user-auth-error', error);
     }
   });
 
-  pb.subscribe({
-    channel: 'bar-auth',
-    message: function(newBar) {
+  pb.sub('bar-auth').then().fail();
 
-    }
-  });
 
 };

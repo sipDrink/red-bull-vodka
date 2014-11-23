@@ -9,14 +9,20 @@ var DrinksSchema = new mongoose.Schema({
     required: true
   },
 
-  bars: [{
-    type: mongoose.Schema.ObjectId,
-    ref: 'bar'
-  }],
+  ingredients: [
+    { type: String }
+  ],
 
-  bar_count: {
-    type: Number,
-    default: 0
+  category: {
+    type: mongoose.Schema.ObjectId,
+    ref: 'category',
+    required: true
+  },
+
+  bar: {
+    type: mongoose.Schema.ObjectId,
+    required: true,
+    ref: 'bar'
   }
 
 });
