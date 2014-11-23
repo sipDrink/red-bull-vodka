@@ -1,12 +1,12 @@
 'use strict';
 
 // var orders = require('./orders');
-var users = require('./users');
+var $User = require('./users');
 var bars = require('./bars');
 
 module.exports = function(pb) {
   // var Order = orders(pb);
-  var $User = users(pb);
+
   // var $Bar = bars(pb);
   /*
     After a user signs up/in and is granted,
@@ -20,7 +20,7 @@ module.exports = function(pb) {
 
   pb.sub('user-auth').then(function(newUser) {
     console.log('got auth');
-    $User.newPrivateChannel(newUser);
+    $User.newPrivateChannel(pb, newUser);
   });
 
   pb.sub('bar-auth').then().fail();

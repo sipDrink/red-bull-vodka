@@ -4,7 +4,7 @@ var userEvents = require('./userEvents');
 var _ = require('lodash');
 var config = require('../../config/env');
 
-module.exports = function(PN) {
+module.exports = function() {
   var _mainChannel;
 
   function getMainChannel() {
@@ -13,7 +13,7 @@ module.exports = function(PN) {
 
 
   var userStream = {
-    newPrivateChannel: function(user) {
+    newPrivateChannel: function(PN, user) {
 
       var grant = {
         channel: user.channel,
