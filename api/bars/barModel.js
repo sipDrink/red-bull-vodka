@@ -7,7 +7,8 @@ var BarSchema = new Schema({
   email: {
     required: true,
     unique: true,
-    index: true
+    index: true,
+    type: String
   },
 
   password: {
