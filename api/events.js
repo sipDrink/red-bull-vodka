@@ -18,12 +18,12 @@ module.exports = function() {
     CRUD
   */
 
-  $dispatcher.sub('user-auth').then(function(newUser) {
+  $dispatcher.sub('user-auth', function(newUser) {
     console.log('got auth');
     $User.newPrivateChannel(newUser);
   });
 
-  $dispatcher.sub('bar-auth').then().fail();
+  // $dispatcher.sub('bar-auth').then().fail();
 
 
 };

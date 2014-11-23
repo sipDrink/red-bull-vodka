@@ -14,7 +14,7 @@ module.exports = function() {
 
   var userStream = {
     newPrivateChannel: function(user) {
-
+      console.log('granting');
       var grant = {
         channel: user.channel,
         auth_key: user.auth_key,
