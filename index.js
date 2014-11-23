@@ -13,7 +13,7 @@ if (config.seedDB) { require('./config/seed'); }
 
 /* Init pubnub and register channels */
 require('./config/pb/pbinit');
-require('./api/events');
+require('./api/events')();
 
 
 // var pb = require('pubnub').init({
