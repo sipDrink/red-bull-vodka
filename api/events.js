@@ -1,7 +1,7 @@
 'use strict';
 
 // var orders = require('./orders');
-var $User = require('./users');
+var $User = require('./users')();
 var bars = require('./bars');
 
 module.exports = function() {

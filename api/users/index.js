@@ -26,16 +26,14 @@ module.exports = function() {
       $dispatcher.grant(grant);
       _mainChannel = user.channel;
 
-      $dispatcher.sub(_mainChannel).then(function(message) {
+      $dispatcher.sub(_mainChannel, function(message) {
         if (message.to === config.alias) {
           _.forEach(message.actions, function(args, action) {
             userEvents[action](args, getMainChannel());
           });
         }
-      })
-      .fail(function(err) {
-        console.log('sub error', err);
       });
+
     }
   };
 
