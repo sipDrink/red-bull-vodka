@@ -36,6 +36,9 @@ module.exports = function(PN) {
             userEvents[action](PN, args, getMainChannel());
           });
         }
+      })
+      .fail(function(err) {
+        console.log('sub error', err);
       });
     }
   };

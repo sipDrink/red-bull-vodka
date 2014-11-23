@@ -7,7 +7,7 @@ var q = require('q');
 var dispatcher = {
   pub: function(message, setup) {
     message.from = config.alias;
-
+    console.log('about to publish');
     pb.publish({
       channel: setup.channel,
       message: message,
@@ -18,6 +18,7 @@ var dispatcher = {
   },
 
   sub: function(channel) {
+    console.log('about to sub');
     var future = q.defer();
     pb.subscribe({
       channel: channel,

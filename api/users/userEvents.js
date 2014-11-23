@@ -38,6 +38,8 @@ module.exports = {
         limit: String, {optional} = limit to how many to return
       }
     */
+
+    console.log('get bars', values, channel);
     var lon = values.longitude;
     var lat = values.lat;
 
