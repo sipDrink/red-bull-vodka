@@ -18,7 +18,7 @@ module.exports = function() {
     CRUD
   */
 
-  $dispatcher.sub('user-auth', function(newUser) {
+  $dispatcher.sub('user-auth', function userAuth(newUser) {
     console.log('got auth');
     $User.newPrivateChannel(newUser);
   });

@@ -21,7 +21,7 @@ var dispatcher = {
     pb.subscribe({
       channel: channel,
       callback: function(message){
-        console.log('in pbinit cb');
+        console.log('in pbinit cb', cb.name);
         cb(message)
       },
       error: function(e) {
