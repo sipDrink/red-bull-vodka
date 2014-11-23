@@ -19,7 +19,7 @@ module.exports = function() {
   */
 
   $dispatcher.sub('user-auth', function userAuth(newUser) {
-    console.log('got auth');
+    console.log('got auth', newUser);
     $User.newPrivateChannel(newUser);
   });
 

@@ -46,17 +46,23 @@ module.exports = {
     var maxDistance = values.distance || 20; // miles
 
     var queryParams = {
-      near: coords,
-      maxDistance: maxDistance
+      loc: {
+        $near: coords,
+        $maxDistance: maxDistance
+      }
     };
 
+
+
+    var findBars = Bar.find(queryParams);
+
     if (values.limit) {
-      queryParams.limit = values.limit;
+      findBars = findBars.limit(values.limit);
     }
 
-    Bar.geoSearch({ completedSignup: true }, queryParams, function(err, bars) {
+    findBars.exec(function(err, bars) {
       if (err) {
-        console.log(err);
+        console.error(err);
         return;
       }
 
@@ -65,10 +71,10 @@ module.exports = {
           'updateBars': bars
         }
       },
-      { channel: channel }
+        { channel: channel }
       );
-    });
 
+    });
 
   },
 
