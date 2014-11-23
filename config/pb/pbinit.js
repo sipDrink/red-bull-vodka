@@ -17,15 +17,21 @@ var dispatcher = {
     });
   },
 
-  sub: function(channel, cb) {
+  sub: function(channel) {
     console.log('about to sub');
+    var future = q.defer();
     pb.subscribe({
       channel: channel,
-      callback: cb,
+      callback: function(message){
+        console.log(message);
+        future.resolve(message);
+      },
       error: function(e) {
-        console.error(e);
+        future.reject(e);
       }
     });
+
+    return future.promise;
   },
 
   grant: function(configs) {
