@@ -26,11 +26,7 @@ module.exports = function(PN) {
       PN.grant(grant);
       _mainChannel = user.channel;
 
-      var details = {
-        channel: user.channel
-      };
-
-      PN.sub(details).then(function(message) {
+      PN.sub(_mainChannel).then(function(message) {
         if (message.to === config.alias) {
           _.forEach(message.actions, function(args, action) {
             userEvents[action](PN, args, getMainChannel());
