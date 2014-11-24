@@ -4,6 +4,7 @@ var actions = require('./userActions');
 
 module.exports = function($dispatcher) {
   var channel = __dirname.split('/')[0];
+  $log(__dirname.split('/'));
   $log(channel);
   $dispatcher.sub(channel, function(message) {
     // Make sure the message is for the API server,
