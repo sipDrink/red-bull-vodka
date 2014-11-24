@@ -1,8 +1,8 @@
 'use strict';
-var PN = require('pubnub').init($config.secrets.pb);
+// var PN = require('pubnub').init($config.secrets.pb);
 
 function $Dispatcher(PubNub){
-  var pb = PubNub || PN;
+  var pb = PubNub || require('pubnub').init($config.secrets.pb);
 
   this.pub = function(message, channel) {
     message.from = $config.alias;
