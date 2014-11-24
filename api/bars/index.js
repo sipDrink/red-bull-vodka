@@ -3,7 +3,7 @@
 var actions = require('./barActions');
 
 module.exports = function($dispatcher) {
-  var channel = __dirname.split('/')[0];
+  var channel = __dirname.split('/').pop();
 
   $dispatcher.sub(channel, function(message) {
     // Make sure the message is for the API server,
