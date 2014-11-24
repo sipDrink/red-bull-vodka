@@ -46,6 +46,7 @@ module.exports = {
     var maxDistance = values.distance || 20; // miles
 
     var queryParams = {
+      completedSignUp: true,
       loc: {
         $near: coords,
         $maxDistance: maxDistance
