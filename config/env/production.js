@@ -11,5 +11,7 @@ module.exports = {
          process.env.MONGOLAB_URI ||
          process.env.MONGOHQ_URL ||
          'mongodb://localhost/sip'
-  }
+  },
+
+  logging: true
 };
