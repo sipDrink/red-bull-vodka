@@ -39,10 +39,6 @@ module.exports = function(model) {
 
     },
 
-    'register': function(params, $dispatcher, res) {
-
-    },
-
     'update': function(params, $dispatcher, res) {
 
     },

@@ -12,7 +12,13 @@ module.exports = function($dispatcher) {
       // for each action in the given message, invoke
       // the registered action with the given params
       _.forEach(message.actions, function(meta, actionName) {
-        actions[actionName].call(actions, meta, $dispatcher, message.respondTo);
+        // check to see if the message is from Auth0 and is to register a new
+        // user or bar
+        if (message.register && message.from === 'Auth0') {
+          actions.register(message.register, $dispatcher);
+        } else {
+          actions[actionName].call(actions, meta, $dispatcher, message.respondTo);
+        }
       });
     }
 
