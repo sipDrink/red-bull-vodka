@@ -3,8 +3,9 @@
 var actions = require('./drinkActions');
 
 module.exports = function($dispatcher) {
+  var channel = __dirname.split('/')[0];
 
-  $dispatcher.sub(__dirname, function(message) {
+  $dispatcher.sub(channel, function(message) {
     // Make sure the message is for the API server,
     // without this check, the server could be reacting
     // to its own publishes meant for mobile

@@ -3,8 +3,9 @@
 var actions = require('./userActions');
 
 module.exports = function($dispatcher) {
-  $log(__dirname);
-  $dispatcher.sub(__dirname, function(message) {
+  var channel = __dirname.split('/')[0];
+  $log(channel);
+  $dispatcher.sub(channel, function(message) {
     // Make sure the message is for the API server,
     // without this check, the server could be reacting
     // to its own publishes meant for mobile
