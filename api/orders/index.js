@@ -1,6 +1,6 @@
 'use strict';
 
-var actions = require('./userActions');
+var actions = require('./orderActions');
 
 module.exports = function($dispatcher) {
 

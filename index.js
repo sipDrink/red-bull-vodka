@@ -12,6 +12,7 @@ mongoose.connect(config.mongo.uri, config.mongo.options);
 if (config.seedDB) { require('./config/seed'); }
 
 /* Init pubnub and register channels */
+require('./config/globals');
 require('./config/pb/pbinit');
 require('./api/events')();
 

@@ -1,25 +1,23 @@
 'use strict';
+var PN = require('pubnub').init($config.secrets.pb);
 
-var config = require('../env');
-var pb = require('pubnub').init(config.secrets.pb);
-var q = require('q');
+function $Dispatcher(PubNub){
+  var pb = PubNub || PN;
 
-var dispatcher = {
-  pub: function(message, setup) {
-    message.from = config.alias;
+  this.pub = function(message, channel) {
+    message.from = $config.alias;
     message.to = 'mobile';
-
     console.log('about to publish');
     pb.publish({
-      channel: setup.channel,
+      channel: channel,
       message: message,
       callback: function(){
         console.log('message sent ', message.to);
       }
     });
-  },
+  };
 
-  sub: function(channel, cb) {
+  this.sub = function(channel, cb) {
     pb.subscribe({
       channel: channel,
       callback: function(message){
@@ -27,18 +25,16 @@ var dispatcher = {
         cb(message);
       },
 
-      message: function() {
-        console.log('in message cb sub');
-      },
       error: function(e) {
         console.log('error in pbninit', e);
       }
     });
-  },
+  };
 
-  grant: function(configs) {
+  this.grant = function(configs) {
     pb.grant(configs);
-  }
-};
+  };
+}
 
-global.$dispatcher = dispatcher;
+
+global.$Dispatcher = $Dispatcher;

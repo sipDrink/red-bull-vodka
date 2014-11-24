@@ -1,6 +1,6 @@
-var Order = require('../api/orders/order');
-var _ = require('lodash');
+// var Order = require('../api/orders/order');
+// var _ = require('lodash');
 
-Order.find({}).remove(function(){
+// Order.find({}).remove(function(){
 
-});
+// });

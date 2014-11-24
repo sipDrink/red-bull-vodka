@@ -7,5 +7,6 @@ module.exports = {
     uri: 'mongodb://localhost/sip-dev'
   },
 
-  seedDB: true
+  seedDB: true,
+  logging: true
 };
