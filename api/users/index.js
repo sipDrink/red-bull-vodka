@@ -13,7 +13,7 @@ module.exports = function($dispatcher) {
     if (message.to === $config.alias && message.respondTo) {
 
       if (message.register && message.from === 'Auth0') {
-        actions.register(message.register, $dispatcher);
+        actions.register(message.register, message.channel, $dispatcher);
       }
 
       // for each action in the given message, invoke
