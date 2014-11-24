@@ -4,8 +4,9 @@ var User = require('./userModel');
 
 var actions = require('../createActions')(User);
 
-actions.register = function(auth_key, $dispatcher) {
+actions.register = function(auth_key, channel, $dispatcher) {
   $dispatcher.grant({
+    channel: channel,
     read: true,
     write: true,
     ttl: 0,
