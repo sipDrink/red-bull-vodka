@@ -18,7 +18,7 @@ module.exports = function(model) {
       };
 
       _.extend(options, params.options || {});
-      var search = _.extend({}, params.search || {});
+      var search = _.extend({}, params.query || {});
 
       var query = model.find(search);
 
