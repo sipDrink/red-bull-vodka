@@ -1,5 +1,11 @@
 'user strict';
+/*
+  Default Actions
+    - All resources use these default actions for incoming events
 
+    @model
+      - The resource model ex: User || Drink
+*/
 module.exports = function(model) {
   return {
     // Action for getting a list of instances
@@ -23,14 +29,13 @@ module.exports = function(model) {
         if (err) {
           $log(err);
           return;
-        }
+        }ac
 
         var message = {
           actions: {}
         };
 
         message.actions[res.action] = results;
-
         $dispatcher.pub(message, res.channel);
       });
     },

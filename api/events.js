@@ -12,6 +12,8 @@ channels = _.remove(channels, function(file) {
 
 $log(channels);
 
+global.$channels = channels;
+
 module.exports = function() {
   // For each resource, create and new $Dispatcher instance
   _.forEach(channels, function(resource) {
