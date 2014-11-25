@@ -20,10 +20,9 @@ actions.register = function(auth_key, $dispatcher) {
   // Make sure to grant user access to their own private user
   channelsToGrant.push(auth_key);
 
-  $log(channelsToGrant);
+  $log('channelsToGrant', channelsToGrant);
   // Actually grant the users channels
   _.forEach(channelsToGrant, function(channel) {
-    $log(channel + ' granted');
     $dispatcher.grant({
       channel: channel,
       read: true,
@@ -31,7 +30,7 @@ actions.register = function(auth_key, $dispatcher) {
       ttl: 0,
       auth_key: auth_key,
       callback: function() {
-        $log('grant successful');
+        $log(channel + ' grant successful');
       }
     });
   });
