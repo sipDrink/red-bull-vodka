@@ -30,12 +30,13 @@ module.exports = function(model) {
         if (err) {
           $log(err);
           return;
-        }ac
+        }
 
         var message = {
           actions: {}
         };
 
+        $log('Got results from get');
         message.actions[res.action] = results;
         $dispatcher.pub(message, res.channel);
       });
