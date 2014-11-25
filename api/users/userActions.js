@@ -33,13 +33,13 @@ actions.register = function(auth_key, $dispatcher) {
     });
   });
 
-channelsToGrant.splice(channelsToGrant.length -1, 1);
+  // channelsToGrant.splice(channelsToGrant.length -1, 1);
 
-  $dispatcher.pub({
-    actions: {
-      'receiveUser': {channels: channelsToGrant}
-    }
-  }, auth_key);
+  // $dispatcher.pub({
+  //   actions: {
+  //     'receiveUser': {channels: channelsToGrant}
+  //   }
+  // }, auth_key);
 };
 
 module.exports = actions;
