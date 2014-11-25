@@ -29,7 +29,10 @@ actions.register = function(auth_key, $dispatcher) {
       read: true,
       write: true,
       ttl: 0,
-      auth_key: auth_key
+      auth_key: auth_key,
+      callback: function() {
+        $log('grant successful');
+      }
     });
   });
 

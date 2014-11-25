@@ -18,8 +18,9 @@ module.exports = function(model) {
       };
 
       _.extend(options, params.options || {});
+      var search = _.extend({}, params.search || {});
 
-      var query = model.find();
+      var query = model.find(search);
 
       _.forEach(options, function(args, option) {
         query = query[option](args);
