@@ -1,7 +1,7 @@
 'use strict';
 
 var Bar = require('./barModel');
-var Drink = require('../bars/barModel');
+var Category = require('../categories/categoryModel');
 var actions = require('../createActions')(Bar);
 
 // overwrite the default 'get' action for the 'bars' channel
@@ -28,12 +28,12 @@ actions.get = function(params, $dispatcher, res) {
       return;
     }
 
-    Drink.populate(results, { path: 'drinks.category' }, function(err, bars) {
+    Category.populate(results, { path: 'drinks.category' }, function(err, bars) {
       var message = {
         actions: {}
       };
 
-      $log('Got results from get:bars', bars);
+      $log('Got results from get:bars');
       message.actions[res.action] = bars;
       $dispatcher.pub(message, res.channel);
 
