@@ -28,7 +28,7 @@ actions.get = function(params, $dispatcher, res) {
       return;
     }
 
-    Drink.populate(results, { path: 'drinks.category' }).exec(function(err, res) {
+    Drink.populate(results, { path: 'drinks.category' }, function(err, res) {
       var message = {
         actions: {}
       };
@@ -36,7 +36,8 @@ actions.get = function(params, $dispatcher, res) {
       $log('Got results from get:bars', res);
       message.actions[res.action] = results;
       $dispatcher.pub(message, res.channel);
-    })
+
+    });
   });
 };
 
