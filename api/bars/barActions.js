@@ -28,13 +28,13 @@ actions.get = function(params, $dispatcher, res) {
       return;
     }
 
-    Drink.populate(results, { path: 'drinks.category' }, function(err, res) {
+    Drink.populate(results, { path: 'drinks.category' }, function(err, bars) {
       var message = {
         actions: {}
       };
 
-      $log('Got results from get:bars', res);
-      message.actions[res.action] = results;
+      $log('Got results from get:bars', bars);
+      message.actions[res.action] = bars;
       $dispatcher.pub(message, res.channel);
 
     });
