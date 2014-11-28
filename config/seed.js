@@ -1,7 +1,6 @@
 'use strict';
 
-var Bar     = require('../api/bars/barModel');
-
+var Bar = require('../api/bars/barModel');
 
 var bars = [
   {
@@ -240,13 +239,23 @@ var drinks = [
   }
 ];
 
+var create = $q.nbind(Bar.create, Bar);
 
-Bar.find().remove(function() {
+Bar.find().remove(function(err) {
+  if (err) {
+    $log('error deleted previous seed');
+    return;
+  };
+
   _.forEach(bars, function(bar) {
     bar.drinks = drinks;
   });
 
-  Bar.create(bars).then(function(bars) {
+  create(bars).then(function(bars) {
     $log('DB seeded with [' + bars.length + '] bars');
+  })
+  .fail(function(err) {
+    $log('error seeding DB');
   });
+
 });
