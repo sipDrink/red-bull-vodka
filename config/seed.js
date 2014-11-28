@@ -66,7 +66,7 @@ var bars = [
     ],
     completedSignUp: true,
     password: 'skjf8340932ubash2%^&#(*',
-    email: 'tempest@tempest.com',
+    email: 'Monarch@tmonarch.com',
     loc: [
       42.755942,
     -75.8092041
@@ -87,7 +87,7 @@ var bars = [
     ],
     completedSignUp: true,
     password: 'skjf8340932ubash2%^&#(*',
-    email: 'tempest@tempest.com',
+    email: 'league@league.com',
     loc: [
       42.755942,
     -75.8092041
@@ -108,7 +108,7 @@ var bars = [
     ],
     completedSignUp: true,
     password: 'skjf8340932ubash2%^&#(*',
-    email: 'tempest@tempest.com',
+    email: 'deviant@deviant.com',
     loc: [
       42.755942,
     -75.8092041
@@ -128,7 +128,7 @@ var bars = [
     drinks: [],
     completedSignUp: true,
     password: 'skjf8340932ubash2%^&#(*',
-    email: 'tempest@tempest.com',
+    email: 'smith@smith.com',
     loc: [
       42.755942,
     -75.8092041
@@ -148,7 +148,7 @@ var bars = [
     drinks: [],
     completedSignUp: true,
     password: 'skjf8340932ubash2%^&#(*',
-    email: 'tempest@tempest.com',
+    email: 'outlet@outlet.com',
     loc: [
       42.755942,
     -75.8092041
