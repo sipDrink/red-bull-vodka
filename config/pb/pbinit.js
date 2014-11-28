@@ -1,6 +1,11 @@
 'use strict';
 // var PN = require('pubnub').init($config.secrets.pb);
 
+/**
+ * Abstraction of the pubnub object used in the server.
+ * @constructor
+ * @param {object} PubNub - if supplied used to create the pubnub abstraction.
+ */
 function $Dispatcher(PubNub){
   var pb = PubNub || require('pubnub').init($config.secrets.pb);
 
