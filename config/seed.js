@@ -1,7 +1,6 @@
 'use strict';
 
-var Bar     = require('../api/bars/barModel'),
-    Drinks  = require('../api/drinks/drinksModel');
+var Bar     = require('../api/bars/barModel');
 
 
 var bars = [
