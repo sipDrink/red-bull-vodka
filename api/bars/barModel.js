@@ -23,8 +23,10 @@ var BarSchema = new Schema({
 
   drinks: [
     {
-      type: Schema.ObjectId,
-      ref: 'drink'
+      name: String,
+      category: String,
+      price: Number,
+      ingredients: [{ type: String }]
     }
   ],
 

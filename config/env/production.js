@@ -13,5 +13,7 @@ module.exports = {
          'mongodb://localhost/sip'
   },
 
-  logging: true
+  logging: true,
+
+  seedDB: true
 };
