@@ -3,7 +3,7 @@ var Schema = mongoose.Schema;
 
 var BarSchema = new Schema({
   name: String,
-
+  type: String,
   email: {
     required: true,
     unique: true,
