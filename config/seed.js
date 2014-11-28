@@ -255,7 +255,7 @@ Bar.find().remove(function(err) {
     $log('DB seeded with [' + bars.length + '] bars');
   })
   .fail(function(err) {
-    $log('error seeding DB');
+    $log('error seeding DB', err);
   });
 
 });
