@@ -245,7 +245,7 @@ var drinks = [
   },
   {
     name: 'Muscato',
-    category: 'wine',
+    category: 'wine & champagne',
     ingredients: [
     ],
     price: 9
