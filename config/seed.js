@@ -166,25 +166,31 @@ var bars = [
 var drinks = [
   {
     name: 'Grey Goose',
-    category: 'shot',
+    category: 'shots',
     ingredients: [],
     price: 12
   },
   {
+    name: 'Fire Ball',
+    category: 'shots',
+    ingredients: [],
+    price: 6
+  },
+  {
     name: 'Bloody Marry',
-    category: 'cocktail',
+    category: 'mixed drinks',
     ingredients: [],
     price: 9
   },
   {
     name: 'Super Man',
-    category: 'mixed drink',
+    category: 'mixed drinks',
     ingredients: [],
     price: 9
   },
   {
     name: 'Red Bull Vodka',
-    category: 'mixed drink',
+    category: 'mixed drinks',
     ingredients: [
       'red bull',
       'vodka'
@@ -193,50 +199,72 @@ var drinks = [
   },
   {
     name: 'Bay Breeze',
-    category: 'mixed drink',
+    category: 'mixed drinks',
     ingredients: [],
     price: 7
   },
   {
     name: 'Bud Light',
-    category: 'beer',
+    category: 'beers',
     ingredients: [],
     price: 6
   },
   {
     name: 'Dark and Stormy',
-    category: 'mixed drink',
+    category: 'mixed drinks',
     ingredients: [],
     price: 12
   },
   {
     name: 'Gin & Tonic',
-    category: 'mixed drink',
+    category: 'mixed drinks',
     ingredients: [
     ],
     price: 9
   },
   {
     name: 'Screw Driver',
-    category: 'mixed drink',
+    category: 'mixed drinks',
     ingredients: [
     ],
     price: 11
   },
   {
     name: 'White Russian',
-    category: 'mixed drink',
+    category: 'mixed drinks',
     ingredients: [
     ],
     price: 6
   },
   {
     name: 'Coors Light',
-    category: 'beer',
+    category: 'beers',
     ingredients: [
     ],
     price: 6
-  }
+  },
+  {
+    name: 'Muscato',
+    category: 'wine',
+    ingredients: [
+    ],
+    price: 9
+  },
+  {
+    name: 'Vouvray',
+    category: 'wine & champagne',
+    ingredients: [
+    ],
+    price: 15
+  },
+  {
+    name: 'Sake',
+    category: 'other',
+    ingredients: [
+    ],
+    price: 8
+  },
+
 ];
 
 var create = $q.nbind(Bar.create, Bar);
