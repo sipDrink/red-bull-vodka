@@ -39,7 +39,7 @@ var BarSchema = new Schema({
 
   drinks: [
     {
-      type: Schema.objectId,
+      type: Schema.ObjectId,
       ref: 'drink'
     }
   ],
@@ -58,7 +58,7 @@ var BarSchema = new Schema({
 
   orders: [
     {
-      type: Schema.objectId,
+      type: Schema.ObjectId,
       ref: 'order'
     }
   ]
