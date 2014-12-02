@@ -21,10 +21,10 @@ var BarSchema = new Schema({
     type: String
   },
 
-  stock: {
-    type: Schema.objectId,
-    ref: 'stock'
-  },
+  // stock: {
+  //   type: Schema.objectId,
+  //   ref: 'stock'
+  // },
 
   password: {
     type: String,

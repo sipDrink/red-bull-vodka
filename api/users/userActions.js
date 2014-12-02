@@ -1,7 +1,5 @@
 'use strict';
 
-var User = require('./userModel');
-
 var actions = require('../createActions')(User);
 
 

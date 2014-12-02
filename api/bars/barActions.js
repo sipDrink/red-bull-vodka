@@ -1,6 +1,4 @@
 'use strict';
-
-var Bar = require('./barModel');
 var actions = require('../createActions')(Bar);
 
 // overwrite the default 'get' action for the 'bars' channel
