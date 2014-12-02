@@ -6,7 +6,8 @@ var Schema = mongoose.Schema;
 var BarSchema = new Schema({
   name: String,
 
-  type: String,
+  barType: String,
+
   // bartenders: [
   //   {
   //     type: Schema.objectId,
