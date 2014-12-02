@@ -12,6 +12,15 @@ var UserSchema = new Schema({
     type: String,
     required: true
   },
+  favorites: {
+    global: {
+      name: String,
+      custom: {}
+    },
+    bar: {
+
+    }
+  },
   provider: {
     facebook: {
       id: String,

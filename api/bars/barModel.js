@@ -1,14 +1,29 @@
+'use strict';
+
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var BarSchema = new Schema({
   name: String,
+
   type: String,
+  // bartenders: [
+  //   {
+  //     type: Schema.objectId,
+  //     ref: 'bartender'
+  //   }
+  // ],
+
   email: {
     required: true,
     unique: true,
     index: true,
     type: String
+  },
+
+  stock: {
+    type: Schema.objectId,
+    ref: 'stock'
   },
 
   password: {
@@ -23,10 +38,8 @@ var BarSchema = new Schema({
 
   drinks: [
     {
-      name: String,
-      category: String,
-      price: Number,
-      ingredients: [{ type: String }]
+      type: Schema.objectId,
+      ref: 'drink'
     }
   ],
 
@@ -40,7 +53,14 @@ var BarSchema = new Schema({
     extra: String,
     city: String,
     zip: Number
-  }
+  },
+
+  orders: [
+    {
+      type: Schema.objectId,
+      ref: 'order'
+    }
+  ]
 
 });
 
