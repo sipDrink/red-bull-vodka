@@ -2,6 +2,9 @@
   All globals go here
 */
 var fs = require('fs');
+String.prototype.capitalize = function(){
+  return this.charAt(0).toUpperCase() + this.slice(1);
+};
 
 global._ = require('lodash');
 global.$q = require('q');
@@ -34,7 +37,7 @@ _.forEach($channels, function(channel) {
     channel = channel.slice(0, channel.length - 1);
   }
 
-  channel = channel.toUpperCase();
   var pathToModel = '../api/' + directory + '/' + channel + 'Model';
+  channel = channel.capitalize();
   global[channel] = require(pathToModel);
 });
