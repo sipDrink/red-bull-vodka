@@ -15,7 +15,7 @@ global.$handleError = function(error, meta) {
 
 // Array of different resource names read from this directory
 // ex: ['bars', 'drinks']
-var channels = fs.readdirSync(__dirname);
+var channels = fs.readdirSync(__dirname + '/../api');
 
 global.$channels = _.remove(channels, function(file) {
   // remove any files, only folders
