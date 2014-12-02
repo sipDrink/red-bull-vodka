@@ -1,6 +1,6 @@
 'use strict';
 
-var actions = require('./bartenderActions');
+var actions = require('./drinkTypeActions');
 
 module.exports = function($dispatcher) {
   var channel = __dirname.split('/').pop();

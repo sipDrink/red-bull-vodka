@@ -8,12 +8,12 @@ var BarSchema = new Schema({
 
   barType: String,
 
-  // bartenders: [
-  //   {
-  //     type: Schema.objectId,
-  //     ref: 'bartender'
-  //   }
-  // ],
+  bartenders: [
+    {
+      type: Schema.objectId,
+      ref: 'bartender'
+    }
+  ],
 
   email: {
     required: true,
@@ -22,10 +22,19 @@ var BarSchema = new Schema({
     type: String
   },
 
-  // stock: {
-  //   type: Schema.objectId,
-  //   ref: 'stock'
-  // },
+  drinkTypes: [
+    {
+      type: Schema.ObjectId,
+      ref: 'drinkType'
+    }
+  ],
+
+  drinkMixers: [
+    {
+      name: String,
+      price: Number
+    }
+  ],
 
   password: {
     type: String,
