@@ -5,7 +5,7 @@ var Bar = require('../api/bars/barModel');
 var bars = [
   {
     name: 'The Grand',
-    type: 'night club',
+    barType: 'night club',
     drinks: [],
     completedSignUp: true,
     password: 'skjf8340932ubash2%^&#(*',
@@ -23,7 +23,7 @@ var bars = [
 
   {
     name: 'Belagio',
-    type: 'night club',
+    barType: 'night club',
     drinks: [
 
     ],
@@ -43,7 +43,7 @@ var bars = [
 
   {
     name: 'Tempest',
-    type: 'pub',
+    barType: 'pub',
     drinks: [],
     completedSignUp: true,
     password: 'skjf8340932ubash2%^&#(*',
@@ -61,7 +61,7 @@ var bars = [
 
   {
     name: 'The Monarch',
-    type: 'dive bar',
+    barType: 'dive bar',
     drinks: [
     ],
     completedSignUp: true,
@@ -82,7 +82,7 @@ var bars = [
 
   {
     name: 'The league',
-    type: 'sports bar',
+    barType: 'sports bar',
     drinks: [
     ],
     completedSignUp: true,
@@ -103,7 +103,7 @@ var bars = [
 
   {
     name: 'Deviant',
-    type: 'night club',
+    barType: 'night club',
     drinks: [
     ],
     completedSignUp: true,
@@ -124,7 +124,7 @@ var bars = [
 
   {
     name: 'Mr. Smit\'s',
-    type: 'pub',
+    barType: 'pub',
     drinks: [],
     completedSignUp: true,
     password: 'skjf8340932ubash2%^&#(*',
@@ -144,7 +144,7 @@ var bars = [
 
   {
     name: 'The Outlet',
-    type: 'dive bar',
+    barType: 'dive bar',
     drinks: [],
     completedSignUp: true,
     password: 'skjf8340932ubash2%^&#(*',
