@@ -3161,10 +3161,11 @@ $q.all(
 
   //   });
   var bartenderCreations = _.map(bars, function(bar) {
-    bartenders = _.map(bartenders, function(bartender) {
+    var Lbartenders = _.map(bartenders, function(bartender) {
       bartender.bar = bar._id;
+      return bartender;
     });
-    return createBarTender(bartenders);
+    return createBarTender(Lbartenders);
   });
 
   $q.all(bartenderCreations)
