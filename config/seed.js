@@ -3531,11 +3531,19 @@ var bartenders = [
 var createBar = $q.nbind(Bar.create, Bar);
 var createDrinkType = $q.nbind(DrinkType.create, DrinkType);
 var createBarTender = $q.nbind(Bartender.create, Bartender);
-$log("BARTENDER", Bartender);
+
+var remove = function(model) {
+  var future = $q.defer();
+  model.find().remove(function(err) {
+    err ? future.reject(err) : future.resolve();
+  });
+  return future.promise;
+};
+
 $q.all(
-  $q.nbind(Bar.remove)(),
-  $q.nbind(DrinkType.remove)(),
-  $q.nbind(Bartender.remove)()
+  remove(Bar),
+  remove(DrinkType),
+  remove(Bartender)
 ).then(function() {
   $log('---DB cleared---');
   return createBar(bars);
