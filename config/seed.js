@@ -3533,9 +3533,9 @@ var createDrinkType = $q.nbind(DrinkType.create, DrinkType);
 var createBarTender = $q.nbind(Bartender.create, Bartender);
 
 $q.all(
-  $q.nfcall(Bar.remove),
-  $q.nfcall(DrinkType.remove),
-  $q.nfcall(Bartender.remove)
+  $q.nbind(Bar.remove)(),
+  $q.nbind(DrinkType.remove)(),
+  $q.nbind(Bartender.remove)()
 ).then(function() {
   $log('---DB cleared---');
   return createBar(bars);
