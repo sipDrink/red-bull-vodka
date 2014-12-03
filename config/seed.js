@@ -3227,6 +3227,6 @@ $q.all(
       $log(bartenders);
     });
 })
-.then(function() {
-
+.fail(function(err) {
+  $log('Error somewhere in seed ', err);
 });
