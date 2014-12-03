@@ -3533,31 +3533,31 @@ var createDrinkType = $q.nbind(DrinkType.create, DrinkType);
 var createBarTender = $q.nbind(Bartender.create, Bartender);
 
 $q.all(
-  Bar.remove({}),
-  DrinkType.remove({}),
-  Bartender.remove({})
+  $q.denodify(Bar.remove),
+  $q.denodify(DrinkType.remove),
+  $q.denodify(Bartender.remove)
 ).then(function() {
   $log('---DB cleared---');
-  // return createBar(bars);
+  return createBar(bars);
 })
-// .then(function(bars) {
-//   // return createBarTender(bartenders)
-//   //   .then(function(bartenders) {
+.then(function(bars) {
+  // return createBarTender(bartenders)
+  //   .then(function(bartenders) {
 
-//   //   });
-//   var bartenderCreations = _.map(bars, function(bar) {
-//     var Lbartenders = _.map(bartenders, function(bartender) {
-//       bartender.bar = bar._id;
-//       return bartender;
-//     });
-//     return createBarTender(Lbartenders);
-//   });
+  //   });
+  var bartenderCreations = _.map(bars, function(bar) {
+    var Lbartenders = _.map(bartenders, function(bartender) {
+      bartender.bar = bar._id;
+      return bartender;
+    });
+    return createBarTender(Lbartenders);
+  });
 
-//   $q.all(bartenderCreations)
-//     .then(function(bartenders) {
-//       $log(bartenders);
-//     });
-// })
+  $q.all(bartenderCreations)
+    .then(function(bartenders) {
+      $log(bartenders);
+    });
+})
 .fail(function(err) {
   $log('Error somewhere in seed ', err);
 });
