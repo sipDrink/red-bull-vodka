@@ -10,7 +10,7 @@ var BarSchema = new Schema({
 
   bartenders: [
     {
-      type: Schema.objectId,
+      type: Schema.ObjectId,
       ref: 'bartender'
     }
   ],
