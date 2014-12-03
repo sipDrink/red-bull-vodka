@@ -1,0 +1,24 @@
+{
+  "eqeqeq": true,
+  "forin": true,
+  "immed": true,
+  "indent": 2,
+  "undef": true,
+  "unused": true,
+  "node": true,
+  "globals": {
+    "$q": false,
+    "$config": false,
+    "_": false,
+    "$log": false,
+    "$handleError": false,
+    "$channels": false,
+    "Bar": false,
+    "Bartender": false,
+    "Category": false,
+    "Drink": false,
+    "DrinkType": false,
+    "Order": false,
+    "User": false
+  }
+}

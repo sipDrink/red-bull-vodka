@@ -1,10 +1,13 @@
 /*
   All globals go here
 */
+
 var fs = require('fs');
+
 String.prototype.capitalize = function(){
   return this.charAt(0).toUpperCase() + this.slice(1);
 };
+
 
 global._ = require('lodash');
 global.$q = require('q');
@@ -25,10 +28,11 @@ global.$channels = _.remove(channels, function(file) {
   return !/.js/g.test(file);
 });
 
-$log($channels);
+$log('Channels', $channels);
 
 _.forEach($channels, function(channel) {
   var directory = channel;
+
   if (/ies\b/g.test(channel)) {
     channel = channel.replace(/ies\b/g, 'y');
   }

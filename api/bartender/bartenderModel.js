@@ -7,7 +7,7 @@ var BartenderSchema = new Schema({
     required: true,
     unique: true
   },
-
+  name: String,
   password: String,
 
   orders: [

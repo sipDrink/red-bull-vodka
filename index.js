@@ -7,8 +7,8 @@ var mongoose = require('mongoose');
 var http = require('http');
 
 
-mongoose.connect(config.mongo.uri, config.mongo.options);
 require('./config/globals');
+mongoose.connect(config.mongo.uri, config.mongo.options);
 
 if (config.seedDB) { require('./config/seed'); }
 
