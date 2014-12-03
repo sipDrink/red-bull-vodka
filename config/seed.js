@@ -3531,7 +3531,7 @@ var bartenders = [
 var createBar = $q.nbind(Bar.create, Bar);
 var createDrinkType = $q.nbind(DrinkType.create, DrinkType);
 var createBarTender = $q.nbind(Bartender.create, Bartender);
-
+$log("BARTENDER", Bartender);
 $q.all(
   $q.nbind(Bar.remove)(),
   $q.nbind(DrinkType.remove)(),
@@ -3539,7 +3539,7 @@ $q.all(
 ).then(function() {
   $log('---DB cleared---');
   return createBar(bars);
-})
+}, function(err){$log('Error removing data in seed', err)})
 .then(function(bars) {
   // return createBarTender(bartenders)
   //   .then(function(bartenders) {
@@ -3550,10 +3550,11 @@ $q.all(
       bartender.bar = bar._id;
       return bartender;
     });
+    console.log('BARTENDERS', Lbartenders);
     return createBarTender(Lbartenders);
   });
 
-  $q.all(bartenderCreations)
+  return $q.all(bartenderCreations)
     .then(function(bartenders) {
       $log(bartenders);
     });
