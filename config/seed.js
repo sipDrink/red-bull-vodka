@@ -3539,34 +3539,44 @@ var remove = function(model) {
   });
   return future.promise;
 };
-
-$q.all(
-  remove(Bar),
-  remove(DrinkType),
-  remove(Bartender)
-).then(function() {
-  $log('---DB cleared---');
-  return createBar(bars);
-}, function(err){$log('Error removing data in seed', err)})
-.then(function(bars) {
-  // return createBarTender(bartenders)
-  //   .then(function(bartenders) {
-
-  //   });
-  var bartenderCreations = _.map(bars, function(bar) {
-    var Lbartenders = _.map(bartenders, function(bartender) {
-      bartender.bar = bar._id;
-      return bartender;
-    });
-    console.log('BARTENDERS', Lbartenders);
-    return createBarTender(Lbartenders);
+remove(Bar)
+  .then(function() {
+    return remove(DrinkType);
+  })
+  .then(function() {
+    return remove(Bartender);
+  })
+  .fail(function(err) {
+    $log('Error in removing', err);
   });
 
-  return $q.all(bartenderCreations)
-    .then(function(bartenders) {
-      $log(bartenders);
-    });
-})
-.fail(function(err) {
-  $log('Error somewhere in seed ', err);
-});
+// $q.all(
+//   remove(Bar),
+//   remove(DrinkType),
+//   remove(Bartender)
+// ).then(function() {
+//   $log('---DB cleared---');
+//   return createBar(bars);
+// }, function(err){$log('Error removing data in seed', err)})
+// .then(function(bars) {
+//   // return createBarTender(bartenders)
+//   //   .then(function(bartenders) {
+
+//   //   });
+//   var bartenderCreations = _.map(bars, function(bar) {
+//     var Lbartenders = _.map(bartenders, function(bartender) {
+//       bartender.bar = bar._id;
+//       return bartender;
+//     });
+//     console.log('BARTENDERS', Lbartenders);
+//     return createBarTender(Lbartenders);
+//   });
+
+//   return $q.all(bartenderCreations)
+//     .then(function(bartenders) {
+//       $log(bartenders);
+//     });
+// })
+// .fail(function(err) {
+//   $log('Error somewhere in seed ', err);
+// });
