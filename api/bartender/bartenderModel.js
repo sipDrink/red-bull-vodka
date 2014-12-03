@@ -4,8 +4,7 @@ var Schema = mongoose.Schema;
 var BartenderSchema = new Schema({
   username:{
     type: String,
-    required: true,
-    unique: true
+    required: true
   },
   name: String,
   password: String,

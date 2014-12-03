@@ -3547,6 +3547,9 @@ remove(Bar)
     return remove(Bartender);
   })
   .then(function() {
+    return createBar(bars);
+  })
+  .then(function(bars) {
     var bartenderCreations = _.map(bars, function(bar) {
       var Lbartenders = _.map(bartenders, function(bartender) {
         bartender.bar = bar._id;
