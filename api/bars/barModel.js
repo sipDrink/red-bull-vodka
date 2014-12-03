@@ -48,8 +48,9 @@ var BarSchema = new Schema({
 
   drinks: [
     {
-      type: Schema.ObjectId,
-      ref: 'drink'
+      name: String,
+      price: Number,
+      ingredients: [String]
     }
   ],
 
