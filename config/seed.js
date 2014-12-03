@@ -3546,6 +3546,21 @@ remove(Bar)
   .then(function() {
     return remove(Bartender);
   })
+  .then(function() {
+    var bartenderCreations = _.map(bars, function(bar) {
+      var Lbartenders = _.map(bartenders, function(bartender) {
+        bartender.bar = bar._id;
+        return bartender;
+      });
+      console.log('BARTENDERS', Lbartenders);
+      return createBarTender(Lbartenders);
+    });
+
+    return $q.all(bartenderCreations)
+      .then(function(bartenders) {
+        $log(bartenders);
+      });
+  })
   .fail(function(err) {
     $log('Error in removing', err);
   });
