@@ -1,367 +1,174 @@
 'use strict';
 var bars = [
   {
-    "drinks": [
-      {
-        "ingredients": [
-          "Redbull",
-          "Vodka"
-        ],
-        "price": 12,
-        "name": "Red Bull Vodka"
-      },
-      {
-        "ingredients": [
-          "vodka",
-          "rum",
-          "tequila",
-          "tea"
-        ],
-        "price": 14,
-        "name": "Long Island Iced Tea"
-      }
-    ],
-    "phone": "(870) 494-3076",
-    "address": {
-      "city": "Boomer",
-      "street": "Bayview Place"
-    },
-    "loc": [
-      22.9815081,
-      -23.582239
-    ],
-    "completedSignUp": false,
-    "password": "est",
-    "drinkMixers": [
-      {
-        "name": "Cola"
-      },
-      {
-        "name": "Orange Juice"
-      },
-      {
-        "name": "Cranberry Juice"
-      },
-      {
-        "price": 8,
-        "name": "Red Bull"
-      },
-      {
-        "price": 7,
-        "name": "Sugar Free Red Bull"
-      }
-    ],
-    "email": "Futuris0@Futuris.com",
-    "barType": "Pub",
-    "name": "Futuris"
-  },
-  {
-    "drinks": [
-      {
-        "ingredients": [
-          "Redbull",
-          "Vodka"
-        ],
-        "price": 12,
-        "name": "Red Bull Vodka"
-      },
-      {
-        "ingredients": [
-          "vodka",
-          "rum",
-          "tequila",
-          "tea"
-        ],
-        "price": 14,
-        "name": "Long Island Iced Tea"
-      }
-    ],
-    "phone": "(945) 499-3583",
-    "address": {
-      "city": "Wyoming",
-      "street": "Knight Court"
-    },
-    "loc": [
-      22.9815081,
-      -23.582239
-    ],
-    "completedSignUp": true,
-    "password": "et",
-    "drinkMixers": [
-      {
-        "name": "Cola"
-      },
-      {
-        "name": "Orange Juice"
-      },
-      {
-        "name": "Cranberry Juice"
-      },
-      {
-        "price": 8,
-        "name": "Red Bull"
-      },
-      {
-        "price": 7,
-        "name": "Sugar Free Red Bull"
-      }
-    ],
-    "email": "Kinetica1@Kinetica.com",
-    "barType": "Night Club",
-    "name": "Kinetica"
-  },
-  {
-    "drinks": [
-      {
-        "ingredients": [
-          "Redbull",
-          "Vodka"
-        ],
-        "price": 12,
-        "name": "Red Bull Vodka"
-      },
-      {
-        "ingredients": [
-          "vodka",
-          "rum",
-          "tequila",
-          "tea"
-        ],
-        "price": 14,
-        "name": "Long Island Iced Tea"
-      }
-    ],
-    "phone": "(949) 466-2753",
-    "address": {
-      "city": "Roulette",
-      "street": "Leonora Court"
-    },
-    "loc": [
-      22.9815081,
-      -23.582239
-    ],
-    "completedSignUp": false,
-    "password": "dolore",
-    "drinkMixers": [
-      {
-        "name": "Cola"
-      },
-      {
-        "name": "Orange Juice"
-      },
-      {
-        "name": "Cranberry Juice"
-      },
-      {
-        "price": 8,
-        "name": "Red Bull"
-      },
-      {
-        "price": 7,
-        "name": "Sugar Free Red Bull"
-      }
-    ],
-    "email": "Zidox2@Zidox.com",
+    "name": "Earthplex",
     "barType": "Sports Bar",
-    "name": "Zidox"
-  },
-  {
+    "email": "Earthplex0@Earthplex.com",
+    "drinkMixers": [
+      {
+        "name": "Cola"
+      },
+      {
+        "name": "Orange Juice"
+      },
+      {
+        "name": "Cranberry Juice"
+      },
+      {
+        "name": "Red Bull",
+        "price": 8
+      },
+      {
+        "name": "Sugar Free Red Bull",
+        "price": 7
+      }
+    ],
+    "password": "aliquip",
+    "completedSignUp": true,
+    "loc": [
+      20.8457111,
+      102.230921
+    ],
+    "address": {
+      "street": "Eldert Lane",
+      "city": "Cleary"
+    },
+    "phone": "(998) 555-2844",
     "drinks": [
       {
+        "name": "Red Bull Vodka",
+        "price": 12,
         "ingredients": [
           "Redbull",
           "Vodka"
-        ],
-        "price": 12,
-        "name": "Red Bull Vodka"
+        ]
       },
       {
+        "name": "Long Island Iced Tea",
+        "price": 14,
         "ingredients": [
           "vodka",
           "rum",
           "tequila",
           "tea"
-        ],
-        "price": 14,
-        "name": "Long Island Iced Tea"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Orbaxter",
+    "barType": "Pub",
+    "email": "Orbaxter1@Orbaxter.com",
+    "drinkMixers": [
+      {
+        "name": "Cola"
+      },
+      {
+        "name": "Orange Juice"
+      },
+      {
+        "name": "Cranberry Juice"
+      },
+      {
+        "name": "Red Bull",
+        "price": 8
+      },
+      {
+        "name": "Sugar Free Red Bull",
+        "price": 7
       }
     ],
-    "phone": "(917) 528-2107",
-    "address": {
-      "city": "Dunbar",
-      "street": "Vandervoort Place"
-    },
-    "loc": [
-      22.9815081,
-      -23.582239
-    ],
-    "completedSignUp": false,
     "password": "duis",
-    "drinkMixers": [
-      {
-        "name": "Cola"
-      },
-      {
-        "name": "Orange Juice"
-      },
-      {
-        "name": "Cranberry Juice"
-      },
-      {
-        "price": 8,
-        "name": "Red Bull"
-      },
-      {
-        "price": 7,
-        "name": "Sugar Free Red Bull"
-      }
+    "completedSignUp": false,
+    "loc": [
+      20.8457111,
+      102.230921
     ],
-    "email": "Orbean3@Orbean.com",
-    "barType": "Sports Bar",
-    "name": "Orbean"
-  },
-  {
+    "address": {
+      "street": "Ridge Court",
+      "city": "Retsof"
+    },
+    "phone": "(813) 524-3980",
     "drinks": [
       {
+        "name": "Red Bull Vodka",
+        "price": 12,
         "ingredients": [
           "Redbull",
           "Vodka"
-        ],
-        "price": 12,
-        "name": "Red Bull Vodka"
+        ]
       },
       {
+        "name": "Long Island Iced Tea",
+        "price": 14,
         "ingredients": [
           "vodka",
           "rum",
           "tequila",
           "tea"
-        ],
-        "price": 14,
-        "name": "Long Island Iced Tea"
+        ]
       }
-    ],
-    "phone": "(951) 571-3557",
-    "address": {
-      "city": "Ruckersville",
-      "street": "Granite Street"
-    },
-    "loc": [
-      22.9815081,
-      -23.582239
-    ],
-    "completedSignUp": false,
-    "password": "quis",
-    "drinkMixers": [
-      {
-        "name": "Cola"
-      },
-      {
-        "name": "Orange Juice"
-      },
-      {
-        "name": "Cranberry Juice"
-      },
-      {
-        "price": 8,
-        "name": "Red Bull"
-      },
-      {
-        "price": 7,
-        "name": "Sugar Free Red Bull"
-      }
-    ],
-    "email": "Limage4@Limage.com",
+    ]
+  },
+  {
+    "name": "Mobildata",
     "barType": "Night Club",
-    "name": "Limage"
-  },
-  {
-    "drinks": [
+    "email": "Mobildata2@Mobildata.com",
+    "drinkMixers": [
       {
-        "ingredients": [
-          "Redbull",
-          "Vodka"
-        ],
-        "price": 12,
-        "name": "Red Bull Vodka"
+        "name": "Cola"
       },
       {
-        "ingredients": [
-          "vodka",
-          "rum",
-          "tequila",
-          "tea"
-        ],
-        "price": 14,
-        "name": "Long Island Iced Tea"
+        "name": "Orange Juice"
+      },
+      {
+        "name": "Cranberry Juice"
+      },
+      {
+        "name": "Red Bull",
+        "price": 8
+      },
+      {
+        "name": "Sugar Free Red Bull",
+        "price": 7
       }
     ],
-    "phone": "(942) 516-3286",
-    "address": {
-      "city": "Avoca",
-      "street": "Brighton Avenue"
-    },
-    "loc": [
-      22.9815081,
-      -23.582239
-    ],
+    "password": "id",
     "completedSignUp": true,
-    "password": "tempor",
-    "drinkMixers": [
-      {
-        "name": "Cola"
-      },
-      {
-        "name": "Orange Juice"
-      },
-      {
-        "name": "Cranberry Juice"
-      },
-      {
-        "price": 8,
-        "name": "Red Bull"
-      },
-      {
-        "price": 7,
-        "name": "Sugar Free Red Bull"
-      }
+    "loc": [
+      20.8457111,
+      102.230921
     ],
-    "email": "Vantage5@Vantage.com",
+    "address": {
+      "street": "Manor Court",
+      "city": "Belmont"
+    },
+    "phone": "(891) 519-2774",
+    "drinks": [
+      {
+        "name": "Red Bull Vodka",
+        "price": 12,
+        "ingredients": [
+          "Redbull",
+          "Vodka"
+        ]
+      },
+      {
+        "name": "Long Island Iced Tea",
+        "price": 14,
+        "ingredients": [
+          "vodka",
+          "rum",
+          "tequila",
+          "tea"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Genesynk",
     "barType": "Lounge",
-    "name": "Vantage"
-  },
-  {
-    "drinks": [
-      {
-        "ingredients": [
-          "Redbull",
-          "Vodka"
-        ],
-        "price": 12,
-        "name": "Red Bull Vodka"
-      },
-      {
-        "ingredients": [
-          "vodka",
-          "rum",
-          "tequila",
-          "tea"
-        ],
-        "price": 14,
-        "name": "Long Island Iced Tea"
-      }
-    ],
-    "phone": "(958) 588-3047",
-    "address": {
-      "city": "Limestone",
-      "street": "Hemlock Street"
-    },
-    "loc": [
-      22.9815081,
-      -23.582239
-    ],
-    "completedSignUp": false,
-    "password": "irure",
+    "email": "Genesynk3@Genesynk.com",
     "drinkMixers": [
       {
         "name": "Cola"
@@ -373,765 +180,50 @@ var bars = [
         "name": "Cranberry Juice"
       },
       {
-        "price": 8,
-        "name": "Red Bull"
+        "name": "Red Bull",
+        "price": 8
       },
       {
-        "price": 7,
-        "name": "Sugar Free Red Bull"
+        "name": "Sugar Free Red Bull",
+        "price": 7
       }
     ],
-    "email": "Enomen6@Enomen.com",
-    "barType": "Lounge",
-    "name": "Enomen"
-  },
-  {
-    "drinks": [
-      {
-        "ingredients": [
-          "Redbull",
-          "Vodka"
-        ],
-        "price": 12,
-        "name": "Red Bull Vodka"
-      },
-      {
-        "ingredients": [
-          "vodka",
-          "rum",
-          "tequila",
-          "tea"
-        ],
-        "price": 14,
-        "name": "Long Island Iced Tea"
-      }
-    ],
-    "phone": "(948) 423-2385",
-    "address": {
-      "city": "Adelino",
-      "street": "Kossuth Place"
-    },
-    "loc": [
-      22.9815081,
-      -23.582239
-    ],
-    "completedSignUp": false,
-    "password": "fugiat",
-    "drinkMixers": [
-      {
-        "name": "Cola"
-      },
-      {
-        "name": "Orange Juice"
-      },
-      {
-        "name": "Cranberry Juice"
-      },
-      {
-        "price": 8,
-        "name": "Red Bull"
-      },
-      {
-        "price": 7,
-        "name": "Sugar Free Red Bull"
-      }
-    ],
-    "email": "Biospan7@Biospan.com",
-    "barType": "Lounge",
-    "name": "Biospan"
-  },
-  {
-    "drinks": [
-      {
-        "ingredients": [
-          "Redbull",
-          "Vodka"
-        ],
-        "price": 12,
-        "name": "Red Bull Vodka"
-      },
-      {
-        "ingredients": [
-          "vodka",
-          "rum",
-          "tequila",
-          "tea"
-        ],
-        "price": 14,
-        "name": "Long Island Iced Tea"
-      }
-    ],
-    "phone": "(993) 471-2566",
-    "address": {
-      "city": "Maplewood",
-      "street": "Hubbard Place"
-    },
-    "loc": [
-      22.9815081,
-      -23.582239
-    ],
-    "completedSignUp": true,
-    "password": "in",
-    "drinkMixers": [
-      {
-        "name": "Cola"
-      },
-      {
-        "name": "Orange Juice"
-      },
-      {
-        "name": "Cranberry Juice"
-      },
-      {
-        "price": 8,
-        "name": "Red Bull"
-      },
-      {
-        "price": 7,
-        "name": "Sugar Free Red Bull"
-      }
-    ],
-    "email": "Fuelton8@Fuelton.com",
-    "barType": "Night Club",
-    "name": "Fuelton"
-  },
-  {
-    "drinks": [
-      {
-        "ingredients": [
-          "Redbull",
-          "Vodka"
-        ],
-        "price": 12,
-        "name": "Red Bull Vodka"
-      },
-      {
-        "ingredients": [
-          "vodka",
-          "rum",
-          "tequila",
-          "tea"
-        ],
-        "price": 14,
-        "name": "Long Island Iced Tea"
-      }
-    ],
-    "phone": "(946) 417-3686",
-    "address": {
-      "city": "Bartonsville",
-      "street": "Crystal Street"
-    },
-    "loc": [
-      22.9815081,
-      -23.582239
-    ],
-    "completedSignUp": true,
-    "password": "culpa",
-    "drinkMixers": [
-      {
-        "name": "Cola"
-      },
-      {
-        "name": "Orange Juice"
-      },
-      {
-        "name": "Cranberry Juice"
-      },
-      {
-        "price": 8,
-        "name": "Red Bull"
-      },
-      {
-        "price": 7,
-        "name": "Sugar Free Red Bull"
-      }
-    ],
-    "email": "Sentia9@Sentia.com",
-    "barType": "Pub",
-    "name": "Sentia"
-  },
-  {
-    "drinks": [
-      {
-        "ingredients": [
-          "Redbull",
-          "Vodka"
-        ],
-        "price": 12,
-        "name": "Red Bull Vodka"
-      },
-      {
-        "ingredients": [
-          "vodka",
-          "rum",
-          "tequila",
-          "tea"
-        ],
-        "price": 14,
-        "name": "Long Island Iced Tea"
-      }
-    ],
-    "phone": "(918) 528-3498",
-    "address": {
-      "city": "Eggertsville",
-      "street": "Ridgewood Avenue"
-    },
-    "loc": [
-      22.9815081,
-      -23.582239
-    ],
-    "completedSignUp": false,
-    "password": "occaecat",
-    "drinkMixers": [
-      {
-        "name": "Cola"
-      },
-      {
-        "name": "Orange Juice"
-      },
-      {
-        "name": "Cranberry Juice"
-      },
-      {
-        "price": 8,
-        "name": "Red Bull"
-      },
-      {
-        "price": 7,
-        "name": "Sugar Free Red Bull"
-      }
-    ],
-    "email": "Ecraze10@Ecraze.com",
-    "barType": "Sports Bar",
-    "name": "Ecraze"
-  },
-  {
-    "drinks": [
-      {
-        "ingredients": [
-          "Redbull",
-          "Vodka"
-        ],
-        "price": 12,
-        "name": "Red Bull Vodka"
-      },
-      {
-        "ingredients": [
-          "vodka",
-          "rum",
-          "tequila",
-          "tea"
-        ],
-        "price": 14,
-        "name": "Long Island Iced Tea"
-      }
-    ],
-    "phone": "(833) 461-2029",
-    "address": {
-      "city": "Carbonville",
-      "street": "Debevoise Avenue"
-    },
-    "loc": [
-      22.9815081,
-      -23.582239
-    ],
-    "completedSignUp": false,
-    "password": "et",
-    "drinkMixers": [
-      {
-        "name": "Cola"
-      },
-      {
-        "name": "Orange Juice"
-      },
-      {
-        "name": "Cranberry Juice"
-      },
-      {
-        "price": 8,
-        "name": "Red Bull"
-      },
-      {
-        "price": 7,
-        "name": "Sugar Free Red Bull"
-      }
-    ],
-    "email": "Zenco11@Zenco.com",
-    "barType": "Pub",
-    "name": "Zenco"
-  },
-  {
-    "drinks": [
-      {
-        "ingredients": [
-          "Redbull",
-          "Vodka"
-        ],
-        "price": 12,
-        "name": "Red Bull Vodka"
-      },
-      {
-        "ingredients": [
-          "vodka",
-          "rum",
-          "tequila",
-          "tea"
-        ],
-        "price": 14,
-        "name": "Long Island Iced Tea"
-      }
-    ],
-    "phone": "(923) 563-2565",
-    "address": {
-      "city": "Cedarville",
-      "street": "Laurel Avenue"
-    },
-    "loc": [
-      22.9815081,
-      -23.582239
-    ],
-    "completedSignUp": false,
-    "password": "quis",
-    "drinkMixers": [
-      {
-        "name": "Cola"
-      },
-      {
-        "name": "Orange Juice"
-      },
-      {
-        "name": "Cranberry Juice"
-      },
-      {
-        "price": 8,
-        "name": "Red Bull"
-      },
-      {
-        "price": 7,
-        "name": "Sugar Free Red Bull"
-      }
-    ],
-    "email": "Gology12@Gology.com",
-    "barType": "Sports Bar",
-    "name": "Gology"
-  },
-  {
-    "drinks": [
-      {
-        "ingredients": [
-          "Redbull",
-          "Vodka"
-        ],
-        "price": 12,
-        "name": "Red Bull Vodka"
-      },
-      {
-        "ingredients": [
-          "vodka",
-          "rum",
-          "tequila",
-          "tea"
-        ],
-        "price": 14,
-        "name": "Long Island Iced Tea"
-      }
-    ],
-    "phone": "(801) 488-2476",
-    "address": {
-      "city": "Lawrence",
-      "street": "Ashford Street"
-    },
-    "loc": [
-      22.9815081,
-      -23.582239
-    ],
-    "completedSignUp": false,
     "password": "velit",
-    "drinkMixers": [
-      {
-        "name": "Cola"
-      },
-      {
-        "name": "Orange Juice"
-      },
-      {
-        "name": "Cranberry Juice"
-      },
-      {
-        "price": 8,
-        "name": "Red Bull"
-      },
-      {
-        "price": 7,
-        "name": "Sugar Free Red Bull"
-      }
-    ],
-    "email": "Zogak13@Zogak.com",
-    "barType": "Pub",
-    "name": "Zogak"
-  },
-  {
-    "drinks": [
-      {
-        "ingredients": [
-          "Redbull",
-          "Vodka"
-        ],
-        "price": 12,
-        "name": "Red Bull Vodka"
-      },
-      {
-        "ingredients": [
-          "vodka",
-          "rum",
-          "tequila",
-          "tea"
-        ],
-        "price": 14,
-        "name": "Long Island Iced Tea"
-      }
-    ],
-    "phone": "(828) 599-3952",
-    "address": {
-      "city": "Moquino",
-      "street": "Colonial Road"
-    },
-    "loc": [
-      22.9815081,
-      -23.582239
-    ],
-    "completedSignUp": true,
-    "password": "sint",
-    "drinkMixers": [
-      {
-        "name": "Cola"
-      },
-      {
-        "name": "Orange Juice"
-      },
-      {
-        "name": "Cranberry Juice"
-      },
-      {
-        "price": 8,
-        "name": "Red Bull"
-      },
-      {
-        "price": 7,
-        "name": "Sugar Free Red Bull"
-      }
-    ],
-    "email": "Bitendrex14@Bitendrex.com",
-    "barType": "Night Club",
-    "name": "Bitendrex"
-  },
-  {
-    "drinks": [
-      {
-        "ingredients": [
-          "Redbull",
-          "Vodka"
-        ],
-        "price": 12,
-        "name": "Red Bull Vodka"
-      },
-      {
-        "ingredients": [
-          "vodka",
-          "rum",
-          "tequila",
-          "tea"
-        ],
-        "price": 14,
-        "name": "Long Island Iced Tea"
-      }
-    ],
-    "phone": "(897) 447-2678",
-    "address": {
-      "city": "Kirk",
-      "street": "Jackson Court"
-    },
-    "loc": [
-      22.9815081,
-      -23.582239
-    ],
-    "completedSignUp": true,
-    "password": "in",
-    "drinkMixers": [
-      {
-        "name": "Cola"
-      },
-      {
-        "name": "Orange Juice"
-      },
-      {
-        "name": "Cranberry Juice"
-      },
-      {
-        "price": 8,
-        "name": "Red Bull"
-      },
-      {
-        "price": 7,
-        "name": "Sugar Free Red Bull"
-      }
-    ],
-    "email": "Cuizine15@Cuizine.com",
-    "barType": "Sports Bar",
-    "name": "Cuizine"
-  },
-  {
-    "drinks": [
-      {
-        "ingredients": [
-          "Redbull",
-          "Vodka"
-        ],
-        "price": 12,
-        "name": "Red Bull Vodka"
-      },
-      {
-        "ingredients": [
-          "vodka",
-          "rum",
-          "tequila",
-          "tea"
-        ],
-        "price": 14,
-        "name": "Long Island Iced Tea"
-      }
-    ],
-    "phone": "(906) 589-3805",
-    "address": {
-      "city": "Falconaire",
-      "street": "Sedgwick Street"
-    },
-    "loc": [
-      22.9815081,
-      -23.582239
-    ],
-    "completedSignUp": true,
-    "password": "pariatur",
-    "drinkMixers": [
-      {
-        "name": "Cola"
-      },
-      {
-        "name": "Orange Juice"
-      },
-      {
-        "name": "Cranberry Juice"
-      },
-      {
-        "price": 8,
-        "name": "Red Bull"
-      },
-      {
-        "price": 7,
-        "name": "Sugar Free Red Bull"
-      }
-    ],
-    "email": "Austech16@Austech.com",
-    "barType": "Night Club",
-    "name": "Austech"
-  },
-  {
-    "drinks": [
-      {
-        "ingredients": [
-          "Redbull",
-          "Vodka"
-        ],
-        "price": 12,
-        "name": "Red Bull Vodka"
-      },
-      {
-        "ingredients": [
-          "vodka",
-          "rum",
-          "tequila",
-          "tea"
-        ],
-        "price": 14,
-        "name": "Long Island Iced Tea"
-      }
-    ],
-    "phone": "(991) 518-2470",
-    "address": {
-      "city": "Jacksonburg",
-      "street": "Dekoven Court"
-    },
-    "loc": [
-      22.9815081,
-      -23.582239
-    ],
-    "completedSignUp": true,
-    "password": "reprehenderit",
-    "drinkMixers": [
-      {
-        "name": "Cola"
-      },
-      {
-        "name": "Orange Juice"
-      },
-      {
-        "name": "Cranberry Juice"
-      },
-      {
-        "price": 8,
-        "name": "Red Bull"
-      },
-      {
-        "price": 7,
-        "name": "Sugar Free Red Bull"
-      }
-    ],
-    "email": "Eventix17@Eventix.com",
-    "barType": "Pub",
-    "name": "Eventix"
-  },
-  {
-    "drinks": [
-      {
-        "ingredients": [
-          "Redbull",
-          "Vodka"
-        ],
-        "price": 12,
-        "name": "Red Bull Vodka"
-      },
-      {
-        "ingredients": [
-          "vodka",
-          "rum",
-          "tequila",
-          "tea"
-        ],
-        "price": 14,
-        "name": "Long Island Iced Tea"
-      }
-    ],
-    "phone": "(870) 467-2396",
-    "address": {
-      "city": "Laurelton",
-      "street": "Maple Avenue"
-    },
-    "loc": [
-      22.9815081,
-      -23.582239
-    ],
-    "completedSignUp": true,
-    "password": "aliqua",
-    "drinkMixers": [
-      {
-        "name": "Cola"
-      },
-      {
-        "name": "Orange Juice"
-      },
-      {
-        "name": "Cranberry Juice"
-      },
-      {
-        "price": 8,
-        "name": "Red Bull"
-      },
-      {
-        "price": 7,
-        "name": "Sugar Free Red Bull"
-      }
-    ],
-    "email": "Isotronic18@Isotronic.com",
-    "barType": "Sports Bar",
-    "name": "Isotronic"
-  },
-  {
-    "drinks": [
-      {
-        "ingredients": [
-          "Redbull",
-          "Vodka"
-        ],
-        "price": 12,
-        "name": "Red Bull Vodka"
-      },
-      {
-        "ingredients": [
-          "vodka",
-          "rum",
-          "tequila",
-          "tea"
-        ],
-        "price": 14,
-        "name": "Long Island Iced Tea"
-      }
-    ],
-    "phone": "(936) 477-3655",
-    "address": {
-      "city": "Nord",
-      "street": "Polhemus Place"
-    },
-    "loc": [
-      22.9815081,
-      -23.582239
-    ],
-    "completedSignUp": true,
-    "password": "est",
-    "drinkMixers": [
-      {
-        "name": "Cola"
-      },
-      {
-        "name": "Orange Juice"
-      },
-      {
-        "name": "Cranberry Juice"
-      },
-      {
-        "price": 8,
-        "name": "Red Bull"
-      },
-      {
-        "price": 7,
-        "name": "Sugar Free Red Bull"
-      }
-    ],
-    "email": "Emtrak19@Emtrak.com",
-    "barType": "Pub",
-    "name": "Emtrak"
-  },
-  {
-    "drinks": [
-      {
-        "ingredients": [
-          "Redbull",
-          "Vodka"
-        ],
-        "price": 12,
-        "name": "Red Bull Vodka"
-      },
-      {
-        "ingredients": [
-          "vodka",
-          "rum",
-          "tequila",
-          "tea"
-        ],
-        "price": 14,
-        "name": "Long Island Iced Tea"
-      }
-    ],
-    "phone": "(957) 434-3585",
-    "address": {
-      "city": "Rutherford",
-      "street": "Linden Street"
-    },
-    "loc": [
-      22.9815081,
-      -23.582239
-    ],
     "completedSignUp": false,
-    "password": "fugiat",
+    "loc": [
+      20.8457111,
+      102.230921
+    ],
+    "address": {
+      "street": "Cobek Court",
+      "city": "Kieler"
+    },
+    "phone": "(924) 496-2230",
+    "drinks": [
+      {
+        "name": "Red Bull Vodka",
+        "price": 12,
+        "ingredients": [
+          "Redbull",
+          "Vodka"
+        ]
+      },
+      {
+        "name": "Long Island Iced Tea",
+        "price": 14,
+        "ingredients": [
+          "vodka",
+          "rum",
+          "tequila",
+          "tea"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Isis",
+    "barType": "Sports Bar",
+    "email": "Isis4@Isis.com",
     "drinkMixers": [
       {
         "name": "Cola"
@@ -1143,710 +235,105 @@ var bars = [
         "name": "Cranberry Juice"
       },
       {
-        "price": 8,
-        "name": "Red Bull"
+        "name": "Red Bull",
+        "price": 8
       },
       {
-        "price": 7,
-        "name": "Sugar Free Red Bull"
+        "name": "Sugar Free Red Bull",
+        "price": 7
       }
     ],
-    "email": "Coash20@Coash.com",
-    "barType": "Lounge",
-    "name": "Coash"
-  },
-  {
-    "drinks": [
-      {
-        "ingredients": [
-          "Redbull",
-          "Vodka"
-        ],
-        "price": 12,
-        "name": "Red Bull Vodka"
-      },
-      {
-        "ingredients": [
-          "vodka",
-          "rum",
-          "tequila",
-          "tea"
-        ],
-        "price": 14,
-        "name": "Long Island Iced Tea"
-      }
-    ],
-    "phone": "(914) 432-3348",
-    "address": {
-      "city": "Eagleville",
-      "street": "Norman Avenue"
-    },
-    "loc": [
-      22.9815081,
-      -23.582239
-    ],
-    "completedSignUp": false,
     "password": "commodo",
-    "drinkMixers": [
-      {
-        "name": "Cola"
-      },
-      {
-        "name": "Orange Juice"
-      },
-      {
-        "name": "Cranberry Juice"
-      },
-      {
-        "price": 8,
-        "name": "Red Bull"
-      },
-      {
-        "price": 7,
-        "name": "Sugar Free Red Bull"
-      }
-    ],
-    "email": "Kegular21@Kegular.com",
-    "barType": "Sports Bar",
-    "name": "Kegular"
-  },
-  {
-    "drinks": [
-      {
-        "ingredients": [
-          "Redbull",
-          "Vodka"
-        ],
-        "price": 12,
-        "name": "Red Bull Vodka"
-      },
-      {
-        "ingredients": [
-          "vodka",
-          "rum",
-          "tequila",
-          "tea"
-        ],
-        "price": 14,
-        "name": "Long Island Iced Tea"
-      }
-    ],
-    "phone": "(867) 509-2685",
-    "address": {
-      "city": "Calpine",
-      "street": "Forrest Street"
-    },
-    "loc": [
-      22.9815081,
-      -23.582239
-    ],
-    "completedSignUp": false,
-    "password": "eu",
-    "drinkMixers": [
-      {
-        "name": "Cola"
-      },
-      {
-        "name": "Orange Juice"
-      },
-      {
-        "name": "Cranberry Juice"
-      },
-      {
-        "price": 8,
-        "name": "Red Bull"
-      },
-      {
-        "price": 7,
-        "name": "Sugar Free Red Bull"
-      }
-    ],
-    "email": "Splinx22@Splinx.com",
-    "barType": "Sports Bar",
-    "name": "Splinx"
-  },
-  {
-    "drinks": [
-      {
-        "ingredients": [
-          "Redbull",
-          "Vodka"
-        ],
-        "price": 12,
-        "name": "Red Bull Vodka"
-      },
-      {
-        "ingredients": [
-          "vodka",
-          "rum",
-          "tequila",
-          "tea"
-        ],
-        "price": 14,
-        "name": "Long Island Iced Tea"
-      }
-    ],
-    "phone": "(940) 543-2033",
-    "address": {
-      "city": "Thynedale",
-      "street": "Debevoise Street"
-    },
-    "loc": [
-      22.9815081,
-      -23.582239
-    ],
-    "completedSignUp": false,
-    "password": "occaecat",
-    "drinkMixers": [
-      {
-        "name": "Cola"
-      },
-      {
-        "name": "Orange Juice"
-      },
-      {
-        "name": "Cranberry Juice"
-      },
-      {
-        "price": 8,
-        "name": "Red Bull"
-      },
-      {
-        "price": 7,
-        "name": "Sugar Free Red Bull"
-      }
-    ],
-    "email": "Pearlesex23@Pearlesex.com",
-    "barType": "Pub",
-    "name": "Pearlesex"
-  },
-  {
-    "drinks": [
-      {
-        "ingredients": [
-          "Redbull",
-          "Vodka"
-        ],
-        "price": 12,
-        "name": "Red Bull Vodka"
-      },
-      {
-        "ingredients": [
-          "vodka",
-          "rum",
-          "tequila",
-          "tea"
-        ],
-        "price": 14,
-        "name": "Long Island Iced Tea"
-      }
-    ],
-    "phone": "(874) 416-2535",
-    "address": {
-      "city": "Tyro",
-      "street": "Mill Avenue"
-    },
-    "loc": [
-      22.9815081,
-      -23.582239
-    ],
-    "completedSignUp": false,
-    "password": "occaecat",
-    "drinkMixers": [
-      {
-        "name": "Cola"
-      },
-      {
-        "name": "Orange Juice"
-      },
-      {
-        "name": "Cranberry Juice"
-      },
-      {
-        "price": 8,
-        "name": "Red Bull"
-      },
-      {
-        "price": 7,
-        "name": "Sugar Free Red Bull"
-      }
-    ],
-    "email": "Schoolio24@Schoolio.com",
-    "barType": "Night Club",
-    "name": "Schoolio"
-  },
-  {
-    "drinks": [
-      {
-        "ingredients": [
-          "Redbull",
-          "Vodka"
-        ],
-        "price": 12,
-        "name": "Red Bull Vodka"
-      },
-      {
-        "ingredients": [
-          "vodka",
-          "rum",
-          "tequila",
-          "tea"
-        ],
-        "price": 14,
-        "name": "Long Island Iced Tea"
-      }
-    ],
-    "phone": "(947) 577-3020",
-    "address": {
-      "city": "Weeksville",
-      "street": "Butler Place"
-    },
-    "loc": [
-      22.9815081,
-      -23.582239
-    ],
-    "completedSignUp": false,
-    "password": "velit",
-    "drinkMixers": [
-      {
-        "name": "Cola"
-      },
-      {
-        "name": "Orange Juice"
-      },
-      {
-        "name": "Cranberry Juice"
-      },
-      {
-        "price": 8,
-        "name": "Red Bull"
-      },
-      {
-        "price": 7,
-        "name": "Sugar Free Red Bull"
-      }
-    ],
-    "email": "Zoinage25@Zoinage.com",
-    "barType": "Night Club",
-    "name": "Zoinage"
-  },
-  {
-    "drinks": [
-      {
-        "ingredients": [
-          "Redbull",
-          "Vodka"
-        ],
-        "price": 12,
-        "name": "Red Bull Vodka"
-      },
-      {
-        "ingredients": [
-          "vodka",
-          "rum",
-          "tequila",
-          "tea"
-        ],
-        "price": 14,
-        "name": "Long Island Iced Tea"
-      }
-    ],
-    "phone": "(986) 543-2360",
-    "address": {
-      "city": "Marshall",
-      "street": "Lloyd Street"
-    },
-    "loc": [
-      22.9815081,
-      -23.582239
-    ],
     "completedSignUp": true,
-    "password": "excepteur",
-    "drinkMixers": [
-      {
-        "name": "Cola"
-      },
-      {
-        "name": "Orange Juice"
-      },
-      {
-        "name": "Cranberry Juice"
-      },
-      {
-        "price": 8,
-        "name": "Red Bull"
-      },
-      {
-        "price": 7,
-        "name": "Sugar Free Red Bull"
-      }
+    "loc": [
+      20.8457111,
+      102.230921
     ],
-    "email": "Zanilla26@Zanilla.com",
-    "barType": "Sports Bar",
-    "name": "Zanilla"
-  },
-  {
+    "address": {
+      "street": "Roosevelt Court",
+      "city": "Goochland"
+    },
+    "phone": "(991) 453-2904",
     "drinks": [
       {
+        "name": "Red Bull Vodka",
+        "price": 12,
         "ingredients": [
           "Redbull",
           "Vodka"
-        ],
-        "price": 12,
-        "name": "Red Bull Vodka"
+        ]
       },
       {
+        "name": "Long Island Iced Tea",
+        "price": 14,
         "ingredients": [
           "vodka",
           "rum",
           "tequila",
           "tea"
-        ],
-        "price": 14,
-        "name": "Long Island Iced Tea"
+        ]
       }
-    ],
-    "phone": "(863) 516-2195",
-    "address": {
-      "city": "Sutton",
-      "street": "Cambridge Place"
-    },
-    "loc": [
-      22.9815081,
-      -23.582239
-    ],
-    "completedSignUp": true,
-    "password": "sunt",
-    "drinkMixers": [
-      {
-        "name": "Cola"
-      },
-      {
-        "name": "Orange Juice"
-      },
-      {
-        "name": "Cranberry Juice"
-      },
-      {
-        "price": 8,
-        "name": "Red Bull"
-      },
-      {
-        "price": 7,
-        "name": "Sugar Free Red Bull"
-      }
-    ],
-    "email": "Xelegyl27@Xelegyl.com",
-    "barType": "Pub",
-    "name": "Xelegyl"
+    ]
   },
   {
-    "drinks": [
-      {
-        "ingredients": [
-          "Redbull",
-          "Vodka"
-        ],
-        "price": 12,
-        "name": "Red Bull Vodka"
-      },
-      {
-        "ingredients": [
-          "vodka",
-          "rum",
-          "tequila",
-          "tea"
-        ],
-        "price": 14,
-        "name": "Long Island Iced Tea"
-      }
-    ],
-    "phone": "(810) 569-3074",
-    "address": {
-      "city": "Bordelonville",
-      "street": "Elizabeth Place"
-    },
-    "loc": [
-      22.9815081,
-      -23.582239
-    ],
-    "completedSignUp": false,
-    "password": "reprehenderit",
-    "drinkMixers": [
-      {
-        "name": "Cola"
-      },
-      {
-        "name": "Orange Juice"
-      },
-      {
-        "name": "Cranberry Juice"
-      },
-      {
-        "price": 8,
-        "name": "Red Bull"
-      },
-      {
-        "price": 7,
-        "name": "Sugar Free Red Bull"
-      }
-    ],
-    "email": "Zenolux28@Zenolux.com",
+    "name": "Bleeko",
     "barType": "Night Club",
-    "name": "Zenolux"
-  },
-  {
-    "drinks": [
+    "email": "Bleeko5@Bleeko.com",
+    "drinkMixers": [
       {
-        "ingredients": [
-          "Redbull",
-          "Vodka"
-        ],
-        "price": 12,
-        "name": "Red Bull Vodka"
+        "name": "Cola"
       },
       {
-        "ingredients": [
-          "vodka",
-          "rum",
-          "tequila",
-          "tea"
-        ],
-        "price": 14,
-        "name": "Long Island Iced Tea"
+        "name": "Orange Juice"
+      },
+      {
+        "name": "Cranberry Juice"
+      },
+      {
+        "name": "Red Bull",
+        "price": 8
+      },
+      {
+        "name": "Sugar Free Red Bull",
+        "price": 7
       }
     ],
-    "phone": "(891) 592-2742",
-    "address": {
-      "city": "Saddlebrooke",
-      "street": "Coventry Road"
-    },
-    "loc": [
-      22.9815081,
-      -23.582239
-    ],
+    "password": "nostrud",
     "completedSignUp": false,
-    "password": "adipisicing",
-    "drinkMixers": [
-      {
-        "name": "Cola"
-      },
-      {
-        "name": "Orange Juice"
-      },
-      {
-        "name": "Cranberry Juice"
-      },
-      {
-        "price": 8,
-        "name": "Red Bull"
-      },
-      {
-        "price": 7,
-        "name": "Sugar Free Red Bull"
-      }
+    "loc": [
+      20.8457111,
+      102.230921
     ],
-    "email": "Stelaecor29@Stelaecor.com",
-    "barType": "Pub",
-    "name": "Stelaecor"
-  },
-  {
+    "address": {
+      "street": "Polar Street",
+      "city": "Gorst"
+    },
+    "phone": "(929) 488-3365",
     "drinks": [
       {
+        "name": "Red Bull Vodka",
+        "price": 12,
         "ingredients": [
           "Redbull",
           "Vodka"
-        ],
-        "price": 12,
-        "name": "Red Bull Vodka"
+        ]
       },
       {
+        "name": "Long Island Iced Tea",
+        "price": 14,
         "ingredients": [
           "vodka",
           "rum",
           "tequila",
           "tea"
-        ],
-        "price": 14,
-        "name": "Long Island Iced Tea"
+        ]
       }
-    ],
-    "phone": "(949) 404-3399",
-    "address": {
-      "city": "Deltaville",
-      "street": "Wolf Place"
-    },
-    "loc": [
-      22.9815081,
-      -23.582239
-    ],
-    "completedSignUp": false,
-    "password": "tempor",
-    "drinkMixers": [
-      {
-        "name": "Cola"
-      },
-      {
-        "name": "Orange Juice"
-      },
-      {
-        "name": "Cranberry Juice"
-      },
-      {
-        "price": 8,
-        "name": "Red Bull"
-      },
-      {
-        "price": 7,
-        "name": "Sugar Free Red Bull"
-      }
-    ],
-    "email": "Konnect30@Konnect.com",
-    "barType": "Pub",
-    "name": "Konnect"
+    ]
   },
   {
-    "drinks": [
-      {
-        "ingredients": [
-          "Redbull",
-          "Vodka"
-        ],
-        "price": 12,
-        "name": "Red Bull Vodka"
-      },
-      {
-        "ingredients": [
-          "vodka",
-          "rum",
-          "tequila",
-          "tea"
-        ],
-        "price": 14,
-        "name": "Long Island Iced Tea"
-      }
-    ],
-    "phone": "(953) 570-3633",
-    "address": {
-      "city": "Condon",
-      "street": "Cherry Street"
-    },
-    "loc": [
-      22.9815081,
-      -23.582239
-    ],
-    "completedSignUp": false,
-    "password": "ipsum",
-    "drinkMixers": [
-      {
-        "name": "Cola"
-      },
-      {
-        "name": "Orange Juice"
-      },
-      {
-        "name": "Cranberry Juice"
-      },
-      {
-        "price": 8,
-        "name": "Red Bull"
-      },
-      {
-        "price": 7,
-        "name": "Sugar Free Red Bull"
-      }
-    ],
-    "email": "Phormula31@Phormula.com",
-    "barType": "Sports Bar",
-    "name": "Phormula"
-  },
-  {
-    "drinks": [
-      {
-        "ingredients": [
-          "Redbull",
-          "Vodka"
-        ],
-        "price": 12,
-        "name": "Red Bull Vodka"
-      },
-      {
-        "ingredients": [
-          "vodka",
-          "rum",
-          "tequila",
-          "tea"
-        ],
-        "price": 14,
-        "name": "Long Island Iced Tea"
-      }
-    ],
-    "phone": "(952) 511-2068",
-    "address": {
-      "city": "Epworth",
-      "street": "Fuller Place"
-    },
-    "loc": [
-      22.9815081,
-      -23.582239
-    ],
-    "completedSignUp": true,
-    "password": "pariatur",
-    "drinkMixers": [
-      {
-        "name": "Cola"
-      },
-      {
-        "name": "Orange Juice"
-      },
-      {
-        "name": "Cranberry Juice"
-      },
-      {
-        "price": 8,
-        "name": "Red Bull"
-      },
-      {
-        "price": 7,
-        "name": "Sugar Free Red Bull"
-      }
-    ],
-    "email": "Boink32@Boink.com",
+    "name": "Norsup",
     "barType": "Night Club",
-    "name": "Boink"
-  },
-  {
-    "drinks": [
-      {
-        "ingredients": [
-          "Redbull",
-          "Vodka"
-        ],
-        "price": 12,
-        "name": "Red Bull Vodka"
-      },
-      {
-        "ingredients": [
-          "vodka",
-          "rum",
-          "tequila",
-          "tea"
-        ],
-        "price": 14,
-        "name": "Long Island Iced Tea"
-      }
-    ],
-    "phone": "(999) 496-2887",
-    "address": {
-      "city": "Beaverdale",
-      "street": "Scholes Street"
-    },
-    "loc": [
-      22.9815081,
-      -23.582239
-    ],
-    "completedSignUp": false,
-    "password": "consectetur",
+    "email": "Norsup6@Norsup.com",
     "drinkMixers": [
       {
         "name": "Cola"
@@ -1858,215 +345,160 @@ var bars = [
         "name": "Cranberry Juice"
       },
       {
-        "price": 8,
-        "name": "Red Bull"
+        "name": "Red Bull",
+        "price": 8
       },
       {
-        "price": 7,
-        "name": "Sugar Free Red Bull"
+        "name": "Sugar Free Red Bull",
+        "price": 7
       }
     ],
-    "email": "Lexicondo33@Lexicondo.com",
-    "barType": "Pub",
-    "name": "Lexicondo"
-  },
-  {
+    "password": "laboris",
+    "completedSignUp": true,
+    "loc": [
+      20.8457111,
+      102.230921
+    ],
+    "address": {
+      "street": "Osborn Street",
+      "city": "Dixonville"
+    },
+    "phone": "(946) 578-3796",
     "drinks": [
       {
+        "name": "Red Bull Vodka",
+        "price": 12,
         "ingredients": [
           "Redbull",
           "Vodka"
-        ],
-        "price": 12,
-        "name": "Red Bull Vodka"
+        ]
       },
       {
+        "name": "Long Island Iced Tea",
+        "price": 14,
         "ingredients": [
           "vodka",
           "rum",
           "tequila",
           "tea"
-        ],
-        "price": 14,
-        "name": "Long Island Iced Tea"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Fossiel",
+    "barType": "Lounge",
+    "email": "Fossiel7@Fossiel.com",
+    "drinkMixers": [
+      {
+        "name": "Cola"
+      },
+      {
+        "name": "Orange Juice"
+      },
+      {
+        "name": "Cranberry Juice"
+      },
+      {
+        "name": "Red Bull",
+        "price": 8
+      },
+      {
+        "name": "Sugar Free Red Bull",
+        "price": 7
       }
     ],
-    "phone": "(841) 469-3950",
-    "address": {
-      "city": "Eden",
-      "street": "Moore Street"
-    },
+    "password": "do",
+    "completedSignUp": false,
     "loc": [
-      22.9815081,
-      -23.582239
+      20.8457111,
+      102.230921
     ],
-    "completedSignUp": true,
+    "address": {
+      "street": "Holt Court",
+      "city": "Advance"
+    },
+    "phone": "(940) 447-2672",
+    "drinks": [
+      {
+        "name": "Red Bull Vodka",
+        "price": 12,
+        "ingredients": [
+          "Redbull",
+          "Vodka"
+        ]
+      },
+      {
+        "name": "Long Island Iced Tea",
+        "price": 14,
+        "ingredients": [
+          "vodka",
+          "rum",
+          "tequila",
+          "tea"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Ecosys",
+    "barType": "Lounge",
+    "email": "Ecosys8@Ecosys.com",
+    "drinkMixers": [
+      {
+        "name": "Cola"
+      },
+      {
+        "name": "Orange Juice"
+      },
+      {
+        "name": "Cranberry Juice"
+      },
+      {
+        "name": "Red Bull",
+        "price": 8
+      },
+      {
+        "name": "Sugar Free Red Bull",
+        "price": 7
+      }
+    ],
     "password": "nulla",
-    "drinkMixers": [
-      {
-        "name": "Cola"
-      },
-      {
-        "name": "Orange Juice"
-      },
-      {
-        "name": "Cranberry Juice"
-      },
-      {
-        "price": 8,
-        "name": "Red Bull"
-      },
-      {
-        "price": 7,
-        "name": "Sugar Free Red Bull"
-      }
-    ],
-    "email": "Eplosion34@Eplosion.com",
-    "barType": "Pub",
-    "name": "Eplosion"
-  },
-  {
-    "drinks": [
-      {
-        "ingredients": [
-          "Redbull",
-          "Vodka"
-        ],
-        "price": 12,
-        "name": "Red Bull Vodka"
-      },
-      {
-        "ingredients": [
-          "vodka",
-          "rum",
-          "tequila",
-          "tea"
-        ],
-        "price": 14,
-        "name": "Long Island Iced Tea"
-      }
-    ],
-    "phone": "(886) 489-3418",
-    "address": {
-      "city": "Chalfant",
-      "street": "Roder Avenue"
-    },
-    "loc": [
-      22.9815081,
-      -23.582239
-    ],
-    "completedSignUp": false,
-    "password": "quis",
-    "drinkMixers": [
-      {
-        "name": "Cola"
-      },
-      {
-        "name": "Orange Juice"
-      },
-      {
-        "name": "Cranberry Juice"
-      },
-      {
-        "price": 8,
-        "name": "Red Bull"
-      },
-      {
-        "price": 7,
-        "name": "Sugar Free Red Bull"
-      }
-    ],
-    "email": "Eventage35@Eventage.com",
-    "barType": "Night Club",
-    "name": "Eventage"
-  },
-  {
-    "drinks": [
-      {
-        "ingredients": [
-          "Redbull",
-          "Vodka"
-        ],
-        "price": 12,
-        "name": "Red Bull Vodka"
-      },
-      {
-        "ingredients": [
-          "vodka",
-          "rum",
-          "tequila",
-          "tea"
-        ],
-        "price": 14,
-        "name": "Long Island Iced Tea"
-      }
-    ],
-    "phone": "(850) 578-2837",
-    "address": {
-      "city": "Omar",
-      "street": "Albemarle Road"
-    },
-    "loc": [
-      22.9815081,
-      -23.582239
-    ],
-    "completedSignUp": false,
-    "password": "dolor",
-    "drinkMixers": [
-      {
-        "name": "Cola"
-      },
-      {
-        "name": "Orange Juice"
-      },
-      {
-        "name": "Cranberry Juice"
-      },
-      {
-        "price": 8,
-        "name": "Red Bull"
-      },
-      {
-        "price": 7,
-        "name": "Sugar Free Red Bull"
-      }
-    ],
-    "email": "Geoforma36@Geoforma.com",
-    "barType": "Pub",
-    "name": "Geoforma"
-  },
-  {
-    "drinks": [
-      {
-        "ingredients": [
-          "Redbull",
-          "Vodka"
-        ],
-        "price": 12,
-        "name": "Red Bull Vodka"
-      },
-      {
-        "ingredients": [
-          "vodka",
-          "rum",
-          "tequila",
-          "tea"
-        ],
-        "price": 14,
-        "name": "Long Island Iced Tea"
-      }
-    ],
-    "phone": "(887) 506-3153",
-    "address": {
-      "city": "Coldiron",
-      "street": "Gain Court"
-    },
-    "loc": [
-      22.9815081,
-      -23.582239
-    ],
     "completedSignUp": true,
-    "password": "mollit",
+    "loc": [
+      20.8457111,
+      102.230921
+    ],
+    "address": {
+      "street": "Lorraine Street",
+      "city": "Hasty"
+    },
+    "phone": "(957) 468-2251",
+    "drinks": [
+      {
+        "name": "Red Bull Vodka",
+        "price": 12,
+        "ingredients": [
+          "Redbull",
+          "Vodka"
+        ]
+      },
+      {
+        "name": "Long Island Iced Tea",
+        "price": 14,
+        "ingredients": [
+          "vodka",
+          "rum",
+          "tequila",
+          "tea"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Strozen",
+    "barType": "Lounge",
+    "email": "Strozen9@Strozen.com",
     "drinkMixers": [
       {
         "name": "Cola"
@@ -2078,215 +510,50 @@ var bars = [
         "name": "Cranberry Juice"
       },
       {
-        "price": 8,
-        "name": "Red Bull"
+        "name": "Red Bull",
+        "price": 8
       },
       {
-        "price": 7,
-        "name": "Sugar Free Red Bull"
+        "name": "Sugar Free Red Bull",
+        "price": 7
       }
     ],
-    "email": "Intradisk37@Intradisk.com",
-    "barType": "Sports Bar",
-    "name": "Intradisk"
-  },
-  {
-    "drinks": [
-      {
-        "ingredients": [
-          "Redbull",
-          "Vodka"
-        ],
-        "price": 12,
-        "name": "Red Bull Vodka"
-      },
-      {
-        "ingredients": [
-          "vodka",
-          "rum",
-          "tequila",
-          "tea"
-        ],
-        "price": 14,
-        "name": "Long Island Iced Tea"
-      }
-    ],
-    "phone": "(807) 443-3763",
-    "address": {
-      "city": "Roeville",
-      "street": "Carroll Street"
-    },
-    "loc": [
-      22.9815081,
-      -23.582239
-    ],
-    "completedSignUp": true,
-    "password": "et",
-    "drinkMixers": [
-      {
-        "name": "Cola"
-      },
-      {
-        "name": "Orange Juice"
-      },
-      {
-        "name": "Cranberry Juice"
-      },
-      {
-        "price": 8,
-        "name": "Red Bull"
-      },
-      {
-        "price": 7,
-        "name": "Sugar Free Red Bull"
-      }
-    ],
-    "email": "Comcur38@Comcur.com",
-    "barType": "Pub",
-    "name": "Comcur"
-  },
-  {
-    "drinks": [
-      {
-        "ingredients": [
-          "Redbull",
-          "Vodka"
-        ],
-        "price": 12,
-        "name": "Red Bull Vodka"
-      },
-      {
-        "ingredients": [
-          "vodka",
-          "rum",
-          "tequila",
-          "tea"
-        ],
-        "price": 14,
-        "name": "Long Island Iced Tea"
-      }
-    ],
-    "phone": "(900) 551-3869",
-    "address": {
-      "city": "Wright",
-      "street": "Brown Street"
-    },
-    "loc": [
-      22.9815081,
-      -23.582239
-    ],
-    "completedSignUp": true,
-    "password": "enim",
-    "drinkMixers": [
-      {
-        "name": "Cola"
-      },
-      {
-        "name": "Orange Juice"
-      },
-      {
-        "name": "Cranberry Juice"
-      },
-      {
-        "price": 8,
-        "name": "Red Bull"
-      },
-      {
-        "price": 7,
-        "name": "Sugar Free Red Bull"
-      }
-    ],
-    "email": "Sulfax39@Sulfax.com",
-    "barType": "Pub",
-    "name": "Sulfax"
-  },
-  {
-    "drinks": [
-      {
-        "ingredients": [
-          "Redbull",
-          "Vodka"
-        ],
-        "price": 12,
-        "name": "Red Bull Vodka"
-      },
-      {
-        "ingredients": [
-          "vodka",
-          "rum",
-          "tequila",
-          "tea"
-        ],
-        "price": 14,
-        "name": "Long Island Iced Tea"
-      }
-    ],
-    "phone": "(827) 586-2387",
-    "address": {
-      "city": "Matheny",
-      "street": "Luquer Street"
-    },
-    "loc": [
-      22.9815081,
-      -23.582239
-    ],
-    "completedSignUp": false,
     "password": "culpa",
-    "drinkMixers": [
-      {
-        "name": "Cola"
-      },
-      {
-        "name": "Orange Juice"
-      },
-      {
-        "name": "Cranberry Juice"
-      },
-      {
-        "price": 8,
-        "name": "Red Bull"
-      },
-      {
-        "price": 7,
-        "name": "Sugar Free Red Bull"
-      }
+    "completedSignUp": false,
+    "loc": [
+      20.8457111,
+      102.230921
     ],
-    "email": "Polarax40@Polarax.com",
-    "barType": "Pub",
-    "name": "Polarax"
-  },
-  {
+    "address": {
+      "street": "Surf Avenue",
+      "city": "Concho"
+    },
+    "phone": "(871) 542-2740",
     "drinks": [
       {
+        "name": "Red Bull Vodka",
+        "price": 12,
         "ingredients": [
           "Redbull",
           "Vodka"
-        ],
-        "price": 12,
-        "name": "Red Bull Vodka"
+        ]
       },
       {
+        "name": "Long Island Iced Tea",
+        "price": 14,
         "ingredients": [
           "vodka",
           "rum",
           "tequila",
           "tea"
-        ],
-        "price": 14,
-        "name": "Long Island Iced Tea"
+        ]
       }
-    ],
-    "phone": "(947) 465-2869",
-    "address": {
-      "city": "Hinsdale",
-      "street": "Sumpter Street"
-    },
-    "loc": [
-      22.9815081,
-      -23.582239
-    ],
-    "completedSignUp": false,
-    "password": "sit",
+    ]
+  },
+  {
+    "name": "Pawnagra",
+    "barType": "Lounge",
+    "email": "Pawnagra10@Pawnagra.com",
     "drinkMixers": [
       {
         "name": "Cola"
@@ -2298,50 +565,50 @@ var bars = [
         "name": "Cranberry Juice"
       },
       {
-        "price": 8,
-        "name": "Red Bull"
+        "name": "Red Bull",
+        "price": 8
       },
       {
-        "price": 7,
-        "name": "Sugar Free Red Bull"
+        "name": "Sugar Free Red Bull",
+        "price": 7
       }
     ],
-    "email": "Immunics41@Immunics.com",
+    "password": "laborum",
+    "completedSignUp": true,
+    "loc": [
+      20.8457111,
+      102.230921
+    ],
+    "address": {
+      "street": "Newton Street",
+      "city": "Dola"
+    },
+    "phone": "(964) 563-3712",
+    "drinks": [
+      {
+        "name": "Red Bull Vodka",
+        "price": 12,
+        "ingredients": [
+          "Redbull",
+          "Vodka"
+        ]
+      },
+      {
+        "name": "Long Island Iced Tea",
+        "price": 14,
+        "ingredients": [
+          "vodka",
+          "rum",
+          "tequila",
+          "tea"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Corpulse",
     "barType": "Sports Bar",
-    "name": "Immunics"
-  },
-  {
-    "drinks": [
-      {
-        "ingredients": [
-          "Redbull",
-          "Vodka"
-        ],
-        "price": 12,
-        "name": "Red Bull Vodka"
-      },
-      {
-        "ingredients": [
-          "vodka",
-          "rum",
-          "tequila",
-          "tea"
-        ],
-        "price": 14,
-        "name": "Long Island Iced Tea"
-      }
-    ],
-    "phone": "(983) 587-3722",
-    "address": {
-      "city": "Hegins",
-      "street": "Moffat Street"
-    },
-    "loc": [
-      22.9815081,
-      -23.582239
-    ],
-    "completedSignUp": true,
-    "password": "mollit",
+    "email": "Corpulse11@Corpulse.com",
     "drinkMixers": [
       {
         "name": "Cola"
@@ -2353,270 +620,160 @@ var bars = [
         "name": "Cranberry Juice"
       },
       {
-        "price": 8,
-        "name": "Red Bull"
+        "name": "Red Bull",
+        "price": 8
       },
       {
-        "price": 7,
-        "name": "Sugar Free Red Bull"
+        "name": "Sugar Free Red Bull",
+        "price": 7
       }
     ],
-    "email": "Geeknet42@Geeknet.com",
-    "barType": "Lounge",
-    "name": "Geeknet"
-  },
-  {
+    "password": "exercitation",
+    "completedSignUp": true,
+    "loc": [
+      20.8457111,
+      102.230921
+    ],
+    "address": {
+      "street": "Ferry Place",
+      "city": "Bluffview"
+    },
+    "phone": "(888) 556-2286",
     "drinks": [
       {
+        "name": "Red Bull Vodka",
+        "price": 12,
         "ingredients": [
           "Redbull",
           "Vodka"
-        ],
-        "price": 12,
-        "name": "Red Bull Vodka"
+        ]
       },
       {
+        "name": "Long Island Iced Tea",
+        "price": 14,
         "ingredients": [
           "vodka",
           "rum",
           "tequila",
           "tea"
-        ],
-        "price": 14,
-        "name": "Long Island Iced Tea"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Digifad",
+    "barType": "Sports Bar",
+    "email": "Digifad12@Digifad.com",
+    "drinkMixers": [
+      {
+        "name": "Cola"
+      },
+      {
+        "name": "Orange Juice"
+      },
+      {
+        "name": "Cranberry Juice"
+      },
+      {
+        "name": "Red Bull",
+        "price": 8
+      },
+      {
+        "name": "Sugar Free Red Bull",
+        "price": 7
       }
     ],
-    "phone": "(947) 540-2411",
-    "address": {
-      "city": "Fannett",
-      "street": "Hooper Street"
-    },
+    "password": "sint",
+    "completedSignUp": true,
     "loc": [
-      22.9815081,
-      -23.582239
+      20.8457111,
+      102.230921
     ],
+    "address": {
+      "street": "Albee Square",
+      "city": "Leming"
+    },
+    "phone": "(957) 416-3002",
+    "drinks": [
+      {
+        "name": "Red Bull Vodka",
+        "price": 12,
+        "ingredients": [
+          "Redbull",
+          "Vodka"
+        ]
+      },
+      {
+        "name": "Long Island Iced Tea",
+        "price": 14,
+        "ingredients": [
+          "vodka",
+          "rum",
+          "tequila",
+          "tea"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Qimonk",
+    "barType": "Sports Bar",
+    "email": "Qimonk13@Qimonk.com",
+    "drinkMixers": [
+      {
+        "name": "Cola"
+      },
+      {
+        "name": "Orange Juice"
+      },
+      {
+        "name": "Cranberry Juice"
+      },
+      {
+        "name": "Red Bull",
+        "price": 8
+      },
+      {
+        "name": "Sugar Free Red Bull",
+        "price": 7
+      }
+    ],
+    "password": "aute",
     "completedSignUp": false,
-    "password": "consequat",
-    "drinkMixers": [
-      {
-        "name": "Cola"
-      },
-      {
-        "name": "Orange Juice"
-      },
-      {
-        "name": "Cranberry Juice"
-      },
-      {
-        "price": 8,
-        "name": "Red Bull"
-      },
-      {
-        "price": 7,
-        "name": "Sugar Free Red Bull"
-      }
+    "loc": [
+      20.8457111,
+      102.230921
     ],
-    "email": "Quarx43@Quarx.com",
-    "barType": "Lounge",
-    "name": "Quarx"
-  },
-  {
+    "address": {
+      "street": "Nevins Street",
+      "city": "Westwood"
+    },
+    "phone": "(987) 476-2845",
     "drinks": [
       {
+        "name": "Red Bull Vodka",
+        "price": 12,
         "ingredients": [
           "Redbull",
           "Vodka"
-        ],
-        "price": 12,
-        "name": "Red Bull Vodka"
+        ]
       },
       {
+        "name": "Long Island Iced Tea",
+        "price": 14,
         "ingredients": [
           "vodka",
           "rum",
           "tequila",
           "tea"
-        ],
-        "price": 14,
-        "name": "Long Island Iced Tea"
+        ]
       }
-    ],
-    "phone": "(927) 528-2690",
-    "address": {
-      "city": "Chloride",
-      "street": "Aitken Place"
-    },
-    "loc": [
-      22.9815081,
-      -23.582239
-    ],
-    "completedSignUp": false,
-    "password": "amet",
-    "drinkMixers": [
-      {
-        "name": "Cola"
-      },
-      {
-        "name": "Orange Juice"
-      },
-      {
-        "name": "Cranberry Juice"
-      },
-      {
-        "price": 8,
-        "name": "Red Bull"
-      },
-      {
-        "price": 7,
-        "name": "Sugar Free Red Bull"
-      }
-    ],
-    "email": "Primordia44@Primordia.com",
-    "barType": "Lounge",
-    "name": "Primordia"
+    ]
   },
   {
-    "drinks": [
-      {
-        "ingredients": [
-          "Redbull",
-          "Vodka"
-        ],
-        "price": 12,
-        "name": "Red Bull Vodka"
-      },
-      {
-        "ingredients": [
-          "vodka",
-          "rum",
-          "tequila",
-          "tea"
-        ],
-        "price": 14,
-        "name": "Long Island Iced Tea"
-      }
-    ],
-    "phone": "(959) 465-2334",
-    "address": {
-      "city": "Cliffside",
-      "street": "Richmond Street"
-    },
-    "loc": [
-      22.9815081,
-      -23.582239
-    ],
-    "completedSignUp": true,
-    "password": "ipsum",
-    "drinkMixers": [
-      {
-        "name": "Cola"
-      },
-      {
-        "name": "Orange Juice"
-      },
-      {
-        "name": "Cranberry Juice"
-      },
-      {
-        "price": 8,
-        "name": "Red Bull"
-      },
-      {
-        "price": 7,
-        "name": "Sugar Free Red Bull"
-      }
-    ],
-    "email": "Ginkle45@Ginkle.com",
-    "barType": "Night Club",
-    "name": "Ginkle"
-  },
-  {
-    "drinks": [
-      {
-        "ingredients": [
-          "Redbull",
-          "Vodka"
-        ],
-        "price": 12,
-        "name": "Red Bull Vodka"
-      },
-      {
-        "ingredients": [
-          "vodka",
-          "rum",
-          "tequila",
-          "tea"
-        ],
-        "price": 14,
-        "name": "Long Island Iced Tea"
-      }
-    ],
-    "phone": "(850) 593-2318",
-    "address": {
-      "city": "Croom",
-      "street": "Jewel Street"
-    },
-    "loc": [
-      22.9815081,
-      -23.582239
-    ],
-    "completedSignUp": true,
-    "password": "minim",
-    "drinkMixers": [
-      {
-        "name": "Cola"
-      },
-      {
-        "name": "Orange Juice"
-      },
-      {
-        "name": "Cranberry Juice"
-      },
-      {
-        "price": 8,
-        "name": "Red Bull"
-      },
-      {
-        "price": 7,
-        "name": "Sugar Free Red Bull"
-      }
-    ],
-    "email": "Aquasseur46@Aquasseur.com",
+    "name": "Paprikut",
     "barType": "Pub",
-    "name": "Aquasseur"
-  },
-  {
-    "drinks": [
-      {
-        "ingredients": [
-          "Redbull",
-          "Vodka"
-        ],
-        "price": 12,
-        "name": "Red Bull Vodka"
-      },
-      {
-        "ingredients": [
-          "vodka",
-          "rum",
-          "tequila",
-          "tea"
-        ],
-        "price": 14,
-        "name": "Long Island Iced Tea"
-      }
-    ],
-    "phone": "(914) 591-2327",
-    "address": {
-      "city": "Riegelwood",
-      "street": "Everit Street"
-    },
-    "loc": [
-      22.9815081,
-      -23.582239
-    ],
-    "completedSignUp": false,
-    "password": "labore",
+    "email": "Paprikut14@Paprikut.com",
     "drinkMixers": [
       {
         "name": "Cola"
@@ -2628,215 +785,50 @@ var bars = [
         "name": "Cranberry Juice"
       },
       {
-        "price": 8,
-        "name": "Red Bull"
+        "name": "Red Bull",
+        "price": 8
       },
       {
-        "price": 7,
-        "name": "Sugar Free Red Bull"
+        "name": "Sugar Free Red Bull",
+        "price": 7
       }
     ],
-    "email": "Irack47@Irack.com",
-    "barType": "Night Club",
-    "name": "Irack"
-  },
-  {
-    "drinks": [
-      {
-        "ingredients": [
-          "Redbull",
-          "Vodka"
-        ],
-        "price": 12,
-        "name": "Red Bull Vodka"
-      },
-      {
-        "ingredients": [
-          "vodka",
-          "rum",
-          "tequila",
-          "tea"
-        ],
-        "price": 14,
-        "name": "Long Island Iced Tea"
-      }
-    ],
-    "phone": "(964) 541-3570",
-    "address": {
-      "city": "Osmond",
-      "street": "Butler Street"
-    },
-    "loc": [
-      22.9815081,
-      -23.582239
-    ],
-    "completedSignUp": false,
-    "password": "occaecat",
-    "drinkMixers": [
-      {
-        "name": "Cola"
-      },
-      {
-        "name": "Orange Juice"
-      },
-      {
-        "name": "Cranberry Juice"
-      },
-      {
-        "price": 8,
-        "name": "Red Bull"
-      },
-      {
-        "price": 7,
-        "name": "Sugar Free Red Bull"
-      }
-    ],
-    "email": "Geekology48@Geekology.com",
-    "barType": "Night Club",
-    "name": "Geekology"
-  },
-  {
-    "drinks": [
-      {
-        "ingredients": [
-          "Redbull",
-          "Vodka"
-        ],
-        "price": 12,
-        "name": "Red Bull Vodka"
-      },
-      {
-        "ingredients": [
-          "vodka",
-          "rum",
-          "tequila",
-          "tea"
-        ],
-        "price": 14,
-        "name": "Long Island Iced Tea"
-      }
-    ],
-    "phone": "(909) 424-2044",
-    "address": {
-      "city": "Tooleville",
-      "street": "Post Court"
-    },
-    "loc": [
-      22.9815081,
-      -23.582239
-    ],
-    "completedSignUp": false,
     "password": "irure",
-    "drinkMixers": [
-      {
-        "name": "Cola"
-      },
-      {
-        "name": "Orange Juice"
-      },
-      {
-        "name": "Cranberry Juice"
-      },
-      {
-        "price": 8,
-        "name": "Red Bull"
-      },
-      {
-        "price": 7,
-        "name": "Sugar Free Red Bull"
-      }
-    ],
-    "email": "Plasmos49@Plasmos.com",
-    "barType": "Sports Bar",
-    "name": "Plasmos"
-  },
-  {
-    "drinks": [
-      {
-        "ingredients": [
-          "Redbull",
-          "Vodka"
-        ],
-        "price": 12,
-        "name": "Red Bull Vodka"
-      },
-      {
-        "ingredients": [
-          "vodka",
-          "rum",
-          "tequila",
-          "tea"
-        ],
-        "price": 14,
-        "name": "Long Island Iced Tea"
-      }
-    ],
-    "phone": "(974) 576-2529",
-    "address": {
-      "city": "Hiseville",
-      "street": "Garden Street"
-    },
-    "loc": [
-      22.9815081,
-      -23.582239
-    ],
-    "completedSignUp": false,
-    "password": "veniam",
-    "drinkMixers": [
-      {
-        "name": "Cola"
-      },
-      {
-        "name": "Orange Juice"
-      },
-      {
-        "name": "Cranberry Juice"
-      },
-      {
-        "price": 8,
-        "name": "Red Bull"
-      },
-      {
-        "price": 7,
-        "name": "Sugar Free Red Bull"
-      }
-    ],
-    "email": "Zoarere50@Zoarere.com",
-    "barType": "Sports Bar",
-    "name": "Zoarere"
-  },
-  {
-    "drinks": [
-      {
-        "ingredients": [
-          "Redbull",
-          "Vodka"
-        ],
-        "price": 12,
-        "name": "Red Bull Vodka"
-      },
-      {
-        "ingredients": [
-          "vodka",
-          "rum",
-          "tequila",
-          "tea"
-        ],
-        "price": 14,
-        "name": "Long Island Iced Tea"
-      }
-    ],
-    "phone": "(878) 479-3776",
-    "address": {
-      "city": "Hebron",
-      "street": "Dearborn Court"
-    },
-    "loc": [
-      22.9815081,
-      -23.582239
-    ],
     "completedSignUp": true,
-    "password": "ipsum",
+    "loc": [
+      20.8457111,
+      102.230921
+    ],
+    "address": {
+      "street": "Bogart Street",
+      "city": "Frierson"
+    },
+    "phone": "(826) 435-3752",
+    "drinks": [
+      {
+        "name": "Red Bull Vodka",
+        "price": 12,
+        "ingredients": [
+          "Redbull",
+          "Vodka"
+        ]
+      },
+      {
+        "name": "Long Island Iced Tea",
+        "price": 14,
+        "ingredients": [
+          "vodka",
+          "rum",
+          "tequila",
+          "tea"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Venoflex",
+    "barType": "Sports Bar",
+    "email": "Venoflex15@Venoflex.com",
     "drinkMixers": [
       {
         "name": "Cola"
@@ -2848,50 +840,215 @@ var bars = [
         "name": "Cranberry Juice"
       },
       {
-        "price": 8,
-        "name": "Red Bull"
+        "name": "Red Bull",
+        "price": 8
       },
       {
-        "price": 7,
-        "name": "Sugar Free Red Bull"
+        "name": "Sugar Free Red Bull",
+        "price": 7
       }
     ],
-    "email": "Coriander51@Coriander.com",
+    "password": "eiusmod",
+    "completedSignUp": true,
+    "loc": [
+      20.8457111,
+      102.230921
+    ],
+    "address": {
+      "street": "Cypress Court",
+      "city": "Valle"
+    },
+    "phone": "(813) 533-3898",
+    "drinks": [
+      {
+        "name": "Red Bull Vodka",
+        "price": 12,
+        "ingredients": [
+          "Redbull",
+          "Vodka"
+        ]
+      },
+      {
+        "name": "Long Island Iced Tea",
+        "price": 14,
+        "ingredients": [
+          "vodka",
+          "rum",
+          "tequila",
+          "tea"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Zilencio",
+    "barType": "Night Club",
+    "email": "Zilencio16@Zilencio.com",
+    "drinkMixers": [
+      {
+        "name": "Cola"
+      },
+      {
+        "name": "Orange Juice"
+      },
+      {
+        "name": "Cranberry Juice"
+      },
+      {
+        "name": "Red Bull",
+        "price": 8
+      },
+      {
+        "name": "Sugar Free Red Bull",
+        "price": 7
+      }
+    ],
+    "password": "aliquip",
+    "completedSignUp": true,
+    "loc": [
+      20.8457111,
+      102.230921
+    ],
+    "address": {
+      "street": "Ovington Avenue",
+      "city": "Disautel"
+    },
+    "phone": "(857) 502-2846",
+    "drinks": [
+      {
+        "name": "Red Bull Vodka",
+        "price": 12,
+        "ingredients": [
+          "Redbull",
+          "Vodka"
+        ]
+      },
+      {
+        "name": "Long Island Iced Tea",
+        "price": 14,
+        "ingredients": [
+          "vodka",
+          "rum",
+          "tequila",
+          "tea"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Netbook",
+    "barType": "Sports Bar",
+    "email": "Netbook17@Netbook.com",
+    "drinkMixers": [
+      {
+        "name": "Cola"
+      },
+      {
+        "name": "Orange Juice"
+      },
+      {
+        "name": "Cranberry Juice"
+      },
+      {
+        "name": "Red Bull",
+        "price": 8
+      },
+      {
+        "name": "Sugar Free Red Bull",
+        "price": 7
+      }
+    ],
+    "password": "sunt",
+    "completedSignUp": true,
+    "loc": [
+      20.8457111,
+      102.230921
+    ],
+    "address": {
+      "street": "Congress Street",
+      "city": "Garfield"
+    },
+    "phone": "(978) 529-3287",
+    "drinks": [
+      {
+        "name": "Red Bull Vodka",
+        "price": 12,
+        "ingredients": [
+          "Redbull",
+          "Vodka"
+        ]
+      },
+      {
+        "name": "Long Island Iced Tea",
+        "price": 14,
+        "ingredients": [
+          "vodka",
+          "rum",
+          "tequila",
+          "tea"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Coriander",
+    "barType": "Night Club",
+    "email": "Coriander18@Coriander.com",
+    "drinkMixers": [
+      {
+        "name": "Cola"
+      },
+      {
+        "name": "Orange Juice"
+      },
+      {
+        "name": "Cranberry Juice"
+      },
+      {
+        "name": "Red Bull",
+        "price": 8
+      },
+      {
+        "name": "Sugar Free Red Bull",
+        "price": 7
+      }
+    ],
+    "password": "do",
+    "completedSignUp": true,
+    "loc": [
+      20.8457111,
+      102.230921
+    ],
+    "address": {
+      "street": "Suydam Place",
+      "city": "Ventress"
+    },
+    "phone": "(915) 427-2868",
+    "drinks": [
+      {
+        "name": "Red Bull Vodka",
+        "price": 12,
+        "ingredients": [
+          "Redbull",
+          "Vodka"
+        ]
+      },
+      {
+        "name": "Long Island Iced Tea",
+        "price": 14,
+        "ingredients": [
+          "vodka",
+          "rum",
+          "tequila",
+          "tea"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Zolarity",
     "barType": "Pub",
-    "name": "Coriander"
-  },
-  {
-    "drinks": [
-      {
-        "ingredients": [
-          "Redbull",
-          "Vodka"
-        ],
-        "price": 12,
-        "name": "Red Bull Vodka"
-      },
-      {
-        "ingredients": [
-          "vodka",
-          "rum",
-          "tequila",
-          "tea"
-        ],
-        "price": 14,
-        "name": "Long Island Iced Tea"
-      }
-    ],
-    "phone": "(972) 486-3114",
-    "address": {
-      "city": "Lacomb",
-      "street": "Pulaski Street"
-    },
-    "loc": [
-      22.9815081,
-      -23.582239
-    ],
-    "completedSignUp": true,
-    "password": "officia",
+    "email": "Zolarity19@Zolarity.com",
     "drinkMixers": [
       {
         "name": "Cola"
@@ -2903,160 +1060,765 @@ var bars = [
         "name": "Cranberry Juice"
       },
       {
-        "price": 8,
-        "name": "Red Bull"
+        "name": "Red Bull",
+        "price": 8
       },
       {
-        "price": 7,
-        "name": "Sugar Free Red Bull"
+        "name": "Sugar Free Red Bull",
+        "price": 7
       }
     ],
-    "email": "Boilcat52@Boilcat.com",
-    "barType": "Sports Bar",
-    "name": "Boilcat"
-  },
-  {
-    "drinks": [
-      {
-        "ingredients": [
-          "Redbull",
-          "Vodka"
-        ],
-        "price": 12,
-        "name": "Red Bull Vodka"
-      },
-      {
-        "ingredients": [
-          "vodka",
-          "rum",
-          "tequila",
-          "tea"
-        ],
-        "price": 14,
-        "name": "Long Island Iced Tea"
-      }
-    ],
-    "phone": "(829) 416-3440",
-    "address": {
-      "city": "Summerfield",
-      "street": "Auburn Place"
-    },
-    "loc": [
-      22.9815081,
-      -23.582239
-    ],
-    "completedSignUp": true,
-    "password": "anim",
-    "drinkMixers": [
-      {
-        "name": "Cola"
-      },
-      {
-        "name": "Orange Juice"
-      },
-      {
-        "name": "Cranberry Juice"
-      },
-      {
-        "price": 8,
-        "name": "Red Bull"
-      },
-      {
-        "price": 7,
-        "name": "Sugar Free Red Bull"
-      }
-    ],
-    "email": "Zilphur53@Zilphur.com",
-    "barType": "Lounge",
-    "name": "Zilphur"
-  },
-  {
-    "drinks": [
-      {
-        "ingredients": [
-          "Redbull",
-          "Vodka"
-        ],
-        "price": 12,
-        "name": "Red Bull Vodka"
-      },
-      {
-        "ingredients": [
-          "vodka",
-          "rum",
-          "tequila",
-          "tea"
-        ],
-        "price": 14,
-        "name": "Long Island Iced Tea"
-      }
-    ],
-    "phone": "(955) 590-3751",
-    "address": {
-      "city": "Grapeview",
-      "street": "College Place"
-    },
-    "loc": [
-      22.9815081,
-      -23.582239
-    ],
+    "password": "nulla",
     "completedSignUp": false,
+    "loc": [
+      20.8457111,
+      102.230921
+    ],
+    "address": {
+      "street": "Hastings Street",
+      "city": "Farmington"
+    },
+    "phone": "(892) 433-2771",
+    "drinks": [
+      {
+        "name": "Red Bull Vodka",
+        "price": 12,
+        "ingredients": [
+          "Redbull",
+          "Vodka"
+        ]
+      },
+      {
+        "name": "Long Island Iced Tea",
+        "price": 14,
+        "ingredients": [
+          "vodka",
+          "rum",
+          "tequila",
+          "tea"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Applidec",
+    "barType": "Sports Bar",
+    "email": "Applidec20@Applidec.com",
+    "drinkMixers": [
+      {
+        "name": "Cola"
+      },
+      {
+        "name": "Orange Juice"
+      },
+      {
+        "name": "Cranberry Juice"
+      },
+      {
+        "name": "Red Bull",
+        "price": 8
+      },
+      {
+        "name": "Sugar Free Red Bull",
+        "price": 7
+      }
+    ],
+    "password": "dolor",
+    "completedSignUp": false,
+    "loc": [
+      20.8457111,
+      102.230921
+    ],
+    "address": {
+      "street": "Hooper Street",
+      "city": "Eagleville"
+    },
+    "phone": "(861) 567-3464",
+    "drinks": [
+      {
+        "name": "Red Bull Vodka",
+        "price": 12,
+        "ingredients": [
+          "Redbull",
+          "Vodka"
+        ]
+      },
+      {
+        "name": "Long Island Iced Tea",
+        "price": 14,
+        "ingredients": [
+          "vodka",
+          "rum",
+          "tequila",
+          "tea"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Slofast",
+    "barType": "Sports Bar",
+    "email": "Slofast21@Slofast.com",
+    "drinkMixers": [
+      {
+        "name": "Cola"
+      },
+      {
+        "name": "Orange Juice"
+      },
+      {
+        "name": "Cranberry Juice"
+      },
+      {
+        "name": "Red Bull",
+        "price": 8
+      },
+      {
+        "name": "Sugar Free Red Bull",
+        "price": 7
+      }
+    ],
+    "password": "laborum",
+    "completedSignUp": true,
+    "loc": [
+      20.8457111,
+      102.230921
+    ],
+    "address": {
+      "street": "Vernon Avenue",
+      "city": "Greer"
+    },
+    "phone": "(917) 454-3383",
+    "drinks": [
+      {
+        "name": "Red Bull Vodka",
+        "price": 12,
+        "ingredients": [
+          "Redbull",
+          "Vodka"
+        ]
+      },
+      {
+        "name": "Long Island Iced Tea",
+        "price": 14,
+        "ingredients": [
+          "vodka",
+          "rum",
+          "tequila",
+          "tea"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Manglo",
+    "barType": "Sports Bar",
+    "email": "Manglo22@Manglo.com",
+    "drinkMixers": [
+      {
+        "name": "Cola"
+      },
+      {
+        "name": "Orange Juice"
+      },
+      {
+        "name": "Cranberry Juice"
+      },
+      {
+        "name": "Red Bull",
+        "price": 8
+      },
+      {
+        "name": "Sugar Free Red Bull",
+        "price": 7
+      }
+    ],
+    "password": "nulla",
+    "completedSignUp": true,
+    "loc": [
+      20.8457111,
+      102.230921
+    ],
+    "address": {
+      "street": "Vandervoort Place",
+      "city": "Columbus"
+    },
+    "phone": "(863) 538-3277",
+    "drinks": [
+      {
+        "name": "Red Bull Vodka",
+        "price": 12,
+        "ingredients": [
+          "Redbull",
+          "Vodka"
+        ]
+      },
+      {
+        "name": "Long Island Iced Tea",
+        "price": 14,
+        "ingredients": [
+          "vodka",
+          "rum",
+          "tequila",
+          "tea"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Syntac",
+    "barType": "Night Club",
+    "email": "Syntac23@Syntac.com",
+    "drinkMixers": [
+      {
+        "name": "Cola"
+      },
+      {
+        "name": "Orange Juice"
+      },
+      {
+        "name": "Cranberry Juice"
+      },
+      {
+        "name": "Red Bull",
+        "price": 8
+      },
+      {
+        "name": "Sugar Free Red Bull",
+        "price": 7
+      }
+    ],
+    "password": "duis",
+    "completedSignUp": true,
+    "loc": [
+      20.8457111,
+      102.230921
+    ],
+    "address": {
+      "street": "Emerson Place",
+      "city": "Rodanthe"
+    },
+    "phone": "(957) 571-2465",
+    "drinks": [
+      {
+        "name": "Red Bull Vodka",
+        "price": 12,
+        "ingredients": [
+          "Redbull",
+          "Vodka"
+        ]
+      },
+      {
+        "name": "Long Island Iced Tea",
+        "price": 14,
+        "ingredients": [
+          "vodka",
+          "rum",
+          "tequila",
+          "tea"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Zanity",
+    "barType": "Night Club",
+    "email": "Zanity24@Zanity.com",
+    "drinkMixers": [
+      {
+        "name": "Cola"
+      },
+      {
+        "name": "Orange Juice"
+      },
+      {
+        "name": "Cranberry Juice"
+      },
+      {
+        "name": "Red Bull",
+        "price": 8
+      },
+      {
+        "name": "Sugar Free Red Bull",
+        "price": 7
+      }
+    ],
+    "password": "qui",
+    "completedSignUp": false,
+    "loc": [
+      20.8457111,
+      102.230921
+    ],
+    "address": {
+      "street": "Landis Court",
+      "city": "Clinton"
+    },
+    "phone": "(884) 471-3887",
+    "drinks": [
+      {
+        "name": "Red Bull Vodka",
+        "price": 12,
+        "ingredients": [
+          "Redbull",
+          "Vodka"
+        ]
+      },
+      {
+        "name": "Long Island Iced Tea",
+        "price": 14,
+        "ingredients": [
+          "vodka",
+          "rum",
+          "tequila",
+          "tea"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Tubalum",
+    "barType": "Sports Bar",
+    "email": "Tubalum25@Tubalum.com",
+    "drinkMixers": [
+      {
+        "name": "Cola"
+      },
+      {
+        "name": "Orange Juice"
+      },
+      {
+        "name": "Cranberry Juice"
+      },
+      {
+        "name": "Red Bull",
+        "price": 8
+      },
+      {
+        "name": "Sugar Free Red Bull",
+        "price": 7
+      }
+    ],
+    "password": "sunt",
+    "completedSignUp": true,
+    "loc": [
+      20.8457111,
+      102.230921
+    ],
+    "address": {
+      "street": "Folsom Place",
+      "city": "Mooresburg"
+    },
+    "phone": "(930) 538-3808",
+    "drinks": [
+      {
+        "name": "Red Bull Vodka",
+        "price": 12,
+        "ingredients": [
+          "Redbull",
+          "Vodka"
+        ]
+      },
+      {
+        "name": "Long Island Iced Tea",
+        "price": 14,
+        "ingredients": [
+          "vodka",
+          "rum",
+          "tequila",
+          "tea"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Utarian",
+    "barType": "Lounge",
+    "email": "Utarian26@Utarian.com",
+    "drinkMixers": [
+      {
+        "name": "Cola"
+      },
+      {
+        "name": "Orange Juice"
+      },
+      {
+        "name": "Cranberry Juice"
+      },
+      {
+        "name": "Red Bull",
+        "price": 8
+      },
+      {
+        "name": "Sugar Free Red Bull",
+        "price": 7
+      }
+    ],
+    "password": "fugiat",
+    "completedSignUp": true,
+    "loc": [
+      20.8457111,
+      102.230921
+    ],
+    "address": {
+      "street": "Navy Walk",
+      "city": "Leeper"
+    },
+    "phone": "(801) 442-3352",
+    "drinks": [
+      {
+        "name": "Red Bull Vodka",
+        "price": 12,
+        "ingredients": [
+          "Redbull",
+          "Vodka"
+        ]
+      },
+      {
+        "name": "Long Island Iced Tea",
+        "price": 14,
+        "ingredients": [
+          "vodka",
+          "rum",
+          "tequila",
+          "tea"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Eweville",
+    "barType": "Lounge",
+    "email": "Eweville27@Eweville.com",
+    "drinkMixers": [
+      {
+        "name": "Cola"
+      },
+      {
+        "name": "Orange Juice"
+      },
+      {
+        "name": "Cranberry Juice"
+      },
+      {
+        "name": "Red Bull",
+        "price": 8
+      },
+      {
+        "name": "Sugar Free Red Bull",
+        "price": 7
+      }
+    ],
+    "password": "cupidatat",
+    "completedSignUp": true,
+    "loc": [
+      20.8457111,
+      102.230921
+    ],
+    "address": {
+      "street": "Strickland Avenue",
+      "city": "Belvoir"
+    },
+    "phone": "(962) 428-3418",
+    "drinks": [
+      {
+        "name": "Red Bull Vodka",
+        "price": 12,
+        "ingredients": [
+          "Redbull",
+          "Vodka"
+        ]
+      },
+      {
+        "name": "Long Island Iced Tea",
+        "price": 14,
+        "ingredients": [
+          "vodka",
+          "rum",
+          "tequila",
+          "tea"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Callflex",
+    "barType": "Pub",
+    "email": "Callflex28@Callflex.com",
+    "drinkMixers": [
+      {
+        "name": "Cola"
+      },
+      {
+        "name": "Orange Juice"
+      },
+      {
+        "name": "Cranberry Juice"
+      },
+      {
+        "name": "Red Bull",
+        "price": 8
+      },
+      {
+        "name": "Sugar Free Red Bull",
+        "price": 7
+      }
+    ],
+    "password": "culpa",
+    "completedSignUp": true,
+    "loc": [
+      20.8457111,
+      102.230921
+    ],
+    "address": {
+      "street": "Blake Avenue",
+      "city": "Ryderwood"
+    },
+    "phone": "(909) 483-3753",
+    "drinks": [
+      {
+        "name": "Red Bull Vodka",
+        "price": 12,
+        "ingredients": [
+          "Redbull",
+          "Vodka"
+        ]
+      },
+      {
+        "name": "Long Island Iced Tea",
+        "price": 14,
+        "ingredients": [
+          "vodka",
+          "rum",
+          "tequila",
+          "tea"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Isologia",
+    "barType": "Pub",
+    "email": "Isologia29@Isologia.com",
+    "drinkMixers": [
+      {
+        "name": "Cola"
+      },
+      {
+        "name": "Orange Juice"
+      },
+      {
+        "name": "Cranberry Juice"
+      },
+      {
+        "name": "Red Bull",
+        "price": 8
+      },
+      {
+        "name": "Sugar Free Red Bull",
+        "price": 7
+      }
+    ],
+    "password": "cupidatat",
+    "completedSignUp": false,
+    "loc": [
+      20.8457111,
+      102.230921
+    ],
+    "address": {
+      "street": "Gallatin Place",
+      "city": "Carlton"
+    },
+    "phone": "(964) 475-2155",
+    "drinks": [
+      {
+        "name": "Red Bull Vodka",
+        "price": 12,
+        "ingredients": [
+          "Redbull",
+          "Vodka"
+        ]
+      },
+      {
+        "name": "Long Island Iced Tea",
+        "price": 14,
+        "ingredients": [
+          "vodka",
+          "rum",
+          "tequila",
+          "tea"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Incubus",
+    "barType": "Sports Bar",
+    "email": "Incubus30@Incubus.com",
+    "drinkMixers": [
+      {
+        "name": "Cola"
+      },
+      {
+        "name": "Orange Juice"
+      },
+      {
+        "name": "Cranberry Juice"
+      },
+      {
+        "name": "Red Bull",
+        "price": 8
+      },
+      {
+        "name": "Sugar Free Red Bull",
+        "price": 7
+      }
+    ],
+    "password": "aute",
+    "completedSignUp": true,
+    "loc": [
+      20.8457111,
+      102.230921
+    ],
+    "address": {
+      "street": "Grove Street",
+      "city": "Rivereno"
+    },
+    "phone": "(859) 491-3820",
+    "drinks": [
+      {
+        "name": "Red Bull Vodka",
+        "price": 12,
+        "ingredients": [
+          "Redbull",
+          "Vodka"
+        ]
+      },
+      {
+        "name": "Long Island Iced Tea",
+        "price": 14,
+        "ingredients": [
+          "vodka",
+          "rum",
+          "tequila",
+          "tea"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Scenty",
+    "barType": "Sports Bar",
+    "email": "Scenty31@Scenty.com",
+    "drinkMixers": [
+      {
+        "name": "Cola"
+      },
+      {
+        "name": "Orange Juice"
+      },
+      {
+        "name": "Cranberry Juice"
+      },
+      {
+        "name": "Red Bull",
+        "price": 8
+      },
+      {
+        "name": "Sugar Free Red Bull",
+        "price": 7
+      }
+    ],
+    "password": "ullamco",
+    "completedSignUp": true,
+    "loc": [
+      20.8457111,
+      102.230921
+    ],
+    "address": {
+      "street": "Tennis Court",
+      "city": "Hamilton"
+    },
+    "phone": "(882) 431-2291",
+    "drinks": [
+      {
+        "name": "Red Bull Vodka",
+        "price": 12,
+        "ingredients": [
+          "Redbull",
+          "Vodka"
+        ]
+      },
+      {
+        "name": "Long Island Iced Tea",
+        "price": 14,
+        "ingredients": [
+          "vodka",
+          "rum",
+          "tequila",
+          "tea"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Lotron",
+    "barType": "Lounge",
+    "email": "Lotron32@Lotron.com",
+    "drinkMixers": [
+      {
+        "name": "Cola"
+      },
+      {
+        "name": "Orange Juice"
+      },
+      {
+        "name": "Cranberry Juice"
+      },
+      {
+        "name": "Red Bull",
+        "price": 8
+      },
+      {
+        "name": "Sugar Free Red Bull",
+        "price": 7
+      }
+    ],
     "password": "veniam",
-    "drinkMixers": [
-      {
-        "name": "Cola"
-      },
-      {
-        "name": "Orange Juice"
-      },
-      {
-        "name": "Cranberry Juice"
-      },
-      {
-        "price": 8,
-        "name": "Red Bull"
-      },
-      {
-        "price": 7,
-        "name": "Sugar Free Red Bull"
-      }
+    "completedSignUp": true,
+    "loc": [
+      20.8457111,
+      102.230921
     ],
-    "email": "Zork54@Zork.com",
-    "barType": "Night Club",
-    "name": "Zork"
-  },
-  {
+    "address": {
+      "street": "Albany Avenue",
+      "city": "Ribera"
+    },
+    "phone": "(897) 448-2972",
     "drinks": [
       {
+        "name": "Red Bull Vodka",
+        "price": 12,
         "ingredients": [
           "Redbull",
           "Vodka"
-        ],
-        "price": 12,
-        "name": "Red Bull Vodka"
+        ]
       },
       {
+        "name": "Long Island Iced Tea",
+        "price": 14,
         "ingredients": [
           "vodka",
           "rum",
           "tequila",
           "tea"
-        ],
-        "price": 14,
-        "name": "Long Island Iced Tea"
+        ]
       }
-    ],
-    "phone": "(927) 519-2167",
-    "address": {
-      "city": "Brownsville",
-      "street": "Emerald Street"
-    },
-    "loc": [
-      22.9815081,
-      -23.582239
-    ],
-    "completedSignUp": true,
-    "password": "nisi",
+    ]
+  },
+  {
+    "name": "Anarco",
+    "barType": "Lounge",
+    "email": "Anarco33@Anarco.com",
     "drinkMixers": [
       {
         "name": "Cola"
@@ -3068,50 +1830,50 @@ var bars = [
         "name": "Cranberry Juice"
       },
       {
-        "price": 8,
-        "name": "Red Bull"
+        "name": "Red Bull",
+        "price": 8
       },
       {
-        "price": 7,
-        "name": "Sugar Free Red Bull"
+        "name": "Sugar Free Red Bull",
+        "price": 7
       }
     ],
-    "email": "Xymonk55@Xymonk.com",
-    "barType": "Night Club",
-    "name": "Xymonk"
-  },
-  {
+    "password": "veniam",
+    "completedSignUp": true,
+    "loc": [
+      20.8457111,
+      102.230921
+    ],
+    "address": {
+      "street": "Empire Boulevard",
+      "city": "Swartzville"
+    },
+    "phone": "(813) 504-3405",
     "drinks": [
       {
+        "name": "Red Bull Vodka",
+        "price": 12,
         "ingredients": [
           "Redbull",
           "Vodka"
-        ],
-        "price": 12,
-        "name": "Red Bull Vodka"
+        ]
       },
       {
+        "name": "Long Island Iced Tea",
+        "price": 14,
         "ingredients": [
           "vodka",
           "rum",
           "tequila",
           "tea"
-        ],
-        "price": 14,
-        "name": "Long Island Iced Tea"
+        ]
       }
-    ],
-    "phone": "(823) 438-2996",
-    "address": {
-      "city": "Trexlertown",
-      "street": "Oceanic Avenue"
-    },
-    "loc": [
-      22.9815081,
-      -23.582239
-    ],
-    "completedSignUp": true,
-    "password": "est",
+    ]
+  },
+  {
+    "name": "Yurture",
+    "barType": "Pub",
+    "email": "Yurture34@Yurture.com",
     "drinkMixers": [
       {
         "name": "Cola"
@@ -3123,17 +1885,1640 @@ var bars = [
         "name": "Cranberry Juice"
       },
       {
-        "price": 8,
-        "name": "Red Bull"
+        "name": "Red Bull",
+        "price": 8
       },
       {
-        "price": 7,
-        "name": "Sugar Free Red Bull"
+        "name": "Sugar Free Red Bull",
+        "price": 7
       }
     ],
-    "email": "Digirang56@Digirang.com",
+    "password": "laborum",
+    "completedSignUp": false,
+    "loc": [
+      20.8457111,
+      102.230921
+    ],
+    "address": {
+      "street": "Judge Street",
+      "city": "Lisco"
+    },
+    "phone": "(805) 451-3449",
+    "drinks": [
+      {
+        "name": "Red Bull Vodka",
+        "price": 12,
+        "ingredients": [
+          "Redbull",
+          "Vodka"
+        ]
+      },
+      {
+        "name": "Long Island Iced Tea",
+        "price": 14,
+        "ingredients": [
+          "vodka",
+          "rum",
+          "tequila",
+          "tea"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Retrack",
+    "barType": "Lounge",
+    "email": "Retrack35@Retrack.com",
+    "drinkMixers": [
+      {
+        "name": "Cola"
+      },
+      {
+        "name": "Orange Juice"
+      },
+      {
+        "name": "Cranberry Juice"
+      },
+      {
+        "name": "Red Bull",
+        "price": 8
+      },
+      {
+        "name": "Sugar Free Red Bull",
+        "price": 7
+      }
+    ],
+    "password": "dolor",
+    "completedSignUp": true,
+    "loc": [
+      20.8457111,
+      102.230921
+    ],
+    "address": {
+      "street": "Kent Street",
+      "city": "Cotopaxi"
+    },
+    "phone": "(865) 468-3999",
+    "drinks": [
+      {
+        "name": "Red Bull Vodka",
+        "price": 12,
+        "ingredients": [
+          "Redbull",
+          "Vodka"
+        ]
+      },
+      {
+        "name": "Long Island Iced Tea",
+        "price": 14,
+        "ingredients": [
+          "vodka",
+          "rum",
+          "tequila",
+          "tea"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Zensus",
+    "barType": "Lounge",
+    "email": "Zensus36@Zensus.com",
+    "drinkMixers": [
+      {
+        "name": "Cola"
+      },
+      {
+        "name": "Orange Juice"
+      },
+      {
+        "name": "Cranberry Juice"
+      },
+      {
+        "name": "Red Bull",
+        "price": 8
+      },
+      {
+        "name": "Sugar Free Red Bull",
+        "price": 7
+      }
+    ],
+    "password": "mollit",
+    "completedSignUp": false,
+    "loc": [
+      20.8457111,
+      102.230921
+    ],
+    "address": {
+      "street": "Dare Court",
+      "city": "Woodburn"
+    },
+    "phone": "(854) 542-3517",
+    "drinks": [
+      {
+        "name": "Red Bull Vodka",
+        "price": 12,
+        "ingredients": [
+          "Redbull",
+          "Vodka"
+        ]
+      },
+      {
+        "name": "Long Island Iced Tea",
+        "price": 14,
+        "ingredients": [
+          "vodka",
+          "rum",
+          "tequila",
+          "tea"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Medalert",
+    "barType": "Lounge",
+    "email": "Medalert37@Medalert.com",
+    "drinkMixers": [
+      {
+        "name": "Cola"
+      },
+      {
+        "name": "Orange Juice"
+      },
+      {
+        "name": "Cranberry Juice"
+      },
+      {
+        "name": "Red Bull",
+        "price": 8
+      },
+      {
+        "name": "Sugar Free Red Bull",
+        "price": 7
+      }
+    ],
+    "password": "nulla",
+    "completedSignUp": true,
+    "loc": [
+      20.8457111,
+      102.230921
+    ],
+    "address": {
+      "street": "Noll Street",
+      "city": "Westboro"
+    },
+    "phone": "(931) 455-2197",
+    "drinks": [
+      {
+        "name": "Red Bull Vodka",
+        "price": 12,
+        "ingredients": [
+          "Redbull",
+          "Vodka"
+        ]
+      },
+      {
+        "name": "Long Island Iced Tea",
+        "price": 14,
+        "ingredients": [
+          "vodka",
+          "rum",
+          "tequila",
+          "tea"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Avenetro",
+    "barType": "Sports Bar",
+    "email": "Avenetro38@Avenetro.com",
+    "drinkMixers": [
+      {
+        "name": "Cola"
+      },
+      {
+        "name": "Orange Juice"
+      },
+      {
+        "name": "Cranberry Juice"
+      },
+      {
+        "name": "Red Bull",
+        "price": 8
+      },
+      {
+        "name": "Sugar Free Red Bull",
+        "price": 7
+      }
+    ],
+    "password": "cupidatat",
+    "completedSignUp": true,
+    "loc": [
+      20.8457111,
+      102.230921
+    ],
+    "address": {
+      "street": "Russell Street",
+      "city": "Snowville"
+    },
+    "phone": "(836) 478-2578",
+    "drinks": [
+      {
+        "name": "Red Bull Vodka",
+        "price": 12,
+        "ingredients": [
+          "Redbull",
+          "Vodka"
+        ]
+      },
+      {
+        "name": "Long Island Iced Tea",
+        "price": 14,
+        "ingredients": [
+          "vodka",
+          "rum",
+          "tequila",
+          "tea"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Assistia",
     "barType": "Night Club",
-    "name": "Digirang"
+    "email": "Assistia39@Assistia.com",
+    "drinkMixers": [
+      {
+        "name": "Cola"
+      },
+      {
+        "name": "Orange Juice"
+      },
+      {
+        "name": "Cranberry Juice"
+      },
+      {
+        "name": "Red Bull",
+        "price": 8
+      },
+      {
+        "name": "Sugar Free Red Bull",
+        "price": 7
+      }
+    ],
+    "password": "deserunt",
+    "completedSignUp": false,
+    "loc": [
+      20.8457111,
+      102.230921
+    ],
+    "address": {
+      "street": "Fane Court",
+      "city": "Forbestown"
+    },
+    "phone": "(948) 434-3699",
+    "drinks": [
+      {
+        "name": "Red Bull Vodka",
+        "price": 12,
+        "ingredients": [
+          "Redbull",
+          "Vodka"
+        ]
+      },
+      {
+        "name": "Long Island Iced Tea",
+        "price": 14,
+        "ingredients": [
+          "vodka",
+          "rum",
+          "tequila",
+          "tea"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Jumpstack",
+    "barType": "Lounge",
+    "email": "Jumpstack40@Jumpstack.com",
+    "drinkMixers": [
+      {
+        "name": "Cola"
+      },
+      {
+        "name": "Orange Juice"
+      },
+      {
+        "name": "Cranberry Juice"
+      },
+      {
+        "name": "Red Bull",
+        "price": 8
+      },
+      {
+        "name": "Sugar Free Red Bull",
+        "price": 7
+      }
+    ],
+    "password": "ea",
+    "completedSignUp": true,
+    "loc": [
+      20.8457111,
+      102.230921
+    ],
+    "address": {
+      "street": "Railroad Avenue",
+      "city": "Strong"
+    },
+    "phone": "(958) 529-2667",
+    "drinks": [
+      {
+        "name": "Red Bull Vodka",
+        "price": 12,
+        "ingredients": [
+          "Redbull",
+          "Vodka"
+        ]
+      },
+      {
+        "name": "Long Island Iced Tea",
+        "price": 14,
+        "ingredients": [
+          "vodka",
+          "rum",
+          "tequila",
+          "tea"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Zentia",
+    "barType": "Pub",
+    "email": "Zentia41@Zentia.com",
+    "drinkMixers": [
+      {
+        "name": "Cola"
+      },
+      {
+        "name": "Orange Juice"
+      },
+      {
+        "name": "Cranberry Juice"
+      },
+      {
+        "name": "Red Bull",
+        "price": 8
+      },
+      {
+        "name": "Sugar Free Red Bull",
+        "price": 7
+      }
+    ],
+    "password": "in",
+    "completedSignUp": true,
+    "loc": [
+      20.8457111,
+      102.230921
+    ],
+    "address": {
+      "street": "Anna Court",
+      "city": "Sandston"
+    },
+    "phone": "(951) 533-2782",
+    "drinks": [
+      {
+        "name": "Red Bull Vodka",
+        "price": 12,
+        "ingredients": [
+          "Redbull",
+          "Vodka"
+        ]
+      },
+      {
+        "name": "Long Island Iced Tea",
+        "price": 14,
+        "ingredients": [
+          "vodka",
+          "rum",
+          "tequila",
+          "tea"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Mixers",
+    "barType": "Sports Bar",
+    "email": "Mixers42@Mixers.com",
+    "drinkMixers": [
+      {
+        "name": "Cola"
+      },
+      {
+        "name": "Orange Juice"
+      },
+      {
+        "name": "Cranberry Juice"
+      },
+      {
+        "name": "Red Bull",
+        "price": 8
+      },
+      {
+        "name": "Sugar Free Red Bull",
+        "price": 7
+      }
+    ],
+    "password": "duis",
+    "completedSignUp": true,
+    "loc": [
+      20.8457111,
+      102.230921
+    ],
+    "address": {
+      "street": "Bowne Street",
+      "city": "Outlook"
+    },
+    "phone": "(988) 486-3604",
+    "drinks": [
+      {
+        "name": "Red Bull Vodka",
+        "price": 12,
+        "ingredients": [
+          "Redbull",
+          "Vodka"
+        ]
+      },
+      {
+        "name": "Long Island Iced Tea",
+        "price": 14,
+        "ingredients": [
+          "vodka",
+          "rum",
+          "tequila",
+          "tea"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Snorus",
+    "barType": "Pub",
+    "email": "Snorus43@Snorus.com",
+    "drinkMixers": [
+      {
+        "name": "Cola"
+      },
+      {
+        "name": "Orange Juice"
+      },
+      {
+        "name": "Cranberry Juice"
+      },
+      {
+        "name": "Red Bull",
+        "price": 8
+      },
+      {
+        "name": "Sugar Free Red Bull",
+        "price": 7
+      }
+    ],
+    "password": "velit",
+    "completedSignUp": false,
+    "loc": [
+      20.8457111,
+      102.230921
+    ],
+    "address": {
+      "street": "Louisiana Avenue",
+      "city": "Buxton"
+    },
+    "phone": "(930) 505-2311",
+    "drinks": [
+      {
+        "name": "Red Bull Vodka",
+        "price": 12,
+        "ingredients": [
+          "Redbull",
+          "Vodka"
+        ]
+      },
+      {
+        "name": "Long Island Iced Tea",
+        "price": 14,
+        "ingredients": [
+          "vodka",
+          "rum",
+          "tequila",
+          "tea"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Handshake",
+    "barType": "Night Club",
+    "email": "Handshake44@Handshake.com",
+    "drinkMixers": [
+      {
+        "name": "Cola"
+      },
+      {
+        "name": "Orange Juice"
+      },
+      {
+        "name": "Cranberry Juice"
+      },
+      {
+        "name": "Red Bull",
+        "price": 8
+      },
+      {
+        "name": "Sugar Free Red Bull",
+        "price": 7
+      }
+    ],
+    "password": "adipisicing",
+    "completedSignUp": false,
+    "loc": [
+      20.8457111,
+      102.230921
+    ],
+    "address": {
+      "street": "Henry Street",
+      "city": "Bend"
+    },
+    "phone": "(922) 420-2137",
+    "drinks": [
+      {
+        "name": "Red Bull Vodka",
+        "price": 12,
+        "ingredients": [
+          "Redbull",
+          "Vodka"
+        ]
+      },
+      {
+        "name": "Long Island Iced Tea",
+        "price": 14,
+        "ingredients": [
+          "vodka",
+          "rum",
+          "tequila",
+          "tea"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Maineland",
+    "barType": "Pub",
+    "email": "Maineland45@Maineland.com",
+    "drinkMixers": [
+      {
+        "name": "Cola"
+      },
+      {
+        "name": "Orange Juice"
+      },
+      {
+        "name": "Cranberry Juice"
+      },
+      {
+        "name": "Red Bull",
+        "price": 8
+      },
+      {
+        "name": "Sugar Free Red Bull",
+        "price": 7
+      }
+    ],
+    "password": "elit",
+    "completedSignUp": false,
+    "loc": [
+      20.8457111,
+      102.230921
+    ],
+    "address": {
+      "street": "Troutman Street",
+      "city": "Cutter"
+    },
+    "phone": "(877) 492-2961",
+    "drinks": [
+      {
+        "name": "Red Bull Vodka",
+        "price": 12,
+        "ingredients": [
+          "Redbull",
+          "Vodka"
+        ]
+      },
+      {
+        "name": "Long Island Iced Tea",
+        "price": 14,
+        "ingredients": [
+          "vodka",
+          "rum",
+          "tequila",
+          "tea"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Zolavo",
+    "barType": "Sports Bar",
+    "email": "Zolavo46@Zolavo.com",
+    "drinkMixers": [
+      {
+        "name": "Cola"
+      },
+      {
+        "name": "Orange Juice"
+      },
+      {
+        "name": "Cranberry Juice"
+      },
+      {
+        "name": "Red Bull",
+        "price": 8
+      },
+      {
+        "name": "Sugar Free Red Bull",
+        "price": 7
+      }
+    ],
+    "password": "adipisicing",
+    "completedSignUp": true,
+    "loc": [
+      20.8457111,
+      102.230921
+    ],
+    "address": {
+      "street": "Morgan Avenue",
+      "city": "Santel"
+    },
+    "phone": "(981) 514-3577",
+    "drinks": [
+      {
+        "name": "Red Bull Vodka",
+        "price": 12,
+        "ingredients": [
+          "Redbull",
+          "Vodka"
+        ]
+      },
+      {
+        "name": "Long Island Iced Tea",
+        "price": 14,
+        "ingredients": [
+          "vodka",
+          "rum",
+          "tequila",
+          "tea"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Evidends",
+    "barType": "Night Club",
+    "email": "Evidends47@Evidends.com",
+    "drinkMixers": [
+      {
+        "name": "Cola"
+      },
+      {
+        "name": "Orange Juice"
+      },
+      {
+        "name": "Cranberry Juice"
+      },
+      {
+        "name": "Red Bull",
+        "price": 8
+      },
+      {
+        "name": "Sugar Free Red Bull",
+        "price": 7
+      }
+    ],
+    "password": "fugiat",
+    "completedSignUp": false,
+    "loc": [
+      20.8457111,
+      102.230921
+    ],
+    "address": {
+      "street": "Foster Avenue",
+      "city": "Wanamie"
+    },
+    "phone": "(860) 546-3331",
+    "drinks": [
+      {
+        "name": "Red Bull Vodka",
+        "price": 12,
+        "ingredients": [
+          "Redbull",
+          "Vodka"
+        ]
+      },
+      {
+        "name": "Long Island Iced Tea",
+        "price": 14,
+        "ingredients": [
+          "vodka",
+          "rum",
+          "tequila",
+          "tea"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Pasturia",
+    "barType": "Sports Bar",
+    "email": "Pasturia48@Pasturia.com",
+    "drinkMixers": [
+      {
+        "name": "Cola"
+      },
+      {
+        "name": "Orange Juice"
+      },
+      {
+        "name": "Cranberry Juice"
+      },
+      {
+        "name": "Red Bull",
+        "price": 8
+      },
+      {
+        "name": "Sugar Free Red Bull",
+        "price": 7
+      }
+    ],
+    "password": "qui",
+    "completedSignUp": true,
+    "loc": [
+      20.8457111,
+      102.230921
+    ],
+    "address": {
+      "street": "Kensington Walk",
+      "city": "Volta"
+    },
+    "phone": "(998) 438-2451",
+    "drinks": [
+      {
+        "name": "Red Bull Vodka",
+        "price": 12,
+        "ingredients": [
+          "Redbull",
+          "Vodka"
+        ]
+      },
+      {
+        "name": "Long Island Iced Tea",
+        "price": 14,
+        "ingredients": [
+          "vodka",
+          "rum",
+          "tequila",
+          "tea"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Exoswitch",
+    "barType": "Pub",
+    "email": "Exoswitch49@Exoswitch.com",
+    "drinkMixers": [
+      {
+        "name": "Cola"
+      },
+      {
+        "name": "Orange Juice"
+      },
+      {
+        "name": "Cranberry Juice"
+      },
+      {
+        "name": "Red Bull",
+        "price": 8
+      },
+      {
+        "name": "Sugar Free Red Bull",
+        "price": 7
+      }
+    ],
+    "password": "cupidatat",
+    "completedSignUp": true,
+    "loc": [
+      20.8457111,
+      102.230921
+    ],
+    "address": {
+      "street": "Quincy Street",
+      "city": "Delshire"
+    },
+    "phone": "(813) 537-2362",
+    "drinks": [
+      {
+        "name": "Red Bull Vodka",
+        "price": 12,
+        "ingredients": [
+          "Redbull",
+          "Vodka"
+        ]
+      },
+      {
+        "name": "Long Island Iced Tea",
+        "price": 14,
+        "ingredients": [
+          "vodka",
+          "rum",
+          "tequila",
+          "tea"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Qot",
+    "barType": "Night Club",
+    "email": "Qot50@Qot.com",
+    "drinkMixers": [
+      {
+        "name": "Cola"
+      },
+      {
+        "name": "Orange Juice"
+      },
+      {
+        "name": "Cranberry Juice"
+      },
+      {
+        "name": "Red Bull",
+        "price": 8
+      },
+      {
+        "name": "Sugar Free Red Bull",
+        "price": 7
+      }
+    ],
+    "password": "occaecat",
+    "completedSignUp": true,
+    "loc": [
+      20.8457111,
+      102.230921
+    ],
+    "address": {
+      "street": "Schenectady Avenue",
+      "city": "Aguila"
+    },
+    "phone": "(911) 465-3660",
+    "drinks": [
+      {
+        "name": "Red Bull Vodka",
+        "price": 12,
+        "ingredients": [
+          "Redbull",
+          "Vodka"
+        ]
+      },
+      {
+        "name": "Long Island Iced Tea",
+        "price": 14,
+        "ingredients": [
+          "vodka",
+          "rum",
+          "tequila",
+          "tea"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Billmed",
+    "barType": "Pub",
+    "email": "Billmed51@Billmed.com",
+    "drinkMixers": [
+      {
+        "name": "Cola"
+      },
+      {
+        "name": "Orange Juice"
+      },
+      {
+        "name": "Cranberry Juice"
+      },
+      {
+        "name": "Red Bull",
+        "price": 8
+      },
+      {
+        "name": "Sugar Free Red Bull",
+        "price": 7
+      }
+    ],
+    "password": "duis",
+    "completedSignUp": true,
+    "loc": [
+      20.8457111,
+      102.230921
+    ],
+    "address": {
+      "street": "Stratford Road",
+      "city": "Courtland"
+    },
+    "phone": "(999) 571-3034",
+    "drinks": [
+      {
+        "name": "Red Bull Vodka",
+        "price": 12,
+        "ingredients": [
+          "Redbull",
+          "Vodka"
+        ]
+      },
+      {
+        "name": "Long Island Iced Tea",
+        "price": 14,
+        "ingredients": [
+          "vodka",
+          "rum",
+          "tequila",
+          "tea"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Uxmox",
+    "barType": "Sports Bar",
+    "email": "Uxmox52@Uxmox.com",
+    "drinkMixers": [
+      {
+        "name": "Cola"
+      },
+      {
+        "name": "Orange Juice"
+      },
+      {
+        "name": "Cranberry Juice"
+      },
+      {
+        "name": "Red Bull",
+        "price": 8
+      },
+      {
+        "name": "Sugar Free Red Bull",
+        "price": 7
+      }
+    ],
+    "password": "exercitation",
+    "completedSignUp": false,
+    "loc": [
+      20.8457111,
+      102.230921
+    ],
+    "address": {
+      "street": "Barlow Drive",
+      "city": "Blende"
+    },
+    "phone": "(944) 560-3582",
+    "drinks": [
+      {
+        "name": "Red Bull Vodka",
+        "price": 12,
+        "ingredients": [
+          "Redbull",
+          "Vodka"
+        ]
+      },
+      {
+        "name": "Long Island Iced Tea",
+        "price": 14,
+        "ingredients": [
+          "vodka",
+          "rum",
+          "tequila",
+          "tea"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Entogrok",
+    "barType": "Lounge",
+    "email": "Entogrok53@Entogrok.com",
+    "drinkMixers": [
+      {
+        "name": "Cola"
+      },
+      {
+        "name": "Orange Juice"
+      },
+      {
+        "name": "Cranberry Juice"
+      },
+      {
+        "name": "Red Bull",
+        "price": 8
+      },
+      {
+        "name": "Sugar Free Red Bull",
+        "price": 7
+      }
+    ],
+    "password": "tempor",
+    "completedSignUp": true,
+    "loc": [
+      20.8457111,
+      102.230921
+    ],
+    "address": {
+      "street": "Irwin Street",
+      "city": "Wikieup"
+    },
+    "phone": "(803) 572-3766",
+    "drinks": [
+      {
+        "name": "Red Bull Vodka",
+        "price": 12,
+        "ingredients": [
+          "Redbull",
+          "Vodka"
+        ]
+      },
+      {
+        "name": "Long Island Iced Tea",
+        "price": 14,
+        "ingredients": [
+          "vodka",
+          "rum",
+          "tequila",
+          "tea"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Vidto",
+    "barType": "Sports Bar",
+    "email": "Vidto54@Vidto.com",
+    "drinkMixers": [
+      {
+        "name": "Cola"
+      },
+      {
+        "name": "Orange Juice"
+      },
+      {
+        "name": "Cranberry Juice"
+      },
+      {
+        "name": "Red Bull",
+        "price": 8
+      },
+      {
+        "name": "Sugar Free Red Bull",
+        "price": 7
+      }
+    ],
+    "password": "ea",
+    "completedSignUp": true,
+    "loc": [
+      20.8457111,
+      102.230921
+    ],
+    "address": {
+      "street": "Gunnison Court",
+      "city": "Driftwood"
+    },
+    "phone": "(989) 565-3788",
+    "drinks": [
+      {
+        "name": "Red Bull Vodka",
+        "price": 12,
+        "ingredients": [
+          "Redbull",
+          "Vodka"
+        ]
+      },
+      {
+        "name": "Long Island Iced Tea",
+        "price": 14,
+        "ingredients": [
+          "vodka",
+          "rum",
+          "tequila",
+          "tea"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Pearlesex",
+    "barType": "Pub",
+    "email": "Pearlesex55@Pearlesex.com",
+    "drinkMixers": [
+      {
+        "name": "Cola"
+      },
+      {
+        "name": "Orange Juice"
+      },
+      {
+        "name": "Cranberry Juice"
+      },
+      {
+        "name": "Red Bull",
+        "price": 8
+      },
+      {
+        "name": "Sugar Free Red Bull",
+        "price": 7
+      }
+    ],
+    "password": "in",
+    "completedSignUp": false,
+    "loc": [
+      20.8457111,
+      102.230921
+    ],
+    "address": {
+      "street": "Garden Place",
+      "city": "Winfred"
+    },
+    "phone": "(878) 538-3887",
+    "drinks": [
+      {
+        "name": "Red Bull Vodka",
+        "price": 12,
+        "ingredients": [
+          "Redbull",
+          "Vodka"
+        ]
+      },
+      {
+        "name": "Long Island Iced Tea",
+        "price": 14,
+        "ingredients": [
+          "vodka",
+          "rum",
+          "tequila",
+          "tea"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Reversus",
+    "barType": "Lounge",
+    "email": "Reversus56@Reversus.com",
+    "drinkMixers": [
+      {
+        "name": "Cola"
+      },
+      {
+        "name": "Orange Juice"
+      },
+      {
+        "name": "Cranberry Juice"
+      },
+      {
+        "name": "Red Bull",
+        "price": 8
+      },
+      {
+        "name": "Sugar Free Red Bull",
+        "price": 7
+      }
+    ],
+    "password": "culpa",
+    "completedSignUp": true,
+    "loc": [
+      20.8457111,
+      102.230921
+    ],
+    "address": {
+      "street": "Llama Court",
+      "city": "Coral"
+    },
+    "phone": "(942) 567-2194",
+    "drinks": [
+      {
+        "name": "Red Bull Vodka",
+        "price": 12,
+        "ingredients": [
+          "Redbull",
+          "Vodka"
+        ]
+      },
+      {
+        "name": "Long Island Iced Tea",
+        "price": 14,
+        "ingredients": [
+          "vodka",
+          "rum",
+          "tequila",
+          "tea"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Dentrex",
+    "barType": "Lounge",
+    "email": "Dentrex57@Dentrex.com",
+    "drinkMixers": [
+      {
+        "name": "Cola"
+      },
+      {
+        "name": "Orange Juice"
+      },
+      {
+        "name": "Cranberry Juice"
+      },
+      {
+        "name": "Red Bull",
+        "price": 8
+      },
+      {
+        "name": "Sugar Free Red Bull",
+        "price": 7
+      }
+    ],
+    "password": "in",
+    "completedSignUp": false,
+    "loc": [
+      20.8457111,
+      102.230921
+    ],
+    "address": {
+      "street": "Autumn Avenue",
+      "city": "Gibsonia"
+    },
+    "phone": "(820) 583-3693",
+    "drinks": [
+      {
+        "name": "Red Bull Vodka",
+        "price": 12,
+        "ingredients": [
+          "Redbull",
+          "Vodka"
+        ]
+      },
+      {
+        "name": "Long Island Iced Tea",
+        "price": 14,
+        "ingredients": [
+          "vodka",
+          "rum",
+          "tequila",
+          "tea"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Maroptic",
+    "barType": "Sports Bar",
+    "email": "Maroptic58@Maroptic.com",
+    "drinkMixers": [
+      {
+        "name": "Cola"
+      },
+      {
+        "name": "Orange Juice"
+      },
+      {
+        "name": "Cranberry Juice"
+      },
+      {
+        "name": "Red Bull",
+        "price": 8
+      },
+      {
+        "name": "Sugar Free Red Bull",
+        "price": 7
+      }
+    ],
+    "password": "voluptate",
+    "completedSignUp": false,
+    "loc": [
+      20.8457111,
+      102.230921
+    ],
+    "address": {
+      "street": "Rutledge Street",
+      "city": "Hannasville"
+    },
+    "phone": "(993) 561-2616",
+    "drinks": [
+      {
+        "name": "Red Bull Vodka",
+        "price": 12,
+        "ingredients": [
+          "Redbull",
+          "Vodka"
+        ]
+      },
+      {
+        "name": "Long Island Iced Tea",
+        "price": 14,
+        "ingredients": [
+          "vodka",
+          "rum",
+          "tequila",
+          "tea"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Inear",
+    "barType": "Night Club",
+    "email": "Inear59@Inear.com",
+    "drinkMixers": [
+      {
+        "name": "Cola"
+      },
+      {
+        "name": "Orange Juice"
+      },
+      {
+        "name": "Cranberry Juice"
+      },
+      {
+        "name": "Red Bull",
+        "price": 8
+      },
+      {
+        "name": "Sugar Free Red Bull",
+        "price": 7
+      }
+    ],
+    "password": "proident",
+    "completedSignUp": false,
+    "loc": [
+      20.8457111,
+      102.230921
+    ],
+    "address": {
+      "street": "Irving Avenue",
+      "city": "Cedarville"
+    },
+    "phone": "(873) 470-3742",
+    "drinks": [
+      {
+        "name": "Red Bull Vodka",
+        "price": 12,
+        "ingredients": [
+          "Redbull",
+          "Vodka"
+        ]
+      },
+      {
+        "name": "Long Island Iced Tea",
+        "price": 14,
+        "ingredients": [
+          "vodka",
+          "rum",
+          "tequila",
+          "tea"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Lyrichord",
+    "barType": "Lounge",
+    "email": "Lyrichord60@Lyrichord.com",
+    "drinkMixers": [
+      {
+        "name": "Cola"
+      },
+      {
+        "name": "Orange Juice"
+      },
+      {
+        "name": "Cranberry Juice"
+      },
+      {
+        "name": "Red Bull",
+        "price": 8
+      },
+      {
+        "name": "Sugar Free Red Bull",
+        "price": 7
+      }
+    ],
+    "password": "voluptate",
+    "completedSignUp": true,
+    "loc": [
+      20.8457111,
+      102.230921
+    ],
+    "address": {
+      "street": "Berkeley Place",
+      "city": "Linwood"
+    },
+    "phone": "(975) 446-2191",
+    "drinks": [
+      {
+        "name": "Red Bull Vodka",
+        "price": 12,
+        "ingredients": [
+          "Redbull",
+          "Vodka"
+        ]
+      },
+      {
+        "name": "Long Island Iced Tea",
+        "price": 14,
+        "ingredients": [
+          "vodka",
+          "rum",
+          "tequila",
+          "tea"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Jasper",
+    "barType": "Lounge",
+    "email": "Jasper61@Jasper.com",
+    "drinkMixers": [
+      {
+        "name": "Cola"
+      },
+      {
+        "name": "Orange Juice"
+      },
+      {
+        "name": "Cranberry Juice"
+      },
+      {
+        "name": "Red Bull",
+        "price": 8
+      },
+      {
+        "name": "Sugar Free Red Bull",
+        "price": 7
+      }
+    ],
+    "password": "labore",
+    "completedSignUp": false,
+    "loc": [
+      20.8457111,
+      102.230921
+    ],
+    "address": {
+      "street": "Hull Street",
+      "city": "Ellerslie"
+    },
+    "phone": "(959) 570-3787",
+    "drinks": [
+      {
+        "name": "Red Bull Vodka",
+        "price": 12,
+        "ingredients": [
+          "Redbull",
+          "Vodka"
+        ]
+      },
+      {
+        "name": "Long Island Iced Tea",
+        "price": 14,
+        "ingredients": [
+          "vodka",
+          "rum",
+          "tequila",
+          "tea"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Bristo",
+    "barType": "Sports Bar",
+    "email": "Bristo62@Bristo.com",
+    "drinkMixers": [
+      {
+        "name": "Cola"
+      },
+      {
+        "name": "Orange Juice"
+      },
+      {
+        "name": "Cranberry Juice"
+      },
+      {
+        "name": "Red Bull",
+        "price": 8
+      },
+      {
+        "name": "Sugar Free Red Bull",
+        "price": 7
+      }
+    ],
+    "password": "commodo",
+    "completedSignUp": false,
+    "loc": [
+      20.8457111,
+      102.230921
+    ],
+    "address": {
+      "street": "Girard Street",
+      "city": "Leroy"
+    },
+    "phone": "(853) 423-3360",
+    "drinks": [
+      {
+        "name": "Red Bull Vodka",
+        "price": 12,
+        "ingredients": [
+          "Redbull",
+          "Vodka"
+        ]
+      },
+      {
+        "name": "Long Island Iced Tea",
+        "price": 14,
+        "ingredients": [
+          "vodka",
+          "rum",
+          "tequila",
+          "tea"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Dancity",
+    "barType": "Night Club",
+    "email": "Dancity63@Dancity.com",
+    "drinkMixers": [
+      {
+        "name": "Cola"
+      },
+      {
+        "name": "Orange Juice"
+      },
+      {
+        "name": "Cranberry Juice"
+      },
+      {
+        "name": "Red Bull",
+        "price": 8
+      },
+      {
+        "name": "Sugar Free Red Bull",
+        "price": 7
+      }
+    ],
+    "password": "nulla",
+    "completedSignUp": true,
+    "loc": [
+      20.8457111,
+      102.230921
+    ],
+    "address": {
+      "street": "Cranberry Street",
+      "city": "Bellfountain"
+    },
+    "phone": "(881) 506-2621",
+    "drinks": [
+      {
+        "name": "Red Bull Vodka",
+        "price": 12,
+        "ingredients": [
+          "Redbull",
+          "Vodka"
+        ]
+      },
+      {
+        "name": "Long Island Iced Tea",
+        "price": 14,
+        "ingredients": [
+          "vodka",
+          "rum",
+          "tequila",
+          "tea"
+        ]
+      }
+    ]
   }
 ];
 
