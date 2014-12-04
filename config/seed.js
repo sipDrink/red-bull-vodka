@@ -3675,7 +3675,7 @@ remove(Bar)
         // if (index === 0) $log('Drinkbar', drink);
         return ""+drink.bar === ""+id;
       });
-      $log('drink!!!',_drinks[0].bar);
+      $log('drink!!!',drinks[0].bar);
       var _bartenders = _.filter(bartenders, { bar: id });
 
       _.forEach(_drinks, function(drink){
