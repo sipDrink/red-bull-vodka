@@ -3671,7 +3671,7 @@ remove(Bar)
       var id = bar._id;
       var _drinks = _.filter(drinks, { bar: id });
       var _bartenders = _.filter(bartenders, { bar: id });
-
+      $log('is there ', _drinks.length, _bartenders.length)
       _.forEach(_drinks, function(drink){
         bar.drinkTypes.push(drink._id);
       });
@@ -3682,7 +3682,6 @@ remove(Bar)
 
       bar.markModified('bartenders');
       bar.markModified('drinkTypes');
-      if (index === 0) {$log(bar);}
       return save(bar);
     });
 
