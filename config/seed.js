@@ -3682,6 +3682,7 @@ remove(Bar)
 
       bar.markModified('bartenders');
       bar.markModified('drinkTypes');
+      $log(bar.drinkTypes);
       return save(bar);
     });
 
