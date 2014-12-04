@@ -3651,6 +3651,7 @@ remove(Bar)
     var drinkTypeCreations = _.map(data.bars, function(bar) {
       var LDrinkTypes = _.map(drinkTypes, function(drinkType) {
         drinkType.bar = bar._id;
+        $log(drinkType.bar);
         return drinkType;
       });
       return createDrinkType(LDrinkTypes);
@@ -3669,7 +3670,6 @@ remove(Bar)
     var bartenders = results.tenders;
     var updatedBars = _.map(bars, function(bar, index) {
       var id = bar._id;
-      $log(drinks[index][0].bar);
       var _drinks = _.filter(drinks[index], { bar: id });
       var _bartenders = _.filter(bartenders[index], { bar: id });
 
