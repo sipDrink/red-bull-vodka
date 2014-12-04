@@ -3563,6 +3563,8 @@ remove(Bar)
   })
   .then(function() {
     return createBar(bars);
+  }, function(err) {
+    $log('Error in creating bars', err);
   })
   .then(function(bars) {
     var bartenderCreations = _.map(bars, function(bar) {
@@ -3580,6 +3582,8 @@ remove(Bar)
           tenders: bartenders
         };
       });
+  }, function(err){
+    $log('Error in creating bartenders', err);
   })
   .then(function(data) {
     var drinkTypeCreations = _.map(data.bars, function(bar) {
@@ -3596,6 +3600,8 @@ remove(Bar)
         return data;
       });
 
+  }, function(err) {
+    $log('Error in creating drinks', err);
   })
   .then(function(results) {
     var bars = results.bars;
@@ -3631,7 +3637,7 @@ remove(Bar)
     $log('Execution time ' + time);
   })
   .fail(function(err) {
-    $log('Error in removing', err);
+
   });
 
 // $q.all(
