@@ -3670,10 +3670,9 @@ remove(Bar)
 
     var updatedBars = _.map(bars, function(bar, index) {
       var id = bar._id;
+      if (index === 0) $log('bar id', id);
       var _drinks = _.filter(drinks, function(drink) {
-        if(""+drink.bar === ""+id) {
-          $log('ITS A MATCH!!!');
-        }
+        if (index === 0) $log('Drinkbar', drink.bar);
         return ""+drink.bar === ""+id;
       });
       var _bartenders = _.filter(bartenders, { bar: id });
