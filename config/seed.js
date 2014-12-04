@@ -3667,11 +3667,13 @@ remove(Bar)
     var bars = results.bars;
     var drinks = results.drinkTypes;
     var bartenders = results.tenders;
+
+    $log('is there ', drinks[0], bartenders[0])
+
     var updatedBars = _.map(bars, function(bar, index) {
       var id = bar._id;
       var _drinks = _.filter(drinks, { bar: id });
       var _bartenders = _.filter(bartenders, { bar: id });
-      $log('is there ', _drinks.length, _bartenders.length)
       _.forEach(_drinks, function(drink){
         bar.drinkTypes.push(drink._id);
       });
