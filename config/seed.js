@@ -3688,8 +3688,11 @@ remove(Bar)
     return $q.all(updatedBars);
   })
   .then(function(bars){
-    $log('Seeded DB with ' + bars.length + ' Bars'.bold.cyan);
-    $log('Execution time ' + getTime().bold.underline.cyan);
+    var seedMessage = 'Seeded DB with ' + bars.length + ' Bars';
+    var timeMessage = 'Execution time ' + getTime();
+
+    $log(seedMessage.bold.cyan);
+    $log(timeMessage.bold.underline.magenta);
   })
   .fail(function(err) {
     $log('Error in seed', err);
