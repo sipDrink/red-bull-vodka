@@ -3688,7 +3688,7 @@ remove(Bar)
     return $q.all(updatedBars);
   })
   .then(function(bars){
-
+    $log(bars[0]);
     var seedMessage = 'Seeded DB with ' + bars.length + ' Bars'.bold.cyan;
     var timeMessage = 'Execution time ' + getTime().bold.underline.green;
 
