@@ -3663,15 +3663,13 @@ remove(Bar)
 
   })
   .then(function(results) {
-    // $log(  getTime() + ' Updating bars');
-    $log(results.drinkTypes);
     var bars = results.bars;
     var drinks = results.drinkTypes;
     var bartenders = results.tenders;
 
-    var updatedBars = _.map(bars, function(bar, index) {
+    var updatedBars = _.map(bars, function(bar) {
       var id = bar._id;
-      if (index === 0) $log('bar id', id);
+      $log(drinks.length);
       var _drinks = _.filter(drinks, { bar: id });
       var _bartenders = _.filter(bartenders, { bar: id });
 
