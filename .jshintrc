@@ -13,6 +13,7 @@
     "$log": false,
     "$handleError": false,
     "$channels": false,
+    "$Dispatcher": false,
     "Bar": false,
     "Bartender": false,
     "Category": false,
