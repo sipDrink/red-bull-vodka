@@ -3657,6 +3657,7 @@ remove(Bar)
 
     return $q.all(drinkTypeCreations)
       .then(function(drinkTypes) {
+        $log(drinkTypes);
         data.drinkTypes = drinkTypes;
         return data;
       });
@@ -3671,11 +3672,7 @@ remove(Bar)
     var updatedBars = _.map(bars, function(bar, index) {
       var id = bar._id;
       if (index === 0) $log('bar id', id);
-      var _drinks = _.filter(drinks, function(drink) {
-        // if (index === 0) $log('Drinkbar', drink);
-        return ""+drink.bar === ""+id;
-      });
-      $log('drink!!!',drinks[0].bar);
+      var _drinks = _.filter(drinks, { bar: id });
       var _bartenders = _.filter(bartenders, { bar: id });
 
       _.forEach(_drinks, function(drink){
