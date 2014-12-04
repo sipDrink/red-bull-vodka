@@ -3666,7 +3666,7 @@ remove(Bar)
     var bars = results.bars;
     var drinks = results.drinkTypes;
     var bartenders = results.tenders;
-
+    $log(JSON.stringify(drinks[0]));
     var updatedBars = _.map(bars, function(bar) {
       var id = bar._id;
       $log(drinks.length, _.isArray(drinks[0]));
