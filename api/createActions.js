@@ -24,6 +24,7 @@ module.exports = function(model) {
     }
 
     _.forEach(options, function(args, option) {
+      $log('options', option);
       query = query[option](args);
     });
 
