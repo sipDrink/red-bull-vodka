@@ -3669,7 +3669,7 @@ remove(Bar)
 
     var updatedBars = _.map(bars, function(bar) {
       var id = bar._id;
-      $log(drinks.length);
+      $log(drinks.length, drinks[0].bar);
       var _drinks = _.filter(drinks, { bar: id });
       var _bartenders = _.filter(bartenders, { bar: id });
 

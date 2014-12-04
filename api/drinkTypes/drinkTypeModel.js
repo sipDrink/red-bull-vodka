@@ -10,7 +10,7 @@ var DrinkTypeSchema = new Schema({
 
   bar: {
     type: Schema.ObjectId,
-    ref: 'ref'
+    ref: 'bar'
   },
 
   brands: [{
