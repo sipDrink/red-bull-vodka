@@ -3609,9 +3609,9 @@ var save = function(doc) {
   return future.promise;
 };
 
-var start = new Date().getMilliseconds();
+var start = new Date().getTime();
 var getTime = function(){
-  return new Date().getMilliseconds() - start;
+  return new Date().getTime() - start;
 };
 
 remove(Bar)
@@ -3667,7 +3667,6 @@ remove(Bar)
     var bars = results.bars;
     var drinks = results.drinkTypes;
     var bartenders = results.tenders;
-    $log(drinks[0]);
     var updatedBars = _.map(bars, function(bar) {
       var id = bar._id;
       var _drinks = _.filter(drinks, { bar: id });
