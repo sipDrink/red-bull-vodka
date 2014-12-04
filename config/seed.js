@@ -3552,9 +3552,9 @@ var save = function(doc) {
   return future.promise;
 };
 
-var start = new Date().getSeconds();
+var start = new Date().getMilliseconds();
 var getTime = function(){
-  return new Date().getSeconds() - start;
+  return new Date().getMilliseconds() - start;
 };
 
 remove(Bar)
@@ -3610,7 +3610,7 @@ remove(Bar)
     var bars = results.bars;
     var drinks = results.drinkTypes;
     var bartenders = results.tenders;
-
+    $log(bars[0]);
     var updatedBars = _.map(bars, function(bar) {
       var id = bar._id;
       var _drinks = _.filter(drinks, { bar: id });
@@ -3626,6 +3626,7 @@ remove(Bar)
 
       bar.markModified('bartenders');
       bar.markModified('drinkTypes');
+
       return save(bar);
     });
 
@@ -3633,14 +3634,11 @@ remove(Bar)
 
   })
   .then(function(bars){
-    var length = bars.length;
-    var time = new Date().getSeconds() - start;
-
-    $log('Seeded DB with ' + length + ' Bars');
-    $log('Execution time ' + time);
+    $log('Seeded DB with ' + bars.length + ' Bars');
+    $log('Execution time ' + getTime());
   })
   .fail(function(err) {
-    $log('Error in removing', err);
+    $log('Error in seed', err);
   });
 
 // $q.all(
