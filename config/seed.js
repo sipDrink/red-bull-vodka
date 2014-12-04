@@ -3553,6 +3553,9 @@ var save = function(doc) {
 };
 
 var start = new Date().getSeconds();
+var getTime = function(){
+  return new Date().getSeconds() - start;
+};
 
 remove(Bar)
   .then(function() {
@@ -3562,11 +3565,12 @@ remove(Bar)
     return remove(Bartender);
   })
   .then(function() {
+    $log(  getTime() + ' Creating bars');
     return createBar(bars);
-  }, function(err) {
-    $log('Error in creating bars', err);
   })
   .then(function(bars) {
+    $log(  getTime() + ' Creating bartenders');
+
     var bartenderCreations = _.map(bars, function(bar) {
       var Lbartenders = _.map(bartenders, function(bartender) {
         bartender.bar = bar._id;
@@ -3582,10 +3586,10 @@ remove(Bar)
           tenders: bartenders
         };
       });
-  }, function(err){
-    $log('Error in creating bartenders', err);
   })
   .then(function(data) {
+    $log(  getTime() + ' Creating drinkTypes');
+
     var drinkTypeCreations = _.map(data.bars, function(bar) {
       var LDrinkTypes = _.map(drinkTypes, function(drinkType) {
         drinkType.bar = bar._id;
@@ -3600,10 +3604,9 @@ remove(Bar)
         return data;
       });
 
-  }, function(err) {
-    $log('Error in creating drinks', err);
   })
   .then(function(results) {
+    $log(  getTime() + ' Updating bars');
     var bars = results.bars;
     var drinks = results.drinkTypes;
     var bartenders = results.tenders;
@@ -3637,7 +3640,7 @@ remove(Bar)
     $log('Execution time ' + time);
   })
   .fail(function(err) {
-
+    $log('Error in removing', err);
   });
 
 // $q.all(
