@@ -1,4 +1,5 @@
 'use strict';
+var colors = require('colors');
 
 var bars = [
   {
@@ -3687,8 +3688,8 @@ remove(Bar)
     return $q.all(updatedBars);
   })
   .then(function(bars){
-    $log('Seeded DB with ' + bars.length + ' Bars');
-    $log('Execution time ' + getTime());
+    $log('Seeded DB with ' + bars.length + ' Bars'.bold.cyan);
+    $log('Execution time ' + getTime().bold.underline.cyan);
   })
   .fail(function(err) {
     $log('Error in seed', err);
