@@ -3529,7 +3529,64 @@ var bartenders = [
   {name: "Vivian", password: '9238gui83483', username: 'Viv'},
 ];
 
-var drinkTypes = [];
+var drinkTypes = [
+  {
+    name: "Vodka",
+    brands: [
+      {
+        name: "Ciroc",
+        price: 15
+      },
+      {
+        name: 'Grey Goose',
+        price: 14
+      }
+    ]
+  },
+  {
+    name: "Beer",
+    brands: [
+      {
+        name: "Budwiser",
+        price: 6
+      },
+      {
+        name: "Dos Equis",
+        price: 7
+      },
+      {
+        name: "Laguna",
+        price: 8
+      }
+    ]
+  },
+  {
+    name: "Whiskey",
+    brands: [
+      {
+        name: "Jack Daniels",
+        price: 11
+      },
+      {
+        name: "Wild Turkey",
+        price: 8
+      }
+    ]
+  },
+  {
+    name: "Bourbon",
+    brands: [
+      {
+        name: "Jim Bean",
+        price: 14
+      },
+      {
+        name: "Evan Williams",
+        price: 16
+      }
+    ]
+  }
+];
 
 var createBar = $q.nbind(Bar.create, Bar);
 var createDrinkType = $q.nbind(DrinkType.create, DrinkType);
@@ -3546,7 +3603,7 @@ var remove = function(model) {
 
 var save = function(doc) {
   var future = $q.defer();
-  doc.save(function(err, saved){
+  doc.save(function(err){
     err ? future.reject(err) : future.resolve();
   });
   return future.promise;
