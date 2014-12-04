@@ -30,9 +30,10 @@ global.$channels = _.remove(channels, function(file) {
 
 $log('--- Channels ---'.bold.cyan);
 _.forEach($channels, function(channel) {
-  var message = '** ' + channel + ' **';
+  var message = '  ** ' + channel + ' **';
   $log(message.underline.green);
 });
+$log('----------------'.bold.cyan);
 
 _.forEach($channels, function(channel) {
   var directory = channel;
