@@ -3657,7 +3657,6 @@ remove(Bar)
 
     return $q.all(drinkTypeCreations)
       .then(function(drinkTypes) {
-        $log(drinkTypes);
         data.drinkTypes = drinkTypes;
         return data;
       });
@@ -3665,6 +3664,7 @@ remove(Bar)
   })
   .then(function(results) {
     // $log(  getTime() + ' Updating bars');
+    $log(results.drinkTypes);
     var bars = results.bars;
     var drinks = results.drinkTypes;
     var bartenders = results.tenders;
