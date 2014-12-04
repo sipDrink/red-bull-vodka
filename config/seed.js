@@ -1,4 +1,5 @@
 'use strict';
+
 var bars = [
   {
     "name": "Earthplex",
@@ -3528,9 +3529,12 @@ var bartenders = [
   {name: "Vivian", password: '9238gui83483', username: 'Viv'},
 ];
 
+var drinkTypes = [];
+
 var createBar = $q.nbind(Bar.create, Bar);
 var createDrinkType = $q.nbind(DrinkType.create, DrinkType);
 var createBarTender = $q.nbind(Bartender.create, Bartender);
+
 
 var remove = function(model) {
   var future = $q.defer();
@@ -3539,6 +3543,17 @@ var remove = function(model) {
   });
   return future.promise;
 };
+
+var save = function(doc) {
+  var future = $q.defer();
+  doc.save(function(err, saved){
+    err ? future.reject(err) : future.resolve();
+  });
+  return future.promise;
+};
+
+var start = new Date().getSeconds();
+
 remove(Bar)
   .then(function() {
     return remove(DrinkType);
@@ -3555,14 +3570,65 @@ remove(Bar)
         bartender.bar = bar._id;
         return bartender;
       });
-      console.log('BARTENDERS', Lbartenders);
       return createBarTender(Lbartenders);
     });
 
     return $q.all(bartenderCreations)
       .then(function(bartenders) {
-        $log(bartenders);
+        return {
+          bars: bars,
+          tenders: bartenders
+        };
       });
+  })
+  .then(function(data) {
+    var drinkTypeCreations = _.map(data.bars, function(bar) {
+      var LDrinkTypes = _.map(drinkTypes, function(drinkType) {
+        drinkType.bar = bar._id;
+        return drinkType;
+      });
+      return createDrinkType(LDrinkTypes);
+    });
+
+    return $q.all(drinkTypeCreations)
+      .then(function(drinkTypes) {
+        data.drinkTypes = drinkTypes;
+        return data;
+      });
+
+  })
+  .then(function(results) {
+    var bars = results.bars;
+    var drinks = results.drinkTypes;
+    var bartenders = results.tenders;
+
+    var updatedBars = _.map(bars, function(bar) {
+      var id = bar._id;
+      var _drinks = _.filter(drinks, { bar: id });
+      var _bartenders = _.filter(bartenders, { bar: id });
+
+      _.forEach(_drinks, function(drink){
+        bar.drinkTypes.push(drink._id);
+      });
+
+      _.forEach(_bartenders, function(bartender) {
+        bar.bartenders.push(bartender._id);
+      });
+
+      bar.markModified('bartenders');
+      bar.markModified('drinkTypes');
+      return save(bar);
+    });
+
+    return $q.all(updatedBars);
+
+  })
+  .then(function(bars){
+    var length = bars.length;
+    var time = new Date().getSeconds() - start;
+
+    $log('Seeded DB with ' + length + ' Bars');
+    $log('Execution time ' + time);
   })
   .fail(function(err) {
     $log('Error in removing', err);
