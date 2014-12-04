@@ -3,7 +3,7 @@
 */
 
 var fs = require('fs');
-
+var colors = require('colors');
 String.prototype.capitalize = function(){
   return this.charAt(0).toUpperCase() + this.slice(1);
 };
@@ -28,7 +28,11 @@ global.$channels = _.remove(channels, function(file) {
   return !/.js/g.test(file);
 });
 
-$log('Channels', $channels);
+$log('--- Channels ---'.bold.cyan);
+_.forEach($channels, function(channel) {
+  var message = '** ' + channel + ' **';
+  $log(message.underline.green);
+});
 
 _.forEach($channels, function(channel) {
   var directory = channel;
