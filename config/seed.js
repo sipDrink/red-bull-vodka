@@ -3611,7 +3611,7 @@ var save = function(doc) {
 
 var start = new Date().getTime();
 var getTime = function(){
-  return new Date().getTime() - start;
+  return new Date().getTime() - start + ' ms';
 };
 
 remove(Bar)
@@ -3622,11 +3622,11 @@ remove(Bar)
     return remove(Bartender);
   })
   .then(function() {
-    $log(  getTime() + ' Creating bars');
+    // $log(  getTime() + ' Creating bars');
     return createBar(bars);
   })
   .then(function(bars) {
-    $log(  getTime() + ' Creating bartenders');
+    // $log(  getTime() + ' Creating bartenders');
 
     var bartenderCreations = _.map(bars, function(bar) {
       var Lbartenders = _.map(bartenders, function(bartender) {
@@ -3645,7 +3645,7 @@ remove(Bar)
       });
   })
   .then(function(data) {
-    $log(  getTime() + ' Creating drinkTypes');
+    // $log(  getTime() + ' Creating drinkTypes');
 
     var drinkTypeCreations = _.map(data.bars, function(bar) {
       var LDrinkTypes = _.map(drinkTypes, function(drinkType) {
@@ -3663,11 +3663,11 @@ remove(Bar)
 
   })
   .then(function(results) {
-    $log(  getTime() + ' Updating bars');
+    // $log(  getTime() + ' Updating bars');
     var bars = results.bars;
     var drinks = results.drinkTypes;
     var bartenders = results.tenders;
-    var updatedBars = _.map(bars, function(bar) {
+    var updatedBars = _.map(bars, function(bar, index) {
       var id = bar._id;
       var _drinks = _.filter(drinks, { bar: id });
       var _bartenders = _.filter(bartenders, { bar: id });
@@ -3682,12 +3682,11 @@ remove(Bar)
 
       bar.markModified('bartenders');
       bar.markModified('drinkTypes');
-
+      if (index === 0) {$log(bar);}
       return save(bar);
     });
 
     return $q.all(updatedBars);
-
   })
   .then(function(bars){
     $log('Seeded DB with ' + bars.length + ' Bars');
@@ -3696,34 +3695,3 @@ remove(Bar)
   .fail(function(err) {
     $log('Error in seed', err);
   });
-
-// $q.all(
-//   remove(Bar),
-//   remove(DrinkType),
-//   remove(Bartender)
-// ).then(function() {
-//   $log('---DB cleared---');
-//   return createBar(bars);
-// }, function(err){$log('Error removing data in seed', err)})
-// .then(function(bars) {
-//   // return createBarTender(bartenders)
-//   //   .then(function(bartenders) {
-
-//   //   });
-//   var bartenderCreations = _.map(bars, function(bar) {
-//     var Lbartenders = _.map(bartenders, function(bartender) {
-//       bartender.bar = bar._id;
-//       return bartender;
-//     });
-//     console.log('BARTENDERS', Lbartenders);
-//     return createBarTender(Lbartenders);
-//   });
-
-//   return $q.all(bartenderCreations)
-//     .then(function(bartenders) {
-//       $log(bartenders);
-//     });
-// })
-// .fail(function(err) {
-//   $log('Error somewhere in seed ', err);
-// });
