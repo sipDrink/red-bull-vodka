@@ -3664,6 +3664,7 @@ remove(Bar)
       });
       return createBarTender(Lbartenders);
     });
+    $log('BAR TENDER', bartenderCreations);
 
     return $q.all(bartenderCreations)
       .then(function(bartenders) {
@@ -3684,7 +3685,7 @@ remove(Bar)
       });
       return createDrinkType(LDrinkTypes);
     });
-    $log(drinkTypeCreations);
+    $log('DRINK TYPES', drinkTypeCreations);
     return $q.all(drinkTypeCreations)
       .then(function(drinkTypes) {
         data.drinkTypes = drinkTypes;
