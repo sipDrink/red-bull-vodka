@@ -3593,7 +3593,6 @@ var createBar = $q.nbind(Bar.create, Bar);
 var createDrinkType = $q.nbind(DrinkType.create, DrinkType);
 var createBarTender = $q.nbind(Bartender.create, Bartender);
 
-
 var remove = function(model) {
   var future = $q.defer();
   model.find().remove(function(err) {
@@ -3606,6 +3605,33 @@ var save = function(doc) {
   var future = $q.defer();
   doc.save(function(err){
     err ? future.reject(err) : future.resolve();
+  });
+  return future.promise;
+};
+
+var updateBar = function(bar) {
+  var future = $q.defer();
+  Bartender.find({ 'bar': bar._id }, function(err, bartenders) {
+    if (err) return future.reject(err);
+    _.forEach(bartenders, function(bartender) {
+      bar.bartenders.push(bartender._id);
+    });
+    bar.markModified('bartenders');
+
+    DrinkType.find({ 'bar': bar._id }, function(err, drinkTypes) {
+      if (err) return future.reject(err);
+      _.forEach(drinkTypes, function(drinkType) {
+        bar.drinkTypes.push(drinkType._id);
+      });
+      bar.markModified('drinkTypes');
+      save(bar)
+        .then(function(bar) {
+          future.resolve(bar);
+        })
+        .fail(function(err) {
+          future.reject(err);
+        });
+    });
   });
   return future.promise;
 };
@@ -3651,7 +3677,6 @@ remove(Bar)
     var drinkTypeCreations = _.map(data.bars, function(bar) {
       var LDrinkTypes = _.map(drinkTypes, function(drinkType) {
         drinkType.bar = bar._id;
-        $log(drinkType.bar);
         return drinkType;
       });
       return createDrinkType(LDrinkTypes);
@@ -3666,24 +3691,10 @@ remove(Bar)
   })
   .then(function(results) {
     var bars = results.bars;
-    var drinks = results.drinkTypes;
-    var bartenders = results.tenders;
+
     var updatedBars = _.map(bars, function(bar, index) {
       var id = bar._id;
-      var _drinks = _.filter(drinks[index], { bar: id });
-      var _bartenders = _.filter(bartenders[index], { bar: id });
-
-      _.forEach(_drinks, function(drink){
-        bar.drinkTypes.push(drink._id);
-      });
-
-      _.forEach(_bartenders, function(bartender) {
-        bar.bartenders.push(bartender._id);
-      });
-
-      bar.markModified('bartenders');
-      bar.markModified('drinkTypes');
-      return save(bar);
+      return updateBar(id);
     });
 
     return $q.all(updatedBars);

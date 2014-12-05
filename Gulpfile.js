@@ -4,6 +4,7 @@ var gulp = require('gulp');
 var _ = require('lodash');
 var jsDoc = require('gulp-jsdoc-to-markdown');
 var concat = require('gulp-concat');
+var doxx = require('gulp-doxx');
 var localVars;
 
 // try to load up local vars
@@ -19,7 +20,7 @@ gulp.task('set', function() {
   });
 });
 
-gulp.task('document', function() {
+gulp.task('docs', function() {
   return gulp.src(['index.js','api/**/*.js', 'config/**/*.js'])
     .pipe(concat('doc.md'))
     .pipe(jsDoc())
@@ -28,5 +29,14 @@ gulp.task('document', function() {
     })
     .pipe(gulp.dest('documentation/'));
 });
+
+gulp.task('dox', function() {
+  return gulp.src(['index.js','api/**/*.js', 'config/**/*.js'])
+    // .pipe(concat('doc.md'))
+    .pipe(doxx({
+      title: 'Sip mobile'
+    }))
+    .pipe(gulp.dest('documentation/'));
+  });
 
 gulp.task('default', ['set']);

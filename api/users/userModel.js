@@ -2,8 +2,6 @@
 
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-var Q = require('q');
-var _ = require('lodash');
 
 var UserSchema = new Schema({
   name: String,
@@ -42,7 +40,7 @@ UserSchema.statics.findOneOrCreateOne = function(query, maybe) {
     throw Error('You must pass in an user just in case');
   }
 
-  var future = Q.defer();
+  var future = $q.defer();
   var User = mongoose.model('user');
 
   User.findOne(query, function(err, user) {

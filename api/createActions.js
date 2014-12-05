@@ -1,12 +1,11 @@
 'user strict';
-/*
-  Default Actions
-    - All resources use these default actions for incoming events
-
-    @model
-      - The resource model ex: User || Drink
+/**
+ * Module used to define basic crud methods on all resources, ready to be used with channels
+ * @module createActions
+ * @params {object} model - A mongoose model
+ *
 */
-module.exports = function(model) {
+module.exports = function createActions(model) {
   var queryBuilder = function(method, criteria, opts, update) {
     var options = {
       limit: 20
