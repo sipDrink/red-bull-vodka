@@ -23,7 +23,6 @@ module.exports = function createActions(model) {
     }
 
     _.forEach(options, function(args, option) {
-      $log('options', option);
       query = query[option](args);
     });
 
@@ -62,8 +61,8 @@ module.exports = function createActions(model) {
           actions: {}
         };
 
-        $log('Got results from get');
         message.actions[res.action] = results;
+        $log(message);
         $dispatcher.pub(message, res.channel);
       });
     },

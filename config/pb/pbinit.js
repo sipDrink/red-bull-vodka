@@ -18,6 +18,7 @@ $Dispatcher.prototype.pub = function(message, channel) {
   var that = this;
   message.from = $config.alias;
   message.to = 'mobile';
+
   this.pb.publish({
     channel: channel,
     message: message,
@@ -26,7 +27,7 @@ $Dispatcher.prototype.pub = function(message, channel) {
     },
     error: function(error) {
       $handleError(error, "PUB Error");
-      that.pub(message, channel);
+      // that.pub(message, channel);
     }
   });
 };
