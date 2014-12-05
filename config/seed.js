@@ -3684,7 +3684,7 @@ remove(Bar)
       });
       return createDrinkType(LDrinkTypes);
     });
-
+    $log(drinkTypeCreations);
     return $q.all(drinkTypeCreations)
       .then(function(drinkTypes) {
         data.drinkTypes = drinkTypes;
