@@ -3693,8 +3693,7 @@ remove(Bar)
     var bars = results.bars;
 
     var updatedBars = _.map(bars, function(bar, index) {
-      var id = bar._id;
-      return updateBar(id);
+      return updateBar(bar);
     });
 
     return $q.all(updatedBars);
