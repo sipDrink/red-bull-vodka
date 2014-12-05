@@ -8,7 +8,7 @@
 module.exports = function createActions(model) {
   var queryBuilder = function(method, criteria, opts, update) {
     var options = {
-      limit: 20
+      limit: 5
     };
     _.extend(options, opts || {});
 
