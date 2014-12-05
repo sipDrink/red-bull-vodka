@@ -3656,11 +3656,11 @@ remove(Bar)
     return createBar(bars);
   })
   .then(function(bars) {
-    $log("bars____"+bars.length);
 
     var bartenderCreations = _.map(bars, function(bar) {
       var Lbartenders = _.map(bartenders, function(bartender) {
         bartender.bar = bar._id;
+        $log(bartender.bar);
         return bartender;
       });
       return createBarTender(Lbartenders);
