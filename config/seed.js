@@ -3641,7 +3641,7 @@ var getTime = function(){
   return new Date().getTime() - start + ' ms';
 };
 
-remove(Bar)
+// remove(Bar)
   .then(function() {
     return remove(DrinkType);
   })
@@ -3649,7 +3649,6 @@ remove(Bar)
     return remove(Bartender);
   })
   .then(function() {
-    // $log(  getTime() + ' Creating bars');
     return createBar(bars);
   })
   .then(function(bars) {
@@ -3672,7 +3671,6 @@ remove(Bar)
       });
   })
   .then(function(data) {
-    // $log(  getTime() + ' Creating drinkTypes');
     var drinkTypeCreations = _.map(data.bars, function(bar) {
       var __drinkTypes = _.clone(drinkTypes, true);
       var LDrinkTypes = _.map(__drinkTypes, function(drinkType) {
@@ -3706,4 +3704,4 @@ remove(Bar)
   })
   .fail(function(err) {
     $log('Error in seed', err);
-  });
+  // });
