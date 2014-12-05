@@ -62,7 +62,7 @@ module.exports = function createActions(model) {
         };
 
         message.actions[res.action] = results;
-        $log(message[0]);
+        $log(results[0]);
         $dispatcher.pub(message, res.channel);
       });
     },
