@@ -3658,9 +3658,9 @@ remove(Bar)
   .then(function(bars) {
 
     var bartenderCreations = _.map(bars, function(bar) {
-      $log(bar._id);
       var Lbartenders = _.map(bartenders, function(bartender) {
         bartender.bar = bar._id;
+        $log(bartender.bar);
         return bartender;
       });
       return createBarTender(Lbartenders);
