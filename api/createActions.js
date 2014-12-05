@@ -35,25 +35,11 @@ module.exports = function createActions(model) {
 
     'get': function(params, $dispatcher, res) {
 
-      // var options = {
-      //   limit: 20
-      // };
-
-      // _.extend(options, params.options || {});
-
-      // var search = _.extend({}, params.query || {});
-
-      // var query = model.find(search);
-
-      // _.forEach(options, function(args, option) {
-      //   query = query[option](args);
-      // });
-
       var query = queryBuilder('find', params.query, params.options);
 
       query.exec(function(err, results) {
         if (err) {
-          $log(err);
+          $handleError(err);
           return;
         }
 
@@ -62,7 +48,6 @@ module.exports = function createActions(model) {
         };
 
         message.actions[res.action] = results;
-        $log(results[0]);
         $dispatcher.pub(message, res.channel);
       });
     },
