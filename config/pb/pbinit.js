@@ -2,7 +2,7 @@
 
 function $Dispatcher(PubNub){
   var pb = PubNub || require('pubnub').init($config.secrets.pb);
-
+  var that = this;
   this.pub = function(message, channel) {
     message.from = $config.alias;
     message.to = 'mobile';
@@ -13,7 +13,8 @@ function $Dispatcher(PubNub){
         $log('message sent to ' + message.to);
       },
       error: function(error) {
-        $handleError(error);
+        $handleError(error, "PUB Error");
+        that.retryQueue.push({message: message, channel: channel});
       }
     });
   };
@@ -23,13 +24,23 @@ function $Dispatcher(PubNub){
       channel: channel,
       callback: cb,
       error: function(e) {
-        $log('error in pbninit', e);
+        $handleError(e)
       }
     });
   };
 
   this.grant = function(configs) {
     pb.grant(configs);
+  };
+
+  this.retryQueue = [],
+  this.repub = function() {
+    var what = this.retryQueue.pop();
+    if (what) {
+      setTimeout(function() {
+        this.pub()
+      }.bind(this), 200);
+    }
   };
 }
 
