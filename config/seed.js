@@ -3660,7 +3660,6 @@ remove(Bar)
     var bartenderCreations = _.map(bars, function(bar) {
       var Lbartenders = _.map(bartenders, function(bartender) {
         bartender.bar = bar._id;
-        $log(bartender.bar);
         return bartender;
       });
       return createBarTender(Lbartenders);
@@ -3668,6 +3667,7 @@ remove(Bar)
 
     return $q.all(bartenderCreations)
       .then(function(bartenders) {
+        $log(bartenders[0].bar, bartenders[12].bar);
         return {
           bars: bars,
           tenders: bartenders
@@ -3702,7 +3702,6 @@ remove(Bar)
     return $q.all(updatedBars);
   })
   .then(function(bars){
-    $log(bars[0]);
     var seedMessage = 'Seeded DB with ' + bars.length + ' Bars'.bold.cyan;
     var timeMessage = 'Execution time ' + getTime().bold.underline.green;
 
