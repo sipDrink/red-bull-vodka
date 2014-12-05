@@ -3619,8 +3619,6 @@ var updateBar = function(bar) {
     bar.markModified('bartenders');
 
     DrinkType.find({ 'bar': bar._id }, function(err, drinkTypes) {
-      $log(drinkTypes.length);
-
       if (err) return future.reject(err);
       _.forEach(drinkTypes, function(drinkType) {
         bar.drinkTypes.push(drinkType._id);
@@ -3663,10 +3661,10 @@ remove(Bar)
       });
       return createBarTender(Lbartenders);
     });
-    $log('BAR TENDER', bartenderCreations);
 
     return $q.all(bartenderCreations)
       .then(function(bartenders) {
+        $log('BAR TENDER', bartenders);
         return {
           bars: bars,
           tenders: bartenders
@@ -3675,7 +3673,6 @@ remove(Bar)
   })
   .then(function(data) {
     // $log(  getTime() + ' Creating drinkTypes');
-
     var drinkTypeCreations = _.map(data.bars, function(bar) {
       var LDrinkTypes = _.map(drinkTypes, function(drinkType) {
         drinkType.bar = bar._id;
@@ -3683,9 +3680,10 @@ remove(Bar)
       });
       return createDrinkType(LDrinkTypes);
     });
-    $log('DRINK TYPES', drinkTypeCreations);
+
     return $q.all(drinkTypeCreations)
       .then(function(drinkTypes) {
+        $log('Drink Types', drinkTypes);
         data.drinkTypes = drinkTypes;
         return data;
       });
