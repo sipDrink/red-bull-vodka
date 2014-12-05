@@ -3616,7 +3616,6 @@ var updateBar = function(bar) {
     _.forEach(bartenders, function(bartender) {
       bar.bartenders.push(bartender._id);
     });
-    $log(bar.bartenders);
     bar.markModified('bartenders');
 
     DrinkType.find({ 'bar': bar._id }, function(err, drinkTypes) {
@@ -3625,8 +3624,6 @@ var updateBar = function(bar) {
         bar.drinkTypes.push(drinkType._id);
       });
       bar.markModified('drinkTypes');
-      $log(bar.drinkTypes);
-
       save(bar)
         .then(function(bar) {
           future.resolve(bar);
