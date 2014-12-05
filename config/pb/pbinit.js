@@ -26,8 +26,7 @@ $Dispatcher.prototype.pub = function(message, channel) {
     },
     error: function(error) {
       $handleError(error, "PUB Error");
-      that.retryQueue.push({message: message, channel: channel});
-      $log('retry', that.retryQueue.length);
+      that.pub(message, channel);
     }
   });
 };
