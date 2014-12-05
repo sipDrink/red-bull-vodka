@@ -3642,66 +3642,66 @@ var getTime = function(){
 };
 
 // remove(Bar)
-  .then(function() {
-    return remove(DrinkType);
-  })
-  .then(function() {
-    return remove(Bartender);
-  })
-  .then(function() {
-    return createBar(bars);
-  })
-  .then(function(bars) {
+//   .then(function() {
+//     return remove(DrinkType);
+//   })
+//   .then(function() {
+//     return remove(Bartender);
+//   })
+//   .then(function() {
+//     return createBar(bars);
+//   })
+//   .then(function(bars) {
 
-    var bartenderCreations = _.map(bars, function(bar) {
-      var __bartenders = _.clone(bartenders, true);
-      var Lbartenders = _.map(__bartenders, function(bartender) {
-        bartender.bar = bar._id;
-        return bartender;
-      });
-      return createBarTender(Lbartenders);
-    });
+//     var bartenderCreations = _.map(bars, function(bar) {
+//       var __bartenders = _.clone(bartenders, true);
+//       var Lbartenders = _.map(__bartenders, function(bartender) {
+//         bartender.bar = bar._id;
+//         return bartender;
+//       });
+//       return createBarTender(Lbartenders);
+//     });
 
-    return $q.all(bartenderCreations)
-      .then(function(bartenders) {
-        return {
-          bars: bars,
-          tenders: bartenders
-        };
-      });
-  })
-  .then(function(data) {
-    var drinkTypeCreations = _.map(data.bars, function(bar) {
-      var __drinkTypes = _.clone(drinkTypes, true);
-      var LDrinkTypes = _.map(__drinkTypes, function(drinkType) {
-        drinkType.bar = bar._id;
-        return drinkType;
-      });
-      return createDrinkType(LDrinkTypes);
-    });
+//     return $q.all(bartenderCreations)
+//       .then(function(bartenders) {
+//         return {
+//           bars: bars,
+//           tenders: bartenders
+//         };
+//       });
+//   })
+//   .then(function(data) {
+//     var drinkTypeCreations = _.map(data.bars, function(bar) {
+//       var __drinkTypes = _.clone(drinkTypes, true);
+//       var LDrinkTypes = _.map(__drinkTypes, function(drinkType) {
+//         drinkType.bar = bar._id;
+//         return drinkType;
+//       });
+//       return createDrinkType(LDrinkTypes);
+//     });
 
-    return $q.all(drinkTypeCreations)
-      .then(function(drinkTypes) {
-        data.drinkTypes = drinkTypes;
-        return data;
-      });
+//     return $q.all(drinkTypeCreations)
+//       .then(function(drinkTypes) {
+//         data.drinkTypes = drinkTypes;
+//         return data;
+//       });
 
-  })
-  .then(function(results) {
-    var bars = results.bars;
-    var updatedBars = _.map(bars, function(bar, index) {
-      return updateBar(bar);
-    });
+//   })
+//   .then(function(results) {
+//     var bars = results.bars;
+//     var updatedBars = _.map(bars, function(bar, index) {
+//       return updateBar(bar);
+//     });
 
-    return $q.all(updatedBars);
-  })
-  .then(function(bars){
-    var seedMessage = 'Seeded DB with ' + bars.length + ' Bars'.bold.cyan;
-    var timeMessage = 'Execution time ' + getTime().bold.underline.green;
+//     return $q.all(updatedBars);
+//   })
+//   .then(function(bars){
+//     var seedMessage = 'Seeded DB with ' + bars.length + ' Bars'.bold.cyan;
+//     var timeMessage = 'Execution time ' + getTime().bold.underline.green;
 
-    $log(seedMessage);
-    $log(timeMessage);
-  })
-  .fail(function(err) {
-    $log('Error in seed', err);
+//     $log(seedMessage);
+//     $log(timeMessage);
+//   })
+//   .fail(function(err) {
+//     $log('Error in seed', err);
   // });
