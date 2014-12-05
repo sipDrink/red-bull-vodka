@@ -11,6 +11,9 @@ function $Dispatcher(PubNub){
       message: message,
       callback: function(){
         $log('message sent to ' + message.to);
+      },
+      error: function(error) {
+        $handleError(error);
       }
     });
   };
