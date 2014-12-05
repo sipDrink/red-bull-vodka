@@ -3612,6 +3612,7 @@ var save = function(doc) {
 var updateBar = function(bar) {
   var future = $q.defer();
   Bartender.find({ 'bar': bar._id }, function(err, bartenders) {
+    $log(bartenders.length);
     if (err) return future.reject(err);
     _.forEach(bartenders, function(bartender) {
       bar.bartenders.push(bartender._id);
@@ -3619,6 +3620,8 @@ var updateBar = function(bar) {
     bar.markModified('bartenders');
 
     DrinkType.find({ 'bar': bar._id }, function(err, drinkTypes) {
+      $log(drinkTypes.length);
+
       if (err) return future.reject(err);
       _.forEach(drinkTypes, function(drinkType) {
         bar.drinkTypes.push(drinkType._id);
