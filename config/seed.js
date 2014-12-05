@@ -3603,8 +3603,8 @@ var remove = function(model) {
 
 var save = function(doc) {
   var future = $q.defer();
-  doc.save(function(err){
-    err ? future.reject(err) : future.resolve();
+  doc.save(function(err, bar){
+    err ? future.reject(err) : future.resolve(bar);
   });
   return future.promise;
 };
@@ -3616,6 +3616,7 @@ var updateBar = function(bar) {
     _.forEach(bartenders, function(bartender) {
       bar.bartenders.push(bartender._id);
     });
+    $log(bar.bartenders);
     bar.markModified('bartenders');
 
     DrinkType.find({ 'bar': bar._id }, function(err, drinkTypes) {
@@ -3624,6 +3625,8 @@ var updateBar = function(bar) {
         bar.drinkTypes.push(drinkType._id);
       });
       bar.markModified('drinkTypes');
+      $log(bar.drinkTypes);
+
       save(bar)
         .then(function(bar) {
           future.resolve(bar);
@@ -3655,7 +3658,8 @@ remove(Bar)
   .then(function(bars) {
 
     var bartenderCreations = _.map(bars, function(bar) {
-      var Lbartenders = _.map(bartenders, function(bartender) {
+      var __bartenders = _.clone(bartenders, true);
+      var Lbartenders = _.map(__bartenders, function(bartender) {
         bartender.bar = bar._id;
         return bartender;
       });
@@ -3664,7 +3668,6 @@ remove(Bar)
 
     return $q.all(bartenderCreations)
       .then(function(bartenders) {
-        $log('BAR TENDER', bartenders);
         return {
           bars: bars,
           tenders: bartenders
@@ -3674,7 +3677,8 @@ remove(Bar)
   .then(function(data) {
     // $log(  getTime() + ' Creating drinkTypes');
     var drinkTypeCreations = _.map(data.bars, function(bar) {
-      var LDrinkTypes = _.map(drinkTypes, function(drinkType) {
+      var __drinkTypes = _.clone(drinkTypes, true);
+      var LDrinkTypes = _.map(__drinkTypes, function(drinkType) {
         drinkType.bar = bar._id;
         return drinkType;
       });
@@ -3683,7 +3687,6 @@ remove(Bar)
 
     return $q.all(drinkTypeCreations)
       .then(function(drinkTypes) {
-        $log('Drink Types', drinkTypes);
         data.drinkTypes = drinkTypes;
         return data;
       });
@@ -3691,7 +3694,6 @@ remove(Bar)
   })
   .then(function(results) {
     var bars = results.bars;
-
     var updatedBars = _.map(bars, function(bar, index) {
       return updateBar(bar);
     });
