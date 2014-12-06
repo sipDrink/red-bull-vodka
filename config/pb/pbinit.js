@@ -16,7 +16,6 @@ function $Dispatcher(PubNub){
 }
 
 $Dispatcher.prototype.pub = function(message, channel) {
-  var that = this;
   message.from = $config.alias;
   message.to = 'mobile';
 
@@ -45,6 +44,12 @@ $Dispatcher.prototype.sub = function(channel, cb) {
 
 $Dispatcher.prototype.gant = function(configs) {
   this.pb.grant(configs);
+};
+
+$Dispatcher.prototype.onByOnePub = function(messages, channels) {
+  _.forEach(messages, function(message) {
+    this.pub(message, channels);
+  }.bind(this));
 };
 /** @global */
 global.$Dispatcher = $Dispatcher;

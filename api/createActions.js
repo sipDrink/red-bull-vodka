@@ -43,13 +43,19 @@ module.exports = function createActions(model) {
           return;
         }
 
-        _.forEach(results, function(result) {
+        // _.forEach(results, function(result) {
+        //   var message = {
+        //     actions: {}
+        //   };
+        //   message.actions[res.action] = result;
+        //   $dispatcher.pub(message, res.channel);
+        // });
+        $dispatcher.oneByOnePub(_.map(results, function(result){
           var message = {
             actions: {}
           };
           message.actions[res.action] = result;
-          $dispatcher.pub(message, res.channel);
-        });
+        }), res.channel);
       });
     },
 
