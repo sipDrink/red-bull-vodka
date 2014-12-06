@@ -9,12 +9,13 @@ var localVars;
 
 // try to load up local vars
 try {
-  localVars = require('./api/config/local');
+  localVars = require('./config/_local');
 } catch(e) {
   localVars = {};
 }
 
 gulp.task('set', function() {
+    console.log(localVars)
   _.forEach(localVars, function(val, name) {
     process.env[name] = val;
   });

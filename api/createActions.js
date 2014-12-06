@@ -8,7 +8,7 @@
 module.exports = function createActions(model) {
   var queryBuilder = function(method, criteria, opts, update) {
     var options = {
-      limit: 5
+      limit: 40
     };
     _.extend(options, opts || {});
 
@@ -43,12 +43,13 @@ module.exports = function createActions(model) {
           return;
         }
 
-        var message = {
-          actions: {}
-        };
-
-        message.actions[res.action] = results;
-        $dispatcher.pub(message, res.channel);
+        _.forEach(results, function(result) {
+          var message = {
+            actions: {}
+          };
+          message.actions[res.action] = result;
+          $dispatcher.pub(message, res.channel);
+        });
       });
     },
 

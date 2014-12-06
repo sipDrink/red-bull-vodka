@@ -1,6 +1,7 @@
 'use strict';
 
 function $Dispatcher(PubNub){
+  $log($config.secrets)
   this.pb = PubNub || require('pubnub').init($config.secrets.pb);
   this.retryQueue = [];
 

@@ -14,9 +14,9 @@ var all = {
   // any and all secrets
   secrets: {
     pb: {
-      publish_key: process.env.PUBNUB_PUBLISH_KEY,
-      subscribe_key: process.env.PUBNUB_SUBSCRIBE_KEY,
-      secret_key: process.env.PUBNUB_SECRET_KEY
+      publish_key: process.env.PUBNUB_PUBLISH_KEY || 'pub-c-e7567c4a-b42c-4a6d-af64-b9e6db79424d',
+      subscribe_key: process.env.PUBNUB_SUBSCRIBE_KEY || 'sub-c-e72ce3bc-6960-11e4-8e76-02ee2ddab7fe',
+      secret_key: process.env.PUBNUB_SECRET_KEY || 'sub-c-e72ce3bc-6960-11e4-8e76-02ee2ddab7fe'
     }
   },
   mongo: {
