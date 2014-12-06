@@ -1,7 +1,6 @@
 'use strict';
 
 function $Dispatcher(PubNub){
-  $log($config.secrets)
   this.pb = PubNub || require('pubnub').init($config.secrets.pb);
   this.retryQueue = [];
 
@@ -46,7 +45,7 @@ $Dispatcher.prototype.gant = function(configs) {
   this.pb.grant(configs);
 };
 
-$Dispatcher.prototype.onByOnePub = function(messages, channels) {
+$Dispatcher.prototype.oneByOnePub = function(messages, channels) {
   _.forEach(messages, function(message) {
     this.pub(message, channels);
   }.bind(this));
