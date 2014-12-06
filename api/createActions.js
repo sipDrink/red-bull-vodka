@@ -43,20 +43,24 @@ module.exports = function createActions(model) {
           return;
         }
 
-        // _.forEach(results, function(result) {
-        //   var message = {
-        //     actions: {}
-        //   };
-        //   message.actions[res.action] = result;
-        //   $dispatcher.pub(message, res.channel);
-        // });
-        $dispatcher.oneByOnePub(_.map(results, function(result){
+        if (res.oneByOne) {
+          $dispatcher.oneByOnePub(_.map(results, function(result){
+            var message = {
+              actions: {}
+            };
+            message.actions[res.action] = result;
+            message.format = 'oneByOne';
+            return message;
+          }), res.channel);
+        } else {
           var message = {
             actions: {}
           };
-          message.actions[res.action] = result;
-          return message;
-        }), res.channel);
+
+          message.actions[res.action] = results;
+          $dispatcher.pub(message, res.channel);
+        }
+
       });
     },
 
