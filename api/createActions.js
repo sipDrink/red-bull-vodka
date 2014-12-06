@@ -55,6 +55,7 @@ module.exports = function createActions(model) {
             actions: {}
           };
           message.actions[res.action] = result;
+          return message;
         }), res.channel);
       });
     },
