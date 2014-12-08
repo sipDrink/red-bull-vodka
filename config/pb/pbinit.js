@@ -41,7 +41,7 @@ $Dispatcher.prototype.sub = function(channel, cb) {
   });
 };
 
-$Dispatcher.prototype.gant = function(configs) {
+$Dispatcher.prototype.grant = function(configs) {
   this.pb.grant(configs);
 };
 

@@ -38,11 +38,11 @@ module.exports = function createActions(model) {
       var query = queryBuilder('find', params.query, params.options);
 
       query.exec(function(err, results) {
+
         if (err) {
           $handleError(err);
           return;
         }
-
         if (res.oneByOne) {
           $dispatcher.oneByOnePub(_.map(results, function(result){
             var message = {
@@ -56,11 +56,9 @@ module.exports = function createActions(model) {
           var message = {
             actions: {}
           };
-
           message.actions[res.action] = results;
           $dispatcher.pub(message, res.channel);
         }
-
       });
     },
 

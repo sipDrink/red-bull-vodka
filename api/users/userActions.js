@@ -15,7 +15,7 @@ actions.register = function(auth_key, $dispatcher) {
     return !/(categories|drinks)/g.test(channel);
   });
 
-  // Make sure to grant user access to their own private user
+  // Make sure to grant user access to their own private channel
   channelsToGrant.push(auth_key);
 
   $log('channelsToGrant', channelsToGrant);
@@ -32,14 +32,6 @@ actions.register = function(auth_key, $dispatcher) {
       }
     });
   });
-
-  // channelsToGrant.splice(channelsToGrant.length -1, 1);
-
-  // $dispatcher.pub({
-  //   actions: {
-  //     'receiveUser': {channels: channelsToGrant}
-  //   }
-  // }, auth_key);
 };
 
 module.exports = actions;

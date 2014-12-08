@@ -3,7 +3,8 @@
 */
 
 var fs = require('fs');
-var colors = require('colors');
+require('colors');
+
 String.prototype.capitalize = function(){
   return this.charAt(0).toUpperCase() + this.slice(1);
 };
@@ -58,6 +59,7 @@ var addModelsToGlobal = function addModelsToGlobal(){
     var pathToModel = '../api/' + directory + '/' + channel + 'Model';
     channel = channel.capitalize();
     global[channel] = require(pathToModel);
+
   });
 };
 

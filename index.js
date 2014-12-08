@@ -16,22 +16,6 @@ if (config.seedDB) { require('./config/seed'); }
 require('./config/pb/pbinit');
 require('./api/events')();
 
-
-// var pb = require('pubnub').init({
-//   publish_key: pubKey,
-//   subscribe_key: sbKey
-// });
-
-// setInterval(function() {
-//   pb.publish({
-//     channel: 'sip',
-//     message: { code: 'theme streams' },
-//     callback: function(e){console.log('pubped')},
-//     error: function(e){console.log(e)}
-//   });
-// }, 5000);
-
-
 http.createServer(function(req, res) {
   res.end();
 }).listen(config.port, config.ip, function() {

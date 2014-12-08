@@ -4,6 +4,7 @@ var gulp = require('gulp');
 var _ = require('lodash');
 var jsDoc = require('gulp-jsdoc-to-markdown');
 var concat = require('gulp-concat');
+var mocha = require('gulp-mocha');
 var doxx = require('gulp-doxx');
 var localVars;
 
@@ -38,6 +39,15 @@ gulp.task('dox', function() {
       title: 'Sip mobile'
     }))
     .pipe(gulp.dest('documentation/'));
-  });
+});
+
+gulp.task('test', function(){
+  return gulp.src(['specs/setup/**/*.js', 'specs/unit/**/*Spec.js'])
+    .pipe(mocha({
+    }))
+    .on('end', function(){
+      process.exit();
+    });
+});
 
 gulp.task('default', ['set']);

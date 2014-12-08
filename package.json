@@ -7,15 +7,22 @@
     "colors": "^1.0.3",
     "gulp": "^3.8.10",
     "lodash": "^2.4.1",
-    "mongoose": "^3.8.19",
+    "mocha": "^2.0.1",
+    "mongoose": "^3.9.5",
     "node-yelp": "0.0.2",
     "pubnub": "^3.7.0",
     "q": "^1.1.1"
   },
   "devDependencies": {
+    "chai": "^1.10.0",
     "gulp-concat": "^2.4.2",
     "gulp-doxx": "0.0.2",
-    "gulp-jsdoc-to-markdown": "^0.1.5"
+    "gulp-jsdoc-to-markdown": "^0.1.5",
+    "gulp-mocha": "^2.0.0",
+    "karma": "^0.12.28",
+    "karma-chai": "^0.1.0",
+    "sinon": "^1.12.1",
+    "sinon-chai": "^2.6.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
