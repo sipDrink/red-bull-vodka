@@ -4,14 +4,14 @@ function $Dispatcher(PubNub){
   this.pb = PubNub || require('pubnub').init($config.secrets.pb);
   this.retryQueue = [];
 
-  this.repub = function() {
-    var what = this.retryQueue.pop();
-    if (what) {
-      setTimeout(function() {
-        this.pub();
-      }.bind(this), 200);
-    }
-  };
+  // this.repub = function() {
+  //   var what = this.retryQueue.pop();
+  //   if (what) {
+  //     setTimeout(function() {
+  //       this.pub();
+  //     }.bind(this), 200);
+  //   }
+  // };
 }
 
 $Dispatcher.prototype.pub = function(message, channel) {

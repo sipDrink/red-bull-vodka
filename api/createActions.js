@@ -7,9 +7,8 @@
 */
 module.exports = function createActions(model) {
   var queryBuilder = function(method, criteria, opts, update) {
-    var options = {
-      limit: 40
-    };
+    var options = {};
+
     _.extend(options, opts || {});
 
     var search = _.extend({}, criteria || {});
@@ -26,6 +25,13 @@ module.exports = function createActions(model) {
       query = query[option](args);
     });
 
+    query.$exec = function(){
+      var future = $q.defer();
+      query.exec(function(err, res){
+        err ? future.reject(err) : future.resolve(res);
+      });
+      return future.promise;
+    };
     return query;
   };
 
@@ -37,12 +43,8 @@ module.exports = function createActions(model) {
 
       var query = queryBuilder('find', params.query, params.options);
 
-      query.exec(function(err, results) {
-
-        if (err) {
-          $handleError(err);
-          return;
-        }
+      return query.$exec()
+      .then(function(results) {
         if (res.oneByOne) {
           $dispatcher.oneByOnePub(_.map(results, function(result){
             var message = {
@@ -58,18 +60,20 @@ module.exports = function createActions(model) {
           };
           message.actions[res.action] = results;
           $dispatcher.pub(message, res.channel);
+
+          return message;
         }
+      })
+      .fail(function(err){
+        $handleError(err);
       });
     },
 
     'getOne': function(params, $dispatcher, res) {
       var query = queryBuilder('findOne', params.query, params.options);
 
-      query.exec(function(err, results) {
-        if (err){
-          $handleError(err);
-          return;
-        }
+      return query.$exec()
+      .then(function(results) {
 
         var message = {
           actions: {}
@@ -82,18 +86,17 @@ module.exports = function createActions(model) {
         $log('Got results from getOne');
         message.actions[res.action] = results;
         $dispatcher.pub(message, res.channel);
+      })
+      .fail(function(e){
+        $handleError(e);
       });
     },
 
     'update': function(params, $dispatcher, res) {
       var query = queryBuilder('findOneAndUpdate', params.query, params.options, params.update);
 
-      query.exec(function(err, result){
-        if (err) {
-          $handleError(err);
-          return;
-        }
-
+      return query.$exec()
+      .then(function(result){
         var message = {
           actions: {}
         };
@@ -105,6 +108,9 @@ module.exports = function createActions(model) {
         $log('Got results from update');
         message.actions[res.action] = result;
         $dispatcher.pub(message, res.channel);
+      })
+      .fail(function(e){
+        $handleError(e);
       });
     },
 
@@ -112,12 +118,8 @@ module.exports = function createActions(model) {
     'destroy': function(params, $dispatcher, res) {
       var query = queryBuilder('findOneAndRemove', params.query, params.options);
 
-      query.exec(function(err, deleted) {
-        if (err) {
-          $handleError(err);
-          return;
-        }
-
+      return query.$exec()
+      .then(function(deleted) {
         var message = {
           actions: {}
         };
@@ -125,8 +127,13 @@ module.exports = function createActions(model) {
         if (!deleted || _.isEmpty(deleted)) {
           deleted = {};
         }
-        message[res.action] = deleted;
+
+        $log('Got results from destroy');
+        message.actions[res.action] = deleted;
         $dispatcher.pub(message, res.channel);
+      })
+      .fail(function(err) {
+        $handleError(err);
       });
     }
   };
