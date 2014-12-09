@@ -135,6 +135,46 @@ module.exports = function createActions(model) {
       .fail(function(err) {
         $handleError(err);
       });
+    },
+
+    create: function(params, $dispatcher, res) {
+      var $save = function(doc){
+        var future = $q.defer();
+
+        doc.save(function(err, saved){
+          err ? future.reject(err) : future.resolve(saved);
+        });
+
+        return future.promise;
+      };
+
+      var values = params.values || params.query;
+
+      if (!values || !_.isArray(values) || !!values.length) {
+        // send back to user channel with error action
+        return;
+      }
+
+      return $q.all(_.map(values, function(val) {
+        return $save(val);
+      }))
+      .then(function(creations){
+
+        var message = {
+          actions: {}
+        };
+
+        if (!creations || _.isEmpty(creations)) {
+          creations = [];
+        }
+
+        $log('Created' + creations.length + ' new ' + model.modelName);
+        message.actions[res.action] = creations;
+        $dispatcher.pub(message, res.channel);
+      })
+      .fail(function(err){
+        $handleError(err);
+      });
     }
   };
 };
