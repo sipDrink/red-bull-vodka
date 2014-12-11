@@ -1,24 +1,31 @@
+// Default config for server (config/env/index.js)
+// -----------------------------------------------
+// WIll be overwritten and or extended dependent on whatever the **NODE_ENV** is
+
 'use strict';
 
-var _ = require('lodash');
-
-// default config for server
-
 var all = {
+  // **env** the **NODE_ENV** of the server
   env: process.env.NODE_ENV,
+
+  // **alias** used with **Dispatcher** to identify where the message comes from
   alias: 'API',
 
-  port: process.env.PORT || 9000,
-  // populate db with some data
+  // **port** used to create basic server, defaults to 8080
+  port: process.env.PORT || 8080,
+
+  // **seedDB** if true, will seed the mongo db with the data in seed.js
   seedDB: false,
-  // any and all secrets
+
+  // **secrets** all secret shit used in the server, shhhh
   secrets: {
     pb: {
-      publish_key: process.env.PUBNUB_PUBLISH_KEY || 'pub-c-e7567c4a-b42c-4a6d-af64-b9e6db79424d',
-      subscribe_key: process.env.PUBNUB_SUBSCRIBE_KEY || 'sub-c-e72ce3bc-6960-11e4-8e76-02ee2ddab7fe',
-      secret_key: process.env.PUBNUB_SECRET_KEY || 'sub-c-e72ce3bc-6960-11e4-8e76-02ee2ddab7fe'
+      publish_key: process.env.PUBNUB_PUBLISH_KEY,
+      subscribe_key: process.env.PUBNUB_SUBSCRIBE_KEY,
+      secret_key: process.env.PUBNUB_SECRET_KEY
     }
   },
+  // **mongo** options passed into mongo connection
   mongo: {
     options: {
       db: {
@@ -27,5 +34,7 @@ var all = {
     }
   }
 };
-// merge config file with default config based off env
+
+// Extend or override default config based off **NODE_ENV**. There is a
+// different file for each env; testing, development, production
 module.exports = _.merge(all, require('./' + process.env.NODE_ENV) || {} );

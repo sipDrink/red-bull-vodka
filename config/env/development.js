@@ -1,6 +1,7 @@
+// Development config for server (config/env/development.js)
+// -----------------------------------------------
 'use strict';
 
-// Dev specific config
 module.exports = {
 
   mongo: {

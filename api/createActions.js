@@ -156,8 +156,10 @@ module.exports = function createActions(model) {
       }
 
       return $q.all(_.map(values, function(val) {
-        val = new model(val);
-        return $save(val);
+        if (model.modelName === 'order') {
+          // val.code = $helper.createOrderCode();
+        }
+        return $save(new model(val));
       }))
       .then(function(creations){
 

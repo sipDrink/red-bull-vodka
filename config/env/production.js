@@ -1,11 +1,15 @@
+// Production config for server (config/env/production.js)
+// -----------------------------------------------
 'use strict';
 
-// Production specific config
 module.exports = {
+  // **ip** duh
   ip: process.env.IP || undefined,
 
+  // **port** default port to 8080
   port: process.env.PORT || 8080,
 
+  // **mongo** setup the mongodb url
   mongo: {
     uri: process.env.MONGO_URL ||
          process.env.MONGOLAB_URI ||
@@ -13,6 +17,7 @@ module.exports = {
          'mongodb://localhost/sip'
   },
 
+  // **logging** use logging in the server with **$log** or not
   logging: true,
 
   seedDB: true

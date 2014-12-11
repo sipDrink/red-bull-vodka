@@ -1,19 +1,22 @@
-'use strict';
+// $Dispatcher (config/pb/pbinit.js)
+// -----------------------------------------------
 
+'use strict';
+// **$Dispatcher** constructor function
+// initializes `PubNub` object with stuff in `$config`
+//
+// **@params**
+// `{PubNub}`: pass in a new PubNub object | optional
 function $Dispatcher(PubNub){
   this.pb = PubNub || require('pubnub').init($config.secrets.pb);
-  this.retryQueue = [];
-
-  // this.repub = function() {
-  //   var what = this.retryQueue.pop();
-  //   if (what) {
-  //     setTimeout(function() {
-  //       this.pub();
-  //     }.bind(this), 200);
-  //   }
-  // };
 }
 
+// **$Dispatcher.proto.pub**
+// abstraction function used to call `PubNub.publish`
+// **@params**
+//
+// `{message}`: the message to publish, will always send to mobile and from `$config.alias`
+// `{channel}`:  the channel to publish to
 $Dispatcher.prototype.pub = function(message, channel) {
   message.from = $config.alias;
   message.to = 'mobile';
@@ -26,7 +29,6 @@ $Dispatcher.prototype.pub = function(message, channel) {
     },
     error: function(error) {
       $handleError(error, "PUB Error");
-      // that.pub(message, channel);
     }
   });
 };
@@ -50,5 +52,5 @@ $Dispatcher.prototype.oneByOnePub = function(messages, channels) {
     this.pub(message, channels);
   }.bind(this));
 };
-/** @global */
+
 global.$Dispatcher = $Dispatcher;
