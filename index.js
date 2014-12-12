@@ -30,7 +30,7 @@ if ($config.seedDB) { require('./config/seed'); }
 require('./config/pb/pbinit');
 
 // Init all events for all channels
-require('./api/events')();
+require('./api/events');
 
 // Create basic server, not currently used
 http.createServer(function(req, res) {

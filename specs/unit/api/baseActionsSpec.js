@@ -144,4 +144,68 @@ describe('Base actions', function(){
       });
     });
   });
+
+  describe('action: create', function(){
+
+    it('should have a create action', function(){
+      var actions = createActions(User);
+      expect(actions).to.have.property('create');
+    });
+
+    it('should not create anything if no values are sent', function(){
+      var OrderSpy = sinon.spy(Order);
+      var actions = createActions(OrderSpy);
+
+      var values = {
+        values: []
+      };
+
+      actions.create(values, new $Dispatcher(), res);
+
+      expect(OrderSpy).to.not.have.been.called;
+    });
+
+    it('should not create anything if values are not sent properly', function(){
+      var OrderSpy = sinon.spy(Order);
+      var actions = createActions(OrderSpy);
+
+      var values = {
+        someProperty: [{
+          user: 'sdh2837893n9',
+          drinks: [],
+          bar: '2938928jksdf'
+        }]
+      };
+
+      actions.create(values, new $Dispatcher(), res);
+
+      expect(OrderSpy).to.not.have.been.called;
+    });
+
+    it('should create new documents and publish them', function(done){
+      var $dispatcher = new $Dispatcher();
+      var pub = sinon.spy($dispatcher, 'pub');
+      var actions = createActions(Order);
+
+      var criteria = {
+        values: [
+          {
+            code: '12er',
+            bar: '54816e54f4f17f000015681e',
+            customers:[
+              '54816e54f4f17f000015681e'
+            ],
+            cost: 37,
+            redeemed: false
+          }
+        ]
+      };
+
+      actions.create(criteria, $dispatcher, res)
+      .then(function(){
+        expect(pub).to.have.been.calledOnce;
+        done();
+      });
+    });
+  });
 });

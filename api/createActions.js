@@ -150,8 +150,7 @@ module.exports = function createActions(model) {
 
       var values = params.values || params.query;
 
-      if (!values || !_.isArray(values) || !!values.length) {
-        // send back to user channel with error action
+      if (!values || !_.isArray(values) || !values.length) {
         return;
       }
 
@@ -171,7 +170,7 @@ module.exports = function createActions(model) {
           creations = [];
         }
 
-        $log('Created' + creations.length + ' new ' + model.modelName);
+        $log('Created' + creations.length + ' new ' + model.modelName + '');
         message.actions[res.action] = creations;
         $dispatcher.pub(message, res.channel);
       })
