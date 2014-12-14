@@ -5,6 +5,7 @@ var actions = require('../createActions')(Order);
 actions.order = function(params, $dispatcher, res){
   var merch = params.bar.merch || 'CU5EeFyjWXJjMeHduZmDb9Ac';
 
+  $log(JSON.stringify(params));
   params.order.paidFor = false;
 
   var createOrder = $q.nbind(Order.create, Order);
