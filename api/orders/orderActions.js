@@ -2,8 +2,8 @@
 
 var actions = require('../createActions')(Order);
 
-
 actions.order = function(params, $dispatcher, res){
+  $log('params', params.order);
   var merch = params.merch || 'CU5EeFyjWXJjMeHduZmDb9Ac';
   var order = params.order;
   order.paidFor = false;
