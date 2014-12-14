@@ -17,20 +17,32 @@ function $Dispatcher(PubNub){
 //
 // `{message}`: the message to publish, will always send to mobile and from `$config.alias`
 // `{channel}`:  the channel to publish to
-$Dispatcher.prototype.pub = function(message, channel) {
+$Dispatcher.prototype.pub = function(message, channel, cb) {
   message.from = $config.alias;
-  message.to = 'mobile';
+  message.to = message.to || 'mobile';
+
+  cb = cb || function(){
+    $log('message sent to ' + message.to);
+  };
 
   this.pb.publish({
     channel: channel,
     message: message,
-    callback: function(){
-      $log('message sent to ' + message.to);
-    },
+    callback: cb,
     error: function(error) {
       $handleError(error, "PUB Error");
     }
   });
+};
+
+$Dispatcher.prototype.multiPub = function(messages) {
+  if (!_.isArray(messages)) {
+    return;
+  }
+
+  _.forEach(messages, function(message) {
+    this.pub(message.message, message.channel);
+  }.bind(this));
 };
 
 $Dispatcher.prototype.sub = function(channel, cb) {
