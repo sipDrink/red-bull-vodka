@@ -3,7 +3,6 @@
 var actions = require('../createActions')(Order);
 
 actions.order = function(params, $dispatcher, res){
-  $log('params', params);
   var merch = params.merch || 'CU5EeFyjWXJjMeHduZmDb9Ac';
   params.paidFor = false;
 
