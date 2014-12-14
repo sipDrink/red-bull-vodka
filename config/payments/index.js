@@ -1,6 +1,7 @@
 'use strict';
 
-var balanced = require('balanced-official').configure($config.secrets.balanced.apiSecret);
+var balanced = require('balanced-official');
+balanced.configure($config.secrets.balanced.apiSecret);
 
 function Payment(provider, name){
   this.provider = provider;
@@ -45,5 +46,5 @@ Payment.prototype.createOrder = function(merch, values){
 };
 
 // **$Payment** added to global
-global.$Payment = new Payment(balanced);
+global.$Payment = new Payment(balanced, 'balanced');
 
