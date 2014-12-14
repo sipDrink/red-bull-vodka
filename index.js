@@ -30,7 +30,7 @@ if ($config.seedDB) { require('./config/seed'); }
 require('./config/pb/pbinit');
 
 // Init **Balanced** and create payment functionality
-require('../config/payments');
+require('./config/payments');
 
 // Init all events for all channels
 require('./api/events');
