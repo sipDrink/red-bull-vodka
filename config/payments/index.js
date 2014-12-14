@@ -40,12 +40,7 @@ Payment.prototype.chargeCard = function(values) {
 };
 
 Payment.prototype.createOrder = function(merch, values){
-  var order = this.provider.get('/customers/' + merch).orders.create(values)
-  .then(function(resp){
-    $log('RESP', resp);
-  });
-  $log("ORDER", order);
-  return order;
+  return this.provider.get('/customers/' + merch).orders.create(values);
 };
 
 // **$Payment** added to global

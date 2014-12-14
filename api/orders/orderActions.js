@@ -13,7 +13,10 @@ actions.order = function(params, $dispatcher, res){
       description: 'Order # ' + unPaidForOrder._id
     };
 
-    $Payment.createOrder(merch, orderContent);
+    return $Payment.createOrder(merch, orderContent);
+  })
+  .then(function(order) {
+    $log("ORDER", order);
   })
   .fail(function(err){
     $handleError(err);
