@@ -14,6 +14,7 @@
     "$handleError": false,
     "$channels": false,
     "$Dispatcher": false,
+    "$Payment": false,
     "Bar": false,
     "Bartender": false,
     "Category": false,

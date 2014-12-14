@@ -29,6 +29,9 @@ if ($config.seedDB) { require('./config/seed'); }
 // Init **PubNub** and register channels
 require('./config/pb/pbinit');
 
+// Init **Balanced** and create payment functionality
+require('../config/payments');
+
 // Init all events for all channels
 require('./api/events');
 

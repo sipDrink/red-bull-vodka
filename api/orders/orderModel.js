@@ -38,6 +38,11 @@ var OrderSchema = new mongoose.Schema({
   redeemed: {
     type: Boolean,
     default: false
+  },
+
+  paidFor: {
+    type: Boolean,
+    default: false
   }
 
 });

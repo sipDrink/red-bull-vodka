@@ -23,6 +23,10 @@ var all = {
       publish_key: process.env.PUBNUB_PUBLISH_KEY,
       subscribe_key: process.env.PUBNUB_SUBSCRIBE_KEY,
       secret_key: process.env.PUBNUB_SECRET_KEY
+    },
+    balanced: {
+      apiSecret: process.env.BALANCED_API_KEY || process.env.BALANCED_TEST_API_KEY,
+      testApiSecret: process.env.BALANCED_TEST_API_KEY
     }
   },
   // **mongo** options passed into mongo connection
