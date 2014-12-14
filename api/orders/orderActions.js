@@ -21,3 +21,5 @@ actions.order = function(params, $dispatcher, res){
     $handleError(err);
   });
 };
+
+module.exports = actions;
