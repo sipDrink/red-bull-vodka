@@ -5,7 +5,6 @@ var actions = require('../createActions')(Order);
 actions.order = function(params, $dispatcher, res){
   var merch = params.bar.merch || 'CU5EeFyjWXJjMeHduZmDb9Ac';
 
-  $log(JSON.stringify(params));
   params.order.paidFor = false;
 
   var createOrder = $q.nbind(Order.create, Order);
@@ -16,12 +15,12 @@ actions.order = function(params, $dispatcher, res){
     };
 
     return $Payment.createOrder(merch, orderContent)
-      .then(function(order){
-        return {
-          balancedOrder: order,
-          order: unPaidForOrder
-        };
-      });
+    .then(function(order){
+      return {
+        balancedOrder: order,
+        order: unPaidForOrder
+      };
+    });
   })
   .then(function(order) {
 

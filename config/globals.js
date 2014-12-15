@@ -23,11 +23,27 @@ global._ = require('lodash');
 global.$q = require('q');
 // **$config** the config object initialized in `index.js`
 global.$config = require('./env');
+
 // **$log** basic abstraction from `console.log()`, can be turned on or off by **$config.logging**
 global.$log = $config.logging ? console.log : function(){};
+
+var Mailer = require('../services/').mailer;
+var mailer = new Mailer();
+
 // **$handleError** global error handler function
 global.$handleError = function(error, meta) {
-  console.log(error, meta);
+  console.error(error.stack, meta);
+
+  if ($config.env === 'production') {
+    mailer.send({
+      to: 'willscottmoss@gmail.com',
+      subject: error.message,
+      text: error.stack || meta
+    })
+    .finally(function(){
+      process.exit(1);
+    });
+  }
 };
 
 // **$channels** this is an `array ` of channel names that will be used with `PubNub`
@@ -73,3 +89,5 @@ var addModelsToGlobal = function addModelsToGlobal(){
 };
 
 addModelsToGlobal();
+
+process.on('uncaughtException', $handleError);

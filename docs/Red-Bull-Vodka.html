@@ -177,11 +177,11 @@ db with all the data in <strong>seed.js</strong></p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-11">&#182;</a>
               </div>
-              <p>Init all events for all channels</p>
+              <p>Init <strong>Balanced</strong> and create payment functionality</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre><span class="hljs-built_in">require</span>(<span class="hljs-string">'./api/events'</span>)();</pre></div></div>
+            <div class="content"><div class='highlight'><pre><span class="hljs-built_in">require</span>(<span class="hljs-string">'./config/payments'</span>);</pre></div></div>
             
         </li>
         
@@ -191,6 +191,21 @@ db with all the data in <strong>seed.js</strong></p>
               
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-12">&#182;</a>
+              </div>
+              <p>Init all events for all channels</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-built_in">require</span>(<span class="hljs-string">'./api/events'</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-13">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-13">&#182;</a>
               </div>
               <p>Create basic server, not currently used</p>
 
@@ -205,11 +220,11 @@ db with all the data in <strong>seed.js</strong></p>
         </li>
         
         
-        <li id="section-13">
+        <li id="section-14">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-13">&#182;</a>
+                <a class="pilcrow" href="#section-14">&#182;</a>
               </div>
               <h2 id="default-config-for-server-config-env-index-js-">Default config for server (config/env/index.js)</h2>
 
@@ -218,11 +233,11 @@ db with all the data in <strong>seed.js</strong></p>
         </li>
         
         
-        <li id="section-14">
+        <li id="section-15">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-14">&#182;</a>
+                <a class="pilcrow" href="#section-15">&#182;</a>
               </div>
               <p>WIll be overwritten and or extended dependent on whatever the <strong>NODE_ENV</strong> is</p>
 
@@ -236,11 +251,11 @@ db with all the data in <strong>seed.js</strong></p>
         </li>
         
         
-        <li id="section-15">
+        <li id="section-16">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-15">&#182;</a>
+                <a class="pilcrow" href="#section-16">&#182;</a>
               </div>
               <p><strong>env</strong> the <strong>NODE_ENV</strong> of the server</p>
 
@@ -251,11 +266,11 @@ db with all the data in <strong>seed.js</strong></p>
         </li>
         
         
-        <li id="section-16">
+        <li id="section-17">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-16">&#182;</a>
+                <a class="pilcrow" href="#section-17">&#182;</a>
               </div>
               <p><strong>alias</strong> used with <strong>Dispatcher</strong> to identify where the message comes from</p>
 
@@ -266,11 +281,11 @@ db with all the data in <strong>seed.js</strong></p>
         </li>
         
         
-        <li id="section-17">
+        <li id="section-18">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-17">&#182;</a>
+                <a class="pilcrow" href="#section-18">&#182;</a>
               </div>
               <p><strong>port</strong> used to create basic server, defaults to 8080</p>
 
@@ -281,11 +296,11 @@ db with all the data in <strong>seed.js</strong></p>
         </li>
         
         
-        <li id="section-18">
+        <li id="section-19">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-18">&#182;</a>
+                <a class="pilcrow" href="#section-19">&#182;</a>
               </div>
               <p><strong>seedDB</strong> if true, will seed the mongo db with the data in seed.js</p>
 
@@ -296,11 +311,11 @@ db with all the data in <strong>seed.js</strong></p>
         </li>
         
         
-        <li id="section-19">
+        <li id="section-20">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-19">&#182;</a>
+                <a class="pilcrow" href="#section-20">&#182;</a>
               </div>
               <p><strong>secrets</strong> all secret shit used in the server, shhhh</p>
 
@@ -311,17 +326,21 @@ db with all the data in <strong>seed.js</strong></p>
       publish_key: process.env.PUBNUB_PUBLISH_KEY,
       subscribe_key: process.env.PUBNUB_SUBSCRIBE_KEY,
       secret_key: process.env.PUBNUB_SECRET_KEY
+    },
+    balanced: {
+      apiSecret: process.env.BALANCED_API_KEY || process.env.BALANCED_TEST_API_KEY,
+      testApiSecret: process.env.BALANCED_TEST_API_KEY
     }
   },</pre></div></div>
             
         </li>
         
         
-        <li id="section-20">
+        <li id="section-21">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-20">&#182;</a>
+                <a class="pilcrow" href="#section-21">&#182;</a>
               </div>
               <p><strong>mongo</strong> options passed into mongo connection</p>
 
@@ -339,11 +358,11 @@ db with all the data in <strong>seed.js</strong></p>
         </li>
         
         
-        <li id="section-21">
+        <li id="section-22">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-21">&#182;</a>
+                <a class="pilcrow" href="#section-22">&#182;</a>
               </div>
               <p>Extend or override default config based off <strong>NODE_ENV</strong>. There is a
 different file for each env; testing, development, production</p>
@@ -355,11 +374,11 @@ different file for each env; testing, development, production</p>
         </li>
         
         
-        <li id="section-22">
+        <li id="section-23">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-22">&#182;</a>
+                <a class="pilcrow" href="#section-23">&#182;</a>
               </div>
               <h2 id="production-config-for-server-config-env-production-js-">Production config for server (config/env/production.js)</h2>
 
@@ -368,11 +387,11 @@ different file for each env; testing, development, production</p>
         </li>
         
         
-        <li id="section-23">
+        <li id="section-24">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-23">&#182;</a>
+                <a class="pilcrow" href="#section-24">&#182;</a>
               </div>
               
             </div>
@@ -384,11 +403,11 @@ different file for each env; testing, development, production</p>
         </li>
         
         
-        <li id="section-24">
+        <li id="section-25">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-24">&#182;</a>
+                <a class="pilcrow" href="#section-25">&#182;</a>
               </div>
               <p><strong>ip</strong> duh</p>
 
@@ -399,11 +418,11 @@ different file for each env; testing, development, production</p>
         </li>
         
         
-        <li id="section-25">
+        <li id="section-26">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-25">&#182;</a>
+                <a class="pilcrow" href="#section-26">&#182;</a>
               </div>
               <p><strong>port</strong> default port to 8080</p>
 
@@ -414,11 +433,11 @@ different file for each env; testing, development, production</p>
         </li>
         
         
-        <li id="section-26">
+        <li id="section-27">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-26">&#182;</a>
+                <a class="pilcrow" href="#section-27">&#182;</a>
               </div>
               <p><strong>mongo</strong> setup the mongodb url</p>
 
@@ -434,11 +453,11 @@ different file for each env; testing, development, production</p>
         </li>
         
         
-        <li id="section-27">
+        <li id="section-28">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-27">&#182;</a>
+                <a class="pilcrow" href="#section-28">&#182;</a>
               </div>
               <p><strong>logging</strong> use logging in the server with <strong>$log</strong> or not</p>
 
@@ -452,11 +471,11 @@ different file for each env; testing, development, production</p>
         </li>
         
         
-        <li id="section-28">
+        <li id="section-29">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-28">&#182;</a>
+                <a class="pilcrow" href="#section-29">&#182;</a>
               </div>
               <h2 id="development-config-for-server-config-env-development-js-">Development config for server (config/env/development.js)</h2>
 
@@ -465,11 +484,11 @@ different file for each env; testing, development, production</p>
         </li>
         
         
-        <li id="section-29">
+        <li id="section-30">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-29">&#182;</a>
+                <a class="pilcrow" href="#section-30">&#182;</a>
               </div>
               
             </div>
@@ -489,11 +508,11 @@ different file for each env; testing, development, production</p>
         </li>
         
         
-        <li id="section-30">
+        <li id="section-31">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-30">&#182;</a>
+                <a class="pilcrow" href="#section-31">&#182;</a>
               </div>
               <h2 id="testing-config-for-server-config-env-testing-js-">Testing config for server (config/env/testing.js)</h2>
 
@@ -502,11 +521,11 @@ different file for each env; testing, development, production</p>
         </li>
         
         
-        <li id="section-31">
+        <li id="section-32">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-31">&#182;</a>
+                <a class="pilcrow" href="#section-32">&#182;</a>
               </div>
               
             </div>
@@ -518,11 +537,11 @@ different file for each env; testing, development, production</p>
         </li>
         
         
-        <li id="section-32">
+        <li id="section-33">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-32">&#182;</a>
+                <a class="pilcrow" href="#section-33">&#182;</a>
               </div>
               <p>different database for testing</p>
 
@@ -542,11 +561,11 @@ different file for each env; testing, development, production</p>
         </li>
         
         
-        <li id="section-33">
+        <li id="section-34">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-33">&#182;</a>
+                <a class="pilcrow" href="#section-34">&#182;</a>
               </div>
               <h2 id="-globals-config-globals-js-">   Globals (config/globals.js)</h2>
 
@@ -555,11 +574,11 @@ different file for each env; testing, development, production</p>
         </li>
         
         
-        <li id="section-34">
+        <li id="section-35">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-34">&#182;</a>
+                <a class="pilcrow" href="#section-35">&#182;</a>
               </div>
               <p>Here is where we set up most of our global stuff
 Why do we want global stuff? There will be static modules that we use
@@ -576,11 +595,11 @@ folder.</p>
         </li>
         
         
-        <li id="section-35">
+        <li id="section-36">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-35">&#182;</a>
+                <a class="pilcrow" href="#section-36">&#182;</a>
               </div>
               <p><strong>colors</strong> used for logging, takes over <code>String.prototype</code></p>
 
@@ -591,11 +610,11 @@ folder.</p>
         </li>
         
         
-        <li id="section-36">
+        <li id="section-37">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-36">&#182;</a>
+                <a class="pilcrow" href="#section-37">&#182;</a>
               </div>
               <p><strong>String.prototype.capitalize</strong> used to cap first letter of a string</p>
 
@@ -608,11 +627,11 @@ folder.</p>
         </li>
         
         
-        <li id="section-37">
+        <li id="section-38">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-37">&#182;</a>
+                <a class="pilcrow" href="#section-38">&#182;</a>
               </div>
               <p><strong>_</strong> <code>lodash</code> module</p>
 
@@ -623,11 +642,11 @@ folder.</p>
         </li>
         
         
-        <li id="section-38">
+        <li id="section-39">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-38">&#182;</a>
+                <a class="pilcrow" href="#section-39">&#182;</a>
               </div>
               <p><strong>$q</strong> <code>Q</code> module</p>
 
@@ -638,11 +657,11 @@ folder.</p>
         </li>
         
         
-        <li id="section-39">
+        <li id="section-40">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-39">&#182;</a>
+                <a class="pilcrow" href="#section-40">&#182;</a>
               </div>
               <p><strong>$config</strong> the config object initialized in <code>index.js</code></p>
 
@@ -653,11 +672,11 @@ folder.</p>
         </li>
         
         
-        <li id="section-40">
+        <li id="section-41">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-40">&#182;</a>
+                <a class="pilcrow" href="#section-41">&#182;</a>
               </div>
               <p><strong>$log</strong> basic abstraction from <code>console.log()</code>, can be turned on or off by <strong>$config.logging</strong></p>
 
@@ -668,11 +687,11 @@ folder.</p>
         </li>
         
         
-        <li id="section-41">
+        <li id="section-42">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-41">&#182;</a>
+                <a class="pilcrow" href="#section-42">&#182;</a>
               </div>
               <p><strong>$handleError</strong> global error handler function</p>
 
@@ -685,11 +704,11 @@ folder.</p>
         </li>
         
         
-        <li id="section-42">
+        <li id="section-43">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-42">&#182;</a>
+                <a class="pilcrow" href="#section-43">&#182;</a>
               </div>
               <p><strong>$channels</strong> this is an <code>array</code> of channel names that will be used with <code>PubNub</code>
 <code>fs.readdirSync</code> will return an array of all folders or file names in the <code>api/</code> directory
@@ -705,11 +724,11 @@ must filter out the files, we only want the resource folders that have <code>mod
         </li>
         
         
-        <li id="section-43">
+        <li id="section-44">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-43">&#182;</a>
+                <a class="pilcrow" href="#section-44">&#182;</a>
               </div>
               <p>logging all the channels on bootup</p>
 
@@ -725,11 +744,11 @@ $log(<span class="hljs-string">'----------------'</span>.bold.cyan);</pre></div>
         </li>
         
         
-        <li id="section-44">
+        <li id="section-45">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-44">&#182;</a>
+                <a class="pilcrow" href="#section-45">&#182;</a>
               </div>
               <p><strong>addModelsToGlobal</strong> this function uses <code>$channels</code> to add the
 corresponding model to the global. For example, the <code>users</code> channel
@@ -765,30 +784,15 @@ addModelsToGlobal();</pre></div></div>
         </li>
         
         
-        <li id="section-45">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-45">&#182;</a>
-              </div>
-              <h2 id="-dispatcher-config-pb-pbinit-js-">$Dispatcher (config/pb/pbinit.js)</h2>
-
-            </div>
-            
-        </li>
-        
-        
         <li id="section-46">
             <div class="annotation">
               
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-46">&#182;</a>
               </div>
-              
+              <h2 id="-dispatcher-config-pb-pbinit-js-">$Dispatcher (config/pb/pbinit.js)</h2>
+
             </div>
-            
-            <div class="content"><div class='highlight'><pre><span class="hljs-pi">
-'use strict'</span>;</pre></div></div>
             
         </li>
         
@@ -799,9 +803,24 @@ addModelsToGlobal();</pre></div></div>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-47">&#182;</a>
               </div>
+              
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-pi">
+'use strict'</span>;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-48">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-48">&#182;</a>
+              </div>
               <p><strong>$Dispatcher</strong> constructor function
-initializes <code>PubNub</code> object with stuff in <code>$config</code>
-<strong>@params</strong>
+initializes <code>PubNub</code> object with stuff in <code>$config</code></p>
+<p><strong>@params</strong>
 <code>{PubNub}</code>: pass in a new PubNub object | optional</p>
 
             </div>
@@ -813,34 +832,45 @@ initializes <code>PubNub</code> object with stuff in <code>$config</code>
         </li>
         
         
-        <li id="section-48">
+        <li id="section-49">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-48">&#182;</a>
+                <a class="pilcrow" href="#section-49">&#182;</a>
               </div>
               <p><strong>$Dispatcher.proto.pub</strong>
-abstraction function used to call <code>PubNub.publish</code>
-<strong>@params</strong>
-<code>{message}</code>: the message to publish, will always send to mobile and from <code>$config.alias</code>
-<code>{channel}</code>:  the channel to publish to</p>
+abstraction function used to call <code>PubNub.publish</code><br><strong>@params</strong></p>
+<p><code>{message}</code>:  the message to publish, will always send to mobile 
+                                                           <code>{channel}</code>:  the channel to publish to</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>$Dispatcher.prototype.pub = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(message, channel)</span> </span>{
+            <div class="content"><div class='highlight'><pre>$Dispatcher.prototype.pub = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(message, channel, cb)</span> </span>{
   message.from = $config.alias;
-  message.to = <span class="hljs-string">'mobile'</span>;
+  message.to = message.to || <span class="hljs-string">'mobile'</span>;
+
+  cb = cb || <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span>{
+    $log(<span class="hljs-string">'message sent to '</span> + message.to);
+  };
 
   <span class="hljs-keyword">this</span>.pb.publish({
     channel: channel,
     message: message,
-    callback: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span>{
-      $log(<span class="hljs-string">'message sent to '</span> + message.to);
-    },
+    callback: cb,
     error: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(error)</span> </span>{
       $handleError(error, <span class="hljs-string">"PUB Error"</span>);
     }
   });
+};
+
+$Dispatcher.prototype.multiPub = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(messages)</span> </span>{
+  <span class="hljs-keyword">if</span> (!_.isArray(messages)) {
+    <span class="hljs-keyword">return</span>;
+  }
+
+  _.forEach(messages, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(message)</span> </span>{
+    <span class="hljs-keyword">this</span>.pub(message.message, message.channel);
+  }.bind(<span class="hljs-keyword">this</span>));
 };
 
 $Dispatcher.prototype.sub = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(channel, cb)</span> </span>{
@@ -867,26 +897,9 @@ global.$Dispatcher = $Dispatcher;
 
 <span class="hljs-pi">'use strict'</span>;
 
-<span class="hljs-built_in">module</span>.exports = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{</pre></div></div>
-            
-        </li>
-        
-        
-        <li id="section-49">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-49">&#182;</a>
-              </div>
-              <p>Note: this module is a function for future features
-For each resource, create and new $Dispatcher instance</p>
-
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>  _.forEach($channels, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(resource)</span> </span>{
-    <span class="hljs-built_in">require</span>(<span class="hljs-string">'./'</span> + resource)(<span class="hljs-keyword">new</span> $Dispatcher());
-  });
-};
+_.forEach($channels, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(resource)</span> </span>{
+  <span class="hljs-built_in">require</span>(<span class="hljs-string">'./'</span> + resource)(<span class="hljs-keyword">new</span> $Dispatcher());
+});
 
 <span class="hljs-string">'user strict'</span>;
 <span class="hljs-comment">/**
@@ -1065,7 +1078,12 @@ for a specific model</p>
 
       <span class="hljs-keyword">var</span> values = params.values || params.query;
 
-      <span class="hljs-keyword">if</span> (!values || !_.isArray(values) || !!values.length) {</pre></div></div>
+      <span class="hljs-keyword">if</span> (!values || !_.isArray(values) || !values.length) {
+        <span class="hljs-keyword">return</span>;
+      }
+
+      <span class="hljs-keyword">return</span> $q.all(_.map(values, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(val)</span> </span>{
+        <span class="hljs-keyword">if</span> (model.modelName === <span class="hljs-string">'order'</span>) {</pre></div></div>
             
         </li>
         
@@ -1075,25 +1093,6 @@ for a specific model</p>
               
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-52">&#182;</a>
-              </div>
-              <p>send back to user channel with error action</p>
-
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>        <span class="hljs-keyword">return</span>;
-      }
-
-      <span class="hljs-keyword">return</span> $q.all(_.map(values, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(val)</span> </span>{
-        <span class="hljs-keyword">if</span> (model.modelName === <span class="hljs-string">'order'</span>) {</pre></div></div>
-            
-        </li>
-        
-        
-        <li id="section-53">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-53">&#182;</a>
               </div>
               <p>val.code = $helper.createOrderCode();</p>
 
@@ -1112,7 +1111,7 @@ for a specific model</p>
           creations = [];
         }
 
-        $log(<span class="hljs-string">'Created'</span> + creations.length + <span class="hljs-string">' new '</span> + model.modelName);
+        $log(<span class="hljs-string">'Created'</span> + creations.length + <span class="hljs-string">' new '</span> + model.modelName + <span class="hljs-string">''</span>);
         message.actions[res.action] = creations;
         $dispatcher.pub(message, res.channel);
       })
@@ -1218,11 +1217,11 @@ for a specific model</p>
         </li>
         
         
-        <li id="section-54">
+        <li id="section-53">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-54">&#182;</a>
+                <a class="pilcrow" href="#section-53">&#182;</a>
               </div>
               <p>Make sure the message is for the API server,
 without this check, the server could be reacting
@@ -1235,11 +1234,11 @@ to its own publishes meant for mobile</p>
         </li>
         
         
-        <li id="section-55">
+        <li id="section-54">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-55">&#182;</a>
+                <a class="pilcrow" href="#section-54">&#182;</a>
               </div>
               <p>for each action in the given message, invoke
 the registered action with the given params</p>
@@ -1299,11 +1298,11 @@ the registered action with the given params</p>
         </li>
         
         
-        <li id="section-56">
+        <li id="section-55">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-56">&#182;</a>
+                <a class="pilcrow" href="#section-55">&#182;</a>
               </div>
               <p>Make sure the message is for the API server,
 without this check, the server could be reacting
@@ -1316,11 +1315,11 @@ to its own publishes meant for mobile</p>
         </li>
         
         
-        <li id="section-57">
+        <li id="section-56">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-57">&#182;</a>
+                <a class="pilcrow" href="#section-56">&#182;</a>
               </div>
               <p>for each action in the given message, invoke
 the registered action with the given params</p>
@@ -1366,11 +1365,11 @@ the registered action with the given params</p>
         </li>
         
         
-        <li id="section-58">
+        <li id="section-57">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-58">&#182;</a>
+                <a class="pilcrow" href="#section-57">&#182;</a>
               </div>
               <p>Make sure the message is for the API server,
 without this check, the server could be reacting
@@ -1383,11 +1382,91 @@ to its own publishes meant for mobile</p>
         </li>
         
         
+        <li id="section-58">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-58">&#182;</a>
+              </div>
+              <p>for each action in the given message, invoke
+the registered action with the given params</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>      _.forEach(message.actions, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(meta, actionName)</span> </span>{
+        actions[actionName].call(actions, meta, $dispatcher, message.respondTo);
+      });
+    }
+
+  });
+
+};
+
+<span class="hljs-pi">'use strict'</span>;
+
+<span class="hljs-built_in">module</span>.exports = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../createActions'</span>)(Drink);
+
+<span class="hljs-pi">'use strict'</span>;
+
+<span class="hljs-keyword">var</span> mongoose = <span class="hljs-built_in">require</span>(<span class="hljs-string">'mongoose'</span>);
+
+<span class="hljs-keyword">var</span> DrinksSchema = <span class="hljs-keyword">new</span> mongoose.Schema({
+
+  name: {
+    type: <span class="hljs-built_in">String</span>,
+    required: <span class="hljs-literal">true</span>
+  },
+
+  ingredients: [
+    { type: <span class="hljs-built_in">String</span> }
+  ],
+
+  category: <span class="hljs-built_in">String</span>,
+
+  bar: {
+    type: mongoose.Schema.ObjectId,
+    required: <span class="hljs-literal">true</span>,
+    ref: <span class="hljs-string">'bar'</span>
+  }
+
+});
+
+<span class="hljs-built_in">module</span>.exports = mongoose.model(<span class="hljs-string">'drink'</span>, DrinksSchema);
+
+<span class="hljs-pi">'use strict'</span>;
+
+<span class="hljs-keyword">var</span> actions = <span class="hljs-built_in">require</span>(<span class="hljs-string">'./drinkActions'</span>);
+
+<span class="hljs-built_in">module</span>.exports = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">($dispatcher)</span> </span>{
+  <span class="hljs-keyword">var</span> channel = __dirname.split(<span class="hljs-string">'/'</span>).pop();
+
+  $dispatcher.sub(channel, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(message)</span> </span>{</pre></div></div>
+            
+        </li>
+        
+        
         <li id="section-59">
             <div class="annotation">
               
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-59">&#182;</a>
+              </div>
+              <p>Make sure the message is for the API server,
+without this check, the server could be reacting
+to its own publishes meant for mobile</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">if</span> (message.to === $config.alias &amp;&amp; message.respondTo) {</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-60">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-60">&#182;</a>
               </div>
               <p>for each action in the given message, invoke
 the registered action with the given params</p>
@@ -1443,11 +1522,11 @@ the registered action with the given params</p>
         </li>
         
         
-        <li id="section-60">
+        <li id="section-61">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-60">&#182;</a>
+                <a class="pilcrow" href="#section-61">&#182;</a>
               </div>
               <p>Make sure the message is for the API server,
 without this check, the server could be reacting
@@ -1456,68 +1535,6 @@ to its own publishes meant for mobile</p>
             </div>
             
             <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">if</span> (message.to === $config.alias &amp;&amp; message.respondTo) {</pre></div></div>
-            
-        </li>
-        
-        
-        <li id="section-61">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-61">&#182;</a>
-              </div>
-              <p>for each action in the given message, invoke
-the registered action with the given params</p>
-
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>      _.forEach(message.actions, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(meta, actionName)</span> </span>{
-        actions[actionName].call(actions, meta, $dispatcher, message.respondTo);
-      });
-    }
-
-  });
-};
-
-<span class="hljs-pi">'use strict'</span>;
-
-<span class="hljs-built_in">module</span>.exports = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../createActions'</span>)(Drink);
-
-<span class="hljs-pi">'use strict'</span>;
-
-<span class="hljs-keyword">var</span> mongoose = <span class="hljs-built_in">require</span>(<span class="hljs-string">'mongoose'</span>);
-
-<span class="hljs-keyword">var</span> DrinksSchema = <span class="hljs-keyword">new</span> mongoose.Schema({
-
-  name: {
-    type: <span class="hljs-built_in">String</span>,
-    required: <span class="hljs-literal">true</span>
-  },
-
-  ingredients: [
-    { type: <span class="hljs-built_in">String</span> }
-  ],
-
-  category: <span class="hljs-built_in">String</span>,
-
-  bar: {
-    type: mongoose.Schema.ObjectId,
-    required: <span class="hljs-literal">true</span>,
-    ref: <span class="hljs-string">'bar'</span>
-  }
-
-});
-
-<span class="hljs-built_in">module</span>.exports = mongoose.model(<span class="hljs-string">'drink'</span>, DrinksSchema);
-
-<span class="hljs-pi">'use strict'</span>;
-
-<span class="hljs-keyword">var</span> actions = <span class="hljs-built_in">require</span>(<span class="hljs-string">'./drinkActions'</span>);
-
-<span class="hljs-built_in">module</span>.exports = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">($dispatcher)</span> </span>{
-  <span class="hljs-keyword">var</span> channel = __dirname.split(<span class="hljs-string">'/'</span>).pop();
-
-  $dispatcher.sub(channel, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(message)</span> </span>{</pre></div></div>
             
         </li>
         
@@ -1528,23 +1545,6 @@ the registered action with the given params</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-62">&#182;</a>
               </div>
-              <p>Make sure the message is for the API server,
-without this check, the server could be reacting
-to its own publishes meant for mobile</p>
-
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">if</span> (message.to === $config.alias &amp;&amp; message.respondTo) {</pre></div></div>
-            
-        </li>
-        
-        
-        <li id="section-63">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-63">&#182;</a>
-              </div>
               <p>for each action in the given message, invoke
 the registered action with the given params</p>
 
@@ -1556,7 +1556,6 @@ the registered action with the given params</p>
     }
 
   });
-
 };
 
 <span class="hljs-pi">'use strict'</span>;
@@ -1571,11 +1570,11 @@ the registered action with the given params</p>
         </li>
         
         
-        <li id="section-64">
+        <li id="section-63">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-64">&#182;</a>
+                <a class="pilcrow" href="#section-63">&#182;</a>
               </div>
               <p>Make sure the message is for the API server,
 without this check, the server could be reacting
@@ -1588,11 +1587,11 @@ to its own publishes meant for mobile</p>
         </li>
         
         
-        <li id="section-65">
+        <li id="section-64">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-65">&#182;</a>
+                <a class="pilcrow" href="#section-64">&#182;</a>
               </div>
               <p>for each action in the given message, invoke
 the registered action with the given params</p>
@@ -1610,23 +1609,50 @@ the registered action with the given params</p>
 
 <span class="hljs-pi">'use strict'</span>;
 
-<span class="hljs-built_in">require</span>(<span class="hljs-string">'../createActions'</span>)(Order);</pre></div></div>
-            
-        </li>
-        
-        
-        <li id="section-66">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-66">&#182;</a>
-              </div>
-              <p>actions.</p>
+<span class="hljs-keyword">var</span> actions = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../createActions'</span>)(Order);
 
-            </div>
-            
-            <div class="content"><div class='highlight'><pre><span class="hljs-pi">
-'use strict'</span>;
+actions.order = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(params, $dispatcher, res)</span></span>{
+  <span class="hljs-keyword">var</span> merch = params.bar.merch || <span class="hljs-string">'CU5EeFyjWXJjMeHduZmDb9Ac'</span>;
+
+  params.order.paidFor = <span class="hljs-literal">false</span>;
+
+  <span class="hljs-keyword">var</span> createOrder = $q.nbind(Order.create, Order);
+
+  createOrder(params.order).then(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(unPaidForOrder)</span></span>{
+    <span class="hljs-keyword">var</span> orderContent = {
+      description: <span class="hljs-string">'Order # '</span> + unPaidForOrder._id
+    };
+
+    <span class="hljs-keyword">return</span> $Payment.createOrder(merch, orderContent)
+      .then(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(order)</span></span>{
+        <span class="hljs-keyword">return</span> {
+          balancedOrder: order,
+          order: unPaidForOrder
+        };
+      });
+  })
+  .then(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(order)</span> </span>{
+
+    <span class="hljs-keyword">var</span> message = {
+      <span class="hljs-string">"to"</span>: <span class="hljs-string">"mobile"</span>,
+      <span class="hljs-string">"actions"</span>: {
+        <span class="hljs-string">"recieveOrder"</span>: {
+          <span class="hljs-string">"order"</span>: order.order,
+          <span class="hljs-string">"balancedOrder"</span>: order.balancedOrder
+        }
+      }
+    };
+
+    $dispatcher.pub(message, [res.channel, params.bar.private_channel]);
+  })
+  .fail(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(err)</span></span>{
+    $handleError(err);
+  });
+};
+
+<span class="hljs-built_in">module</span>.exports = actions;
+
+<span class="hljs-pi">'use strict'</span>;
 
 <span class="hljs-keyword">var</span> codeValidation = [
 
@@ -1666,6 +1692,11 @@ the registered action with the given params</p>
   redeemed: {
     type: <span class="hljs-built_in">Boolean</span>,
     <span class="hljs-keyword">default</span>: <span class="hljs-literal">false</span>
+  },
+
+  paidFor: {
+    type: <span class="hljs-built_in">Boolean</span>,
+    <span class="hljs-keyword">default</span>: <span class="hljs-literal">false</span>
   }
 
 });
@@ -1684,11 +1715,11 @@ the registered action with the given params</p>
         </li>
         
         
-        <li id="section-67">
+        <li id="section-65">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-67">&#182;</a>
+                <a class="pilcrow" href="#section-65">&#182;</a>
               </div>
               <p>Make sure the message is for the API server,
 without this check, the server could be reacting
@@ -1706,11 +1737,11 @@ to its own publishes meant for mobile</p>
         </li>
         
         
-        <li id="section-68">
+        <li id="section-66">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-68">&#182;</a>
+                <a class="pilcrow" href="#section-66">&#182;</a>
               </div>
               <p>for each action in the given message, invoke
 the registered action with the given params</p>
@@ -1722,11 +1753,11 @@ the registered action with the given params</p>
         </li>
         
         
-        <li id="section-69">
+        <li id="section-67">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-69">&#182;</a>
+                <a class="pilcrow" href="#section-67">&#182;</a>
               </div>
               <p>check to see if the message is from Auth0 and is to register a new
 user or bar</p>
@@ -1761,11 +1792,11 @@ actions.register = <span class="hljs-function"><span class="hljs-keyword">functi
         </li>
         
         
-        <li id="section-70">
+        <li id="section-68">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-70">&#182;</a>
+                <a class="pilcrow" href="#section-68">&#182;</a>
               </div>
               <p>Make sure to grant user access to their own private channel</p>
 
@@ -1778,11 +1809,11 @@ actions.register = <span class="hljs-function"><span class="hljs-keyword">functi
         </li>
         
         
-        <li id="section-71">
+        <li id="section-69">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-71">&#182;</a>
+                <a class="pilcrow" href="#section-69">&#182;</a>
               </div>
               <p>Actually grant the users channels</p>
 

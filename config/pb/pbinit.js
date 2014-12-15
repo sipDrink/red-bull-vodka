@@ -12,11 +12,11 @@ function $Dispatcher(PubNub){
 }
 
 // **$Dispatcher.proto.pub**
-// abstraction function used to call `PubNub.publish`
+// abstraction function used to call `PubNub.publish`              
 // **@params**
 //
-// `{message}`: the message to publish, will always send to mobile and from `$config.alias`
-// `{channel}`:  the channel to publish to
+// `{message}`:  the message to publish, will always send to mobile 
+//                                                            `{channel}`:  the channel to publish to
 $Dispatcher.prototype.pub = function(message, channel, cb) {
   message.from = $config.alias;
   message.to = message.to || 'mobile';
