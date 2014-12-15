@@ -2,7 +2,7 @@
 // ------------------------------------------------
 
 var mailer = require('nodemailer');
-var sender = mailer.createTransplant('SMTP', {
+var sender = mailer.createTransport('SMTP', {
   service: 'Gmail',
   auth: {
     user: 'gmail.willscottmoss@gmail.com',
