@@ -21,7 +21,8 @@ function Mailer(transport) {
 
 Mailer.prototype.send = function(options) {
   var future = $q.defer();
-
+  options = options || {};
+  
   _.merge(options, this.options);
 
   this.sender.sendMail(options, function(error){
