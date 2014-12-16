@@ -22,7 +22,7 @@ var UserSchema = new Schema({
   cards: [
     {
       name: String,
-      type: String,
+      cardType: String,
       href: String,
       main: {
         type: Boolean,
