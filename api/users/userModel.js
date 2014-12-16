@@ -21,7 +21,13 @@ var UserSchema = new Schema({
 
   cards: [
     {
-      type: String
+      name: String,
+      type: String,
+      href: String,
+      main: {
+        type: Boolean,
+        default: false
+      }
     }
   ],
 
