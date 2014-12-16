@@ -13,7 +13,8 @@ var UserSchema = new Schema({
   email: {
     index: true,
     unique: true,
-    required: true
+    required: true,
+    type: String
   },
 
   picture: String,
