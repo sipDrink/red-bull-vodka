@@ -5,11 +5,30 @@ var Schema = mongoose.Schema;
 
 var UserSchema = new Schema({
   name: String,
+
   gender: String,
+
+  auth_0_Id: String,
+
+  email: {
+    index: true,
+    unique: true,
+    required: true
+  },
+
+  picture: String,
+
+  cards: [
+    {
+      type: String
+    }
+  ],
+
   auth_key: {
     type: String,
     required: true
   },
+
   favorites: {
     global: {
       name: String,
@@ -19,12 +38,14 @@ var UserSchema = new Schema({
 
     }
   },
+
   provider: {
     facebook: {
       id: String,
       access_token: String
     }
   }
+
 });
 
 UserSchema.statics.findOneOrCreateOne = function(query, maybe) {

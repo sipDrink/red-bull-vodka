@@ -5,7 +5,7 @@ var _ = require('lodash');
 var jsDoc = require('gulp-jsdoc-to-markdown');
 var concat = require('gulp-concat');
 var mocha = require('gulp-mocha');
-var doxx = require('gulp-docco');
+var docco = require('gulp-docco');
 var localVars;
 
 var paths = {
@@ -39,7 +39,7 @@ gulp.task('set', function() {
 gulp.task('docco', function() {
   return gulp.src(paths.docs)
     .pipe(concat('Red-Bull-Vodka.js'))
-    .pipe(doxx({
+    .pipe(docco({
       layout: 'parallel'
     }))
     .pipe(gulp.dest('./docs'));
