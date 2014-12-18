@@ -38,7 +38,7 @@ gulp.task('set', function() {
 
 gulp.task('docco', function() {
   return gulp.src(paths.docs)
-    .pipe(concat('Red-Bull-Vodka.js'))
+    .pipe(concat('index.js'))
     .pipe(docco({
       layout: 'parallel'
     }))
