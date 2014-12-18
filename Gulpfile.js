@@ -50,7 +50,8 @@ gulp.task('docco', function() {
 gulp.task('deploy-docs', function(){
   return gulp.src('', { read: false })
     .pipe(shell([
-      'firebase deploy'
+      'firebase deploy',
+      'firebase open'
     ], { cwd: 'docs'}));
 });
 

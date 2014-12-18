@@ -1,5 +1,5 @@
 //    Red Bull Vodka v0.0.1
-//    (c) Sip 2014 Scott Moss, Daniel Liebieskin
+//    (c) Sip 2014 Scott Moss, Daniel Liebeskind
 
     // Server Entry (index.js)
     // ------------------------------
