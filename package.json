@@ -25,6 +25,7 @@
     "gulp-jsdoc-to-markdown": "^0.1.5",
     "gulp-mocha": "^2.0.0",
     "gulp-run": "^1.6.4",
+    "gulp-shell": "^0.2.11",
     "karma": "^0.12.28",
     "karma-chai": "^0.1.0",
     "karma-firefox-launcher": "^0.1.3",
