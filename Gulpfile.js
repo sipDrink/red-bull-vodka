@@ -30,6 +30,7 @@ try {
   localVars = {};
 }
 
+// set env vars for local testing
 gulp.task('set', function() {
   _.forEach(localVars, function(val, name) {
     process.env[name] = val;
