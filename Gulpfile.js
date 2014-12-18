@@ -62,7 +62,7 @@ gulp.task('test', function(){
   return gulp.src(['specs/setup/**/*.js', 'specs/unit/**/*Spec.js'])
     .pipe(mocha({
     }))
-    .on('end', function(){
+    .once('end', function(){
       process.exit();
     });
 });
