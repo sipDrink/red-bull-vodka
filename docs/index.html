@@ -2,7 +2,7 @@
 
 <html>
 <head>
-  <title>Red-Bull-Vodka.js</title>
+  <title>index.js</title>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
   <link rel="stylesheet" media="all" href="docco.css" />
@@ -15,7 +15,7 @@
         
           <li id="title">
               <div class="annotation">
-                  <h1>Red-Bull-Vodka.js</h1>
+                  <h1>index.js</h1>
               </div>
           </li>
         
@@ -682,7 +682,10 @@ folder.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>global.$log = $config.logging ? <span class="hljs-built_in">console</span>.log : <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span>{};</pre></div></div>
+            <div class="content"><div class='highlight'><pre>global.$log = $config.logging ? <span class="hljs-built_in">console</span>.log : <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span>{};
+
+<span class="hljs-keyword">var</span> Mailer = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../services/'</span>).mailer;
+<span class="hljs-keyword">var</span> mailer = <span class="hljs-keyword">new</span> Mailer();</pre></div></div>
             
         </li>
         
@@ -698,7 +701,18 @@ folder.</p>
             </div>
             
             <div class="content"><div class='highlight'><pre>global.$handleError = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(error, meta)</span> </span>{
-  <span class="hljs-built_in">console</span>.log(error, meta);
+  <span class="hljs-built_in">console</span>.error(error.stack, meta);
+
+  <span class="hljs-keyword">if</span> ($config.env === <span class="hljs-string">'production'</span>) {
+    mailer.send({
+      to: <span class="hljs-string">'willscottmoss@gmail.com'</span>,
+      subject: error.message,
+      text: error.stack || meta
+    })
+    .finally(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span>{
+      process.exit(<span class="hljs-number">1</span>);
+    });
+  }
 };</pre></div></div>
             
         </li>
@@ -779,7 +793,9 @@ the <code>categories</code> channel has a <code>category</code> model.</p>
   });
 };
 
-addModelsToGlobal();</pre></div></div>
+addModelsToGlobal();
+
+process.on(<span class="hljs-string">'uncaughtException'</span>, $handleError);</pre></div></div>
             
         </li>
         
@@ -1404,38 +1420,35 @@ the registered action with the given params</p>
 
 <span class="hljs-pi">'use strict'</span>;
 
-<span class="hljs-built_in">module</span>.exports = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../createActions'</span>)(Drink);
-
-<span class="hljs-pi">'use strict'</span>;
+<span class="hljs-built_in">module</span>.exports = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../createActions'</span>)(DrinkType);
 
 <span class="hljs-keyword">var</span> mongoose = <span class="hljs-built_in">require</span>(<span class="hljs-string">'mongoose'</span>);
+<span class="hljs-keyword">var</span> Schema = mongoose.Schema;
 
-<span class="hljs-keyword">var</span> DrinksSchema = <span class="hljs-keyword">new</span> mongoose.Schema({
+<span class="hljs-keyword">var</span> DrinkTypeSchema = <span class="hljs-keyword">new</span> Schema({
 
   name: {
     type: <span class="hljs-built_in">String</span>,
     required: <span class="hljs-literal">true</span>
   },
 
-  ingredients: [
-    { type: <span class="hljs-built_in">String</span> }
-  ],
-
-  category: <span class="hljs-built_in">String</span>,
-
   bar: {
-    type: mongoose.Schema.ObjectId,
-    required: <span class="hljs-literal">true</span>,
+    type: Schema.ObjectId,
     ref: <span class="hljs-string">'bar'</span>
-  }
+  },
+
+  brands: [{
+    name: <span class="hljs-built_in">String</span>,
+    price: <span class="hljs-built_in">Number</span>
+  }]
 
 });
 
-<span class="hljs-built_in">module</span>.exports = mongoose.model(<span class="hljs-string">'drink'</span>, DrinksSchema);
+<span class="hljs-built_in">module</span>.exports = mongoose.model(<span class="hljs-string">'drinkType'</span>, DrinkTypeSchema);
 
 <span class="hljs-pi">'use strict'</span>;
 
-<span class="hljs-keyword">var</span> actions = <span class="hljs-built_in">require</span>(<span class="hljs-string">'./drinkActions'</span>);
+<span class="hljs-keyword">var</span> actions = <span class="hljs-built_in">require</span>(<span class="hljs-string">'./drinkTypeActions'</span>);
 
 <span class="hljs-built_in">module</span>.exports = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">($dispatcher)</span> </span>{
   <span class="hljs-keyword">var</span> channel = __dirname.split(<span class="hljs-string">'/'</span>).pop();
@@ -1479,40 +1492,42 @@ the registered action with the given params</p>
     }
 
   });
-
 };
 
 <span class="hljs-pi">'use strict'</span>;
 
-<span class="hljs-built_in">module</span>.exports = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../createActions'</span>)(DrinkType);
+<span class="hljs-built_in">module</span>.exports = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../createActions'</span>)(Drink);
+
+<span class="hljs-pi">'use strict'</span>;
 
 <span class="hljs-keyword">var</span> mongoose = <span class="hljs-built_in">require</span>(<span class="hljs-string">'mongoose'</span>);
-<span class="hljs-keyword">var</span> Schema = mongoose.Schema;
 
-<span class="hljs-keyword">var</span> DrinkTypeSchema = <span class="hljs-keyword">new</span> Schema({
+<span class="hljs-keyword">var</span> DrinksSchema = <span class="hljs-keyword">new</span> mongoose.Schema({
 
   name: {
     type: <span class="hljs-built_in">String</span>,
     required: <span class="hljs-literal">true</span>
   },
 
-  bar: {
-    type: Schema.ObjectId,
-    ref: <span class="hljs-string">'bar'</span>
-  },
+  ingredients: [
+    { type: <span class="hljs-built_in">String</span> }
+  ],
 
-  brands: [{
-    name: <span class="hljs-built_in">String</span>,
-    price: <span class="hljs-built_in">Number</span>
-  }]
+  category: <span class="hljs-built_in">String</span>,
+
+  bar: {
+    type: mongoose.Schema.ObjectId,
+    required: <span class="hljs-literal">true</span>,
+    ref: <span class="hljs-string">'bar'</span>
+  }
 
 });
 
-<span class="hljs-built_in">module</span>.exports = mongoose.model(<span class="hljs-string">'drinkType'</span>, DrinkTypeSchema);
+<span class="hljs-built_in">module</span>.exports = mongoose.model(<span class="hljs-string">'drink'</span>, DrinksSchema);
 
 <span class="hljs-pi">'use strict'</span>;
 
-<span class="hljs-keyword">var</span> actions = <span class="hljs-built_in">require</span>(<span class="hljs-string">'./drinkTypeActions'</span>);
+<span class="hljs-keyword">var</span> actions = <span class="hljs-built_in">require</span>(<span class="hljs-string">'./drinkActions'</span>);
 
 <span class="hljs-built_in">module</span>.exports = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">($dispatcher)</span> </span>{
   <span class="hljs-keyword">var</span> channel = __dirname.split(<span class="hljs-string">'/'</span>).pop();
@@ -1556,6 +1571,7 @@ the registered action with the given params</p>
     }
 
   });
+
 };
 
 <span class="hljs-pi">'use strict'</span>;
@@ -1624,12 +1640,12 @@ actions.order = <span class="hljs-function"><span class="hljs-keyword">function<
     };
 
     <span class="hljs-keyword">return</span> $Payment.createOrder(merch, orderContent)
-      .then(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(order)</span></span>{
-        <span class="hljs-keyword">return</span> {
-          balancedOrder: order,
-          order: unPaidForOrder
-        };
-      });
+    .then(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(order)</span></span>{
+      <span class="hljs-keyword">return</span> {
+        balancedOrder: order,
+        order: unPaidForOrder
+      };
+    });
   })
   .then(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(order)</span> </span>{
 
@@ -1727,8 +1743,7 @@ to its own publishes meant for mobile</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    $log(<span class="hljs-string">'users/index.js message'</span>, message);
-    <span class="hljs-keyword">if</span> (message.to === $config.alias &amp;&amp; message.respondTo) {
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">if</span> (message.to === $config.alias &amp;&amp; message.respondTo) {
 
       <span class="hljs-keyword">if</span> (message.register &amp;&amp; message.from === <span class="hljs-string">'Auth0'</span>) {
         actions.register(message.register, $dispatcher);
@@ -1802,9 +1817,7 @@ actions.register = <span class="hljs-function"><span class="hljs-keyword">functi
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>  channelsToGrant.push(auth_key);
-
-  $log(<span class="hljs-string">'channelsToGrant'</span>, channelsToGrant);</pre></div></div>
+            <div class="content"><div class='highlight'><pre>  channelsToGrant.push(auth_key);</pre></div></div>
             
         </li>
         
@@ -1842,11 +1855,37 @@ actions.register = <span class="hljs-function"><span class="hljs-keyword">functi
 
 <span class="hljs-keyword">var</span> UserSchema = <span class="hljs-keyword">new</span> Schema({
   name: <span class="hljs-built_in">String</span>,
+
   gender: <span class="hljs-built_in">String</span>,
+
+  auth_0_Id: <span class="hljs-built_in">String</span>,
+
+  email: {
+    index: <span class="hljs-literal">true</span>,
+    unique: <span class="hljs-literal">true</span>,
+    required: <span class="hljs-literal">true</span>,
+    type: <span class="hljs-built_in">String</span>
+  },
+
+  picture: <span class="hljs-built_in">String</span>,
+
+  cards: [
+    {
+      name: <span class="hljs-built_in">String</span>,
+      cardType: <span class="hljs-built_in">String</span>,
+      href: <span class="hljs-built_in">String</span>,
+      main: {
+        type: <span class="hljs-built_in">Boolean</span>,
+        <span class="hljs-keyword">default</span>: <span class="hljs-literal">false</span>
+      }
+    }
+  ],
+
   auth_key: {
     type: <span class="hljs-built_in">String</span>,
     required: <span class="hljs-literal">true</span>
   },
+
   favorites: {
     global: {
       name: <span class="hljs-built_in">String</span>,
@@ -1856,12 +1895,14 @@ actions.register = <span class="hljs-function"><span class="hljs-keyword">functi
 
     }
   },
+
   provider: {
     facebook: {
       id: <span class="hljs-built_in">String</span>,
       access_token: <span class="hljs-built_in">String</span>
     }
   }
+
 });
 
 UserSchema.statics.findOneOrCreateOne = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(query, maybe)</span> </span>{

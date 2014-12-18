@@ -1,12 +1,12 @@
 'use strict';
 
-var gulp = require('gulp');
-var _ = require('lodash');
-var jsDoc = require('gulp-jsdoc-to-markdown');
-var concat = require('gulp-concat');
-var mocha = require('gulp-mocha');
-var docco = require('gulp-docco');
-var localVars;
+var gulp    = require('gulp'),
+    _       = require('lodash'),
+concat      = require('gulp-concat'),
+mocha       = require('gulp-mocha'),
+docco       = require('gulp-docco'),
+shell       = require('gulp-shell'),
+localVars;
 
 var paths = {
   docs: [
@@ -36,14 +36,25 @@ gulp.task('set', function() {
   });
 });
 
+// generate them docs yo
 gulp.task('docco', function() {
   return gulp.src(paths.docs)
-    .pipe(concat('Red-Bull-Vodka.js'))
+    .pipe(concat('index.js'))
     .pipe(docco({
       layout: 'parallel'
     }))
     .pipe(gulp.dest('./docs'));
 });
+
+// task to deploy docs to firebase, use with 'docco' task in the 'docs' task
+gulp.task('deploy-docs', function(){
+  return gulp.src('', { read: false })
+    .pipe(shell([
+      'firebase deploy'
+    ], { cwd: 'docs'}));
+});
+
+gulp.task('docs', ['docco', 'deploy-docs']);
 
 gulp.task('test', function(){
   return gulp.src(['specs/setup/**/*.js', 'specs/unit/**/*Spec.js'])
