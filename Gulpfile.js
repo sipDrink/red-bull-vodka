@@ -30,6 +30,7 @@ try {
   localVars = {};
 }
 
+// set env vars for local testing
 gulp.task('set', function() {
   _.forEach(localVars, function(val, name) {
     process.env[name] = val;
@@ -61,7 +62,7 @@ gulp.task('test', function(){
   return gulp.src(['specs/setup/**/*.js', 'specs/unit/**/*Spec.js'])
     .pipe(mocha({
     }))
-    .on('end', function(){
+    .once('end', function(){
       process.exit();
     });
 });
