@@ -22,6 +22,11 @@ var BarSchema = new Schema({
     type: String
   },
 
+  email_verified: {
+    required: true,
+    type: Boolean
+  },
+
   drinkTypes: [
     {
       type: Schema.ObjectId,
