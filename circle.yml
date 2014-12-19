@@ -2,6 +2,8 @@ machine:
   node:
     version: v0.10.28
 dependencies:
+  pre:
+    - npm install -g gulp
   override:
     - npm install --dev
 test:
