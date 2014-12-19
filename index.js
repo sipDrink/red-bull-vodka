@@ -8,6 +8,22 @@
 // **NODE_ENV** default to development mode if not set elsewhere
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
+// Init all the globals in **globals.js**
+require('./config/globals');
+
+// If in dev mode, set secrets for local
+if (process.env.NODE_ENV === 'development') {
+  var secrets;
+  try {
+    secrets = require('./config/_local');
+  } catch(e){
+
+  }
+  _.forEach(secrets, function(val, name){
+    process.env[name] = val;
+  });
+}
+
 // **mongoose**  node module, use to connect to DB
 var mongoose = require('mongoose');
 
@@ -16,8 +32,6 @@ var mongoose = require('mongoose');
 // API features.
 var http = require('http');
 
-// Init all the globals in **globals.js**
-require('./config/globals');
 
 // Connect to the mongo Database, the URL is based off the **NODE_ENV**
 mongoose.connect($config.mongo.uri, $config.mongo.options);
