@@ -4,6 +4,7 @@ machine:
 dependencies:
   pre:
     - npm install -g gulp
+    - npm install -g firebase-tools
   override:
     - npm install --dev
 test:
