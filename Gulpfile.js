@@ -49,11 +49,11 @@ gulp.task('docco', function() {
 
 // task to deploy docs to firebase, use with 'docco' task in the 'docs' task
 gulp.task('deploy-docs', function(){
+  var commands = ['firebase deploy'];
+
+  process.env.NODE_ENV === 'testing' ? (function(){}()) : commands.push('firebase open');
   return gulp.src('', { read: false })
-    .pipe(shell([
-      'firebase deploy',
-      'firebase open'
-    ], { cwd: 'docs'}));
+    .pipe(shell(commands, { cwd: 'docs'}));
 });
 
 gulp.task('docs', ['docco', 'deploy-docs']);
