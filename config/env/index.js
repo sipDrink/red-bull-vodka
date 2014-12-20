@@ -14,7 +14,6 @@ if (process.env.NODE_ENV === 'development') {
   }
   _.forEach(secrets, function(val, name){
     process.env[name] = val;
-    console.log(name + "= " + process.env[name]);
   });
 }
 
