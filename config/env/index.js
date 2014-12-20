@@ -4,6 +4,20 @@
 
 'use strict';
 
+// If in dev mode, set secrets for local
+if (process.env.NODE_ENV === 'development') {
+  var secrets;
+  try {
+    secrets = require('../_local');
+  } catch(e){
+
+  }
+  _.forEach(secrets, function(val, name){
+    process.env[name] = val;
+    console.log(name + "= " + process.env[name]);
+  });
+}
+
 var all = {
   // **env** the **NODE_ENV** of the server
   env: process.env.NODE_ENV,
