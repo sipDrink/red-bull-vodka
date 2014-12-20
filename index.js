@@ -11,18 +11,6 @@ process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 // Init all the globals in **globals.js**
 require('./config/globals');
 
-// If in dev mode, set secrets for local
-if (process.env.NODE_ENV === 'development') {
-  var secrets;
-  try {
-    secrets = require('./config/_local');
-  } catch(e){
-
-  }
-  _.forEach(secrets, function(val, name){
-    process.env[name] = val;
-  });
-}
 
 // **mongoose**  node module, use to connect to DB
 var mongoose = require('mongoose');
