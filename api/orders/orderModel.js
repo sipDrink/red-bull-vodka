@@ -36,28 +36,18 @@ var OrderSchema = new mongoose.Schema({
     ref: 'user'
   }],
 
-//  cost: {
-//    type: Number,
-//    required: true
-//  },
-
-  // has the order been picked up by the customer?
-  redeemed: {
-    type: Boolean,
-    default: false
-  },
-
-  // has the order been paid for by the customer?
-  paidFor: {
-    type: Boolean,
-    default: false
-  },
-
-  // has the bar/bartender begun fulfilling the order?
-  processed: {
-    type: Boolean,
-    default: false
+  /*
+  Possible values for status:
+    '' - invalid
+    'paidFor' - drink paid for but not made
+    'processed' - drink made but not picked up
+    'redeemed' - drink picked up by customer. 
+  */
+  status: {
+    type: String,
+    default: ''
   }
+
 });
 
 module.exports  = mongoose.model('order', OrderSchema);
