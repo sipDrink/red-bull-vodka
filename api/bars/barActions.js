@@ -1,7 +1,7 @@
 'use strict';
 var actions = require('../createActions')(Bar);
 
-actions.register = function(auth_key, $dispatcher) {
+actions.register = function(user_id, $dispatcher) {
   $log('registering bar');
   /*
     Channels to grant bars publish access to:
@@ -9,24 +9,26 @@ actions.register = function(auth_key, $dispatcher) {
       orders
       categories
       drinkTypes
+    Channels to grant bars only subscribe access to:
+      private_channel
    */
-//  var channelsToGrant = $channels.slice();
 
+  // removes the drinks channel from the bar's publish list
   var channelsToGrant = _.remove($channels, function(channel) {
     return !/drinks/g.test(channel);
   });
 
   // Grant bar access to their own private channel
-  channelsToGrant.push(auth_key);
+  channelsToGrant.push(user_id); // looks like 'auth0|####'
 
   // Grant bar access to their relevant channels
   _.forEach(channelsToGrant, function(channel) {
     $dispatcher.grant({
       channel: channel,
-      read: false,
+      read: true,
       write: true,
       ttl: 0,
-      auth_key: auth_key,
+      auth_key: user_id,
       callback: function() {
         $log(channel + 'grant to bar successful');
       }

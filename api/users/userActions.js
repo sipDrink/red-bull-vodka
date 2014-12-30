@@ -3,10 +3,10 @@
 var actions = require('../createActions')(User);
 
 
-actions.register = function(auth_key, $dispatcher) {
+actions.register = function(user_id, $dispatcher) {
   $log('registering');
   /*
-    Channels to grant users access to
+    Channels to grant users publish access to
       users
       orders
       bars
@@ -16,7 +16,7 @@ actions.register = function(auth_key, $dispatcher) {
   });
 
   // Make sure to grant user access to their own private channel
-  channelsToGrant.push(auth_key);
+  channelsToGrant.push(user_id); // looks like 'facebook|####'
 
   // Actually grant the users channels
   _.forEach(channelsToGrant, function(channel) {
@@ -25,7 +25,8 @@ actions.register = function(auth_key, $dispatcher) {
       read: true,
       write: true,
       ttl: 0,
-      auth_key: auth_key,
+      auth_key: user_id,
+      // TODO: check to see if patron should set auth_key to access_token or user_id
       callback: function() {
         $log(channel + ' grant successful');
       }

@@ -13,6 +13,12 @@ var mongoose = require('mongoose');
 
 var OrderSchema = new mongoose.Schema({
 
+  drinks: [{
+    type: mongoose.Schema.ObjectId,
+    ref: 'drink',
+    quantity: Number
+  }],
+
   code: {
     type: String,
     required: true,
@@ -30,21 +36,28 @@ var OrderSchema = new mongoose.Schema({
     ref: 'user'
   }],
 
-  cost: {
-    type: Number,
-    required: true,
-  },
+//  cost: {
+//    type: Number,
+//    required: true
+//  },
 
+  // has the order been picked up by the customer?
   redeemed: {
     type: Boolean,
     default: false
   },
 
+  // has the order been paid for by the customer?
   paidFor: {
     type: Boolean,
     default: false
-  }
+  },
 
+  // has the bar/bartender begun fulfilling the order?
+  processed: {
+    type: Boolean,
+    default: false
+  }
 });
 
 module.exports  = mongoose.model('order', OrderSchema);

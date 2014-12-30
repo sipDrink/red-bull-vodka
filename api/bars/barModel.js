@@ -23,7 +23,7 @@ var BarSchema = new Schema({
   },
 
   email_verified: {
-    required: true,
+    // required: true,
     type: Boolean
   },
 
