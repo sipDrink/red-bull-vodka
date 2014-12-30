@@ -12,11 +12,12 @@ module.exports = function($dispatcher) {
     if (message.to === $config.alias && message.respondTo) {
 
       if (message.register && message.from === 'Auth0') {
+        // registers the user to their appropriate channels
         actions.register(message.register, $dispatcher);
       }
 
       // for each action in the given message, invoke
-      // the registered action with the given params
+      // the registered action with the given params (meta)
       _.forEach(message.actions, function(meta, actionName) {
         // check to see if the message is from Auth0 and is to register a new
         // user or bar

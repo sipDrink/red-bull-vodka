@@ -19,6 +19,11 @@ var DrinksSchema = new mongoose.Schema({
     type: mongoose.Schema.ObjectId,
     required: true,
     ref: 'bar'
+  },
+
+  price: {
+    type: Number,
+    required: true
   }
 
 });

@@ -11,7 +11,7 @@ module.exports = function($dispatcher) {
     // to its own publishes meant for mobile
     if (message.to === $config.alias && message.respondTo) {
       // for each action in the given message, invoke
-      // the registered action with the given params
+      // the registered action with the given params (meta)
       _.forEach(message.actions, function(meta, actionName) {
         actions[actionName].call(actions, meta, $dispatcher, message.respondTo);
       });
