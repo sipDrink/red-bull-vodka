@@ -21,20 +21,20 @@ var OrderSchema = new mongoose.Schema({
 
   code: {
     type: String,
-    required: true,
+    // required: true,
     validate: codeValidation
   },
 
-  bar: {
-    type: mongoose.Schema.ObjectId,
-    required: true,
-    ref: 'bar'
-  },
+//  bar: {
+//    type: mongoose.Schema.ObjectId,
+//    required: true,
+//    ref: 'bar'
+//  },
 
-  customers: [{
-    type: mongoose.Schema.ObjectId,
-    ref: 'user'
-  }],
+//  customers: [{
+//    type: mongoose.Schema.ObjectId,
+//    ref: 'user'
+//  }],
 
   /*
   Possible values for status:

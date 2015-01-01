@@ -22,7 +22,7 @@ $Dispatcher.prototype.pub = function(message, channel, cb) {
   message.to = message.to || 'mobile';
 
   cb = cb || function(){
-    $log('message sent to ' + message.to);
+    $log('message sent to', message.to, 'on channel', channel);
   };
 
   this.pb.publish({

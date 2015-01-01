@@ -149,6 +149,7 @@ module.exports = function createActions(model) {
       };
 
       var values = params.values || params.query;
+      $log('params.values:', params.values);
 
       if (!values || !_.isArray(values) || !values.length) {
         return;

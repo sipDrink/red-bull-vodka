@@ -20,3 +20,30 @@ module.exports = function($dispatcher) {
   });
 
 };
+/*
+Sample message from Patron to fetchBars:
+
+{
+  "from": "mobile",
+  "to": "API",
+  "actions": {
+    "get": {
+      "query": {
+        "loc": {
+          "$near": coords,
+          "$maxDistance": 6000
+        },
+        "completedSignUp": true
+      },
+      "options": {
+        "populate": "drinkTypes",
+        "limit": 10
+      }
+    }
+  },
+  "respondTo": {
+    "action": "receiveBars",
+    "channel": "userPrivateChannel"
+  }
+}
+ */

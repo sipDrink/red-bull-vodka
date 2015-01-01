@@ -2,43 +2,65 @@
 
 var actions = require('../createActions')(Order);
 
-actions.order = function(params, $dispatcher, res){
-  var merch = params.bar.merch || 'CU5EeFyjWXJjMeHduZmDb9Ac';
+actions.order = function(params, $dispatcher, res) {
+  // TODO: do we need res if we're gonna declare the actions anyways?
 
-  params.order.paidFor = false;
+  // THIS MIGHT BE WRONG
+  // var merch = params.bar.merch || 'CU5EeFyjWXJjMeHduZmDb9Ac';
+
+  // params.order.paidFor = false;
 
   var createOrder = $q.nbind(Order.create, Order);
 
-  createOrder(params.order).then(function(unPaidForOrder){
-    var orderContent = {
-      description: 'Order # ' + unPaidForOrder._id
-    };
+  console.log('order object:', params.order);
+  createOrder(params.order)
 
-    return $Payment.createOrder(merch, orderContent)
-    .then(function(order){
-      return {
-        balancedOrder: order,
-        order: unPaidForOrder
-      };
-    });
-  })
-  .then(function(order) {
+    // this promise handles payments, which aren't currently enabled
+//    .then(function(unPaidForOrder){
+//      var orderContent = {
+//        description: 'Order # ' + unPaidForOrder._id
+//      };
+//
+//      return $Payment.createOrder(merch, orderContent)
+//        .then(function(order){
+//          return {
+//            balancedOrder: order,
+//            order: unPaidForOrder
+//          };
+//        });
+//    })
+    .then(function(order) {
 
-    var message = {
-      "to": "mobile",
-      "actions": {
-        "recieveOrder": {
-          "order": order.order,
-          "balancedOrder": order.balancedOrder
+//      var messageToMobile = {
+//        "to": "mobile",
+//        "actions": {
+//          "receiveOrder": {
+//            "order": order.order,
+//            "balancedOrder": order.balancedOrder
+//          }
+//        }
+//      };
+
+      var messageToVendor = {
+        "to": "vendor",
+        "actions": {
+          "receiveOrder": {
+            "order": order
+            // "balancedOrder": order.balancedOrder
+          }
         }
-      }
-    };
+      };
 
-    $dispatcher.pub(message, [res.channel, params.bar.private_channel]);
-  })
-  .fail(function(err){
-    $handleError(err);
-  });
+//      $dispatcher.pub(message, [res.channel, params.bar.private_channel]);
+      $dispatcher.pub(messageToVendor, params.order.bar.private_channel);
+    })
+    .fail(function(err){
+      $handleError(err);
+    });
+};
+
+actions.updateOrder = function(params, $dispatcher, res) {
+
 };
 
 module.exports = actions;
