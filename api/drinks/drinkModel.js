@@ -9,9 +9,9 @@ var DrinksSchema = new mongoose.Schema({
     required: true
   },
 
-  ingredients: [
-    { type: String }
-  ],
+  ingredients: [{
+    type: String
+  }],
 
   category: String,
 

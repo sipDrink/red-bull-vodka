@@ -30,14 +30,12 @@ message = {
     "order": {
 
       "order": {
-        "bar": {
-          "_id": "54a1f4e7595f8d0200ce3a01",
-          "merch": '',
-          "private_channel": "auth0|54a21ac37302a1d301cdb354"
-        },
+        "bar": "54a1f4e7595f8d0200ce3a01",
         "drinks": [
           {
-            "_id": "54a1f4e5595f8d0200ce3679",
+            "name": "Taaka Shots",
+            "price": "50",
+            "ingredients": ["Taaka"],
             "quantity": 2
           }
         ],

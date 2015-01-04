@@ -14,8 +14,17 @@ var mongoose = require('mongoose');
 var OrderSchema = new mongoose.Schema({
 
   drinks: [{
-    type: mongoose.Schema.ObjectId,
-    ref: 'drink',
+    name: {
+      type: String,
+      required: true
+    },
+    price: {
+      type: Number,
+      required: true
+    },
+    ingredients: [{
+      type: String
+    }],
     quantity: Number
   }],
 
@@ -25,12 +34,13 @@ var OrderSchema = new mongoose.Schema({
     validate: codeValidation
   },
 
-//  bar: {
-//    type: mongoose.Schema.ObjectId,
-//    required: true,
-//    ref: 'bar'
-//  },
+  bar: {
+    type: mongoose.Schema.ObjectId,
+    required: true,
+    ref: 'bar'
+  },
 
+  // TODO: ADD CUSTOMERS TO DB BEFORE TESTING THIS FUNCTIONALITY
 //  customers: [{
 //    type: mongoose.Schema.ObjectId,
 //    ref: 'user'

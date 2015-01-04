@@ -3,6 +3,57 @@ var colors = require('colors');
 
 var bars = [
   {
+    "private_channel": "auth0|54a21ac37302a1d301cdb354",
+    "tenant": "sipdrink",
+    "client_id": "avcSZW5cgrgNHUm493pnRxIvCstzdnNs",
+    "connection": "Email",
+    "email": "a@b.com",
+    "password": "$2a$10$seduMezyIEUit9LR9X0RHuQFLWO61LWYDqPgn2eNo0nW9ellZYnma",
+    "__v": 1,
+    "barType": "Sports Bar",
+    "completedSignUp": false,
+    "drinkMixers": [
+      {
+        "name": "Cola",
+      },
+      {
+        "name": "Orange Juice",
+      },
+      {
+        "name": "Cranberry Juice",
+      },
+      {
+        "name": "Red Bull",
+        "price": 8,
+      },
+      {
+        "name": "Sugar Free Red Bull",
+        "price": 7,
+      }
+    ],
+    drinks: [
+      {
+        "name": "Red Bull Vodka",
+        "price": 12,
+        "ingredients": [
+          "Redbull",
+          "Vodka"
+        ]
+      },
+      {
+        "name": "Long Island Iced Tea",
+        "price": 14,
+        "ingredients": [
+          "vodka",
+          "rum",
+          "tequila",
+          "tea"
+        ]
+      }
+    ],
+    "orders": []
+  },
+  {
     "name": "Earthplex",
     "barType": "Sports Bar",
     "email": "Earthplex0@Earthplex.com",
@@ -3647,6 +3698,9 @@ remove(Bar)
   })
   .then(function() {
     return remove(Bartender);
+  })
+  .then(function() {
+    return remove(Order);
   })
   .then(function() {
     return createBar(bars);

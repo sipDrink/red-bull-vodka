@@ -41,9 +41,10 @@ var UserSchema = new Schema({
       name: String,
       custom: {}
     },
-    bar: {
-
-    }
+    bar: [{
+      type: Schema.ObjectId,
+      ref: 'bar'
+    }]
   },
 
   provider: {

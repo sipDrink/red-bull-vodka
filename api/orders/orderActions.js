@@ -11,6 +11,7 @@ actions.order = function(params, $dispatcher, res) {
   // params.order.paidFor = false;
 
   var createOrder = $q.nbind(Order.create, Order);
+  var populateOrder = $q.nbind(Order.populate, Order);
 
   console.log('order object:', params.order);
   createOrder(params.order)
@@ -30,7 +31,9 @@ actions.order = function(params, $dispatcher, res) {
 //        });
 //    })
     .then(function(order) {
-
+      return populateOrder(order, 'bar')
+    })
+    .then(function(order) {
 //      var messageToMobile = {
 //        "to": "mobile",
 //        "actions": {
@@ -52,7 +55,7 @@ actions.order = function(params, $dispatcher, res) {
       };
 
 //      $dispatcher.pub(message, [res.channel, params.bar.private_channel]);
-      $dispatcher.pub(messageToVendor, params.order.bar.private_channel);
+      $dispatcher.pub(messageToVendor, order.bar.private_channel);
     })
     .fail(function(err){
       $handleError(err);
@@ -60,6 +63,9 @@ actions.order = function(params, $dispatcher, res) {
 };
 
 actions.updateOrder = function(params, $dispatcher, res) {
+  var findOrder = $q.nbind(Order.findOne, Order);
+
+
 
 };
 
