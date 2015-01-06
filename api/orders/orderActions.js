@@ -3,8 +3,6 @@
 var actions = require('../createActions')(Order);
 
 actions.order = function(params, $dispatcher, res) {
-  // TODO: do we need res if we're gonna declare the actions anyways?
-
   // THIS MIGHT BE WRONG
   // var merch = params.bar.merch || 'CU5EeFyjWXJjMeHduZmDb9Ac';
 
@@ -13,7 +11,6 @@ actions.order = function(params, $dispatcher, res) {
   var createOrder = $q.nbind(Order.create, Order);
   var populateOrder = $q.nbind(Order.populate, Order);
 
-  console.log('order object:', params.order);
   createOrder(params.order)
 
     // this promise handles payments, which aren't currently enabled
@@ -31,9 +28,12 @@ actions.order = function(params, $dispatcher, res) {
 //        });
 //    })
     .then(function(order) {
-      return populateOrder(order, 'bar')
+      return populateOrder(order, 'bar customers');
     })
+    // TODO: POPULATE drinks ('bar drinks') from bar's list of drinks
     .then(function(order) {
+      $log('order is:', order);
+
 //      var messageToMobile = {
 //        "to": "mobile",
 //        "actions": {
@@ -54,8 +54,9 @@ actions.order = function(params, $dispatcher, res) {
         }
       };
 
-//      $dispatcher.pub(message, [res.channel, params.bar.private_channel]);
+      // res.channel == message.respondTo.channel
       $dispatcher.pub(messageToVendor, order.bar.private_channel);
+      // $dispatcher.pub(messageToMobile, res.channel);
     })
     .fail(function(err){
       $handleError(err);
@@ -63,9 +64,37 @@ actions.order = function(params, $dispatcher, res) {
 };
 
 actions.updateOrder = function(params, $dispatcher, res) {
-  var findOrder = $q.nbind(Order.findOne, Order);
+  // TODO: generalize this function so that it can be used to update the drink order by MOBILE (not just the status by VENDOR)
+  // TODO: prevent this function from running if the order is being made
 
+  var updateOrder = $q.nbind(Order.findByIdAndUpdate, Order);
+  var populateOrder = $q.nbind(Order.populate, Order);
 
+  updateOrder(params.orderInfo._id, {"status": params.orderInfo.status})
+    .then(function(order) {
+      return populateOrder(order, 'customers');
+    })
+    .then(function(order) {
+
+      var messageToMobile = {
+        "to": "mobile",
+        "from": "API",
+        "actions": {
+          "receiveOrderUpdate": {
+            "order": order
+            // "balancedOrder": order.balancedOrder
+          }
+        }
+      };
+
+      var mobileResponseChannels = order.customers.map(function(customer) {
+        return customer.auth_0_Id;
+      });
+
+      $log('dispatching messages to channels:', mobileResponseChannels);
+      // res.channel == message.respondTo.channel
+      $dispatcher.pub(messageToMobile, mobileResponseChannels);
+    })
 
 };
 

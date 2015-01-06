@@ -10,12 +10,10 @@ var BarSchema = new Schema({
 
   barType: String,
 
-  bartenders: [
-    {
-      type: Schema.ObjectId,
-      ref: 'bartender'
-    }
-  ],
+  bartenders: [{
+    type: Schema.ObjectId,
+    ref: 'bartender'
+  }],
 
   email: {
     required: true,

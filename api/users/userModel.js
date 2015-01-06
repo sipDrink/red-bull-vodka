@@ -19,17 +19,15 @@ var UserSchema = new Schema({
 
   picture: String,
 
-  cards: [
-    {
-      name: String,
-      cardType: String,
-      href: String,
-      main: {
-        type: Boolean,
-        default: false
-      }
+  cards: [{
+    name: String,
+    cardType: String,
+    href: String,
+    main: {
+      type: Boolean,
+      default: false
     }
-  ],
+  }],
 
   auth_key: {
     type: String,
@@ -52,7 +50,12 @@ var UserSchema = new Schema({
       id: String,
       access_token: String
     }
-  }
+  },
+
+  orders: [{
+    type: Schema.ObjectId,
+    ref: 'orders'
+  }]
 
 });
 

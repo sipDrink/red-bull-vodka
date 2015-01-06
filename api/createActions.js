@@ -1,10 +1,12 @@
-'user strict';
-/**
- * Module used to define basic crud methods on all resources, ready to be used with channels
- * @module createActions
- * @params {object} model - A mongoose model
- *
-*/
+// Model Actions (api/createActions.js)
+// -----------------------------------------------
+
+'use strict';
+// Module used to define basic crud methods on all resources, ready to be used with channels
+//
+// @params
+// `{model}`: A mongoose model to be extended w/ these actions
+
 module.exports = function createActions(model) {
   var queryBuilder = function(method, criteria, opts, update) {
     var options = {};
@@ -114,7 +116,6 @@ module.exports = function createActions(model) {
       });
     },
 
-
     'destroy': function(params, $dispatcher, res) {
       var query = queryBuilder('findOneAndRemove', params.query, params.options);
 
@@ -171,7 +172,7 @@ module.exports = function createActions(model) {
           creations = [];
         }
 
-        $log('Created' + creations.length + ' new ' + model.modelName + '');
+        $log('Created' + creations.length + ' new ' + model.modelName + '' + 'which looks like: ' + creations);
         message.actions[res.action] = creations;
         $dispatcher.pub(message, res.channel);
       })

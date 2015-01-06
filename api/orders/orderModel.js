@@ -40,11 +40,11 @@ var OrderSchema = new mongoose.Schema({
     ref: 'bar'
   },
 
-  // TODO: ADD CUSTOMERS TO DB BEFORE TESTING THIS FUNCTIONALITY
-//  customers: [{
-//    type: mongoose.Schema.ObjectId,
-//    ref: 'user'
-//  }],
+  customers: [{
+    ref: 'user',
+    type: mongoose.Schema.ObjectId,
+    required: true
+  }],
 
   /*
   Possible values for status:
