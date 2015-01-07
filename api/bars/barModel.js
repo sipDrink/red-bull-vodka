@@ -4,16 +4,16 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var BarSchema = new Schema({
+  private_channel: String,
+
   name: String,
 
   barType: String,
 
-  bartenders: [
-    {
-      type: Schema.ObjectId,
-      ref: 'bartender'
-    }
-  ],
+  bartenders: [{
+    type: Schema.ObjectId,
+    ref: 'bartender'
+  }],
 
   email: {
     required: true,
@@ -22,24 +22,15 @@ var BarSchema = new Schema({
     type: String
   },
 
-  email_verified: {
-    // required: true,
-    type: Boolean
-  },
+  drinkTypes: [{
+    type: Schema.ObjectId,
+    ref: 'drinkType'
+  }],
 
-  drinkTypes: [
-    {
-      type: Schema.ObjectId,
-      ref: 'drinkType'
-    }
-  ],
-
-  drinkMixers: [
-    {
-      name: String,
-      price: Number
-    }
-  ],
+  drinkMixers: [{
+    name: String,
+    price: Number
+  }],
 
   password: {
     type: String,
@@ -51,13 +42,11 @@ var BarSchema = new Schema({
     default: false
   },
 
-  drinks: [
-    {
-      name: String,
-      price: Number,
-      ingredients: [String]
-    }
-  ],
+  drinks: [{
+    name: String,
+    price: Number,
+    ingredients: [String]
+  }],
 
   loc: {
     type: [Number],
@@ -71,12 +60,10 @@ var BarSchema = new Schema({
     zip: Number
   },
 
-  orders: [
-    {
-      type: Schema.ObjectId,
-      ref: 'order'
-    }
-  ]
+  orders: [{
+    type: Schema.ObjectId,
+    ref: 'order'
+  }]
 
 });
 

@@ -14,14 +14,23 @@ var mongoose = require('mongoose');
 var OrderSchema = new mongoose.Schema({
 
   drinks: [{
-    type: mongoose.Schema.ObjectId,
-    ref: 'drink',
+    name: {
+      type: String,
+      required: true
+    },
+    price: {
+      type: Number,
+      required: true
+    },
+    ingredients: [{
+      type: String
+    }],
     quantity: Number
   }],
 
   code: {
     type: String,
-    required: true,
+    // required: true,
     validate: codeValidation
   },
 
@@ -32,8 +41,9 @@ var OrderSchema = new mongoose.Schema({
   },
 
   customers: [{
+    ref: 'user',
     type: mongoose.Schema.ObjectId,
-    ref: 'user'
+    required: true
   }],
 
   /*
