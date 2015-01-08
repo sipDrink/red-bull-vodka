@@ -2,6 +2,7 @@
 var colors = require('colors');
 
 var bars = [
+  /*
   {
     "private_channel": "auth0|54a21ac37302a1d301cdb354",
     "tenant": "sipdrink",
@@ -53,6 +54,7 @@ var bars = [
     ],
     "orders": []
   },
+    */
   {
     "name": "Earthplex",
     "barType": "Sports Bar",
