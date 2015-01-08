@@ -3646,9 +3646,10 @@ var createBar = $q.nbind(Bar.create, Bar);
 var createDrinkType = $q.nbind(DrinkType.create, DrinkType);
 var createBarTender = $q.nbind(Bartender.create, Bartender);
 
-var remove = function(model) {
+var remove = function(model, query) {
+  query = query || {};
   var future = $q.defer();
-  model.find().remove(function(err) {
+  model.find(query).remove(function(err) {
     err ? future.reject(err) : future.resolve();
   });
   return future.promise;
@@ -3694,7 +3695,7 @@ var getTime = function(){
   return new Date().getTime() - start + ' ms';
 };
 
-remove(Bar)
+remove(Bar, {__v: 1})
   .then(function() {
     return remove(DrinkType);
   })
