@@ -22,14 +22,27 @@ var BarSchema = new Schema({
     type: String
   },
 
+  // SOON TO BE DEPRECATED
+  // these are alcoholic drinks (separated by category)
   drinkTypes: [{
-    type: Schema.ObjectId,
-    ref: 'drinkType'
+    name: String,
+    price: Number,
+    category: String
   }],
 
+  // SOON TO BE DEPRECATED
+  // non-alcoholic drinks (a separate category)
   drinkMixers: [{
     name: String,
     price: Number
+  }],
+
+  // specialty drinks (a separate category)
+  drinks: [{
+    name: String,
+    price: Number,
+    ingredients: [String],
+    category: String
   }],
 
   password: {
@@ -41,12 +54,6 @@ var BarSchema = new Schema({
     type: Boolean,
     default: false
   },
-
-  drinks: [{
-    name: String,
-    price: Number,
-    ingredients: [String]
-  }],
 
   loc: {
     type: [Number],
