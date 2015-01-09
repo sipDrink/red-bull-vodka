@@ -22,6 +22,7 @@ var BarSchema = new Schema({
     type: String
   },
 
+  // SOON TO BE DEPRECATED
   // these are alcoholic drinks (separated by category)
   drinkTypes: [{
     name: String,
@@ -29,6 +30,7 @@ var BarSchema = new Schema({
     category: String
   }],
 
+  // SOON TO BE DEPRECATED
   // non-alcoholic drinks (a separate category)
   drinkMixers: [{
     name: String,
@@ -39,7 +41,8 @@ var BarSchema = new Schema({
   drinks: [{
     name: String,
     price: Number,
-    ingredients: [String]
+    ingredients: [String],
+    category: String
   }],
 
   password: {
