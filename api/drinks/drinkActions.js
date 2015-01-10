@@ -2,27 +2,74 @@
 
 var actions = require('../createActions')(Drink);
 
-actions.deleteDrink = function(params, $dispatcher, res) {
+actions.addDrink = function(params, $dispatcher, res) {
+  var addDrink = $q.nbind(Bar.findByIdAndUpdate, Bar);
 
+  addDrink(params.drinkInfo.bar, {$push: {"drinks": params.drinkInfo.drink}})
+    .then(function(bar) {
+      // $log('bar doc:', bar);
+      var drink = bar.drinks[bar.drinks.length - 1];
+
+      var messageToVendor = {
+        "to": "vendor",
+        "actions": {}
+      };
+
+      messageToVendor.actions[res.action] = drink;
+      $dispatcher.pub(messageToVendor, res.channel);
+    })
+    .fail(function(err) {
+      $handleError(err);
+    });
 };
 
-actions.addDrink = function(params, $dispatcher, res) {
-  // could be made better by using actions.update, needs more thought
+actions.deleteDrink = function(params, $dispatcher, res) {
+  var findBar = $q.nbind(Bar.findById, Bar);
 
-  var addDrink = $q.nbind(Bar.update, Bar);
-
-  addDrink({ _id: params.drinkInfo.bar }, { $push: { "drinks": params.drinkInfo.drink }})
-    .then(function(updateStatus) {
-      if (updateStatus[0] === 0) {
-        // maybe throw an error to the fail block
-        $log('there was an error updating the bar\'s drinks');
-      } else {
-        $log('bar update status:', updateStatus);
-      }
+  findBar(params.drinkInfo.bar)
+    .then(function(bar) {
+      var saveBar = $q.nbind(bar.save, bar);
+      var drink = bar.drinks.id(params.drinkInfo.drink._id);
+      drink.remove();
+      return saveBar();
     })
+    .then(function() {
+      var messageToVendor = {
+        "to": "vendor",
+        "actions": {}
+      };
+
+      messageToVendor.actions[res.action] = params.drinkInfo.drink;
+      $dispatcher.pub(messageToVendor, res.channel);
+    })
+    .fail(function(err) {
+      $handleError(err);
+    });
 };
 
 actions.editDrink = function(params, $dispatcher, res) {
+  var findBar = $q.nbind(Bar.findById, Bar);
+
+  findBar(params.drinkInfo.bar)
+    .then(function(bar) {
+      var saveBar = $q.nbind(bar.save, bar);
+      var drink = bar.drinks.id(params.drinkInfo.drink._id);
+      drink.remove();
+      bar.drinks.push(params.drinkInfo.drink);
+      return saveBar();
+    })
+    .then(function() {
+      var messageToVendor = {
+        "to": "vendor",
+        "actions": {}
+      };
+
+      messageToVendor.actions[res.action] = params.drinkInfo.drink;
+      $dispatcher.pub(messageToVendor, res.channel);
+    })
+    .fail(function(err) {
+      $handleError(err);
+    });
 
 };
 
@@ -48,8 +95,8 @@ message = {
     }
   },
   "respondTo": {
-    "action": "receiveBars",
-    "channel": ""
+    "action": "addDrinkToView",
+    "channel": "private_channel"
   }
 }
  */
