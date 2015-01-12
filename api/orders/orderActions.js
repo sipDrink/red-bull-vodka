@@ -19,6 +19,7 @@ actions.order = function(params, $dispatcher, res) {
 //        description: 'Order # ' + unPaidForOrder._id
 //      };
 //
+    // TODO: ADD balancedOrder to order object
 //      return $Payment.createOrder(merch, orderContent)
 //        .then(function(order){
 //          return {
@@ -34,25 +35,12 @@ actions.order = function(params, $dispatcher, res) {
     .then(function(order) {
       $log('order is:', order);
 
-//      var messageToMobile = {
-//        "to": "mobile",
-//        "actions": {
-//          "receiveOrder": {
-//            "order": order.order,
-//            "balancedOrder": order.balancedOrder
-//          }
-//        }
-//      };
-
       var messageToVendor = {
         "to": "vendor",
-        "actions": {
-          "receiveOrder": {
-            "order": order
-            // "balancedOrder": order.balancedOrder
-          }
-        }
+        "actions": {}
       };
+
+      messageToVendor.actions[res.action] = order;
 
       // res.channel == message.respondTo.channel
       $dispatcher.pub(messageToVendor, order.bar.private_channel);
