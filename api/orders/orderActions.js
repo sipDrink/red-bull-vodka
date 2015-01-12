@@ -58,7 +58,7 @@ actions.order = function(params, $dispatcher, res) {
       $dispatcher.pub(messageToVendor, order.bar.private_channel);
       // $dispatcher.pub(messageToMobile, res.channel);
     })
-    .fail(function(err){
+    .fail(function(err) {
       $handleError(err);
     });
 };

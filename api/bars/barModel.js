@@ -39,10 +39,16 @@ var BarSchema = new Schema({
 
   // specialty drinks (a separate category)
   drinks: [{
-    name: String,
+    name: {
+      type: String,
+      required: true
+    },
     price: Number,
     ingredients: [String],
-    category: String
+    category: {
+      type: String
+      // required: true
+    }
   }],
 
   password: {
