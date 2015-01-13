@@ -43,7 +43,10 @@ var BarSchema = new Schema({
       type: String,
       required: true
     },
-    price: Number,
+    price: {
+      type: Number,
+      required: true
+    },
     ingredients: [String],
     category: {
       type: String

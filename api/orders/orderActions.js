@@ -10,6 +10,7 @@ actions.order = function(params, $dispatcher, res) {
 
   var createOrder = $q.nbind(Order.create, Order);
   var populateOrder = $q.nbind(Order.populate, Order);
+  var updateBar = $q.nbind(Bar.findByIdAndUpdate, Bar);
 
   createOrder(params.order)
 
@@ -33,7 +34,7 @@ actions.order = function(params, $dispatcher, res) {
     })
     // TODO: POPULATE drinks ('bar drinks') from bar's list of drinks
     .then(function(order) {
-      $log('order is:', order);
+      // $log('order is:', order);
 
       var messageToVendor = {
         "to": "vendor",
@@ -45,6 +46,12 @@ actions.order = function(params, $dispatcher, res) {
       // res.channel == message.respondTo.channel
       $dispatcher.pub(messageToVendor, order.bar.private_channel);
       // $dispatcher.pub(messageToMobile, res.channel);
+
+      return order;
+    })
+    .then(function(order) {
+      // $log('order in q is:', order);
+      return updateBar(order.bar._id, { $push: { "orders": order._id}});
     })
     .fail(function(err) {
       $handleError(err);
@@ -54,13 +61,16 @@ actions.order = function(params, $dispatcher, res) {
 actions.updateOrder = function(params, $dispatcher, res) {
   // TODO: generalize this function so that it can be used to update the drink order by MOBILE (not just the status by VENDOR)
   // TODO: prevent this function from running if the order is being made
+  // TODO: if status is completed, its _id should be deleted from the bar document
 
   var updateOrder = $q.nbind(Order.findByIdAndUpdate, Order);
   var populateOrder = $q.nbind(Order.populate, Order);
+  var updateBar = $q.nbind(Bar.findByIdAndUpdate, Bar);
 
   updateOrder(params.orderInfo._id, {"status": params.orderInfo.status})
     .then(function(order) {
-      return populateOrder(order, 'customers');
+      $log('updated order:', order);
+      return populateOrder(order, 'bar customers');
     })
     .then(function(order) {
 
@@ -79,10 +89,19 @@ actions.updateOrder = function(params, $dispatcher, res) {
         return customer.auth_0_Id;
       });
 
-      $log('dispatching messages to channels:', mobileResponseChannels);
+      // $log('dispatching messages to channels:', mobileResponseChannels);
       // res.channel == message.respondTo.channel
       $dispatcher.pub(messageToMobile, mobileResponseChannels);
+      return order;
     })
+    .then(function(order) {
+      if (order.status === 'redeemed') {
+        return updateBar(order.bar._id, {$pull: {"orders": order._id}});
+      }
+    })
+    .fail(function(err) {
+      $handleError(err);
+    });
 
 };
 
