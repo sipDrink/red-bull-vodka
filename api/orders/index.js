@@ -9,7 +9,6 @@ module.exports = function($dispatcher) {
     // Make sure the message is for the API server,
     // without this check, the server could be reacting
     // to its own publishes meant for mobile
-    $log('message:', message);
     if (message.to === $config.alias && message.respondTo) {
       // for each action in the given message, invoke
       // the registered action with the given params

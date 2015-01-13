@@ -5,22 +5,24 @@ var actions = require('../createActions')(Drink);
 actions.addDrink = function(params, $dispatcher, res) {
   var addDrink = $q.nbind(Bar.findByIdAndUpdate, Bar);
 
-  addDrink(params.drinkInfo.bar, {$push: {"drinks": params.drinkInfo.drink}})
-    .then(function(bar) {
-      // $log('bar doc:', bar);
-      var drink = bar.drinks[bar.drinks.length - 1];
+  if (params.drinkInfo.drink && params.drinkInfo.drink.name !== '') {
+    addDrink(params.drinkInfo.bar, {$push: {"drinks": params.drinkInfo.drink}})
+      .then(function (bar) {
+        // $log('bar doc:', bar);
+        var drink = bar.drinks[bar.drinks.length - 1];
 
-      var messageToVendor = {
-        "to": "vendor",
-        "actions": {}
-      };
+        var messageToVendor = {
+          "to": "vendor",
+          "actions": {}
+        };
 
-      messageToVendor.actions[res.action] = drink;
-      $dispatcher.pub(messageToVendor, res.channel);
-    })
-    .fail(function(err) {
-      $handleError(err);
-    });
+        messageToVendor.actions[res.action] = drink;
+        $dispatcher.pub(messageToVendor, res.channel);
+      })
+      .fail(function (err) {
+        $handleError(err);
+      });
+  }
 };
 
 actions.deleteDrink = function(params, $dispatcher, res) {
