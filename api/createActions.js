@@ -37,6 +37,15 @@ module.exports = function createActions(model) {
     return query;
   };
 
+  var setMessageReceiver = function(message, channel) {
+    // if the channel is prepended with 'auth0', the message is for a vendor
+    // otherwise, it SHOULD be prepended with 'facebook' and is thus for mobile
+    if (channel.split('|')[0] === 'auth0') {
+      message.to = 'vendor';
+    }
+    return message;
+  };
+
   return {
     // Action for getting a list of instances
     // for a specific model
@@ -48,11 +57,15 @@ module.exports = function createActions(model) {
       return query.$exec()
       .then(function(results) {
         $log('found from "get" operation:', results);
+
         if (res.oneByOne) {
           $dispatcher.oneByOnePub(_.map(results, function(result){
             var message = {
               actions: {}
             };
+
+            message = setMessageReceiver(message, res.channel);
+
             message.actions[res.action] = result;
             message.format = 'oneByOne';
             return message;
@@ -61,6 +74,9 @@ module.exports = function createActions(model) {
           var message = {
             actions: {}
           };
+
+          message = setMessageReceiver(message, res.channel);
+
           message.actions[res.action] = results;
           $dispatcher.pub(message, res.channel);
 
