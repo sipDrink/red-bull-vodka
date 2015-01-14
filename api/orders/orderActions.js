@@ -105,4 +105,34 @@ actions.updateOrder = function(params, $dispatcher, res) {
 
 };
 
+actions.loadOrders = function(params, $dispatcher, res) {
+  var findOrders = $q.nbind(Order.find, Order);
+  var populateOrders = $q.nbind(Order.populate, Order);
+
+  findOrders({_id: {$in: params.orderIds}})
+    .then(function(orders) {
+      // $log('updated order:', orders);
+      return populateOrders(orders, 'bar customers');
+    })
+    .then(function(orders) {
+
+      var messageToVendor = {
+        "to": "vendor",
+        "from": "API",
+        "actions": {}
+      };
+
+      messageToVendor.actions[res.action] = orders;
+
+      // $log('dispatching messages to channels:', mobileResponseChannels);
+      // res.channel == message.respondTo.channel
+      $dispatcher.pub(messageToVendor, res.channel);
+      return orders;
+    })
+    .fail(function(err) {
+      $handleError(err);
+    });
+
+};
+
 module.exports = actions;
