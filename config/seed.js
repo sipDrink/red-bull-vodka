@@ -3650,9 +3650,9 @@ remove(Bar, { "barType": { $exists: true }})
   .then(function() {
     return remove(Bartender);
   })
-  .then(function() {
-    return remove(Order);
-  })
+//  .then(function() {
+//    return remove(Order);
+//  })
   .then(function() {
     return createBar(bars);
   })

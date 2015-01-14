@@ -47,6 +47,7 @@ module.exports = function createActions(model) {
 
       return query.$exec()
       .then(function(results) {
+        $log('found from "get" operation:', results);
         if (res.oneByOne) {
           $dispatcher.oneByOnePub(_.map(results, function(result){
             var message = {
