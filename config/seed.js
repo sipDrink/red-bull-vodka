@@ -1,5 +1,7 @@
 'use strict';
-var colors = require('colors');
+require('colors');
+
+var description = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.';
 
 var bars = [
   {
@@ -36,6 +38,7 @@ var bars = [
       "city": "Cleary"
     },
     "phone": "(998) 555-2844",
+    "description": description,
     "drinks": [
       {
         "name": "Red Bull Vodka",
@@ -91,6 +94,7 @@ var bars = [
       "city": "Retsof"
     },
     "phone": "(813) 524-3980",
+    "description": description,
     "drinks": [
       {
         "name": "Red Bull Vodka",
@@ -146,6 +150,7 @@ var bars = [
       "city": "Belmont"
     },
     "phone": "(891) 519-2774",
+    "description": description,
     "drinks": [
       {
         "name": "Red Bull Vodka",
@@ -201,6 +206,7 @@ var bars = [
       "city": "Kieler"
     },
     "phone": "(924) 496-2230",
+    "description": description,
     "drinks": [
       {
         "name": "Red Bull Vodka",
@@ -256,6 +262,7 @@ var bars = [
       "city": "Goochland"
     },
     "phone": "(991) 453-2904",
+    "description": description,
     "drinks": [
       {
         "name": "Red Bull Vodka",
@@ -311,6 +318,7 @@ var bars = [
       "city": "Gorst"
     },
     "phone": "(929) 488-3365",
+    "description": description,
     "drinks": [
       {
         "name": "Red Bull Vodka",
@@ -366,6 +374,7 @@ var bars = [
       "city": "Dixonville"
     },
     "phone": "(946) 578-3796",
+    "description": description,
     "drinks": [
       {
         "name": "Red Bull Vodka",
@@ -421,6 +430,7 @@ var bars = [
       "city": "Advance"
     },
     "phone": "(940) 447-2672",
+    "description": description,
     "drinks": [
       {
         "name": "Red Bull Vodka",
@@ -476,6 +486,7 @@ var bars = [
       "city": "Hasty"
     },
     "phone": "(957) 468-2251",
+    "description": description,
     "drinks": [
       {
         "name": "Red Bull Vodka",
@@ -531,6 +542,7 @@ var bars = [
       "city": "Concho"
     },
     "phone": "(871) 542-2740",
+    "description": description,
     "drinks": [
       {
         "name": "Red Bull Vodka",
@@ -586,6 +598,7 @@ var bars = [
       "city": "Dola"
     },
     "phone": "(964) 563-3712",
+    "description": description,
     "drinks": [
       {
         "name": "Red Bull Vodka",
@@ -641,6 +654,7 @@ var bars = [
       "city": "Bluffview"
     },
     "phone": "(888) 556-2286",
+    "description": description,
     "drinks": [
       {
         "name": "Red Bull Vodka",
@@ -696,6 +710,7 @@ var bars = [
       "city": "Leming"
     },
     "phone": "(957) 416-3002",
+    "description": description,
     "drinks": [
       {
         "name": "Red Bull Vodka",
@@ -751,6 +766,7 @@ var bars = [
       "city": "Westwood"
     },
     "phone": "(987) 476-2845",
+    "description": description,
     "drinks": [
       {
         "name": "Red Bull Vodka",
@@ -806,6 +822,7 @@ var bars = [
       "city": "Frierson"
     },
     "phone": "(826) 435-3752",
+    "description": description,
     "drinks": [
       {
         "name": "Red Bull Vodka",
@@ -861,6 +878,7 @@ var bars = [
       "city": "Valle"
     },
     "phone": "(813) 533-3898",
+    "description": description,
     "drinks": [
       {
         "name": "Red Bull Vodka",
@@ -916,6 +934,7 @@ var bars = [
       "city": "Disautel"
     },
     "phone": "(857) 502-2846",
+    "description": description,
     "drinks": [
       {
         "name": "Red Bull Vodka",
@@ -971,6 +990,7 @@ var bars = [
       "city": "Garfield"
     },
     "phone": "(978) 529-3287",
+    "description": description,
     "drinks": [
       {
         "name": "Red Bull Vodka",
@@ -1026,6 +1046,7 @@ var bars = [
       "city": "Ventress"
     },
     "phone": "(915) 427-2868",
+    "description": description,
     "drinks": [
       {
         "name": "Red Bull Vodka",
@@ -1081,6 +1102,7 @@ var bars = [
       "city": "Farmington"
     },
     "phone": "(892) 433-2771",
+    "description": description,
     "drinks": [
       {
         "name": "Red Bull Vodka",
@@ -1136,6 +1158,7 @@ var bars = [
       "city": "Eagleville"
     },
     "phone": "(861) 567-3464",
+    "description": description,
     "drinks": [
       {
         "name": "Red Bull Vodka",
@@ -1191,6 +1214,7 @@ var bars = [
       "city": "Greer"
     },
     "phone": "(917) 454-3383",
+    "description": description,
     "drinks": [
       {
         "name": "Red Bull Vodka",
@@ -1246,6 +1270,7 @@ var bars = [
       "city": "Columbus"
     },
     "phone": "(863) 538-3277",
+    "description": description,
     "drinks": [
       {
         "name": "Red Bull Vodka",
@@ -1301,6 +1326,7 @@ var bars = [
       "city": "Rodanthe"
     },
     "phone": "(957) 571-2465",
+    "description": description,
     "drinks": [
       {
         "name": "Red Bull Vodka",
@@ -1356,6 +1382,7 @@ var bars = [
       "city": "Clinton"
     },
     "phone": "(884) 471-3887",
+    "description": description,
     "drinks": [
       {
         "name": "Red Bull Vodka",
@@ -1411,6 +1438,7 @@ var bars = [
       "city": "Mooresburg"
     },
     "phone": "(930) 538-3808",
+    "description": description,
     "drinks": [
       {
         "name": "Red Bull Vodka",
@@ -1466,6 +1494,7 @@ var bars = [
       "city": "Leeper"
     },
     "phone": "(801) 442-3352",
+    "description": description,
     "drinks": [
       {
         "name": "Red Bull Vodka",
@@ -1521,6 +1550,7 @@ var bars = [
       "city": "Belvoir"
     },
     "phone": "(962) 428-3418",
+    "description": description,
     "drinks": [
       {
         "name": "Red Bull Vodka",
@@ -1576,6 +1606,7 @@ var bars = [
       "city": "Ryderwood"
     },
     "phone": "(909) 483-3753",
+    "description": description,
     "drinks": [
       {
         "name": "Red Bull Vodka",
@@ -1631,6 +1662,7 @@ var bars = [
       "city": "Carlton"
     },
     "phone": "(964) 475-2155",
+    "description": description,
     "drinks": [
       {
         "name": "Red Bull Vodka",
@@ -1686,6 +1718,7 @@ var bars = [
       "city": "Rivereno"
     },
     "phone": "(859) 491-3820",
+    "description": description,
     "drinks": [
       {
         "name": "Red Bull Vodka",
@@ -1741,6 +1774,7 @@ var bars = [
       "city": "Hamilton"
     },
     "phone": "(882) 431-2291",
+    "description": description,
     "drinks": [
       {
         "name": "Red Bull Vodka",
@@ -1796,6 +1830,7 @@ var bars = [
       "city": "Ribera"
     },
     "phone": "(897) 448-2972",
+    "description": description,
     "drinks": [
       {
         "name": "Red Bull Vodka",
@@ -1851,6 +1886,7 @@ var bars = [
       "city": "Swartzville"
     },
     "phone": "(813) 504-3405",
+    "description": description,
     "drinks": [
       {
         "name": "Red Bull Vodka",
@@ -1906,6 +1942,7 @@ var bars = [
       "city": "Lisco"
     },
     "phone": "(805) 451-3449",
+    "description": description,
     "drinks": [
       {
         "name": "Red Bull Vodka",
@@ -1961,6 +1998,7 @@ var bars = [
       "city": "Cotopaxi"
     },
     "phone": "(865) 468-3999",
+    "description": description,
     "drinks": [
       {
         "name": "Red Bull Vodka",
@@ -2016,6 +2054,7 @@ var bars = [
       "city": "Woodburn"
     },
     "phone": "(854) 542-3517",
+    "description": description,
     "drinks": [
       {
         "name": "Red Bull Vodka",
@@ -2071,6 +2110,7 @@ var bars = [
       "city": "Westboro"
     },
     "phone": "(931) 455-2197",
+    "description": description,
     "drinks": [
       {
         "name": "Red Bull Vodka",
@@ -2126,6 +2166,7 @@ var bars = [
       "city": "Snowville"
     },
     "phone": "(836) 478-2578",
+    "description": description,
     "drinks": [
       {
         "name": "Red Bull Vodka",
@@ -2181,6 +2222,7 @@ var bars = [
       "city": "Forbestown"
     },
     "phone": "(948) 434-3699",
+    "description": description,
     "drinks": [
       {
         "name": "Red Bull Vodka",
@@ -2236,6 +2278,7 @@ var bars = [
       "city": "Strong"
     },
     "phone": "(958) 529-2667",
+    "description": description,
     "drinks": [
       {
         "name": "Red Bull Vodka",
@@ -2291,6 +2334,7 @@ var bars = [
       "city": "Sandston"
     },
     "phone": "(951) 533-2782",
+    "description": description,
     "drinks": [
       {
         "name": "Red Bull Vodka",
@@ -2346,6 +2390,7 @@ var bars = [
       "city": "Outlook"
     },
     "phone": "(988) 486-3604",
+    "description": description,
     "drinks": [
       {
         "name": "Red Bull Vodka",
@@ -2401,6 +2446,7 @@ var bars = [
       "city": "Buxton"
     },
     "phone": "(930) 505-2311",
+    "description": description,
     "drinks": [
       {
         "name": "Red Bull Vodka",
@@ -2456,6 +2502,7 @@ var bars = [
       "city": "Bend"
     },
     "phone": "(922) 420-2137",
+    "description": description,
     "drinks": [
       {
         "name": "Red Bull Vodka",
@@ -2511,6 +2558,7 @@ var bars = [
       "city": "Cutter"
     },
     "phone": "(877) 492-2961",
+    "description": description,
     "drinks": [
       {
         "name": "Red Bull Vodka",
@@ -2566,6 +2614,7 @@ var bars = [
       "city": "Santel"
     },
     "phone": "(981) 514-3577",
+    "description": description,
     "drinks": [
       {
         "name": "Red Bull Vodka",
@@ -2621,6 +2670,7 @@ var bars = [
       "city": "Wanamie"
     },
     "phone": "(860) 546-3331",
+    "description": description,
     "drinks": [
       {
         "name": "Red Bull Vodka",
@@ -2676,6 +2726,7 @@ var bars = [
       "city": "Volta"
     },
     "phone": "(998) 438-2451",
+    "description": description,
     "drinks": [
       {
         "name": "Red Bull Vodka",
@@ -2731,6 +2782,7 @@ var bars = [
       "city": "Delshire"
     },
     "phone": "(813) 537-2362",
+    "description": description,
     "drinks": [
       {
         "name": "Red Bull Vodka",
@@ -2786,6 +2838,7 @@ var bars = [
       "city": "Aguila"
     },
     "phone": "(911) 465-3660",
+    "description": description,
     "drinks": [
       {
         "name": "Red Bull Vodka",
@@ -2841,6 +2894,7 @@ var bars = [
       "city": "Courtland"
     },
     "phone": "(999) 571-3034",
+    "description": description,
     "drinks": [
       {
         "name": "Red Bull Vodka",
@@ -2896,6 +2950,7 @@ var bars = [
       "city": "Blende"
     },
     "phone": "(944) 560-3582",
+    "description": description,
     "drinks": [
       {
         "name": "Red Bull Vodka",
@@ -2951,6 +3006,7 @@ var bars = [
       "city": "Wikieup"
     },
     "phone": "(803) 572-3766",
+    "description": description,
     "drinks": [
       {
         "name": "Red Bull Vodka",
@@ -3006,6 +3062,7 @@ var bars = [
       "city": "Driftwood"
     },
     "phone": "(989) 565-3788",
+    "description": description,
     "drinks": [
       {
         "name": "Red Bull Vodka",
@@ -3061,6 +3118,7 @@ var bars = [
       "city": "Winfred"
     },
     "phone": "(878) 538-3887",
+    "description": description,
     "drinks": [
       {
         "name": "Red Bull Vodka",
@@ -3116,6 +3174,7 @@ var bars = [
       "city": "Coral"
     },
     "phone": "(942) 567-2194",
+    "description": description,
     "drinks": [
       {
         "name": "Red Bull Vodka",
@@ -3171,6 +3230,7 @@ var bars = [
       "city": "Gibsonia"
     },
     "phone": "(820) 583-3693",
+    "description": description,
     "drinks": [
       {
         "name": "Red Bull Vodka",
@@ -3226,6 +3286,7 @@ var bars = [
       "city": "Hannasville"
     },
     "phone": "(993) 561-2616",
+    "description": description,
     "drinks": [
       {
         "name": "Red Bull Vodka",
@@ -3281,6 +3342,7 @@ var bars = [
       "city": "Cedarville"
     },
     "phone": "(873) 470-3742",
+    "description": description,
     "drinks": [
       {
         "name": "Red Bull Vodka",
@@ -3336,6 +3398,7 @@ var bars = [
       "city": "Linwood"
     },
     "phone": "(975) 446-2191",
+    "description": description,
     "drinks": [
       {
         "name": "Red Bull Vodka",
@@ -3391,6 +3454,7 @@ var bars = [
       "city": "Ellerslie"
     },
     "phone": "(959) 570-3787",
+    "description": description,
     "drinks": [
       {
         "name": "Red Bull Vodka",
@@ -3446,6 +3510,7 @@ var bars = [
       "city": "Leroy"
     },
     "phone": "(853) 423-3360",
+    "description": description,
     "drinks": [
       {
         "name": "Red Bull Vodka",
@@ -3501,6 +3566,7 @@ var bars = [
       "city": "Bellfountain"
     },
     "phone": "(881) 506-2621",
+    "description": description,
     "drinks": [
       {
         "name": "Red Bull Vodka",

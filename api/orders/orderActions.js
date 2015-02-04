@@ -7,55 +7,82 @@ actions.order = function(params, $dispatcher, res) {
   // var merch = params.bar.merch || 'CU5EeFyjWXJjMeHduZmDb9Ac';
 
   // params.order.paidFor = false;
+  var user = params.user;
+  var orderCode = params.code;
+  var order = params.order;
+  var bar = params.bar;
+
+  var drinks = _(order).map(function(info, name) {
+    if (!_.isObject(info)) {
+      return;
+    }
+
+    return {
+      name: name,
+      price: info.price,
+      ingredients: info.ingredients,
+      quantity: info.count
+    };
+
+  })
+  .compact()
+  .value();
 
   var createOrder = $q.nbind(Order.create, Order);
   var populateOrder = $q.nbind(Order.populate, Order);
   var updateBar = $q.nbind(Bar.findByIdAndUpdate, Bar);
 
-  createOrder(params.order)
+  createOrder({
+    drinks: drinks,
+    code: orderCode,
+    bar: bar.id || bar._id,
+    customers: [user.id || user._id],
+    status: 'created'
+  })
 
     // this promise handles payments, which aren't currently enabled
-//    .then(function(unPaidForOrder){
-//      var orderContent = {
-//        description: 'Order # ' + unPaidForOrder._id
-//      };
-//
+   .then(function(unPaidForOrder){
+     var orderContent = {
+       description: 'Order # ' + unPaidForOrder._id
+     };
+
+     $log(unPaidForOrder);
     // TODO: ADD balancedOrder to order object
-//      return $Payment.createOrder(merch, orderContent)
-//        .then(function(order){
-//          return {
-//            balancedOrder: order,
-//            order: unPaidForOrder
-//          };
-//        });
-//    })
-    .then(function(order) {
-      return populateOrder(order, 'bar customers');
-    })
-    // TODO: POPULATE drinks ('bar drinks') from bar's list of drinks
-    .then(function(order) {
-      // $log('order is:', order);
-
-      var messageToVendor = {
-        "to": "vendor",
-        "actions": {}
-      };
-
-      messageToVendor.actions[res.action] = order;
-
-      // res.channel == message.respondTo.channel
-      $dispatcher.pub(messageToVendor, order.bar.private_channel);
-      // $dispatcher.pub(messageToMobile, res.channel);
-
-      return order;
-    })
-    .then(function(order) {
-      // $log('order in q is:', order);
-      return updateBar(order.bar._id, { $push: { "orders": order._id}});
-    })
-    .fail(function(err) {
-      $handleError(err);
-    });
+    //  return $Payment.createOrder(merch, orderContent)
+    //    .then(function(order){
+    //      return {
+    //        balancedOrder: order,
+    //        order: unPaidForOrder
+    //      };
+    //    });
+   })
+    // .then(function(order) {
+    //   return populateOrder(order, 'bar customers');
+    // })
+    // // TODO: POPULATE drinks ('bar drinks') from bar's list of drinks
+    // .then(function(order) {
+    //   // $log('order is:', order);
+    //
+    //   var messageToVendor = {
+    //     "to": "vendor",
+    //     "actions": {}
+    //   };
+    //
+    //   messageToVendor.actions[res.action] = order;
+    //
+    //   // res.channel == message.respondTo.channel
+    //   $dispatcher.pub(messageToVendor, order.bar.private_channel);
+    //   // $dispatcher.pub(messageToMobile, res.channel);
+    //
+    //   return order;
+    // })
+    // .then(function(order) {
+    //   // $log('order in q is:', order);
+    //   return updateBar(order.bar._id, { $push: { "orders": order._id}});
+    // })
+    // .fail(function(err) {
+    //   $handleError(err);
+    // });
 };
 
 actions.updateOrder = function(params, $dispatcher, res) {

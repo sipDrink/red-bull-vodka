@@ -5,9 +5,12 @@
 module.exports = {
 
   mongo: {
-    uri: 'mongodb://localhost/sip-dev'
+    uri: process.env.MONGO_URL ||
+         process.env.MONGOLAB_URI ||
+         process.env.MONGOHQ_URL ||
+        'mongodb://localhost/sip-dev'
   },
 
-  seedDB: true,
+  seedDB: false,
   logging: true
 };

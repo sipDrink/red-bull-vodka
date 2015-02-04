@@ -55,3 +55,4 @@ var all = {
 // Extend or override default config based off **NODE_ENV**. There is a
 // different file for each env; testing, development, production
 module.exports = _.merge(all, require('./' + process.env.NODE_ENV) || {} );
+if (process.env.PUBNUB_SECRET_KEY) console.log('loded');

@@ -32,7 +32,7 @@ var mailer = new Mailer();
 
 // **$handleError** global error handler function
 global.$handleError = function(error, meta) {
-  console.error(error.stack, meta);
+  console.error(error, meta);
 
   if ($config.env === 'production') {
     mailer.send({

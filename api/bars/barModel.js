@@ -25,9 +25,11 @@ var BarSchema = new Schema({
   // SOON TO BE DEPRECATED
   // these are alcoholic drinks (separated by category)
   drinkTypes: [{
-    name: String,
-    price: Number,
-    category: String
+    // name: String,
+    // price: Number,
+    // category: String
+    type: Schema.ObjectId,
+    ref: 'drinkType'
   }],
 
   // SOON TO BE DEPRECATED
@@ -79,7 +81,18 @@ var BarSchema = new Schema({
   orders: [{
     type: Schema.ObjectId,
     ref: 'order'
-  }]
+  }],
+
+  description: String,
+
+  merchPath: String,
+
+  accountToken: String,
+
+  completedSignup: {
+    type: Boolean,
+    deafult: false
+  }
 
 });
 

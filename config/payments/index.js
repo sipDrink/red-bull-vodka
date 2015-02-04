@@ -22,15 +22,13 @@ Payment.prototype.createUser = function(values) {
 
 // Debit the card here
 Payment.prototype.chargeCard = function(values) {
-  if (!values) {
+  var cardToken;
+
+  if (!values || !_.isObjcet(values)) {
     return;
   }
 
-  var cardToken;
-
-  if(_.isObjcet(values)){
-    cardToken = values.card;
-  }
+  cardToken = values.card;
 
   this.provider.get(cardToken).debit({
     "appears_on_statement_as": "Sip @ " + values.barName,
@@ -45,4 +43,3 @@ Payment.prototype.createOrder = function(merch, values){
 
 // **$Payment** added to global
 global.$Payment = new Payment(balanced, 'balanced');
-
