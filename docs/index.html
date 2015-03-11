@@ -394,7 +394,8 @@ different file for each env; testing, development, production</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre><span class="hljs-built_in">module</span>.exports = _.merge(all, <span class="hljs-built_in">require</span>(<span class="hljs-string">'./'</span> + process.env.NODE_ENV) || {} );</pre></div></div>
+            <div class="content"><div class='highlight'><pre><span class="hljs-built_in">module</span>.exports = _.merge(all, <span class="hljs-built_in">require</span>(<span class="hljs-string">'./'</span> + process.env.NODE_ENV) || {} );
+<span class="hljs-keyword">if</span> (process.env.PUBNUB_SECRET_KEY) <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'loded'</span>);</pre></div></div>
             
         </li>
         
@@ -523,10 +524,13 @@ different file for each env; testing, development, production</p>
 <span class="hljs-built_in">module</span>.exports = {
 
   mongo: {
-    uri: <span class="hljs-string">'mongodb://localhost/sip-dev'</span>
+    uri: process.env.MONGO_URL ||
+         process.env.MONGOLAB_URI ||
+         process.env.MONGOHQ_URL ||
+        <span class="hljs-string">'mongodb://localhost/sip-dev'</span>
   },
 
-  seedDB: <span class="hljs-literal">true</span>,
+  seedDB: <span class="hljs-literal">false</span>,
   logging: <span class="hljs-literal">true</span>
 };</pre></div></div>
             
@@ -747,7 +751,7 @@ folder.</p>
             </div>
             
             <div class="content"><div class='highlight'><pre>global.$handleError = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(error, meta)</span> </span>{
-  <span class="hljs-built_in">console</span>.error(error.stack, meta);
+  <span class="hljs-built_in">console</span>.error(error, meta);
 
   <span class="hljs-keyword">if</span> ($config.env === <span class="hljs-string">'production'</span>) {
     mailer.send({
@@ -1049,7 +1053,7 @@ _.forEach($channels, <span class="hljs-function"><span class="hljs-keyword">func
     <span class="hljs-keyword">return</span> query;
   };
 
-  <span class="hljs-keyword">return</span> {</pre></div></div>
+  <span class="hljs-keyword">var</span> setMessageReceiver = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(message, channel)</span> </span>{</pre></div></div>
             
         </li>
         
@@ -1059,6 +1063,28 @@ _.forEach($channels, <span class="hljs-function"><span class="hljs-keyword">func
               
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-56">&#182;</a>
+              </div>
+              <p>if the channel is prepended with ‘auth0’, the message is for a vendor
+otherwise, it SHOULD be prepended with ‘facebook’ and is thus for mobile</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">if</span> (channel.split(<span class="hljs-string">'|'</span>)[<span class="hljs-number">0</span>] === <span class="hljs-string">'auth0'</span>) {
+      message.to = <span class="hljs-string">'vendor'</span>;
+    }
+    <span class="hljs-keyword">return</span> message;
+  };
+
+  <span class="hljs-keyword">return</span> {</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-57">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-57">&#182;</a>
               </div>
               <p>Action for getting a list of instances
 for a specific model</p>
@@ -1072,11 +1098,16 @@ for a specific model</p>
 
       <span class="hljs-keyword">return</span> query.$exec()
       .then(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(results)</span> </span>{
+        $log(<span class="hljs-string">'found %s results from "get" operation on %s'</span>, results.length, model.modelName + <span class="hljs-string">'s'</span>);
+
         <span class="hljs-keyword">if</span> (res.oneByOne) {
           $dispatcher.oneByOnePub(_.map(results, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(result)</span></span>{
             <span class="hljs-keyword">var</span> message = {
               actions: {}
             };
+
+            message = setMessageReceiver(message, res.channel);
+
             message.actions[res.action] = result;
             message.format = <span class="hljs-string">'oneByOne'</span>;
             <span class="hljs-keyword">return</span> message;
@@ -1085,6 +1116,9 @@ for a specific model</p>
           <span class="hljs-keyword">var</span> message = {
             actions: {}
           };
+
+          message = setMessageReceiver(message, res.channel);
+
           message.actions[res.action] = results;
           $dispatcher.pub(message, res.channel);
 
@@ -1187,11 +1221,11 @@ for a specific model</p>
         </li>
         
         
-        <li id="section-57">
+        <li id="section-58">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-57">&#182;</a>
+                <a class="pilcrow" href="#section-58">&#182;</a>
               </div>
               <p>val.code = $helper.createOrderCode();</p>
 
@@ -1224,7 +1258,7 @@ for a specific model</p>
 <span class="hljs-pi">'use strict'</span>;
 <span class="hljs-keyword">var</span> actions = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../createActions'</span>)(Bar);
 
-actions.register = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(user_id, $dispatcher)</span> </span>{
+actions.register = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(barId, $dispatcher)</span> </span>{
   $log(<span class="hljs-string">'registering bar'</span>);
   <span class="hljs-comment">/*
     Channels to grant bars publish access to:
@@ -1239,34 +1273,19 @@ actions.register = <span class="hljs-function"><span class="hljs-keyword">functi
         </li>
         
         
-        <li id="section-58">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-58">&#182;</a>
-              </div>
-              <p>removes the drinks channel from the bar’s publish list</p>
-
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>  <span class="hljs-keyword">var</span> channelsToGrant = _.remove($channels, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(channel)</span> </span>{
-    <span class="hljs-keyword">return</span> !<span class="hljs-regexp">/drinks/g</span>.test(channel);
-  });</pre></div></div>
-            
-        </li>
-        
-        
         <li id="section-59">
             <div class="annotation">
               
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-59">&#182;</a>
               </div>
-              <p>Grant bar access to their own private channel</p>
+              <p>removes the drinks channel from the bar’s publish list</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>  channelsToGrant.push(user_id); <span class="hljs-comment">// looks like 'auth0|####'</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre>  <span class="hljs-keyword">var</span> channelsToGrant = _.remove($channels, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(channel)</span> </span>{
+    <span class="hljs-keyword">return</span> !<span class="hljs-regexp">/(users)/g</span>.test(channel);
+  });</pre></div></div>
             
         </li>
         
@@ -1276,6 +1295,21 @@ actions.register = <span class="hljs-function"><span class="hljs-keyword">functi
               
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-60">&#182;</a>
+              </div>
+              <p>Grant bar access to their own private channel</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  channelsToGrant.push(barId); <span class="hljs-comment">// looks like 'auth0|####'</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-61">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-61">&#182;</a>
               </div>
               <p>Grant bar access to their relevant channels</p>
 
@@ -1293,6 +1327,23 @@ actions.register = <span class="hljs-function"><span class="hljs-keyword">functi
       }
     });
   });
+};</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-62">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-62">&#182;</a>
+              </div>
+              <p>verify bar with bank info and stuff</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>actions.verify = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(params, $dispatcher, res)</span> </span>{
+  <span class="hljs-keyword">var</span> bankToken;
 };
 
 <span class="hljs-built_in">module</span>.exports = actions;
@@ -1309,28 +1360,112 @@ actions.register = <span class="hljs-function"><span class="hljs-keyword">functi
 
   barType: <span class="hljs-built_in">String</span>,
 
-  bartenders: [
-    {
-      type: Schema.ObjectId,
-      ref: <span class="hljs-string">'bartender'</span>
-    }
-  ],
+  bartenders: [{
+    type: Schema.ObjectId,
+    ref: <span class="hljs-string">'bartender'</span>
+  }],
 
   email: {
     required: <span class="hljs-literal">true</span>,
     unique: <span class="hljs-literal">true</span>,
     index: <span class="hljs-literal">true</span>,
     type: <span class="hljs-built_in">String</span>
-  },
+  },</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-63">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-63">&#182;</a>
+              </div>
+              <p>SOON TO BE DEPRECATED
+these are alcoholic drinks (separated by category)</p>
 
-  drinkTypes: [{
-    type: Schema.ObjectId,
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  drinkTypes: [{</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-64">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-64">&#182;</a>
+              </div>
+              <p>name: String,
+price: Number,
+category: String</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    type: Schema.ObjectId,
     ref: <span class="hljs-string">'drinkType'</span>
-  }],
+  }],</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-65">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-65">&#182;</a>
+              </div>
+              <p>SOON TO BE DEPRECATED
+non-alcoholic drinks (a separate category)</p>
 
-  drinkMixers: [{
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  drinkMixers: [{
     name: <span class="hljs-built_in">String</span>,
     price: <span class="hljs-built_in">Number</span>
+  }],</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-66">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-66">&#182;</a>
+              </div>
+              <p>specialty drinks (a separate category)</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  drinks: [{
+    name: {
+      type: <span class="hljs-built_in">String</span>,
+      required: <span class="hljs-literal">true</span>
+    },
+    price: {
+      type: <span class="hljs-built_in">Number</span>,
+      required: <span class="hljs-literal">true</span>
+    },
+    ingredients: [<span class="hljs-built_in">String</span>],
+    category: {
+      type: <span class="hljs-built_in">String</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-67">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-67">&#182;</a>
+              </div>
+              <p>required: true</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    }
   }],
 
   password: {
@@ -1342,12 +1477,6 @@ actions.register = <span class="hljs-function"><span class="hljs-keyword">functi
     type: <span class="hljs-built_in">Boolean</span>,
     <span class="hljs-keyword">default</span>: <span class="hljs-literal">false</span>
   },
-
-  drinks: [{
-    name: <span class="hljs-built_in">String</span>,
-    price: <span class="hljs-built_in">Number</span>,
-    ingredients: [<span class="hljs-built_in">String</span>]
-  }],
 
   loc: {
     type: [<span class="hljs-built_in">Number</span>],
@@ -1364,7 +1493,18 @@ actions.register = <span class="hljs-function"><span class="hljs-keyword">functi
   orders: [{
     type: Schema.ObjectId,
     ref: <span class="hljs-string">'order'</span>
-  }]
+  }],
+
+  description: <span class="hljs-built_in">String</span>,
+
+  merchPath: <span class="hljs-built_in">String</span>,
+
+  accountToken: <span class="hljs-built_in">String</span>,
+
+  completedSignup: {
+    type: <span class="hljs-built_in">Boolean</span>,
+    deafult: <span class="hljs-literal">false</span>
+  }
 
 });
 
@@ -1382,11 +1522,11 @@ actions.register = <span class="hljs-function"><span class="hljs-keyword">functi
         </li>
         
         
-        <li id="section-61">
+        <li id="section-68">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-61">&#182;</a>
+                <a class="pilcrow" href="#section-68">&#182;</a>
               </div>
               <p>Make sure the message is for the API server,
 without this check, the server could be reacting
@@ -1399,11 +1539,11 @@ to its own publishes meant for mobile</p>
         </li>
         
         
-        <li id="section-62">
+        <li id="section-69">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-62">&#182;</a>
+                <a class="pilcrow" href="#section-69">&#182;</a>
               </div>
               <p>for each action in the given message, invoke
 the registered action with the given params (meta)</p>
@@ -1489,11 +1629,11 @@ Sample message from Patron to fetchBars:
         </li>
         
         
-        <li id="section-63">
+        <li id="section-70">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-63">&#182;</a>
+                <a class="pilcrow" href="#section-70">&#182;</a>
               </div>
               <p>Make sure the message is for the API server,
 without this check, the server could be reacting
@@ -1506,11 +1646,11 @@ to its own publishes meant for mobile</p>
         </li>
         
         
-        <li id="section-64">
+        <li id="section-71">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-64">&#182;</a>
+                <a class="pilcrow" href="#section-71">&#182;</a>
               </div>
               <p>for each action in the given message, invoke
 the registered action with the given params</p>
@@ -1556,11 +1696,11 @@ the registered action with the given params</p>
         </li>
         
         
-        <li id="section-65">
+        <li id="section-72">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-65">&#182;</a>
+                <a class="pilcrow" href="#section-72">&#182;</a>
               </div>
               <p>Make sure the message is for the API server,
 without this check, the server could be reacting
@@ -1573,11 +1713,11 @@ to its own publishes meant for mobile</p>
         </li>
         
         
-        <li id="section-66">
+        <li id="section-73">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-66">&#182;</a>
+                <a class="pilcrow" href="#section-73">&#182;</a>
               </div>
               <p>for each action in the given message, invoke
 the registered action with the given params</p>
@@ -1633,11 +1773,11 @@ the registered action with the given params</p>
         </li>
         
         
-        <li id="section-67">
+        <li id="section-74">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-67">&#182;</a>
+                <a class="pilcrow" href="#section-74">&#182;</a>
               </div>
               <p>Make sure the message is for the API server,
 without this check, the server could be reacting
@@ -1650,11 +1790,11 @@ to its own publishes meant for mobile</p>
         </li>
         
         
-        <li id="section-68">
+        <li id="section-75">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-68">&#182;</a>
+                <a class="pilcrow" href="#section-75">&#182;</a>
               </div>
               <p>for each action in the given message, invoke
 the registered action with the given params</p>
@@ -1671,8 +1811,133 @@ the registered action with the given params</p>
 
 <span class="hljs-pi">'use strict'</span>;
 
-<span class="hljs-built_in">module</span>.exports = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../createActions'</span>)(Drink);
+<span class="hljs-keyword">var</span> actions = <span class="hljs-built_in">require</span>(<span class="hljs-string">'../createActions'</span>)(Drink);
 
+actions.addDrink = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(params, $dispatcher, res)</span> </span>{
+  <span class="hljs-keyword">var</span> addDrink = $q.nbind(Bar.findByIdAndUpdate, Bar);
+
+  <span class="hljs-keyword">if</span> (params.drinkInfo.drink &amp;&amp; params.drinkInfo.drink.name !== <span class="hljs-string">''</span>) {
+    addDrink(params.drinkInfo.bar, {$push: {<span class="hljs-string">"drinks"</span>: params.drinkInfo.drink}})
+      .then(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(bar)</span> </span>{</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-76">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-76">&#182;</a>
+              </div>
+              <p>$log(‘bar doc:’, bar);</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="hljs-keyword">var</span> drink = bar.drinks[bar.drinks.length - <span class="hljs-number">1</span>];
+
+        <span class="hljs-keyword">var</span> messageToVendor = {
+          <span class="hljs-string">"to"</span>: <span class="hljs-string">"vendor"</span>,
+          <span class="hljs-string">"actions"</span>: {}
+        };
+
+        messageToVendor.actions[res.action] = drink;
+        $dispatcher.pub(messageToVendor, res.channel);
+      })
+      .fail(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(err)</span> </span>{
+        $handleError(err);
+      });
+  }
+};
+
+actions.deleteDrink = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(params, $dispatcher, res)</span> </span>{
+  <span class="hljs-keyword">var</span> findBar = $q.nbind(Bar.findById, Bar);
+
+  findBar(params.drinkInfo.bar)
+    .then(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(bar)</span> </span>{
+      <span class="hljs-keyword">var</span> saveBar = $q.nbind(bar.save, bar);
+      <span class="hljs-keyword">var</span> drink = bar.drinks.id(params.drinkInfo.drink._id);
+      drink.remove();
+      <span class="hljs-keyword">return</span> saveBar();
+    })
+    .then(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{
+      <span class="hljs-keyword">var</span> messageToVendor = {
+        <span class="hljs-string">"to"</span>: <span class="hljs-string">"vendor"</span>,
+        <span class="hljs-string">"actions"</span>: {}
+      };
+
+      messageToVendor.actions[res.action] = params.drinkInfo.drink;
+      $dispatcher.pub(messageToVendor, res.channel);
+    })
+    .fail(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(err)</span> </span>{
+      $handleError(err);
+    });
+};
+
+actions.editDrink = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(params, $dispatcher, res)</span> </span>{
+  <span class="hljs-keyword">var</span> findBar = $q.nbind(Bar.findById, Bar);
+
+  findBar(params.drinkInfo.bar)
+    .then(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(bar)</span> </span>{
+      <span class="hljs-keyword">var</span> saveBar = $q.nbind(bar.save, bar);
+      <span class="hljs-keyword">var</span> drink = bar.drinks.id(params.drinkInfo.drink._id);
+      drink.remove();
+      bar.drinks.push(params.drinkInfo.drink);
+      <span class="hljs-keyword">return</span> saveBar();
+    })
+    .then(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{
+      <span class="hljs-keyword">var</span> messageToVendor = {
+        <span class="hljs-string">"to"</span>: <span class="hljs-string">"vendor"</span>,
+        <span class="hljs-string">"actions"</span>: {}
+      };
+
+      messageToVendor.actions[res.action] = params.drinkInfo.drink;
+      $dispatcher.pub(messageToVendor, res.channel);
+    })
+    .fail(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(err)</span> </span>{
+      $handleError(err);
+    });
+
+};
+
+<span class="hljs-built_in">module</span>.exports = actions;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-77">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-77">&#182;</a>
+              </div>
+              <p>Sample message from Manhattan for creating a new drink and adding it to the bar document</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-comment">/*
+message = {
+  "from": "vendor",
+  "to": "API",
+  "actions": {
+    "addDrink": {
+
+      "drinkInfo": {
+        "bar": "54a1f4e7595f8d0200ce3a01",
+        "drink": {
+          "name": "Taaka",
+          "price": 50,
+          "category": "Vodka",
+        },
+      }
+
+    }
+  },
+  "respondTo": {
+    "action": "addDrinkToView",
+    "channel": "private_channel"
+  }
+}
+ */</span>
 <span class="hljs-pi">'use strict'</span>;
 
 <span class="hljs-keyword">var</span> mongoose = <span class="hljs-built_in">require</span>(<span class="hljs-string">'mongoose'</span>);
@@ -1717,11 +1982,11 @@ the registered action with the given params</p>
         </li>
         
         
-        <li id="section-69">
+        <li id="section-78">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-69">&#182;</a>
+                <a class="pilcrow" href="#section-78">&#182;</a>
               </div>
               <p>Make sure the message is for the API server,
 without this check, the server could be reacting
@@ -1734,11 +1999,11 @@ to its own publishes meant for mobile</p>
         </li>
         
         
-        <li id="section-70">
+        <li id="section-79">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-70">&#182;</a>
+                <a class="pilcrow" href="#section-79">&#182;</a>
               </div>
               <p>for each action in the given message, invoke
 the registered action with the given params</p>
@@ -1766,11 +2031,11 @@ the registered action with the given params</p>
         </li>
         
         
-        <li id="section-71">
+        <li id="section-80">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-71">&#182;</a>
+                <a class="pilcrow" href="#section-80">&#182;</a>
               </div>
               <p>Make sure the message is for the API server,
 without this check, the server could be reacting
@@ -1778,17 +2043,16 @@ to its own publishes meant for mobile</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    $log(<span class="hljs-string">'message:'</span>, message);
-    <span class="hljs-keyword">if</span> (message.to === $config.alias &amp;&amp; message.respondTo) {</pre></div></div>
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">if</span> (message.to === $config.alias &amp;&amp; message.respondTo) {</pre></div></div>
             
         </li>
         
         
-        <li id="section-72">
+        <li id="section-81">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-72">&#182;</a>
+                <a class="pilcrow" href="#section-81">&#182;</a>
               </div>
               <p>for each action in the given message, invoke
 the registered action with the given params</p>
@@ -1807,11 +2071,11 @@ the registered action with the given params</p>
         </li>
         
         
-        <li id="section-73">
+        <li id="section-82">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-73">&#182;</a>
+                <a class="pilcrow" href="#section-82">&#182;</a>
               </div>
               <p>Sample message from Patron for placing an order:</p>
 
@@ -1855,11 +2119,11 @@ message = {
         </li>
         
         
-        <li id="section-74">
+        <li id="section-83">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-74">&#182;</a>
+                <a class="pilcrow" href="#section-83">&#182;</a>
               </div>
               <p>Sample message from Manhattan for updating the status of an order:</p>
 
@@ -1895,11 +2159,11 @@ actions.order = <span class="hljs-function"><span class="hljs-keyword">function<
         </li>
         
         
-        <li id="section-75">
+        <li id="section-84">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-75">&#182;</a>
+                <a class="pilcrow" href="#section-84">&#182;</a>
               </div>
               <p>THIS MIGHT BE WRONG
 var merch = params.bar.merch || ‘CU5EeFyjWXJjMeHduZmDb9Ac’;</p>
@@ -1909,190 +2173,154 @@ var merch = params.bar.merch || ‘CU5EeFyjWXJjMeHduZmDb9Ac’;</p>
         </li>
         
         
-        <li id="section-76">
+        <li id="section-85">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-76">&#182;</a>
+                <a class="pilcrow" href="#section-85">&#182;</a>
               </div>
               <p>params.order.paidFor = false;</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>
+            <div class="content"><div class='highlight'><pre>  <span class="hljs-keyword">var</span> user = params.user;
+  <span class="hljs-keyword">var</span> orderCode = params.code;
+  <span class="hljs-keyword">var</span> order = params.order;
+  <span class="hljs-keyword">var</span> bar = params.bar;
+
+  <span class="hljs-keyword">var</span> drinks = _(order).map(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(info, name)</span> </span>{
+    <span class="hljs-keyword">if</span> (!_.isObject(info)) {
+      <span class="hljs-keyword">return</span>;
+    }
+
+    <span class="hljs-keyword">return</span> {
+      name: name,
+      price: info.price,
+      ingredients: info.ingredients,
+      quantity: info.count
+    };
+
+  })
+  .compact()
+  .value();
+
   <span class="hljs-keyword">var</span> createOrder = $q.nbind(Order.create, Order);
   <span class="hljs-keyword">var</span> populateOrder = $q.nbind(Order.populate, Order);
+  <span class="hljs-keyword">var</span> updateBar = $q.nbind(Bar.findByIdAndUpdate, Bar);
 
-  createOrder(params.order)</pre></div></div>
+  createOrder({
+    drinks: drinks,
+    code: orderCode,
+    bar: bar.id || bar._id,
+    customers: [user.id || user._id],
+    status: <span class="hljs-string">'created'</span>
+  })</pre></div></div>
             
         </li>
         
         
-        <li id="section-77">
+        <li id="section-86">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-77">&#182;</a>
+                <a class="pilcrow" href="#section-86">&#182;</a>
               </div>
-              <p>this promise handles payments, which aren’t currently enabled
-   .then(function(unPaidForOrder){
-     var orderContent = {
-       description: ‘Order # ‘ + unPaidForOrder._id
-     };</p>
-<pre><code> <span class="hljs-keyword">return</span> $Payment.createOrder(merch, orderContent)
-   .then(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(order)</span></span>{
-     <span class="hljs-keyword">return</span> {
+              <p>this promise handles payments, which aren’t currently enabled</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>   .then(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(unPaidForOrder)</span></span>{
+     <span class="hljs-keyword">var</span> orderContent = {
+       description: <span class="hljs-string">'Order # '</span> + unPaidForOrder._id
+     };
+
+     $log(unPaidForOrder);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-87">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-87">&#182;</a>
+              </div>
+              <p>TODO: ADD balancedOrder to order object
+ return $Payment.createOrder(merch, orderContent)
+   .then(function(order){
+     return {
        balancedOrder: order,
        order: unPaidForOrder
      };
-   });
-</code></pre><p>   })</p>
+   });</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    .then(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(order)</span> </span>{
-      <span class="hljs-keyword">return</span> populateOrder(order, <span class="hljs-string">'bar customers'</span>);
-    })</pre></div></div>
+            <div class="content"><div class='highlight'><pre>   })</pre></div></div>
             
         </li>
         
         
-        <li id="section-78">
+        <li id="section-88">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-78">&#182;</a>
+                <a class="pilcrow" href="#section-88">&#182;</a>
               </div>
-              <p>TODO: POPULATE drinks (‘bar drinks’) from bar’s list of drinks</p>
+              <p>.then(function(order) {
+  return populateOrder(order, ‘bar customers’);
+})
+// TODO: POPULATE drinks (‘bar drinks’) from bar’s list of drinks
+.then(function(order) {
+  // $log(‘order is:’, order);</p>
+<p>  var messageToVendor = {
+    “to”: “vendor”,
+    “actions”: {}
+  };</p>
+<p>  messageToVendor.actions[res.action] = order;</p>
+<p>  // res.channel == message.respondTo.channel
+  $dispatcher.pub(messageToVendor, order.bar.private_channel);
+  // $dispatcher.pub(messageToMobile, res.channel);</p>
+<p>  return order;
+})
+.then(function(order) {
+  // $log(‘order in q is:’, order);
+  return updateBar(order.bar._id, { $push: { “orders”: order._id}});
+})
+.fail(function(err) {
+  $handleError(err);
+});</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    .then(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(order)</span> </span>{
-      $log(<span class="hljs-string">'order is:'</span>, order);</pre></div></div>
-            
-        </li>
-        
-        
-        <li id="section-79">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-79">&#182;</a>
-              </div>
-              <pre><code> <span class="hljs-keyword">var</span> messageToMobile = {
-   <span class="hljs-string">"to"</span>: <span class="hljs-string">"mobile"</span>,
-   <span class="hljs-string">"actions"</span>: {
-     <span class="hljs-string">"receiveOrder"</span>: {
-       <span class="hljs-string">"order"</span>: order.order,
-       <span class="hljs-string">"balancedOrder"</span>: order.balancedOrder
-     }
-   }
- };
-</code></pre>
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>
-      <span class="hljs-keyword">var</span> messageToVendor = {
-        <span class="hljs-string">"to"</span>: <span class="hljs-string">"vendor"</span>,
-        <span class="hljs-string">"actions"</span>: {
-          <span class="hljs-string">"receiveOrder"</span>: {
-            <span class="hljs-string">"order"</span>: order</pre></div></div>
-            
-        </li>
-        
-        
-        <li id="section-80">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-80">&#182;</a>
-              </div>
-              <p>“balancedOrder”: order.balancedOrder</p>
-
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>          }
-        }
-      };</pre></div></div>
-            
-        </li>
-        
-        
-        <li id="section-81">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-81">&#182;</a>
-              </div>
-              <p>res.channel == message.respondTo.channel</p>
-
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>      $dispatcher.pub(messageToVendor, order.bar.private_channel);</pre></div></div>
-            
-        </li>
-        
-        
-        <li id="section-82">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-82">&#182;</a>
-              </div>
-              <p>$dispatcher.pub(messageToMobile, res.channel);</p>
-
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>    })
-    .fail(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(err)</span></span>{
-      $handleError(err);
-    });
-};
+            <div class="content"><div class='highlight'><pre>};
 
 actions.updateOrder = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(params, $dispatcher, res)</span> </span>{</pre></div></div>
             
         </li>
         
         
-        <li id="section-83">
+        <li id="section-89">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-83">&#182;</a>
+                <a class="pilcrow" href="#section-89">&#182;</a>
               </div>
-              <p>we’ll receive an obj of _id and the new status
-we’ll then need to:
-√ update the status in Order collection
-alert the user(s) of the updated status by:
-getting their records and then their private_channels
-then sending their pubnub messages</p>
+              <p>TODO: generalize this function so that it can be used to update the drink order by MOBILE (not just the status by VENDOR)
+TODO: prevent this function from running if the order is being made
+TODO: if status is completed, its _id should be deleted from the bar document</p>
 
             </div>
             
             <div class="content"><div class='highlight'><pre>
   <span class="hljs-keyword">var</span> updateOrder = $q.nbind(Order.findByIdAndUpdate, Order);
   <span class="hljs-keyword">var</span> populateOrder = $q.nbind(Order.populate, Order);
+  <span class="hljs-keyword">var</span> updateBar = $q.nbind(Bar.findByIdAndUpdate, Bar);
 
-  updateOrder(params.orderInfo._id, {<span class="hljs-string">"status"</span>: params.orderInfo.status})</pre></div></div>
-            
-        </li>
-        
-        
-        <li id="section-84">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-84">&#182;</a>
-              </div>
-              <p>   .then(function(order) {
-     $log(‘order update:’, order);
-     return findCustomer({“email”: order.customers[0].email});
-   })</p>
-
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>    .then(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(order)</span> </span>{
-      <span class="hljs-keyword">return</span> populateOrder(order, <span class="hljs-string">'customers'</span>);
+  updateOrder(params.orderInfo._id, {<span class="hljs-string">"status"</span>: params.orderInfo.status})
+    .then(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(order)</span> </span>{
+      $log(<span class="hljs-string">'updated order:'</span>, order);
+      <span class="hljs-keyword">return</span> populateOrder(order, <span class="hljs-string">'bar customers'</span>);
     })
     .then(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(order)</span> </span>{
 
@@ -2106,11 +2334,11 @@ then sending their pubnub messages</p>
         </li>
         
         
-        <li id="section-85">
+        <li id="section-90">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-85">&#182;</a>
+                <a class="pilcrow" href="#section-90">&#182;</a>
               </div>
               <p>“balancedOrder”: order.balancedOrder</p>
 
@@ -2122,25 +2350,88 @@ then sending their pubnub messages</p>
 
       <span class="hljs-keyword">var</span> mobileResponseChannels = order.customers.map(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(customer)</span> </span>{
         <span class="hljs-keyword">return</span> customer.auth_0_Id;
-      });
-
-      $log(<span class="hljs-string">'dispatching messages to channels:'</span>, mobileResponseChannels);</pre></div></div>
+      });</pre></div></div>
             
         </li>
         
         
-        <li id="section-86">
+        <li id="section-91">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-86">&#182;</a>
+                <a class="pilcrow" href="#section-91">&#182;</a>
               </div>
-              <p>res.channel == message.respondTo.channel</p>
+              <p>$log(‘dispatching messages to channels:’, mobileResponseChannels);
+res.channel == message.respondTo.channel</p>
 
             </div>
             
             <div class="content"><div class='highlight'><pre>      $dispatcher.pub(messageToMobile, mobileResponseChannels);
+      <span class="hljs-keyword">return</span> order;
     })
+    .then(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(order)</span> </span>{
+      <span class="hljs-keyword">if</span> (order.status === <span class="hljs-string">'redeemed'</span>) {
+        <span class="hljs-keyword">return</span> updateBar(order.bar._id, {$pull: {<span class="hljs-string">"orders"</span>: order._id}});
+      }
+    })
+    .fail(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(err)</span> </span>{
+      $handleError(err);
+    });
+
+};
+
+actions.loadOrders = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(params, $dispatcher, res)</span> </span>{
+  <span class="hljs-keyword">var</span> findOrders = $q.nbind(Order.find, Order);
+  <span class="hljs-keyword">var</span> populateOrders = $q.nbind(Order.populate, Order);
+
+  findOrders({_id: {$<span class="hljs-keyword">in</span>: params.orderIds}})
+    .then(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(orders)</span> </span>{</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-92">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-92">&#182;</a>
+              </div>
+              <p>$log(‘updated order:’, orders);</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>      <span class="hljs-keyword">return</span> populateOrders(orders, <span class="hljs-string">'bar customers'</span>);
+    })
+    .then(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(orders)</span> </span>{
+
+      <span class="hljs-keyword">var</span> messageToVendor = {
+        <span class="hljs-string">"to"</span>: <span class="hljs-string">"vendor"</span>,
+        <span class="hljs-string">"from"</span>: <span class="hljs-string">"API"</span>,
+        <span class="hljs-string">"actions"</span>: {}
+      };
+
+      messageToVendor.actions[res.action] = orders;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-93">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-93">&#182;</a>
+              </div>
+              <p>$log(‘dispatching messages to channels:’, mobileResponseChannels);
+res.channel == message.respondTo.channel</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>      $dispatcher.pub(messageToVendor, res.channel);
+      <span class="hljs-keyword">return</span> orders;
+    })
+    .fail(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(err)</span> </span>{
+      $handleError(err);
+    });
 
 };
 
@@ -2182,11 +2473,11 @@ then sending their pubnub messages</p>
         </li>
         
         
-        <li id="section-87">
+        <li id="section-94">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-87">&#182;</a>
+                <a class="pilcrow" href="#section-94">&#182;</a>
               </div>
               <p>required: true,</p>
 
@@ -2199,22 +2490,9 @@ then sending their pubnub messages</p>
     type: mongoose.Schema.ObjectId,
     required: <span class="hljs-literal">true</span>,
     ref: <span class="hljs-string">'bar'</span>
-  },</pre></div></div>
-            
-        </li>
-        
-        
-        <li id="section-88">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-88">&#182;</a>
-              </div>
-              <p>TODO: ADD CUSTOMERS TO DB BEFORE TESTING THIS FUNCTIONALITY</p>
+  },
 
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>  customers: [{
+  customers: [{
     ref: <span class="hljs-string">'user'</span>,
     type: mongoose.Schema.ObjectId,
     required: <span class="hljs-literal">true</span>
@@ -2248,11 +2526,11 @@ then sending their pubnub messages</p>
         </li>
         
         
-        <li id="section-89">
+        <li id="section-95">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-89">&#182;</a>
+                <a class="pilcrow" href="#section-95">&#182;</a>
               </div>
               <p>Make sure the message is for the API server,
 without this check, the server could be reacting
@@ -2267,11 +2545,11 @@ to its own publishes meant for mobile</p>
         </li>
         
         
-        <li id="section-90">
+        <li id="section-96">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-90">&#182;</a>
+                <a class="pilcrow" href="#section-96">&#182;</a>
               </div>
               <p>registers the user to their appropriate channels</p>
 
@@ -2283,11 +2561,11 @@ to its own publishes meant for mobile</p>
         </li>
         
         
-        <li id="section-91">
+        <li id="section-97">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-91">&#182;</a>
+                <a class="pilcrow" href="#section-97">&#182;</a>
               </div>
               <p>for each action in the given message, invoke
 the registered action with the given params (meta)</p>
@@ -2299,11 +2577,11 @@ the registered action with the given params (meta)</p>
         </li>
         
         
-        <li id="section-92">
+        <li id="section-98">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-92">&#182;</a>
+                <a class="pilcrow" href="#section-98">&#182;</a>
               </div>
               <p>check to see if the message is from Auth0 and is to register a new
 user or bar</p>
@@ -2338,11 +2616,11 @@ actions.register = <span class="hljs-function"><span class="hljs-keyword">functi
         </li>
         
         
-        <li id="section-93">
+        <li id="section-99">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-93">&#182;</a>
+                <a class="pilcrow" href="#section-99">&#182;</a>
               </div>
               <p>Make sure to grant user access to their own private channel</p>
 
@@ -2353,11 +2631,11 @@ actions.register = <span class="hljs-function"><span class="hljs-keyword">functi
         </li>
         
         
-        <li id="section-94">
+        <li id="section-100">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-94">&#182;</a>
+                <a class="pilcrow" href="#section-100">&#182;</a>
               </div>
               <p>Actually grant the users channels</p>
 
@@ -2374,11 +2652,11 @@ actions.register = <span class="hljs-function"><span class="hljs-keyword">functi
         </li>
         
         
-        <li id="section-95">
+        <li id="section-101">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-95">&#182;</a>
+                <a class="pilcrow" href="#section-101">&#182;</a>
               </div>
               <p>TODO: check to see if patron should set auth_key to access_token or user_id</p>
 
@@ -2414,17 +2692,15 @@ actions.register = <span class="hljs-function"><span class="hljs-keyword">functi
 
   picture: <span class="hljs-built_in">String</span>,
 
-  cards: [
-    {
-      name: <span class="hljs-built_in">String</span>,
-      cardType: <span class="hljs-built_in">String</span>,
-      href: <span class="hljs-built_in">String</span>,
-      main: {
-        type: <span class="hljs-built_in">Boolean</span>,
-        <span class="hljs-keyword">default</span>: <span class="hljs-literal">false</span>
-      }
+  cards: [{
+    name: <span class="hljs-built_in">String</span>,
+    cardType: <span class="hljs-built_in">String</span>,
+    href: <span class="hljs-built_in">String</span>,
+    main: {
+      type: <span class="hljs-built_in">Boolean</span>,
+      <span class="hljs-keyword">default</span>: <span class="hljs-literal">false</span>
     }
-  ],
+  }],
 
   auth_key: {
     type: <span class="hljs-built_in">String</span>,

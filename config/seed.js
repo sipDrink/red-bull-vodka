@@ -30,8 +30,8 @@ var bars = [
     "password": "aliquip",
     "completedSignUp": true,
     "loc": [
-      20.8457111,
-      102.230921
+      30.8457111,
+      30.230921
     ],
     "address": {
       "street": "Eldert Lane",
