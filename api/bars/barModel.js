@@ -68,7 +68,8 @@ var BarSchema = new Schema({
 
   loc: {
     type: [Number],
-    index: '2d'
+    index: '2d',
+    default: [30, 30]
   },
 
   address: {
@@ -91,7 +92,7 @@ var BarSchema = new Schema({
 
   completedSignup: {
     type: Boolean,
-    deafult: false
+    default: false
   }
 
 });
