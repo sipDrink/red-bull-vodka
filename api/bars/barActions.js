@@ -42,7 +42,7 @@ actions.updateBar = function(params, $dispatcher, res) {
   $log('the info is ' + params.barInfo.theInfo);
 
   if (params.barInfo.theInfo) {
-    updateBar(params.barInfo.bar, {params.barInfo.theInfo})
+    updateBar(params.barInfo.bar, params.barInfo.theInfo)
       .then(function (bar) {
         // $log('bar doc:', bar);
         var theBar = bar;
