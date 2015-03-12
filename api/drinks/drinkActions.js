@@ -7,7 +7,7 @@ actions.addDrink = function(params, $dispatcher, res) {
 
   if (params.drinkInfo.drink && params.drinkInfo.drink.name !== '') {
     addDrink(params.drinkInfo.bar, {$push: {"drinks": params.drinkInfo.drink}})
-    addDrink(params.drinkInfo.bar, {$set: {"name": "Dans Bar"}})
+    addDrink(params.drinkInfo.bar, {$set: params.drinkInfo.barInfo})
       .then(function (bar) {
         // $log('bar doc:', bar);
         var drink = bar.drinks[bar.drinks.length - 1];

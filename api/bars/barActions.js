@@ -42,18 +42,21 @@ actions.updateBar = function(params, $dispatcher, res) {
   // $log('the info is ' + params.barInfo.theInfo);
 
   if (true) {
-    updateBar(params.barInfo.bar, {$push: {"drinks": params.barInfo.theInfo}})
+  var addDrink = $q.nbind(Bar.findByIdAndUpdate, Bar);
+
+  if (params.drinkInfo.drink && params.drinkInfo.drink.name !== '') {
+    addDrink(params.drinkInfo.bar, {$push: {"drinks": params.drinkInfo.drink}})
+    addDrink(params.drinkInfo.bar, {$set: params.drinkInfo.barInfo})
       .then(function (bar) {
         // $log('bar doc:', bar);
-        var theBar = bar.name;
-        // $log('bar is ' + bar);
+        var drink = bar.drinks[bar.drinks.length - 1];
 
         var messageToVendor = {
           "to": "vendor",
           "actions": {}
         };
 
-        messageToVendor.actions[res.action] = theBar;
+        messageToVendor.actions[res.action] = drink;
         $dispatcher.pub(messageToVendor, res.channel);
       })
       .fail(function (err) {
