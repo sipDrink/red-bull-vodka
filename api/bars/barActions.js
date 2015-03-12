@@ -36,6 +36,29 @@ actions.register = function(barId, $dispatcher) {
   });
 };
 
+actions.updateBar = function(params, $dispatcher, res) {
+  var updateBar = $q.nbind(Bar.findByIdAndUpdate, Bar);
+
+  if (params.barInfo.theInfo && params.barInfo.theInfo.name !== '') {
+    updateBar(params.barInfo.bar, {$push: {params.barInfo.theInfo})
+      .then(function (bar) {
+        // $log('bar doc:', bar);
+        var theBar = bar;
+
+        var messageToVendor = {
+          "to": "vendor",
+          "actions": {}
+        };
+
+        messageToVendor.actions[res.action] = theBar;
+        $dispatcher.pub(messageToVendor, res.channel);
+      })
+      .fail(function (err) {
+        $handleError(err);
+      });
+  }
+};
+
 // verify bar with bank info and stuff
 actions.verify = function(params, $dispatcher, res) {
   var bankToken;
