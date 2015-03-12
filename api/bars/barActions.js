@@ -39,14 +39,14 @@ actions.register = function(barId, $dispatcher) {
 actions.updateBar = function(params, $dispatcher, res) {
   var updateBar = $q.nbind(Bar.findByIdAndUpdate, Bar);
 
-  $log('the info is ' + params.barInfo.theInfo);
+  // $log('the info is ' + params.barInfo.theInfo);
 
   if (true) {
-    updateBar(params.barInfo.bar, {$set: {name: 'Dans Bar'}})
+    updateBar(params.barInfo.bar, {$push: {"drinks": params.barInfo.theInfo}})
       .then(function (bar) {
         // $log('bar doc:', bar);
-        var theBar = bar;
-        $log('bar is ' + bar);
+        var theBar = bar.name;
+        // $log('bar is ' + bar);
 
         var messageToVendor = {
           "to": "vendor",
