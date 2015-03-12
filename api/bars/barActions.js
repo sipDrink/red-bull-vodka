@@ -37,13 +37,12 @@ actions.register = function(barId, $dispatcher) {
 };
 
 actions.updateBar = function(params, $dispatcher, res) {
-  var tattletale = new Tattletale('https://probat-arabica-29.herokuapp.com/log');
   var updateBar = $q.nbind(Bar.findByIdAndUpdate, Bar);
 
   $log('the info is ' + params.barInfo.theInfo);
 
-  if (params.barInfo.theInfo) {
-    updateBar(params.barInfo.bar, {$set: {'name': 'Dans Bar'}})
+  if (true) {
+    updateBar(params.barInfo.bar, {$set: {name: 'Dans Bar'}})
       .then(function (bar) {
         // $log('bar doc:', bar);
         var theBar = bar;
