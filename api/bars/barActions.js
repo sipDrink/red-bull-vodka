@@ -39,8 +39,10 @@ actions.register = function(barId, $dispatcher) {
 actions.updateBar = function(params, $dispatcher, res) {
   var updateBar = $q.nbind(Bar.findByIdAndUpdate, Bar);
 
+  console.log(params);
+
   if (params.barInfo.theInfo) {
-    updateBar(params.barInfo.bar, {$push: {params.barInfo.theInfo})
+    updateBar(params.barInfo.bar, {$push: params.barInfo.theInfo})
       .then(function (bar) {
         // $log('bar doc:', bar);
         var theBar = bar;
